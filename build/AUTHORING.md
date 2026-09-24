@@ -30,3 +30,10 @@ objectives[4-5], parts[5], takeaways[5-6], history, case, practice[4-5 bước],
 ## Kiểm tra
 `python3 build/build.py` (chạy notebook thật, kiểm quiz, đếm slide, parse HTML). `--force` để chạy lại toàn bộ notebook.
 Xem trang: `python3 -m http.server 8765` trong thư mục dự án; `node /tmp/pp/check.js URL out.png SLIDE_INDEX` (puppeteer-core) nếu còn.
+
+## Mẹo quiz (rút ra khi viết module 01 đến 05)
+- Chạy `python3 build/qa_quiz.py` để liệt kê câu mà đáp án đúng là phương án dài nhất (build dừng nếu >5% toàn bộ).
+- Đáp án số: cho ÍT NHẤT một phương án nhiễu có số ký tự >= đáp án đúng (vd đúng "0.5" thì thêm nhiễu "0.25"; đúng "-1" thì nhiễu "-2"). Đáp án đúng nên là số dạng `.4f` rồi bị cắt số 0 nên thường ngắn hơn nhiễu, hãy kiểm.
+- Không trùng lặp phương án (build dừng): đừng đặt nhiễu bằng đúng giá trị `{{khoá}}` đã in.
+- Câu khái niệm: đáp án đúng ngắn gọn, nhiễu dài hơn kèm lý do sai nghe hợp lý.
+- Trích trang chỉ từ văn bản OCR đã đọc; khi OCR lộn xộn (ví dụ ma trận tương quan bậc ba) thì kiểm bằng notebook và nêu điều notebook thực sự thấy.

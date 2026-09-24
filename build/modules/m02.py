@@ -347,7 +347,7 @@ MOD = dict(
              opts=["⟦Nhân với $e^{-\\alpha x^2}$ rồi cho $\\alpha\\to0$ để được cặp biến đổi trong giới hạn||Multiply by $e^{-\\alpha x^2}$ and let $\\alpha\\to0$ to get a transform pair in the limit⟧",
                    "⟦Chỉ lấy một chu kỳ rồi coi hàm bằng 0 ngoài chu kỳ đó trong mọi tính toán về sau||Keep a single period and take the function to be zero outside it in all later calculations⟧",
                    "⟦Đổi biến $x\\to1/x$ để đưa vô hạn về hữu hạn rồi áp dụng định lý tích phân Fourier||Substitute $x\\to1/x$ to bring infinity to a finite point and then apply Fourier's integral theorem⟧",
-                   "⟦Loại các hàm tuần hoàn khỏi lý thuyết vì vật lý không có hàm tuần hoàn nào||Exclude periodic functions from the theory because physics contains none⟧"],
+                   "⟦Loại các hàm tuần hoàn khỏi lý thuyết vì vật lý không có hàm tuần hoàn nào tồn tại thật sự trong tự nhiên||Exclude periodic functions from the theory because physics contains no periodic function that truly exists in nature⟧"],
              explain="⟦Bracewell, tr. 10: dãy biến đổi của các hàm đã nhân định nghĩa một hàm suy rộng, và hai thành viên tạo thành cặp trong giới hạn.||Bracewell, p. 10: the sequence of transforms of the modified functions defines a generalized function and the two members form a pair in the limit.⟧"),
         dict(q="⟦Hàm thực và lẻ có biến đổi Fourier thuộc loại nào?||Which kind of Fourier transform does a real odd function have?⟧",
              opts=["⟦Ảo và lẻ||Imaginary and odd⟧",
