@@ -19,7 +19,8 @@ objectives[4-5], parts[5], takeaways[5-6], history, case, practice[4-5 bước],
 - Có sẵn trong cell đầu (SETUP): `np`, `plt`, `amplitude_spectrum(x)`, `report(key, value, fmt)`. Tự import scipy trong cell.
 - MỌI số hiển thị phải tính bằng >=2 phương pháp độc lập và `assert` khớp. Không dùng số ngẫu nhiên nếu tránh được; nếu cần, `np.random.default_rng(seed)`.
 - Cell hình: đúng một hình (`plt.show()`), truyền `dict(fig=..., cap=...)`. Nhãn hình dùng `⟦vi||en⟧`.
-- Tránh in số cỡ 1e-16 dạng `.6f` thành "-0.000000": dùng `abs()` hoặc `round(v, 6) + 0.0`.
+- `report` tự cắt số 0 thừa ở cuối (0.500000 thành 0.5). Dùng tối đa `.4f` (hoặc `.4g`); số rất nhỏ dùng `.1e`. Tránh "-0": dùng `abs()` hoặc `round(v, 4) + 0.0`.
+- Quiz: TỐI THIỂU 30 câu/module (chương 1 khoảng 50), gồm cả câu tính toán triển khai (đáp án in từ notebook).
 
 ## Quiz (14-15 câu, `opts[0]` LÀ ĐÁP ÁN ĐÚNG, build.py tự xáo)
 - Đáp án đúng KHÔNG được là phương án dài nhất (ngưỡng <5% toàn bộ). Viết đáp án đúng ngắn gọn, phương án nhiễu dài hơn kèm một mệnh đề lý do sai nghe hợp lý. Không độn chữ máy móc.

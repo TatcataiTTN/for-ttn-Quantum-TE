@@ -29,7 +29,8 @@ from nbclient.exceptions import CellExecutionError
 from nbconvert.preprocessors import ExecutePreprocessor
 
 sys.path.insert(0, str(Path(__file__).parent))
-from lib import (LANGS, T, HEAD_THEME, render, resolve_lang, fig_html)  # noqa: E402
+from lib import (LANGS, T, HEAD_THEME, render, resolve_lang, fig_html, appearance_menu, info_modal, FAB)  # noqa: E402
+from index_content import compute as compute_index, STEPS  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SP = ROOT / "signal-processing"
@@ -48,9 +49,12 @@ def amplitude_spectrum(x):
     return a
 
 
-def report(key, value, fmt=".6g"):
-    """⟦In một kết quả có tên (trang web đọc các dòng bắt đầu bằng ▸)||Print a named result (the website reads the lines that start with ▸)⟧."""
-    print(f"▸ {key} = {value:{fmt}}")
+def report(key, value, fmt=".4g"):
+    """⟦In một kết quả có tên, bỏ các số 0 thừa ở cuối (trang web đọc các dòng bắt đầu bằng ▸)||Print a named result without trailing zeros (the website reads the lines that start with ▸)⟧."""
+    s = f"{value:{fmt}}"
+    if "." in s and "e" not in s:
+        s = s.rstrip("0").rstrip(".")
+    print(f"▸ {key} = {s}")
 '''
 
 
@@ -189,6 +193,7 @@ def build_quiz_sets(mods, results):
             others = [others[k] for k in order]
             strip = lambda s: re.sub(r"<.*?>", "", s)  # noqa: E731
             final = others[:tgt] + [correct] + others[tgt:]
+            assert len(set(final)) == 4, "duplicate options in module %d question %d (%s)" % (n, i + 1, lang)
             item = {"q": resolve_lang(q["q"], lang), "opts": final, "correct": tgt,
                     "explain": resolve_lang(q["explain"], lang)}
             out.setdefault((n, lang), []).append(item)
@@ -258,19 +263,20 @@ def page(lang, title, body, root, other_href=None, crumbs="", desc=""):
 <body>
 <header class="top"><div class="wrap">
 <a class="brand" href="%(root)sindex.html">⚛ %(site)s</a>
-<nav>%(other)s<button class="btn" type="button" data-theme-toggle aria-label="Theme">◑</button></nav>
+<nav>%(other)s%(menu)s</nav>
 </div></header>
 <main class="wrap">
 %(crumbs)s
 %(body)s
-<footer class="foot">%(note)s</footer>
+<footer class="foot">%(note)s <button class="btn" type="button" data-info-open>ℹ️ %(infolabel)s</button></footer>
 </main>
+%(modal)s%(fab)s
 <script src="%(root)s_shared/katex/katex.min.js"></script>
 <script src="%(root)s_shared/site.js"></script>
 </body>
 </html>
-""" % dict(lang=lang, title=title, desc=desc, theme=HEAD_THEME, root=root, site=t["site"], other=other,
-           crumbs=crumbs, body=body, note=t["lang_note"])
+""" % dict(menu=resolve_lang(appearance_menu(), lang), modal=resolve_lang(info_modal(), lang), fab=FAB, lang=lang, title=title, desc=desc, theme=HEAD_THEME, root=root, site=t["site"], other=other,
+           crumbs=crumbs, body=body, note=t["lang_note"], infolabel=t["info_btn"])
 
 
 FORMULA_RE = re.compile(
@@ -439,7 +445,32 @@ BOOKBADGE = {
 }
 
 
-def build_lang_index(lang, mods):
+def _mod_tags(mods_nums, built):
+    out = ""
+    for n in mods_nums:
+        if n in built:
+            out += '<a class="tag" href="modules/%s/index.html">M%d</a>' % (built[n]["dir"], n)
+        else:
+            out += '<span class="tag" style="opacity:.55">M%d</span>' % n
+    return out
+
+
+def render_steps(built):
+    out = ""
+    for st in STEPS:
+        faq = "".join('<div class="faq"><b>%s</b>%s</div>' % (q, a) for q, a in st["faq"])
+        tags = _mod_tags(st["mods"] if len(st["mods"]) < 10 else [], built)
+        if len(st["mods"]) >= 10:
+            tags = '<span class="tag">⟦tất cả module||all modules⟧</span>'
+        out += ('<details class="acc"><summary><span class="acc-n">%d</span>%s%s</summary><div class="acc-body">'
+                '<h4>🎓 ⟦Khung lý thuyết||Theory⟧</h4>%s%s'
+                '<h4>❓ ⟦Câu hỏi thường gặp||Frequently asked⟧</h4>%s'
+                '<h4>📌 ⟦Ví dụ có số liệu thật||Worked example with real numbers⟧</h4>%s</div></details>') % (
+            st["n"], st["title"], tags, st["theory"], st["formula"], faq, st["example"])
+    return out
+
+
+def build_lang_index(lang, mods, idx):
     t = T[lang]
     built = {m["n"]: m for m in mods}
     groups = ""
@@ -452,28 +483,81 @@ def build_lang_index(lang, mods):
             if n in built:
                 m = built[n]
                 cards += ('<a class="mod-card" href="modules/%s/index.html"><span class="num">%s %02d</span>'
-                          '<h3>%s</h3><p>%s</p><p><span class="tag" style="%s">%s</span><span class="tag">%s</span></p></a>') % (
-                    m["dir"], t["module"].upper(), n, m["title"], m["blurb"], bstyle, bt, m["src"])
+                          '<h3>%s</h3><p>%s</p><p><span class="tag" style="%s">%s</span><span class="tag">%s</span></p>'
+                          '<p><b>%s</b></p></a>') % (
+                    m["dir"], t["module"].upper(), n, m["title"], m["blurb"], bstyle, bt, m["src"], t["open"])
             else:
                 cards += ('<div class="mod-card soon"><span class="num">%s %02d</span><h3>%s</h3>'
                           '<p><span class="tag" style="%s">%s</span><span class="tag">%s</span></p><p>%s</p></div>') % (
                     t["module"].upper(), n, title, bstyle, bt, src, COMING)
         groups += '<h2 class="sec">%s</h2><div class="grid">%s</div>' % (ptitle, cards)
     nbk = len([p for p in PLAN if p[3] == "BK"]); nb_ = len([p for p in PLAN if p[3] == "B"]); nk_ = len([p for p in PLAN if p[3] == "K"])
-    stats = ("⟦%d module (đã xong %d): %d chung của cả hai sách, %d riêng Bracewell, %d riêng Barkat.||"
-             "%d modules (%d done): %d shared by both books, %d Bracewell only, %d Barkat only.⟧")
-    stats = resolve_lang(stats, lang) % (len(PLAN), len(built), nbk, nb_, nk_)
-    steps = "".join("<li>%s</li>" % s for s in t["how_steps"])
-    body = ('<div class="hero"><h1>%s</h1><p class="lead">%s</p><p class="lead">%s</p></div>'
-            '<div class="card"><b>%s</b><ol>%s</ol><b>%s</b><p>%s</p></div>%s') % (
-        t["section"],
-        "⟦Hai giáo trình gốc: R. N. Bracewell, <i>The Fourier Transform and Its Applications</i> (3rd ed.) và M. Barkat, <i>Signal Detection and Estimation</i> (2nd ed.). Mỗi chương là một module; các chương trùng chủ đề được ghép làm một.||"
-        "Two source books: R. N. Bracewell, <i>The Fourier Transform and Its Applications</i> (3rd ed.) and M. Barkat, <i>Signal Detection and Estimation</i> (2nd ed.). Each chapter is a module; chapters on the same topic are merged into one.⟧",
-        stats, t["how"], steps, t["path"], t["path_txt"], groups)
-    body = resolve_lang(body, lang)
+    # roadmap table
+    rows = ""
+    for pk, (ptitle,) in PARTS.items():
+        ns = [p[0] for p in PLAN if p[2] == pk]
+        done = len([n for n in ns if n in built])
+        rows += "<tr><td>%s</td><td>%d – %d</td><td>%d / %d</td></tr>" % (pk, min(ns), max(ns), done, len(ns))
+    road = TBL_(["⟦Phần||Part⟧", "⟦Module||Modules⟧", "⟦Đã xong||Done⟧"], rows)
+    stats = ("⟦%d module: %d chung của cả hai sách (ghép chương, khoảng 60 slide), %d riêng Bracewell và %d riêng Barkat (khoảng 40 slide). Đã xong: %d.||"
+             "%d modules: %d shared by both books (merged chapters, about 60 slides), %d Bracewell only and %d Barkat only (about 40 slides). Done so far: %d.⟧")
+    stats = resolve_lang(stats, lang) % (len(PLAN), nbk, nb_, nk_, len(built))
+    steps = "".join("<li>%s</li>" % x for x in t["how_steps"])
+    body = ('<div class="callout warn banner"><b class="h">⚠️ ⟦Nội dung được viết với sự hỗ trợ của AI||Written with AI assistance⟧</b>'
+            '<p>⟦Phần lớn nội dung do AI (Claude) soạn, rồi được kiểm lại: mọi con số do notebook Jupyter tính và đối chiếu bằng hai phương pháp độc lập, số trang trích dẫn lấy từ văn bản OCR của hai giáo trình. Nếu thấy sai sót, xin báo lại (nút ℹ️ ở góc phải).||'
+            'Most of the content was drafted by AI (Claude) and then checked: every number is computed by a Jupyter notebook and cross-checked by two independent methods, and page citations come from the OCR text of the two books. If you spot a mistake, please report it (the ℹ️ button at the bottom right).⟧</p></div>'
+            '<div class="hero"><h1>⟦Bài giảng: Xử lý tín hiệu||Lectures: Signal Processing⟧</h1>'
+            '<p class="lead">⟦Biến đổi Fourier, xác suất và nhiễu, phát hiện và ước lượng tín hiệu, xây từ hai giáo trình gốc: R. N. Bracewell, <i>The Fourier Transform and Its Applications</i> (3rd ed.) và M. Barkat, <i>Signal Detection and Estimation</i> (2nd ed.). Mỗi chương là một module có slide, công thức, notebook Jupyter và quiz; các chương trùng chủ đề được ghép làm một.||'
+            'Fourier transforms, probability and noise, signal detection and estimation, built from two source books: R. N. Bracewell, <i>The Fourier Transform and Its Applications</i> (3rd ed.) and M. Barkat, <i>Signal Detection and Estimation</i> (2nd ed.). Each chapter is a module with slides, formulas, a Jupyter notebook and a quiz; chapters on the same topic are merged into one.⟧</p>'
+            '<p class="lead">%s</p></div>'
+            '<div class="callout info"><b class="h">🗺️ ⟦Lộ trình học||Study roadmap⟧</b><p>%s</p>%s</div>'
+            '<div class="card"><b>%s</b><ol>%s</ol></div>%s'
+            '<h2 class="sec">⟦Quy trình xử lý tín hiệu: chi tiết từng bước||The signal-processing workflow, step by step⟧</h2>'
+            '<p class="lead">⟦Mười hai bước từ đặt bài toán đến báo cáo. Mỗi bước có khung lý thuyết, câu hỏi thường gặp, và ví dụ có số liệu do máy tính tính thật, kèm liên kết tới module liên quan.||'
+            'Twelve steps from posing the problem to reporting. Each has a theory frame, frequently asked questions, and a worked example with numbers computed for real, plus links to the related modules.⟧</p>'
+            '<div class="toolbar"><button class="btn" type="button" data-acc-all="open">⟦Mở tất cả||Expand all⟧</button>'
+            '<button class="btn" type="button" data-acc-all="close">⟦Thu gọn||Collapse all⟧</button></div>%s'
+            '<h2 class="sec">📊 ⟦Bộ dữ liệu và notebook||Datasets and notebooks⟧</h2>'
+            '<p>⟦Mọi dữ liệu được sinh bằng mã trong notebook, nên không cần tải tệp ngoài.||All data is generated in code inside the notebooks, so no external files are needed.⟧</p>'
+            '<p><a class="btn primary" href="data/index.html">📊 ⟦Xem tất cả notebook và dữ liệu||See all notebooks and data⟧</a></p>') % (
+        stats, road_intro(lang), road, t["how"], steps, groups, render_steps(built))
+    body = render(body, lang, idx, {}, "index " + lang)
     crumbs = '<div class="crumbs"><a href="../../index.html">%s</a> / %s</div>' % (t["home"], t["section"])
     other = "en" if lang == "vi" else "vi"
     return page(lang, t["section"], body, "../../", "../%s/index.html" % other, crumbs)
+
+
+def TBL_(head, rows_html):
+    return '<table class="t"><tr>%s</tr>%s</table>' % ("".join("<th>%s</th>" % h for h in head), rows_html)
+
+
+def road_intro(lang):
+    return resolve_lang("⟦Đi theo thứ tự A đến E. Module có nhãn \"Cả hai sách\" là nơi hai giáo trình gặp nhau, nên học chậm ở đó.||"
+                        "Go through A to E in order. Modules tagged \"Both books\" are where the two texts meet, so take those slowly.⟧", lang)
+
+
+def build_data_page(lang, mods):
+    t = T[lang]
+    built = {m["n"]: m for m in mods}
+    rows = ""
+    for n, slug, part, book, title, src in PLAN:
+        if n in built:
+            m = built[n]
+            nbf = nbfile(m, lang)
+            colab = "https://colab.research.google.com/github/%s/blob/main/signal-processing/notebooks/%s" % (REPO, nbf)
+            rows += ("<tr><td>%02d</td><td><a href=\"../modules/%s/index.html\">%s</a></td><td>%s</td>"
+                     "<td><a href=\"%s\" target=\"_blank\" rel=\"noopener\">Colab</a> · <a href=\"../../notebooks/%s\" download>.ipynb</a></td></tr>") % (
+                n, m["dir"], m["title"], m.get("data", "⟦(đang cập nhật)||(to be added)⟧"), colab, nbf)
+        else:
+            rows += "<tr style=\"opacity:.55\"><td>%02d</td><td>%s</td><td>%s</td><td>%s</td></tr>" % (n, title, "", COMING)
+    body = ('<div class="hero"><h1>📊 ⟦Bộ dữ liệu và notebook||Datasets and notebooks⟧</h1>'
+            '<p class="lead">⟦Mỗi module có một notebook riêng cho từng ngôn ngữ. Dữ liệu được sinh bằng mã (tín hiệu mô phỏng có chủ đích, tham số biết trước) nên bạn kiểm được đáp số. Notebook chạy được trên máy hoặc Google Colab, chỉ cần NumPy, SciPy và Matplotlib.||'
+            'Each module has its own notebook per language. Data is generated in code (deliberate simulated signals with known parameters) so you can check the answers. Notebooks run locally or on Google Colab and need only NumPy, SciPy and Matplotlib.⟧</p></div>'
+            '<table class="t"><tr><th>#</th><th>⟦Module||Module⟧</th><th>⟦Dữ liệu sinh ra||Generated data⟧</th><th>Notebook</th></tr>%s</table>') % rows
+    body = resolve_lang(body, lang)
+    crumbs = '<div class="crumbs"><a href="../../../index.html">%s</a> / <a href="../../index.html">%s</a> / %s</div>' % (t["home"], t["section"], "⟦Dữ liệu||Data⟧" if False else ("Dữ liệu" if lang == "vi" else "Data"))
+    other = "en" if lang == "vi" else "vi"
+    return page(lang, "Notebooks", body, "../../../", "../../%s/data/index.html" % other, crumbs)
 
 
 # ------------------------------------------------------------------ portal
@@ -501,6 +585,10 @@ SECTIONS = [
 ]
 
 
+def bi_markup(s):
+    return re.sub(r"⟦(.*?)\|\|(.*?)⟧", lambda m: '<span class="bi" lang="vi">%s</span><span class="bi" lang="en">%s</span>' % (m.group(1), m.group(2)), s, flags=re.S)
+
+
 def portal_page(title, body, root):
     return """<!DOCTYPE html>
 <html lang="vi" data-ui="vi">
@@ -516,14 +604,15 @@ def portal_page(title, body, root):
 <body>
 <header class="top"><div class="wrap">
 <a class="brand" href="%sindex.html">⚛ Quantum · Technology Engineering</a>
-<nav><button class="btn" type="button" data-ui-toggle>VI / EN</button><button class="btn" type="button" data-theme-toggle aria-label="Theme">◑</button></nav>
+<nav><button class="btn" type="button" data-ui-toggle>VI / EN</button>%s</nav>
 </div></header>
 <main class="wrap">%s</main>
+%s%s
 <script src="%s_shared/site.js"></script>
 %s
 </body>
 </html>
-""" % (title, HEAD_THEME, PORTAL_CSS_TOGGLE, root, root, body, root, PORTAL_JS)
+""" % (title, HEAD_THEME, PORTAL_CSS_TOGGLE, root, root, bi_markup(appearance_menu()), body, bi_markup(info_modal()), FAB, root, PORTAL_JS)
 
 
 def bi(vi, en, tag="span"):
@@ -571,6 +660,8 @@ def main():
     ap.add_argument("--only", type=int)
     a = ap.parse_args()
     all_mods = load_modules()
+    for m in all_mods:
+        assert len(m["quiz"]) >= 30, "module %d has only %d quiz questions (minimum 30)" % (m["n"], len(m["quiz"]))
     ns = [m["n"] for m in all_mods]
     assert len(ns) == len(set(ns)), "duplicate module numbers"
     R, FG, NB = {}, {}, {}
@@ -602,12 +693,17 @@ def main():
             d = SP / lang / "modules" / mod["dir"]
             d.mkdir(parents=True, exist_ok=True)
             (d / "index.html").write_text(html_out, encoding="utf-8")
+    idx = compute_index()
     for lang in LANGS:
         d = SP / lang
         d.mkdir(parents=True, exist_ok=True)
-        s_ = build_lang_index(lang, all_mods)
+        s_ = build_lang_index(lang, all_mods, idx)
         check_html(s_, "index " + lang)
         (d / "index.html").write_text(s_, encoding="utf-8")
+        (d / "data").mkdir(exist_ok=True)
+        s2 = build_data_page(lang, all_mods)
+        check_html(s2, "data " + lang)
+        (d / "data" / "index.html").write_text(s2, encoding="utf-8")
     build_portal(len(PLAN), len(all_mods))
     print("OK: %d module(s) in the index" % len(all_mods))
 

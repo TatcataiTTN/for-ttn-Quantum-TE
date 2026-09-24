@@ -1,19 +1,45 @@
 /* Shared behaviour: theme switcher, KaTeX rendering, mini slide-deck, self-graded quiz. No backend. */
 (function(){
-  // ---------- theme ----------
-  var KEY = 'site-theme';
-  function getTheme(){ try{ return localStorage.getItem(KEY) || 'auto'; }catch(e){ return 'auto'; } }
-  function applyTheme(t){
-    if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
-    else document.documentElement.removeAttribute('data-theme');
+  // ---------- appearance: theme / font / size ----------
+  var D = document.documentElement;
+  function store(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  function apply(group, v){
+    if (group === 'theme'){ if (v === 'auto') D.removeAttribute('data-theme'); else D.setAttribute('data-theme', v); }
+    if (group === 'font'){ if (v === 'sans') D.removeAttribute('data-font'); else { D.setAttribute('data-font', v); if (window.siteLoadFont) window.siteLoadFont(v); } }
+    if (group === 'size'){ if (v === 'md') D.removeAttribute('data-size'); else D.setAttribute('data-size', v); }
   }
-  document.querySelectorAll('[data-theme-toggle]').forEach(function(b){
-    function label(){ var t = getTheme(); b.textContent = t === 'dark' ? '☾' : t === 'light' ? '☀' : '◑'; b.title = 'Theme: ' + t; }
-    label();
+  var DEF = {theme:'auto', font:'sans', size:'md'};
+  document.querySelectorAll('[data-appearance]').forEach(function(menu){
+    function mark(){
+      menu.querySelectorAll('[data-group]').forEach(function(row){
+        var g = row.getAttribute('data-group'), cur;
+        try{ cur = localStorage.getItem('site-' + g) || DEF[g]; }catch(e){ cur = DEF[g]; }
+        row.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-v') === cur ? 'true' : 'false'); });
+      });
+    }
+    menu.querySelectorAll('[data-group] button').forEach(function(b){
+      b.addEventListener('click', function(){
+        var g = b.parentNode.getAttribute('data-group'), v = b.getAttribute('data-v');
+        store('site-' + g, v); apply(g, v); mark();
+      });
+    });
+    mark();
+    document.addEventListener('click', function(e){ if (menu.open && !menu.contains(e.target)) menu.open = false; });
+  });
+
+  // ---------- info modal ----------
+  var modal = document.getElementById('info-modal');
+  if (modal){
+    document.querySelectorAll('[data-info-open]').forEach(function(b){ b.addEventListener('click', function(){ modal.hidden = false; }); });
+    modal.addEventListener('click', function(e){ if (e.target === modal || e.target.hasAttribute('data-info-close')) modal.hidden = true; });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') modal.hidden = true; });
+  }
+
+  // ---------- accordion: open / close all ----------
+  document.querySelectorAll('[data-acc-all]').forEach(function(b){
     b.addEventListener('click', function(){
-      var order = ['auto','light','dark'], t = order[(order.indexOf(getTheme()) + 1) % 3];
-      try{ localStorage.setItem(KEY, t); }catch(e){}
-      applyTheme(t); label();
+      var open = b.getAttribute('data-acc-all') === 'open';
+      document.querySelectorAll('details.acc').forEach(function(d){ d.open = open; });
     });
   });
 

@@ -114,6 +114,7 @@ T = {
         "other_lang": "English", "other_lang_full": "English edition",
         "lang_note": "Bản tiếng Việt là bản gốc. Bản tiếng Anh viết song song với bản gốc.",
         "open": "Mở bài giảng →",
+        "info_btn": "Thông tin và liên hệ",
         "how": "Cách học một module",
         "how_steps": ["Đọc mục tiêu và chạy hết slide (mỗi module có 5 phần).",
                       "Mở notebook, chạy từng cell và đọc phần 📤 Đầu ra thật sau mỗi cell.",
@@ -151,6 +152,7 @@ T = {
         "other_lang": "Tiếng Việt", "other_lang_full": "Bản tiếng Việt",
         "lang_note": "The Vietnamese edition is the source text. This English edition was written in parallel with it.",
         "open": "Open lecture →",
+        "info_btn": "Info and contact",
         "how": "How to study a module",
         "how_steps": ["Read the objectives and step through all slides (each module has 5 parts).",
                       "Open the notebook, run each cell and read the 📤 Real output note after it.",
@@ -160,5 +162,60 @@ T = {
     },
 }
 
-HEAD_THEME = ("<script>(function(){try{var t=localStorage.getItem('site-theme');"
-              "if(t&&t!=='auto')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>")
+HEAD_THEME = ("<script>(function(){var D=document.documentElement;"
+              "var FONTS={montserrat:'Montserrat:wght@400;600;800',bevietnam:'Be+Vietnam+Pro:wght@400;600;800',lora:'Lora:wght@400;600;700'};"
+              "window.siteLoadFont=function(f){if(!FONTS[f]||document.getElementById('gf-'+f))return;var l=document.createElement('link');"
+              "l.id='gf-'+f;l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family='+FONTS[f]+'&display=swap';document.head.appendChild(l);};"
+              "try{var t=localStorage.getItem('site-theme');if(t&&t!=='auto')D.setAttribute('data-theme',t);"
+              "var f=localStorage.getItem('site-font');if(f&&f!=='sans'){D.setAttribute('data-font',f);window.siteLoadFont(f);}"
+              "var z=localStorage.getItem('site-size');if(z&&z!=='md')D.setAttribute('data-size',z);}catch(e){}})();</script>")
+
+# ---- contact details (edit here; shown in the info dialog of every page)
+CONTACT_NAME = "Trương Tuấn Nghĩa"
+CONTACT_PHONE = "(+84) 973 958 574"
+CONTACT_PHONE_TEL = "+84973958574"
+CONTACT_EMAIL = "truongtuannghia1248@gmail.com"
+GITHUB_URL = "https://github.com/TatcataiTTN/for-ttn-Quantum-TE"
+
+THEMES = [("auto", "⟦Tự động||Auto⟧", "conic-gradient(#ffffff 50%,#0f1420 0)"), ("light", "⟦Sáng||Light⟧", "#ffffff"),
+          ("dark", "⟦Tối||Dark⟧", "#0f1420"), ("pink", "⟦Hồng||Pink⟧", "#d6336c"), ("blue", "⟦Lam||Blue⟧", "#1d6fd6"),
+          ("green", "⟦Lục||Green⟧", "#238b4c"), ("sepia", "⟦Giấy||Sepia⟧", "#9a5b0f"), ("purple", "⟦Tím||Purple⟧", "#6b3fd4")]
+FONTS = [("sans", "⟦Hệ thống||System⟧"), ("serif", "Times New Roman"), ("montserrat", "Montserrat"),
+         ("bevietnam", "Be Vietnam Pro"), ("lora", "Lora"), ("mono", "Mono")]
+SIZES = [("sm", "A−"), ("md", "A"), ("lg", "A+"), ("xl", "A++")]
+
+
+def appearance_menu():
+    th = "".join('<button type="button" data-v="%s"><span class="sw" style="background:%s"></span>%s</button>' % (k, c, n) for k, n, c in THEMES)
+    fo = "".join('<button type="button" data-v="%s">%s</button>' % (k, n) for k, n in FONTS)
+    sz = "".join('<button type="button" data-v="%s">%s</button>' % (k, n) for k, n in SIZES)
+    return ('<details class="menu" data-appearance><summary class="btn">🎨 ⟦Giao diện||Appearance⟧</summary><div class="menu-panel">'
+            '<div class="menu-h">⟦Màu nền||Colour theme⟧</div><div class="menu-row" data-group="theme">%s</div>'
+            '<div class="menu-h">⟦Phông chữ||Typeface⟧</div><div class="menu-row" data-group="font">%s</div>'
+            '<div class="menu-h">⟦Cỡ chữ||Text size⟧</div><div class="menu-row" data-group="size">%s</div>'
+            '<p class="lang-note">⟦Lựa chọn được nhớ trên trình duyệt này. Các phông Montserrat, Be Vietnam Pro và Lora chỉ tải từ Google Fonts khi bạn chọn.||'
+            'Your choice is remembered in this browser. Montserrat, Be Vietnam Pro and Lora are only loaded from Google Fonts when you pick them.⟧</p>'
+            '</div></details>') % (th, fo, sz)
+
+
+def info_modal():
+    return ('<div id="info-modal" class="modal" hidden><div class="modal-card" role="dialog" aria-modal="true">'
+            '<button class="modal-x" type="button" data-info-close aria-label="Close">×</button>'
+            '<h3>⟦Về nội dung này||About this content⟧</h3>'
+            '<p>⟦Nội dung được viết với sự hỗ trợ của AI (Claude), rồi được kiểm lại. Mọi con số do notebook Jupyter tính ra và đối chiếu bằng hai phương pháp độc lập; số trang trích dẫn lấy từ văn bản OCR của hai giáo trình gốc. Vẫn có thể còn sai sót, mong bạn báo lại.||'
+            'The content was written with AI assistance (Claude) and then checked. Every number is produced by a Jupyter notebook and cross-checked by two independent methods; page citations come from the OCR text of the two source books. Mistakes may remain, so please report them.⟧</p>'
+            '<h3>⟦Liên hệ||Contact⟧</h3>'
+            '<ul><li>%(name)s</li><li>⟦Điện thoại / Zalo / Telegram||Phone / Zalo / Telegram⟧: <a href="tel:%(tel)s">%(phone)s</a></li>'
+            '<li>Email: <a href="mailto:%(email)s">%(email)s</a></li></ul>'
+            '<h3>⟦Sách nguồn||Source books⟧</h3>'
+            '<ul><li>R. N. Bracewell, <i>The Fourier Transform and Its Applications</i>, 3rd ed., McGraw-Hill, 2000.</li>'
+            '<li>M. Barkat, <i>Signal Detection and Estimation</i>, 2nd ed., Artech House, 2005.</li></ul>'
+            '<p class="lang-note">⟦Trang này chỉ tóm tắt, diễn giải và kiểm số; hãy đọc sách gốc qua thư viện hoặc nhà xuất bản.||'
+            'This site only summarises, explains and checks numbers; please read the original books through a library or the publisher.⟧</p>'
+            '<h3>⟦Đóng góp||Contribute⟧</h3>'
+            '<p>⟦Bạn có thể báo lỗi, đề xuất module mới hoặc bản dịch tại kho mã <a href="%(gh)s" target="_blank" rel="noopener">GitHub</a>, và fork hoặc clone để tự học. Khi chia sẻ lại, hãy ghi nguồn.||'
+            'Report errors, suggest modules or translations in the <a href="%(gh)s" target="_blank" rel="noopener">GitHub</a> repository, and fork or clone it for your own study. Please credit the source when sharing.⟧</p>'
+            '</div></div>') % dict(name=CONTACT_NAME, tel=CONTACT_PHONE_TEL, phone=CONTACT_PHONE, email=CONTACT_EMAIL, gh=GITHUB_URL)
+
+
+FAB = '<button class="fab" type="button" data-info-open aria-label="Info" title="Info">ℹ️</button>'
