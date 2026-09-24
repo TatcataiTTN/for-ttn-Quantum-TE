@@ -22,12 +22,12 @@ Trạng thái: 🟢 xong (VI + EN + notebook) · 🟡 đang làm · ⚪ chưa l�
 
 | # | Slug | Nguồn | Loại | VI | EN |
 |---|---|---|---|---|---|
-| 01 | introduction | B1 | riêng B | 🟡 | 🟡 |
-| 02 | groundwork | B2 | riêng B | ⚪ | ⚪ |
-| 03 | convolution | B3 | riêng B | ⚪ | ⚪ |
-| 04 | notation | B4 | riêng B | ⚪ | ⚪ |
-| 05 | impulse | B5 | riêng B | ⚪ | ⚪ |
-| 06 | theorems | B6 | riêng B | ⚪ | ⚪ |
+| 01 | introduction | B1 | riêng B | 🟢 | 🟢 |
+| 02 | groundwork | B2 | riêng B | 🟢 | 🟢 |
+| 03 | convolution | B3 | riêng B | 🟢 | 🟢 |
+| 04 | notation | B4 | riêng B | 🟢 | 🟢 |
+| 05 | impulse | B5 | riêng B | 🟢 | 🟢 |
+| 06 | theorems | B6 | riêng B | 🟢 | 🟢 |
 | 07 | obtaining-transforms | B7 | riêng B | ⚪ | ⚪ |
 | 08 | two-domains | B8 | riêng B | ⚪ | ⚪ |
 | 09 | filters-linearity | B9 | riêng B | ⚪ | ⚪ |
