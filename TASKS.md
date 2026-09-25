@@ -30,7 +30,7 @@ Trạng thái: 🟢 xong (VI + EN + notebook) · 🟡 đang làm · ⚪ chưa l�
 | 06 | theorems | B6 | riêng B | 🟢 | 🟢 |
 | 07 | obtaining-transforms | B7 | riêng B | 🟢 | 🟢 |
 | 08 | two-domains | B8 | riêng B | 🟢 | 🟢 |
-| 09 | filters-linearity | B9 | riêng B | ⚪ | ⚪ |
+| 09 | filters-linearity | B9 | riêng B | 🟢 | 🟢 |
 | 10 | probability-cf | B16 + K1 | CHUNG | ⚪ | ⚪ |
 | 11 | distributions | K2 | riêng K | ⚪ | ⚪ |
 | 12 | random-processes-noise | B17 + K3 | CHUNG | ⚪ | ⚪ |
