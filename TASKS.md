@@ -33,7 +33,7 @@ Trạng thái: 🟢 xong (VI + EN + notebook) · 🟡 đang làm · ⚪ chưa l�
 | 09 | filters-linearity | B9 | riêng B | 🟢 | 🟢 |
 | 10 | probability-cf | B16 + K1 | CHUNG | 🟢 | 🟢 |
 | 11 | distributions | K2 | riêng K | 🟢 | 🟢 |
-| 12 | random-processes-noise | B17 + K3 | CHUNG | ⚪ | ⚪ |
+| 12 | random-processes-noise | B17 + K3 | CHUNG | 🟢 | 🟢 |
 | 13 | sampling-series-orthogonal | B10 + K8 | CHUNG | ⚪ | ⚪ |
 | 14 | dft-fft-discrete-processes | B11 + K4 | CHUNG | ⚪ | ⚪ |
 | 15 | hartley | B12 | riêng B | ⚪ | ⚪ |
