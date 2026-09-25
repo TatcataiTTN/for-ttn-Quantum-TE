@@ -78,7 +78,22 @@
       prevBtn.disabled = i === 0; nextBtn.disabled = i === slides.length - 1;
       var vp = deck.querySelector('.mdeck-viewport');
       if (vp && deck.getBoundingClientRect().top < 56 && !document.fullscreenElement) deck.scrollIntoView({block: 'start'});
+      fit();
     }
+    // ⟦Toàn màn hình: phóng to cả slide theo tỉ lệ cho vừa khung||Fullscreen: scale the whole slide proportionally to fit the frame⟧
+    function fit(){
+      var vp = deck.querySelector('.mdeck-viewport'); if (!vp) return;
+      vp.style.zoom = '';
+      if (document.fullscreenElement !== deck) return;
+      var lo = 1, hi = 3.5, k;
+      for (var it = 0; it < 12; it++){
+        k = (lo + hi) / 2; vp.style.zoom = k;
+        if (vp.scrollHeight <= vp.clientHeight + 1 && vp.scrollWidth <= vp.clientWidth + 1) lo = k; else hi = k;
+      }
+      vp.style.zoom = lo;
+    }
+    document.addEventListener('fullscreenchange', fit);
+    window.addEventListener('resize', fit);
     function go(n){ i = Math.max(0, Math.min(slides.length - 1, n)); render(); }
     prevBtn.addEventListener('click', function(){ go(i - 1); });
     nextBtn.addEventListener('click', function(){ go(i + 1); });
