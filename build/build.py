@@ -237,7 +237,12 @@ class _P(HTMLParser):
 
 def check_html(s, where):
     p = _P()
-    p.feed(s)
+    try:
+        p.feed(s)
+    except ValueError:
+        ln, col = p.getpos(); lines = s.split("\n")
+        print("HTML ERROR at", where, "line", ln, ":", lines[ln-1][max(0, col-300):col+50])
+        raise
     if p.stack:
         raise ValueError("%s: unclosed tags %s" % (where, p.stack))
 
