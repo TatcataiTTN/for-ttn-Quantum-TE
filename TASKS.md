@@ -40,7 +40,7 @@ Trạng thái: 🟢 xong (VI + EN + notebook) · 🟡 đang làm · ⚪ chưa l�
 | 16 | relatives-of-ft | B13 | riêng B | 🟢 | 🟢 |
 | 17 | laplace | B14 | riêng B | 🟢 | 🟢 |
 | 18 | antennas-optics | B15 | riêng B | 🟢 | 🟢 |
-| 19 | diffusion | B18 | riêng B | ⚪ | ⚪ |
+| 19 | diffusion | B18 | riêng B | 🟢 | 🟢 |
 | 20 | dynamic-spectra-wavelets | B19 | riêng B | ⚪ | ⚪ |
 | 21 | decision-theory | K5 | riêng K | ⚪ | ⚪ |
 | 22 | parameter-estimation | K6 | riêng K | ⚪ | ⚪ |
