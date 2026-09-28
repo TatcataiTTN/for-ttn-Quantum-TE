@@ -47,7 +47,7 @@ Trạng thái: 🟢 xong (VI + EN + notebook) · 🟡 đang làm · ⚪ chưa l�
 | 23 | wiener-kalman | K7 | riêng K | 🟢 | 🟢 |
 | 24 | general-gaussian | K9 | riêng K | 🟢 | 🟢 |
 | 25 | detection-estimation | K10 | riêng K | 🟢 | 🟢 |
-| 26 | cfar | K11 + K12 | riêng K | ⚪ | ⚪ |
+| 26 | cfar | K11 + K12 | riêng K | 🟢 | 🟢 |
 
 ## Epic
 
