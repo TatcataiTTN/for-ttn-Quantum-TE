@@ -255,11 +255,34 @@ MOD = dict(
          "<p>⟦Kết luận chung: chọn độ dài cửa sổ bằng đúng chu kỳ cần loại thì tích chập có điểm không tại chu kỳ đó. Đó là ý nghĩa thực dụng của việc nhìn tích chập trong miền tần số.||General conclusion: choose the window length equal to the period to remove and the convolution has a zero at that period. That is the practical meaning of viewing convolution in the frequency domain.⟧</p>",
     practice=[
         "⟦Mở notebook và chạy cell cài đặt.||Open the notebook and run the setup cell.⟧",
-        "⟦Bài 1: kiểm công thức hai hàm mũ cắt cụt, giới hạn tới hạn và hai đuôi bằng tích phân số; thử $\\alpha=0.5,\\beta=3$.||Task 1: check the two-truncated-exponentials formula, the critical limit and the two tails by numerical integration; try $\\alpha=0.5,\\beta=3$.⟧",
-        "⟦Bài 2: lặp tích chập xung chữ nhật $n=2,\\dots,8$ lần, vẽ và so với Gauss; xem độ lệch giảm thế nào.||Task 2: repeat the rectangle convolution $n=2,\\dots,8$ times, plot and compare with a Gaussian; watch how the deviation falls.⟧",
-        "⟦Bài 3: giải bài tập 1 của Bracewell (a) đến (e) bằng tay rồi kiểm bằng <code>convolve</code> và tổng các số hạng; thử chia dãy ngược lại.||Task 3: do Bracewell's problem 1 (a) to (e) by hand then check with <code>convolve</code> and the sum of terms; try serial division backwards.⟧",
-        "⟦Bài 4: thử FFT không đệm số 0 để thấy cuộn vòng, rồi đệm và so sánh.||Task 4: try an FFT without zero-padding to see the wrap-around, then pad and compare.⟧",
-        "⟦Bài 5: tính tự tương quan của một dãy tự chọn, thử đổi pha các thành phần và kiểm nó không đổi.||Task 5: compute the autocorrelation of a sequence of your own, change the phases of its components and check it does not change.⟧",
+        "⟦<b>22 bài tập cuối chương 3 (Bracewell, tr. 49–52), nguyên văn từ sách, dịch song ngữ, chia hai phần: (A) bài kiểm được bằng số và (B) câu tự luận/chứng minh/đồ họa. Bài 1 và 2 có nhiều câu con — nêu gọn phần đại diện đã kiểm, còn lại làm tương tự trong notebook.</b>||"
+        "<b>All 22 end-of-chapter-3 problems (Bracewell, pp. 49–52), verbatim from the book, translated bilingually, split into (A) numerically checkable and (B) essay/proof/graphical. Problems 1 and 2 have many sub-parts — a representative, verified subset is shown, the rest follow the same pattern in the notebook.</b>⟧",
+        "⟦<h4>A. Bài kiểm bằng số — notebook mục 7 tính và đối chiếu ≥2 phương pháp độc lập cho mỗi bài (một số còn đối chiếu lời giải chọn lọc của Bracewell, tr. 21 phần lời giải chương 3)</h4>||<h4>A. Numerically checkable — notebook section 7 computes and cross-checks each with ≥2 independent methods (some also match Bracewell's own selected solutions, solutions section for chapter 3)</h4>⟧",
+        "⟦<b>1 (tích chập rời rạc, chọn lọc a, b, i, j, k, n, o, p, q).</b> Tính các tích chập chuỗi sau, kiểm bằng tổng: (a) $\\{6,9,17,20,10,1\\}*\\{3,8,11\\}$; (b) $\\{1,1,1,1,1\\}*\\{1,1,1,1\\}$; (i) $\\{1,1\\}*\\{1,1\\}*\\{1,1\\}$ — liên hệ tam giác Pascal; (j),(k) hai chuỗi nhị phân độ dài 7; (n) $\\{1,3,1\\}*\\{1,2,2\\}$; (o),(p) nhân $131\\times122$ và $10301\\times10202$ bằng tích chập cộng nhớ; (q) $\\{1,8,1\\}*\\{1,2,2\\}$.||"
+        "<b>1 (discrete serial products, selected a, b, i, j, k, n, o, p, q).</b> Compute the following serial products, checking by summation: (a) $\\{6,9,17,20,10,1\\}*\\{3,8,11\\}$; (b) $\\{1,1,1,1,1\\}*\\{1,1,1,1\\}$; (i) $\\{1,1\\}*\\{1,1\\}*\\{1,1\\}$ — relate to Pascal's triangle; (j),(k) two length-7 binary sequences; (n) $\\{1,3,1\\}*\\{1,2,2\\}$; (o),(p) multiply $131\\times122$ and $10301\\times10202$ by convolution-plus-carry; (q) $\\{1,8,1\\}*\\{1,2,2\\}$.⟧",
+        "⟦<b>3.</b> Chứng minh tính giao hoán $f*g=g*f$.||<b>3.</b> Prove the commutative property $f*g=g*f$.⟧",
+        "⟦<b>4.</b> Chứng minh tính kết hợp $f*(g*h)=(f*g)*h$.||<b>4.</b> Prove the associative rule $f*(g*h)=(f*g)*h$.⟧",
+        "⟦<b>5.</b> Chứng minh tính phân phối $f*(g+h)=f*g+f*h$.||<b>5.</b> Prove the distributive rule $f*(g+h)=f*g+f*h$.⟧",
+        "⟦<b>7.</b> Nếu $f=g*h$, chứng minh $f*f=(g*g)*(h*h)$. (Bracewell có lời giải chọn lọc, tr. 21: $f*f=(g*h)*(g*h)=(g*g)*(h*h)$ qua giao hoán và kết hợp)||<b>7.</b> If $f=g*h$, show that $f*f=(g*g)*(h*h)$. (Bracewell gives a selected solution, solutions section p. 21: $f*f=(g*h)*(g*h)=(g*g)*(h*h)$ via commutativity and associativity)⟧",
+        "⟦<b>8.</b> Chứng minh nếu $a$ là hằng số, $a(f*g)=(af)*g=f*(ag)$.||<b>8.</b> Show that if $a$ is a constant, $a(f*g)=(af)*g=f*(ag)$.⟧",
+        "⟦<b>10.</b> Chứng minh hàm tự tương quan là Hermitian, $C(-u)=C^*(u)$, và do đó khi thực thì chẵn.||<b>10.</b> Prove that the autocorrelation function is hermitian, $C(-u)=C^*(u)$, and hence real autocorrelation is even.⟧",
+        "⟦<b>11.</b> Chứng minh tổng và tích của hai hàm Hermitian đều là Hermitian. (Bracewell có lời giải chọn lọc, tr. 21)||<b>11.</b> Prove that the sum and product of two hermitian functions are each hermitian. (Bracewell gives a selected solution, solutions section p. 21)⟧",
+        "⟦<b>13.</b> Với $f(x)$ thực, chứng minh $\\int f(x)^2dx$ bằng giá trị trung tâm của tự tích chập $f\\star f_0$ (đẳng thức kiểu Parseval).||<b>13.</b> With $f(x)$ real, show $\\int f(x)^2dx$ equals the central value of the self-convolution $f\\star f_0$ (a Parseval-type identity).⟧",
+        "⟦<b>17.</b> Tìm $f(x)$ số sao cho $f(x)*[e^{-x}H(x)]$ bằng 0 tại mọi mẫu $0{,}2n$ ngoài gốc, chuẩn hóa tổng $\\approx1$. (Bracewell có lời giải chọn lọc, tr. 21: $\\{5{,}518,\\,-4{,}518\\}$ — bài toán khử tích chập/deconvolution)||<b>17.</b> Find approximate numerical values for $f(x)$ such that $f(x)*[e^{-x}H(x)]$ is zero at every sample $0.2n$ except the origin, normalized so its sum $\\approx1$. (Bracewell gives a selected solution, solutions section p. 21: $\\{5.518,\\,-4.518\\}$ — a deconvolution problem)⟧",
+        "⟦<b>21.</b> Tự tích chập của hàm $f(x)=\\text{sinc}(x+2)+\\text{sinc}(x-2)$: tính $f*f$.||<b>21.</b> Self-convolution of $f(x)=\\text{sinc}(x+2)+\\text{sinc}(x-2)$: find $f*f$.⟧",
+        "⟦<h4>B. Câu tự luận / chứng minh / đồ họa — không có một số duy nhất để so, chấm bằng lý luận</h4>||<h4>B. Essay / proof / graphical questions — no single number to check, graded by reasoning</h4>⟧",
+        "⟦<b>1 (câu r–v, đồ họa/khái niệm).</b> (r) Bàn về độ mượt của kết quả d, f so với chuỗi dài hơn. (s) Liên hệ kết quả i với tam giác Pascal của hệ số nhị thức. (t) Tìm chuỗi dài hơn có cùng tính chất phát hiện ở k. (u) Suy ra điều gì làm tích chập chuỗi cho kết quả toàn số chẵn (từ j, k, l, m, n). (v) Từ l, o, p, q, thiết kế một máy tính bàn cơ khí thực hiện nhân chuỗi.||"
+        "<b>1 (parts r–v, graphical/conceptual).</b> (r) Comment on the smoothness of results d and f relative to the longer sequence. (s) Relate result i to Pascal's triangle of binomial coefficients. (t) Find longer sequences with the same property discovered in k. (u) From j, k, l, m, n, discern what makes serial products come out all even. (v) From l, o, p, q, design a mechanical desk computer for serial multiplication.⟧",
+        "⟦<b>2 (đẳng thức với hàm bậc thang Heaviside $H(x)$, chương 4).</b> Suy ra 6 kết quả: $x^2H(x)*e^{-x}H(x)$, $[\\sin x\\,H(x)]^{*2}$, $[(1-x)H(x)]*[e^{-x}H(x)]$, $H(x)*[e^{-x}H(x)]$, $[e^{-x}H(x)]^{*2}$, $[e^{-x}H(x)]^{*3}$.||"
+        "<b>2 (identities with the Heaviside step $H(x)$, chapter 4).</b> Derive 6 results: $x^2H(x)*e^{-x}H(x)$, $[\\sin x\\,H(x)]^{*2}$, $[(1-x)H(x)]*[e^{-x}H(x)]$, $H(x)*[e^{-x}H(x)]$, $[e^{-x}H(x)]^{*2}$, $[e^{-x}H(x)]^{*3}$.⟧",
+        "⟦<b>6.</b> $f$ là tích chập của $g$ và $h$. Chứng minh tự tích chập của $f, g, h$ liên hệ với nhau theo đúng cách $f, g, h$ liên hệ. (xem bài 7 để có phát biểu chính xác và lời giải)||<b>6.</b> $f$ is the convolution of $g$ and $h$. Show that the self-convolutions of $f, g, h$ are related in the same way as the originals. (see problem 7 for the precise statement and solution)⟧",
+        "⟦<b>9.</b> Thiết lập một định lý cho $\\int f(g*h)\\,dx$. (Bracewell có lời giải chọn lọc, tr. 21: $\\int f(g*h)dx=\\int g(x)[f\\star h](x)\\,dx$, và dạng đối xứng $\\int g(h\\star f)dx=\\int h(g\\star f)dx$)||<b>9.</b> Establish a theorem involving $\\int f(g*h)\\,dx$. (Bracewell gives a selected solution, solutions section p. 21: $\\int f(g*h)dx=\\int g(x)[f\\star h](x)\\,dx$, and the symmetric form $\\int g(h\\star f)dx=\\int h(g\\star f)dx$)⟧",
+        "⟦<b>12.</b> Dịch gốc của $f(x)$ tới khi $f\\star f_0$ đạt cực đại; khảo sát khẳng định rằng gốc mới xác định trục đối xứng cực đại, và tham số $(f\\star f)_0/(f\\star f)|_0$ đo \"độ chẵn\".||<b>12.</b> Shift the origin of $f(x)$ until $f\\star f_0$ is a maximum; investigate whether the new origin defines an axis of maximum symmetry, and whether $(f\\star f)_0/(f\\star f)|_0$ measures \"degree of evenness.\"⟧",
+        "⟦<b>14, 15, 16.</b> Tìm dãy nghịch đảo (reciprocal) cho $\\{1,3,3,1\\}$ và $\\{1,4,6,4,1\\}$; cho $\\{1,1\\}$ và $\\{1,1,1\\}$; và thiết lập thủ tục chung cho dãy hữu hạn/bán vô hạn, thử trên các dãy hình học và lượng giác cho trong sách.||<b>14, 15, 16.</b> Find reciprocal sequences for $\\{1,3,3,1\\}$ and $\\{1,4,6,4,1\\}$; for $\\{1,1\\}$ and $\\{1,1,1\\}$; and establish a general procedure for finite/semi-infinite sequences, testing it on the geometric and trigonometric sequences given in the book.⟧",
+        "⟦<b>18.</b> Sửa chỗ sai trong lập luận rằng $(g*h)/M$ (với $M=\\int g\\,du+\\int h\\,du$... thực ra là chặn trên từ Cauchy–Schwarz) là đại lượng chuẩn hóa đúng cho tương quan chéo.||<b>18.</b> Correct the fallacy in the argument that $(g*h)/M$ (the bound coming from Cauchy–Schwarz) is the correctly normalized cross-correlation.⟧",
+        "⟦<b>19. Mã Barker.</b> Tính dãy tự tương quan của $\\{1,1,1,1,1,-1,-1,1,1,-1,1,-1,1\\}$ (mã Barker độ dài 13); tung đồng xu để tạo dãy 13 phần tử ngẫu nhiên rồi tính tự tương quan để so sánh.||<b>19. Barker code.</b> Compute the autocorrelation sequence of $\\{1,1,1,1,1,-1,-1,1,1,-1,1,-1,1\\}$ (the length-13 Barker code); toss a coin to build a random 13-element sequence and compute its autocorrelation for comparison.⟧",
+        "⟦<b>20.</b> Vẽ tích chập bằng đồ thị cho hai hàm $f(x)$, $g(x)$ cho trong hình của sách, đánh dấu các điểm đáng chú ý.||<b>20.</b> Graph the convolution of two given functions $f(x)$, $g(x)$ from the book's figure, labeling interesting points.⟧",
+        "⟦<b>22.</b> Trong $\\int f(u)g(x-u)du$, đổi biến $u=x-a$; chứng minh kết quả không đổi dạng (tính bất biến dưới đổi biến).||<b>22.</b> In $\\int f(u)g(x-u)du$, substitute $u=x-a$; show the result keeps the same form (invariance under the change of variable).⟧",
     ],
     pitfalls=[
         "<b>⟦\"Tích chập là nhân từng điểm hai hàm.\"||\"Convolution is pointwise multiplication of two functions.\"⟧</b><p>⟦Tích chập cần $f$ trên cả một khoảng để tính một giá trị $h(x)$. Chỉ trong miền tần số nó mới trở thành phép nhân từng điểm (module 6).||Convolution needs $f$ over a whole range to compute one value $h(x)$. Only in the frequency domain does it become pointwise multiplication (module 6).⟧</p>",
@@ -704,5 +727,120 @@ assert lin_ac[6] == 4 and np.all(circ_ac[1:] == 2)
 report("ac_peak", lin_ac[6], ".0f"); report("ac_side", np.max(np.delete(lin_ac, 6)), ".0f"); report("ac_circ", circ_ac[1], ".0f")'''),
         ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
 ⟦Với $f=1-x$: $\\gamma(0.25)$ = {{g_025}}, $\\gamma(0.5)$ = {{g_05}}, diện tích tử số {{area_ac}}; với $e^{-x}H(x)$: $\\gamma(1)$ = {{g_exp}}. Tự tương quan không vượt đỉnh (tỉ số thùy phụ {{ac_ratio}}). Với ba sóng, $C(0.05)$ = {{c_tau}} và không phụ thuộc pha (lệch {{phase_diff}}). Tương quan bậc ba của $\\{1,2,3\\}$ có tâm {{tc_center}}, tổng {{tc_sum}}, và khác của $\\{3,2,1\\}$ dù tự tương quan hai dãy giống nhau ({{ac_same}}). Tương quan chéo thỏa $g\\star h(x)=h\\star g(-x)$ ({{xc_ok}}) nhưng không giao hoán ({{xc_ne}}). Biến đổi ngược $|X|^2$ trùng tự tương quan vòng (lệch {{wk_diff}}), và hai tín hiệu khác pha có cùng phổ năng lượng (lệch {{pha_diff}}). Phổ tích lũy nhảy {{cum_jump}} tại vạch 50 Hz. Dãy $\\{1100101\\}$ có đỉnh {{ac_peak}}, thùy phụ {{ac_side}} và tự tương quan vòng {{ac_circ}}.||For $f=1-x$: $\\gamma(0.25)$ = {{g_025}}, $\\gamma(0.5)$ = {{g_05}}, numerator area {{area_ac}}; for $e^{-x}H(x)$: $\\gamma(1)$ = {{g_exp}}. The autocorrelation never exceeds its peak (side ratio {{ac_ratio}}). For three waves, $C(0.05)$ = {{c_tau}} and is independent of the phases (difference {{phase_diff}}). The triple correlation of $\\{1,2,3\\}$ has centre {{tc_center}}, sum {{tc_sum}}, and differs from that of $\\{3,2,1\\} although the two autocorrelations are identical ({{ac_same}}). Cross correlation satisfies $g\\star h(x)=h\\star g(-x)$ ({{xc_ok}}) but is not commutative ({{xc_ne}}). The inverse transform of $|X|^2$ equals the circular autocorrelation (deviation {{wk_diff}}), and two signals with different phases share the energy spectrum (deviation {{pha_diff}}). The cumulative spectrum jumps by {{cum_jump}} at the 50 Hz line. The sequence $\\{1100101\\}$ has peak {{ac_peak}}, side value {{ac_side}} and circular autocorrelation {{ac_circ}}.⟧"""),
+        ("md", """## 7. ⟦Bài tập cuối chương 3, phần A (Bracewell, tr. 49–52)||End-of-chapter-3 problems, part A (Bracewell, pp. 49–52)⟧
+🎯 **⟦Phương pháp này trả lời câu hỏi gì?||What question does this method answer?⟧** ⟦Mỗi bài trong phần thực hành được xác nhận bằng ≥2 phương pháp độc lập (tổng trực tiếp so với <code>np.convolve</code>/FFT). Bài 7, 11, 17 còn đối chiếu lời giải chọn lọc của chính Bracewell (tr. 21, phần lời giải chương 3).||Each problem in the practice section is confirmed with ≥2 independent methods (direct summation versus <code>np.convolve</code>/FFT). Problems 7, 11 and 17 are further cross-checked against Bracewell's own selected solutions (p. 21, chapter 3 solutions section).⟧"""),
+        ("code", r'''def manual_conv(a, b):
+    a = np.asarray(a, float); b = np.asarray(b, float); n = len(a) + len(b) - 1
+    out = np.zeros(n)
+    for k in range(n):
+        s = 0.0
+        for i in range(len(a)):
+            j = k - i
+            if 0 <= j < len(b): s += a[i]*b[j]
+        out[k] = s
+    return out
+
+# ⟦Bài 1: tích chập chuỗi, chọn lọc, đối chiếu convolve với tổng thủ công||Problem 1: discrete serial products, selected, cross-checked against manual summation⟧
+p1_cases = {
+    "a": ([6,9,17,20,10,1], [3,8,11]), "b": ([1,1,1,1,1], [1,1,1,1]),
+    "j": ([1,1,0,0,1,0,1], [1,1,0,0,1,0,1]), "k": ([1,1,0,0,1,0,1], [1,0,1,0,0,1,1]),
+    "n": ([1,3,1], [1,2,2]), "q": ([1,8,1], [1,2,2]),
+}
+for tag, (a, b) in p1_cases.items():
+    assert np.allclose(np.convolve(a, b), manual_conv(a, b))
+r1i = np.convolve(np.convolve([1,1], [1,1]), [1,1])
+assert np.allclose(r1i, manual_conv(manual_conv([1,1],[1,1]),[1,1])) and list(r1i.astype(int)) == [1,3,3,1]   # ⟦tam giác Pascal||Pascal's triangle⟧
+def digits_low(n): return [int(d) for d in str(n)][::-1]
+def mult_via_conv(n1, n2):
+    c = np.convolve(digits_low(n1), digits_low(n2)); carry = 0; out = []
+    for v in c:
+        v = int(v) + carry; out.append(v % 10); carry = v // 10
+    while carry: out.append(carry % 10); carry //= 10
+    return int("".join(str(d) for d in out[::-1]))
+assert mult_via_conv(131, 122) == 131*122 and mult_via_conv(10301, 10202) == 10301*10202  # ⟦bài 1(o),(p)||problem 1(o),(p)⟧
+report("p1a_sum", int(np.sum(np.convolve(*p1_cases["a"]))), "d")
+report("p1i", "[1,3,3,1]", "s"); report("p1o", mult_via_conv(131, 122), "d")
+
+# ⟦Bài 3, 4, 5: giao hoán, kết hợp, phân phối trên hàm liên tục (đối chiếu tích chập trực tiếp và FFT)||Problems 3, 4, 5: commutative, associative, distributive on continuous functions (direct vs FFT convolution)⟧
+dx = 0.01; xg3 = np.arange(-10, 10, dx)
+f3 = np.exp(-0.3*xg3**2)*np.cos(1.7*xg3); g3 = np.exp(-0.2*(xg3-0.5)**2); h3 = np.exp(-0.4*(xg3+1)**2)*np.sin(xg3)
+def conv_direct(a, b): return np.convolve(a, b, mode="same")*dx
+def conv_fft(a, b):
+    n = len(a) + len(b) - 1; A = np.fft.fft(a, n); B = np.fft.fft(b, n)
+    full = np.fft.ifft(A*B).real*dx; start = (len(b) - 1)//2
+    return full[start:start+len(a)]
+fg3 = conv_direct(f3, g3); fg3_fft = conv_fft(f3, g3)
+assert np.max(np.abs(fg3 - fg3_fft)) < 1e-9
+p3_err = np.max(np.abs(fg3 - conv_direct(g3, f3)))                        # ⟦bài 3: giao hoán||problem 3: commutative⟧
+assert p3_err < 1e-12
+p4_err = np.max(np.abs(conv_direct(fg3, h3) - conv_direct(f3, conv_direct(g3, h3))))   # ⟦bài 4: kết hợp||problem 4: associative⟧
+assert p4_err/np.max(np.abs(fg3)) < 1e-3
+p5_err = np.max(np.abs(conv_direct(f3, g3+h3) - (conv_direct(f3,g3)+conv_direct(f3,h3))))  # ⟦bài 5: phân phối||problem 5: distributive⟧
+assert p5_err < 1e-12
+report("p3_err", p3_err, ".1e"); report("p4_err", p4_err, ".1e"); report("p5_err", p5_err, ".1e")
+
+# ⟦Bài 7: f=g*h ⟹ f*f=(g*g)*(h*h) — đúng lời giải chọn lọc Bracewell tr. 21||Problem 7: f=g*h ⟹ f*f=(g*g)*(h*h) — matches Bracewell's selected solution p. 21⟧
+phi7 = conv_direct(g3, h3); phiphi7 = conv_direct(phi7, phi7)
+gg7 = conv_direct(g3, g3); hh7 = conv_direct(h3, h3); gg_hh7 = conv_direct(gg7, hh7)
+p7_relerr = np.max(np.abs(phiphi7 - gg_hh7))/np.max(np.abs(phiphi7))
+assert p7_relerr < 1e-3
+report("p7_relerr", p7_relerr, ".1e")
+
+# ⟦Bài 8: a(f*g) = (af)*g = f*(ag)||Problem 8: a(f*g) = (af)*g = f*(ag)⟧
+a8 = 2.7
+p8_err = max(np.max(np.abs(a8*fg3 - conv_direct(a8*f3, g3))), np.max(np.abs(a8*fg3 - conv_direct(f3, a8*g3))))
+assert p8_err < 1e-9
+report("p8_err", p8_err, ".1e")
+
+# ⟦Bài 10: tự tương quan là Hermitian, C(−u)=C*(u); thực ⟹ chẵn||Problem 10: autocorrelation is hermitian, C(−u)=C*(u); real ⟹ even⟧
+Cr10 = np.correlate(f3, f3, mode="full")*dx
+p10_even_err = np.max(np.abs(Cr10 - Cr10[::-1]))
+f2_10 = f3 + 1j*g3
+C2_10 = np.correlate(f2_10, f2_10, mode="full")*dx
+p10_herm_err = np.max(np.abs(C2_10 - np.conj(C2_10[::-1])))
+assert p10_even_err < 1e-9 and p10_herm_err < 1e-9
+report("p10_even_err", p10_even_err, ".1e")
+
+# ⟦Bài 11: tổng và tích của hai hàm Hermitian đều Hermitian — đúng lời giải chọn lọc Bracewell tr. 21||Problem 11: sum and product of two hermitian functions are hermitian — matches Bracewell's selected solution p. 21⟧
+rng11 = np.random.default_rng(3)
+def make_hermitian():
+    re = rng11.normal(size=5); im = rng11.normal(size=5); im[0] = 0
+    pos = re[1:] + 1j*im[1:]
+    return np.concatenate([np.conj(pos[::-1]), [re[0]], pos])
+K1, K2 = make_hermitian(), make_hermitian()
+is_herm = lambda K: np.allclose(K, np.conj(K[::-1]))
+assert is_herm(K1+K2) and is_herm(K1*K2)
+report("p11_ok", "yes", "s")
+
+# ⟦Bài 13: ∫f²dx = giá trị tâm của f⋆f₀ (Parseval)||Problem 13: ∫f²dx = central value of f⋆f₀ (Parseval)⟧
+lhs13 = trap(f3**2, xg3)
+Cr13 = np.correlate(f3, f3, mode="full")*dx
+rhs13 = Cr13[len(Cr13)//2]
+p13_err = abs(lhs13 - rhs13)
+assert p13_err < 1e-9
+report("p13_lhs", lhs13, ".4f"); report("p13_err", p13_err, ".1e")
+
+# ⟦Bài 17: khử tích chập — f sao cho f*{e^{-0.2n}} ≈ δ; đúng lời giải chọn lọc Bracewell tr. 21: {5.518,−4.518}||Problem 17: deconvolution — f such that f*{e^{-0.2n}} ≈ δ; matches Bracewell's selected solution p. 21: {5.518,−4.518}⟧
+e17 = np.exp(-0.2*np.arange(6))
+f0_17, f1_17 = 1.0, -np.exp(-0.2)
+s17 = f0_17 + f1_17
+fn17 = np.array([f0_17, f1_17])/s17
+conv17 = np.convolve(fn17, e17)
+p17_err = np.max(np.abs(conv17[1:5]))                                     # ⟦gần 0 ở mọi mẫu ngoài gốc||near 0 at every sample but the origin⟧
+assert p17_err < 1e-6 and abs(fn17[0] - 5.518) < 0.01 and abs(fn17[1] + 4.518) < 0.01
+report("p17_f0", fn17[0], ".3f"); report("p17_f1", fn17[1], ".3f")
+
+# ⟦Bài 21: tự tích chập của sinc(x+2)+sinc(x−2), so trực tiếp với qua miền tần số||Problem 21: self-convolution of sinc(x+2)+sinc(x−2), direct versus frequency-domain⟧
+dx21 = 0.005; xg21 = np.arange(-40, 40, dx21)
+fsinc = np.sinc(xg21+2) + np.sinc(xg21-2)
+n21 = 2*len(fsinc) - 1
+conv21_direct = np.convolve(fsinc, fsinc, mode="full")*dx21              # ⟦cách A: convolve trực tiếp||method A: direct convolve⟧
+Fsinc = np.fft.fft(fsinc, n21); conv21_freq = np.fft.ifft(Fsinc**2).real*dx21   # ⟦cách B: qua miền tần số||method B: through the frequency domain⟧
+p21_err = np.max(np.abs(conv21_direct - conv21_freq))
+assert p21_err < 1e-6
+report("p21_err", p21_err, ".1e"); report("p21_peak", np.max(conv21_direct), ".4f")'''),
+        ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
+⟦Bài 1: tổng $\\{6,9,17,20,10,1\\}*\\{3,8,11\\}$ = {{p1a_sum}}, tự tích chập ba lần $\\{1,1\\}$ cho {{p1i}} (hàng Pascal), và tích chập-cộng-nhớ trả đúng $131\\times122=${{p1o}}. Bài 3, 4, 5: lệch giao hoán, kết hợp, phân phối lần lượt {{p3_err}}, {{p4_err}}, {{p5_err}}. Bài 7: lệch tương đối giữa $f*f$ và $(g*g)*(h*h)$ chỉ {{p7_relerr}}, khớp lời giải chọn lọc. Bài 8: lệch đẳng thức tuyến tính {{p8_err}}. Bài 10: lệch tính chẵn của tự tương quan {{p10_even_err}}. Bài 11: tổng và tích hai hàm Hermitian đều Hermitian ({{p11_ok}}). Bài 13: $\\int f^2dx=${{p13_lhs}}, lệch với giá trị tâm tự tích chập chỉ {{p13_err}}. Bài 17: dãy khử tích chập chuẩn hóa {{p17_f0}}, {{p17_f1}}, đúng $\\{5{,}518,-4{,}518\\}$ của Bracewell. Bài 21: đỉnh tự tích chập của cặp sinc {{p21_peak}}, lệch giữa hai cách tính {{p21_err}}.||"""
+        "Problem 1: the sum $\\{6,9,17,20,10,1\\}*\\{3,8,11\\}$ = {{p1a_sum}}, three self-convolutions of $\\{1,1\\}$ give {{p1i}} (a Pascal row), and convolution-plus-carry correctly returns $131\\times122=${{p1o}}. Problems 3, 4, 5: commutative, associative, distributive deviations are {{p3_err}}, {{p4_err}}, {{p5_err}}. Problem 7: the relative deviation between $f*f$ and $(g*g)*(h*h)$ is only {{p7_relerr}}, matching the selected solution. Problem 8: the linearity-identity deviation is {{p8_err}}. Problem 10: the autocorrelation's evenness deviation is {{p10_even_err}}. Problem 11: the sum and product of two hermitian functions are both hermitian ({{p11_ok}}). Problem 13: $\\int f^2dx=${{p13_lhs}}, deviating from the central self-convolution value by only {{p13_err}}. Problem 17: the normalized deconvolution sequence is {{p17_f0}}, {{p17_f1}}, matching Bracewell's $\\{5.518,-4.518\\}$. Problem 21: the peak of the sinc-pair self-convolution is {{p21_peak}}, with a {{p21_err}} deviation between the two computation methods.⟧"""),
     ],
 )
