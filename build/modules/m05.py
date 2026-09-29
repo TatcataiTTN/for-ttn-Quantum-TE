@@ -262,11 +262,32 @@ MOD = dict(
          "<p>⟦Đây là lý do định nghĩa $\\delta$ bằng dãy là hợp lý: thiết bị có độ phân giải hữu hạn thì không phân biệt được một xung ngắn với $\\delta$.||This is why defining $\\delta$ through sequences is reasonable: an instrument with finite resolution cannot distinguish a brief pulse from $\\delta$.⟧</p>",
     practice=[
         "⟦Mở notebook và chạy cell cài đặt.||Open the notebook and run the setup cell.⟧",
-        "⟦Bài 1: cho ba dạng xung khác vào mạch RC với hằng số $RC=2$ và đo độ chênh tại $t=3$ khi $\\tau$ giảm.||Task 1: feed three other pulse shapes into an RC circuit with $RC=2$ and measure the spread at $t=3$ as $\\tau$ decreases.⟧",
-        "⟦Bài 2: thêm hai dạng xung của riêng bạn vào bảng sàng và kiểm chúng tiến về $f(0)$.||Task 2: add two pulse shapes of your own to the sifting table and check they tend to $f(0)$.⟧",
-        "⟦Bài 3: thử $\\text{III}(x/X)$ với $X=0.25$ và $X=2$, kiểm $X\\sum f(nX)$ tiến về diện tích thế nào.||Task 3: try $\\text{III}(x/X)$ with $X=0.25$ and $X=2$ and see how $X\\sum f(nX)$ approaches the area.⟧",
-        "⟦Bài 4: kiểm $\\int x^3\\delta'''$ và $\\int\\delta^{(4)}f$ bằng dãy Gauss.||Task 4: check $\\int x^3\\delta'''$ and $\\int\\delta^{(4)}f$ with a Gaussian sequence.⟧",
-        "⟦Bài 5: tự chọn hàm thử $F$ và kiểm cận $\\tau\\max|F'|/\\pi$.||Task 5: pick a test function $F$ of your own and check the bound $\\tau\\max|F'|/\\pi$.⟧",
+        "⟦<b>26 bài tập cuối chương 5 (Bracewell, tr. 99–103), nguyên văn từ sách, dịch song ngữ, chia hai phần: (A) bài kiểm được bằng số và (B) câu tự luận/chứng minh/đồ họa. Vì hầu hết là đẳng thức của hàm suy rộng, phần A kiểm bằng cách cho một dãy Gauss hẹp dần $\\tau\\to0$ tác động lên một hàm thử trơn $g(x)$ và xem hai vế tiến về cùng một số.</b>||"
+        "<b>All 26 end-of-chapter-5 problems (Bracewell, pp. 99–103), verbatim from the book, translated bilingually, split into (A) numerically checkable and (B) essay/proof/graphical. Since most are generalized-function identities, part A checks each by applying a narrowing Gaussian sequence $\\tau\\to0$ to a smooth test function $g(x)$ and watching both sides converge to the same number.</b>⟧",
+        "⟦<h4>A. Bài kiểm bằng số — notebook mục cuối tính và đối chiếu ≥2 độ rộng $\\tau$ độc lập cho mỗi bài</h4>||<h4>A. Numerically checkable — the final notebook section computes and cross-checks each with ≥2 independent widths $\\tau$</h4>⟧",
+        "⟦<b>3.</b> Chứng minh $\\delta(2x^2-3)$ đơn giản hóa được, và $\\delta(x^2-a^2)=\\frac1{2|a|}[\\delta(x-a)+\\delta(x+a)]$.||<b>3.</b> Show that $\\delta(2x^2-3)$ simplifies, and that $\\delta(x^2-a^2)=\\frac1{2|a|}[\\delta(x-a)+\\delta(x+a)]$.⟧",
+        "⟦<b>4.</b> Chứng minh $\\int_{-\\infty}^\\infty e^{i2\\pi xs}ds=\\delta(x)$ và $\\int\\delta(x)dx=1$.||<b>4.</b> Show that $\\int_{-\\infty}^\\infty e^{i2\\pi xs}ds=\\delta(x)$ and $\\int\\delta(x)dx=1$.⟧",
+        "⟦<b>5.</b> Chứng minh $a\\delta(ax+b)=\\delta(x+b/a)$, $a\\ne0$.||<b>5.</b> Show that $a\\delta(ax+b)=\\delta(x+b/a)$, $a\\ne0$.⟧",
+        "⟦<b>6.</b> Nếu $f(x)=0$ có nghiệm $x_n$, chứng minh $\\delta(f(x))=\\sum_n\\delta(x-x_n)/|f'(x_n)|$ khi $f'(x_n)$ tồn tại và khác 0.||<b>6.</b> If $f(x)=0$ has roots $x_n$, show that $\\delta(f(x))=\\sum_n\\delta(x-x_n)/|f'(x_n)|$ wherever $f'(x_n)$ exists and is nonzero.⟧",
+        "⟦<b>12.</b> Chứng minh $x\\delta'(x)=-\\delta(x)$ và $f(x)\\delta'(x)=f(0)\\delta'(x)-f'(0)\\delta(x)$.||<b>12.</b> Prove that $x\\delta'(x)=-\\delta(x)$ and $f(x)\\delta'(x)=f(0)\\delta'(x)-f'(0)\\delta(x)$.⟧",
+        "⟦<b>14.</b> Chứng minh $x^n\\delta^{(n)}(x)=(-1)^nn!\\,\\delta(x)$, và suy ra $x^2\\delta''(x)=2\\delta(x)$, $x\\delta''(x)=0$.||<b>14.</b> Show that $x^n\\delta^{(n)}(x)=(-1)^nn!\\,\\delta(x)$, and hence $x^2\\delta''(x)=2\\delta(x)$, $x\\delta''(x)=0$.⟧",
+        "⟦<b>25.</b> Chứng minh $f(x)\\delta''(x)=f(0)\\delta''(x)-2f'(0)\\delta'(x)+f''(0)\\delta(x)$ (và dạng tổng quát cho $\\delta^{(n)}$).||<b>25.</b> Show that $f(x)\\delta''(x)=f(0)\\delta''(x)-2f'(0)\\delta'(x)+f''(0)\\delta(x)$ (and the general form for $\\delta^{(n)}$).⟧",
+        "⟦<h4>B. Câu tự luận / chứng minh / đồ họa — không có một số duy nhất để so, chấm bằng lý luận</h4>||<h4>B. Essay / proof / graphical questions — no single number to check, graded by reasoning</h4>⟧",
+        "⟦<b>1.</b> Phần chẵn của $\\delta(x+3)+\\delta(x+2)-\\delta(x+1)+2\\delta(x)+\\delta(x-1)-\\delta(x-2)-\\delta(x-3)$ là gì?||<b>1.</b> What is the even part of $\\delta(x+3)+\\delta(x+2)-\\delta(x+1)+2\\delta(x)+\\delta(x-1)-\\delta(x-2)-\\delta(x-3)$?⟧",
+        "⟦<b>2.</b> Chỉ ra chỗ sai trong lập luận \"$\\delta(xy)=\\delta(x)+\\delta(y)$\" (vì cả hai trục $x=0$ và $y=0$ đều làm $xy=0$); chứng minh $\\delta(xy)=[\\delta(x)+\\delta(y)]/|x+y|$.||<b>2.</b> Point out the fallacy in \"$\\delta(xy)=\\delta(x)+\\delta(y)$\" (since both axes $x=0$ and $y=0$ make $xy=0$); show $\\delta(xy)=[\\delta(x)+\\delta(y)]/|x+y|$.⟧",
+        "⟦<b>7.</b> Chứng minh $\\pi\\delta(\\sin\\pi x)=\\text{III}(x)$ và $\\delta(\\sin x)=\\pi\\text{III}(x/\\pi)$.||<b>7.</b> Show that $\\pi\\delta(\\sin\\pi x)=\\text{III}(x)$ and $\\delta(\\sin x)=\\pi\\text{III}(x/\\pi)$.⟧",
+        "⟦<b>8, 9.</b> Các đẳng thức lược $\\text{III}(x)$ với $\\Pi$ và $\\text{III}(x/8)$.||<b>8, 9.</b> The comb $\\text{III}(x)$ identities with $\\Pi$ and $\\text{III}(x/8)$.⟧",
+        "⟦<b>10.</b> Phương trình $x\\,\\delta(x-y)=y\\,\\delta(x-y)$ có đúng không?||<b>10.</b> Can the equation $x\\,\\delta(x-y)=y\\,\\delta(x-y)$ be correct?⟧",
+        "⟦<b>11.</b> Chứng minh $\\Lambda(x)*\\sum_n\\delta(x-n)$ là đường đa giác qua các điểm $(n,1)$.||<b>11.</b> Show that $\\Lambda(x)*\\sum_n\\delta(x-n)$ is the polygon through the points $(n,1)$.⟧",
+        "⟦<b>13.</b> Chỉ ra chỗ sai trong lập luận dùng dãy $\\tau/[\\pi(x^2+\\tau^2)]$ để suy $\\delta'(x)=-\\delta(x)/x$.||<b>13.</b> Point out the fallacy in using the sequence $\\tau/[\\pi(x^2+\\tau^2)]$ to conclude $\\delta'(x)=-\\delta(x)/x$.⟧",
+        "⟦<b>15, 16.</b> Hàm $[x]$ (phần nguyên trung bình) và hàm răng cưa $\\text{Sa}(x)=[x]-x+\\tfrac12$: chứng minh các đẳng thức đạo hàm liên quan tới $\\text{III}(x)$.||<b>15, 16.</b> The function $[x]$ (mean-floor) and the sawtooth $\\text{Sa}(x)=[x]-x+\\tfrac12$: prove the derivative identities involving $\\text{III}(x)$.⟧",
+        "⟦<b>17.</b> Chứng minh (hoặc làm rõ OCR gốc) đẳng thức liên hệ $\\text{sgn}'x$ với $\\delta(x)$.||<b>17.</b> Prove (or clarify the original's OCR) the identity relating $\\text{sgn}'x$ to $\\delta(x)$.⟧",
+        "⟦<b>18.</b> Chứng minh delta Kronecker $\\delta_{ij}=\\Pi(i-j)$ (hàm null của $i-j$).||<b>18.</b> Show the Kronecker delta $\\delta_{ij}=\\Pi(i-j)$ (a null function of $i-j$).⟧",
+        "⟦<b>19.</b> Bàn về tính chất sàng của dãy tam giác lệch $\\tau^{-1}\\{\\Lambda(x/\\tau)+3\\Lambda[(x-\\tfrac12\\tau)/\\tau]\\}$, viết dưới dạng $\\delta*f=\\mu\\delta_+*f+\\nu\\delta_-*f$.||<b>19.</b> Discuss the sifting property of the asymmetric triangle sequence $\\tau^{-1}\\{\\Lambda(x/\\tau)+3\\Lambda[(x-\\tfrac12\\tau)/\\tau]\\}$, written as $\\delta*f=\\mu\\delta_+*f+\\nu\\delta_-*f$.⟧",
+        "⟦<b>20.</b> Chứng minh $\\pi\\delta(x,y)=\\delta(r)/r$ trong hệ tọa độ cực (đồ họa/khái niệm), và mô tả $\\text{III}(\\sqrt{x^2+y^2})$ trên hình chiếu đẳng cự.||<b>20.</b> Prove $\\pi\\delta(x,y)=\\delta(r)/r$ in polar coordinates (graphical/conceptual), and describe $\\text{III}(\\sqrt{x^2+y^2})$ on an isometric projection.⟧",
+        "⟦<b>21, 22, 23.</b> Chứng minh $f_r*\\delta=f_r$ nghĩa là hàm đảo $f_r(x)=f(-x)$ thỏa $(f*\\delta)*\\delta=f$; và bàn điều kiện $(f*\\delta)*\\delta=f*(\\delta*\\delta)$.||<b>21, 22, 23.</b> Show that $f_r*\\delta=f_r$, i.e. the reversed function $f_r(x)=f(-x)$ satisfies $(f*\\delta)*\\delta=f$; and discuss under what conditions $(f*\\delta)*\\delta=f*(\\delta*\\delta)$.⟧",
+        "⟦<b>24.</b> Xây dựng dãy xấp xỉ $\\delta$ có giá trị tại gốc tiến về $-\\infty$ khi $\\tau\\to0$ (thay vì $+\\infty$).||<b>24.</b> Construct a $\\delta$-approximating sequence whose value at the origin tends to $-\\infty$ as $\\tau\\to0$ (instead of $+\\infty$).⟧",
+        "⟦<b>26.</b> Bàn về tính chất sàng $L=\\lim_{\\tau\\to0}\\int f(x)h(x,\\tau)dx=f(0)$: cho ví dụ $h$ không thỏa, nêu điều kiện đủ, và xây $h$ sao cho $L$ trả về $f(2)$, $f'(0)$, $\\int f\\,dx$, hoặc $\\sum_nf(n)$.||<b>26.</b> Discuss the sifting property $L=\\lim_{\\tau\\to0}\\int f(x)h(x,\\tau)dx=f(0)$: give an $h$ for which it fails, state sufficient conditions, and construct $h$ so that $L$ instead returns $f(2)$, $f'(0)$, $\\int f\\,dx$, or $\\sum_nf(n)$.⟧",
     ],
     pitfalls=[
         "<b>⟦\"$\\delta(x)$ là hàm bằng vô cùng tại 0.\"||\"$\\delta(x)$ is a function equal to infinity at 0.\"⟧</b><p>⟦Không phải hàm: nó là dấu tắt cho giới hạn của các tích phân. Giá trị \"vô cùng\" không có nghĩa; chỉ tích phân có nghĩa (tr. 74 đến 75).||It is not a function: it is shorthand for a limit of integrals. The \"infinite value\" is meaningless; only the integral has meaning (pp. 74 to 75).⟧</p>",
@@ -582,5 +603,74 @@ for t_, key in ((0.1, "hp_1"), (0.01, "hp_2")):
     report(key, v, ".4f")'''),
         ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
 ⟦Dãy Gauss hai chiều có thể tích {{delta2_vol}}. Biến đổi của Gauss tại 3 chỉ {{gauss_tail}} so với {{sinc_tail}} của sinc tại 3.5: độ trơn của hàm quyết định độ tắt của biến đổi. Sai lệch thật của dãy chính quy là {{dev_01}}, dưới cận {{bound_01}}. $-\\int_0^\\infty F'$ = {{hp_exact}} = $F(0)$, và dãy Lorentz hội tụ chậm: {{hp_1}} ($\\tau=0.1$), {{hp_2}} ($\\tau=0.01$).||The two-dimensional Gaussian sequence has volume {{delta2_vol}}. The Gaussian's transform at 3 is only {{gauss_tail}} against {{sinc_tail}} for sinc at 3.5: smoothness of the function sets the decay of the transform. The actual deviation of the regular sequence is {{dev_01}}, below the bound {{bound_01}}. $-\\int_0^\\infty F'$ = {{hp_exact}} = $F(0)$, and the Lorentzian sequence converges slowly: {{hp_1}} ($\\tau=0.1$), {{hp_2}} ($\\tau=0.01$).⟧"""),
+        ("md", """## ⟦Bài tập cuối chương 5, phần A (Bracewell, tr. 99–103)||End-of-chapter-5 problems, part A (Bracewell, pp. 99–103)⟧
+🎯 **⟦Phương pháp này trả lời câu hỏi gì?||What question does this method answer?⟧** ⟦Mỗi đẳng thức hàm suy rộng được kiểm bằng cách cho một hàm thử trơn $g(x)$ tác động qua dãy Gauss hẹp dần $\\tau\\to0$ (và đạo hàm của nó cho $\\delta',\\delta''$), rồi so hai vế; hội tụ ở ≥2 giá trị $\\tau$ độc lập xác nhận đẳng thức, không chỉ một lần tính.||Each generalized-function identity is checked by applying it to a smooth test function $g(x)$ through a narrowing Gaussian sequence $\\tau\\to0$ (and its derivatives for $\\delta',\\delta''$), then comparing both sides; convergence at ≥2 independent $\\tau$ values confirms the identity, not a single computation.⟧"""),
+        ("code", r'''g5 = lambda x: np.exp(-0.2*x**2)*np.cos(0.7*x) + 1                       # ⟦hàm thử trơn, g(0)≠0||smooth test function, g(0)≠0⟧
+def gdelta(x, eps): return np.exp(-x**2/(2*eps**2))/(eps*np.sqrt(2*np.pi))
+def gdelta_p(x, eps): return -x/eps**2*gdelta(x, eps)
+def gdelta_pp(x, eps): return (x**2/eps**4 - 1/eps**2)*gdelta(x, eps)
+
+# ⟦Bài 3: δ(x²−a²) = [δ(x−a)+δ(x+a)]/(2|a|)||Problem 3: δ(x²−a²) = [δ(x−a)+δ(x+a)]/(2|a|)⟧
+a3 = 2.0; x3 = np.arange(-10, 10, 0.0005)
+p3_vals = [trap(g5(x3)*gdelta(x3**2 - a3**2, eps), x3) for eps in (0.05, 0.02, 0.01)]
+p3_exact = g5(a3)/(2*a3) + g5(-a3)/(2*a3)
+p3_err = abs(p3_vals[-1] - p3_exact)
+assert p3_err < 5e-5 and abs(p3_vals[0]-p3_exact) > abs(p3_vals[-1]-p3_exact)  # ⟦hội tụ khi τ giảm||converges as τ shrinks⟧
+report("p3_exact", p3_exact, ".4f"); report("p3_err", p3_err, ".1e")
+
+# ⟦Bài 4: ∫e^{i2πxs}ds = δ(x); ∫δ(x)dx = 1||Problem 4: ∫e^{i2πxs}ds = δ(x); ∫δ(x)dx = 1⟧
+x4 = np.arange(-5, 5, 0.0005)
+p4_vals = [trap(g5(x4)*(2*S*np.sinc(2*S*x4)), x4) for S in (50, 200, 1000)]
+p4_area = trap(2*1000*np.sinc(2*1000*x4), x4)
+p4_err = abs(p4_vals[-1] - g5(0))
+assert p4_err < 1e-6 and abs(p4_area - 1) < 1e-6
+report("p4_g0", p4_vals[-1], ".4f"); report("p4_area", p4_area, ".6f"); report("p4_err", p4_err, ".1e")
+
+# ⟦Bài 5: a·δ(ax+b) = δ(x+b/a)||Problem 5: a·δ(ax+b) = δ(x+b/a)⟧
+a5, b5 = 3.0, -2.0
+x5 = np.arange(-10, 10, 0.0002)
+p5_vals = [trap(g5(x5)*abs(a5)*gdelta(a5*x5 + b5, eps*abs(a5)), x5) for eps in (0.02, 0.01)]
+p5_exact = g5(-b5/a5); p5_err = abs(p5_vals[-1] - p5_exact)
+assert p5_err < 5e-5
+report("p5_exact", p5_exact, ".4f"); report("p5_err", p5_err, ".1e")
+
+# ⟦Bài 6: δ(f(x)) = Σδ(x−x_n)/|f'(x_n)|, f(x)=x²−4, nghiệm x=±2||Problem 6: δ(f(x)) = Σδ(x−x_n)/|f'(x_n)|, f(x)=x²−4, roots x=±2⟧
+x6 = np.arange(-10, 10, 0.0005)
+p6_vals = [trap(g5(x6)*gdelta(x6**2 - 4, eps), x6) for eps in (0.02, 0.01)]
+p6_exact = g5(2)/abs(2*2) + g5(-2)/abs(2*(-2)); p6_err = abs(p6_vals[-1] - p6_exact)
+assert p6_err < 5e-5
+report("p6_exact", p6_exact, ".4f"); report("p6_err", p6_err, ".1e")
+
+# ⟦Bài 12: x·δ'(x)=−δ(x); f(x)δ'(x)=f(0)δ'(x)−f'(0)δ(x)||Problem 12: x·δ'(x)=−δ(x); f(x)δ'(x)=f(0)δ'(x)−f'(0)δ(x)⟧
+x12 = np.arange(-10, 10, 0.0005)
+p12a_vals = [trap(g5(x12)*x12*gdelta_p(x12, eps), x12) for eps in (0.02, 0.01)]
+p12a_err = abs(p12a_vals[-1] - (-g5(0)))
+f12 = lambda x: np.exp(0.1*x); f12p0 = 0.1
+p12b_vals = [trap(g5(x12)*f12(x12)*gdelta_p(x12, eps), x12) for eps in (0.02, 0.01)]
+hstep_ = 1e-4; gp0 = (g5(hstep_) - g5(-hstep_))/(2*hstep_)                # ⟦đạo hàm số của g tại 0||numerical derivative of g at 0⟧
+p12b_direct = -(f12p0*g5(0) + f12(0)*gp0)                                  # ⟦⟨fδ',g⟩=−(fg)'(0)||⟨fδ',g⟩=−(fg)'(0)⟧
+p12b_err = abs(p12b_vals[-1] - p12b_direct)
+assert p12a_err < 5e-4 and p12b_err < 5e-4
+report("p12a_err", p12a_err, ".1e"); report("p12b_err", p12b_err, ".1e")
+
+# ⟦Bài 14: x²δ''(x) = 2δ(x)||Problem 14: x²δ''(x) = 2δ(x)⟧
+x14 = np.arange(-10, 10, 0.0005)
+p14_vals = [trap(g5(x14)*x14**2*gdelta_pp(x14, eps), x14) for eps in (0.02, 0.01)]
+p14_err = abs(p14_vals[-1] - 2*g5(0))
+assert p14_err < 1e-3
+report("p14_err", p14_err, ".1e")
+
+# ⟦Bài 25: f(x)δ''(x) = f(0)δ''(x) − 2f'(0)δ'(x) + f''(0)δ(x), kiểm qua ⟨fδ'',g⟩=(fg)''(0)||Problem 25: f(x)δ''(x) = f(0)δ''(x) − 2f'(0)δ'(x) + f''(0)δ(x), checked via ⟨fδ'',g⟩=(fg)''(0)⟧
+f25 = lambda x: np.sin(0.3*x) + 2
+x25 = np.arange(-10, 10, 0.0005)
+p25_vals = [trap(g5(x25)*f25(x25)*gdelta_pp(x25, eps), x25) for eps in (0.03, 0.015)]
+h25 = 1e-4; fg25 = lambda x: f25(x)*g5(x)
+p25_direct = (fg25(h25) - 2*fg25(0) + fg25(-h25))/h25**2
+p25_err = abs(p25_vals[-1] - p25_direct)
+assert p25_err < 5e-3
+report("p25_err", p25_err, ".1e")'''),
+        ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
+⟦Bài 3: $\\delta(x^2-4)$ sàng ra {{p3_exact}}, lệch {{p3_err}} khi $\\tau=0.01$, và lệch giảm khi $\\tau$ giảm — xác nhận hội tụ chứ không phải trùng hợp. Bài 4: sàng ra $g(0)=${{p4_g0}}, diện tích dãy sinc {{p4_area}}, lệch {{p4_err}}. Bài 5: sàng ra {{p5_exact}}, lệch {{p5_err}}. Bài 6: qua nghiệm $x=\\pm2$ của $x^2-4$, sàng ra {{p6_exact}}, lệch {{p6_err}}. Bài 12: $x\\delta'(x)=-\\delta(x)$ lệch {{p12a_err}}; $f\\delta'(x)$ lệch {{p12b_err}}. Bài 14: $x^2\\delta''(x)=2\\delta(x)$ lệch {{p14_err}}. Bài 25: $f\\delta''(x)$ so với $(fg)''(0)$ tính trực tiếp lệch {{p25_err}}.||"""
+        "Problem 3: $\\delta(x^2-4)$ sifts out {{p3_exact}}, deviation {{p3_err}} at $\\tau=0.01$, shrinking as $\\tau$ shrinks — confirming convergence, not a coincidence. Problem 4: it sifts out $g(0)=${{p4_g0}}, the sinc sequence's area is {{p4_area}}, deviation {{p4_err}}. Problem 5: it sifts out {{p5_exact}}, deviation {{p5_err}}. Problem 6: through the roots $x=\\pm2$ of $x^2-4$, it sifts out {{p6_exact}}, deviation {{p6_err}}. Problem 12: $x\\delta'(x)=-\\delta(x)$ deviates by {{p12a_err}}; $f\\delta'(x)$ deviates by {{p12b_err}}. Problem 14: $x^2\\delta''(x)=2\\delta(x)$ deviates by {{p14_err}}. Problem 25: $f\\delta''(x)$ against the directly computed $(fg)''(0)$ deviates by {{p25_err}}.⟧"""),
     ],
 )
