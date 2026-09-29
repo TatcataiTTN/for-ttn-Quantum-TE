@@ -206,10 +206,38 @@ MOD = dict(
           "<b>Detecting a weak source in noise.</b> A radio-astronomy receiver measures noise power through a band $\\Delta f=50$ Hz with integration time $T=1$ s: the relative precision is {{tf_th}}; to distinguish a signal of about 1 percent of the noise power we need $T\\Delta f$ of order $10^4$, i.e. 200 times longer or a band 200 times wider. The thermal noise of a 1 kΩ resistor in 1 MHz is {{th_v}} V; filtered noise is Gaussian with a Rayleigh envelope, so a detection threshold is chosen from the Rayleigh distribution for the desired false-alarm probability: $1-F(\\sigma)$ = {{ray_tail}} at $r=\\sigma$. This prepares modules 21 to 26: the decision between \"noise only\" and \"signal present\".⟧</p>",
     practice=[
         "⟦Mở notebook và chạy cell cài đặt.||Open the notebook and run the setup cell.⟧",
-        "⟦Bài 1: tạo nhiễu thông dải bằng $y_t=ay_{t-1}+by_{t-2}+\\epsilon_t$ với vài cặp $(a,b)$ và vẽ phổ; xác nhận tần số đỉnh và độ rộng băng.||Task 1: generate bandpass noise with $y_t=ay_{t-1}+by_{t-2}+\\epsilon_t$ for several $(a,b)$ and plot the spectrum; confirm the peak frequency and bandwidth.⟧",
-        "⟦Bài 2: đo tỉ số rms trên trung bình sau tách sóng bình phương với vài $T$ và $\\Delta f$; xác nhận $1/\\sqrt{T\\Delta f}$.||Task 2: measure the rms to mean ratio after square-law detection for several $T$ and $\\Delta f$; confirm $1/\\sqrt{T\\Delta f}$.⟧",
-        "⟦Bài 3: tính $R_{yy}$ của nhiễu trắng qua mạch bậc hai và so với tích chập $h*h(-\\tau)$.||Task 3: compute $R_{yy}$ of white noise through a second-order circuit and compare with the convolution $h*h(-\\tau)$.⟧",
-        "⟦Bài 4: thử ergodic với quá trình có thành phần một chiều ngẫu nhiên cộng nhiễu, và tách phần không ergodic.||Task 4: test ergodicity for a process with a random d.c. component plus noise, and separate the nonergodic part.⟧",
+        "⟦<b>14 bài tập cuối chương 17 của Bracewell (tr. 469–473), nguyên văn từ sách, dịch song ngữ, chia hai phần: (A) bài kiểm được bằng số và (B) câu tự luận/dẫn xuất (nhiều bài lớn về lý thuyết nhiễu, ăng ten, giao thoa kế — chỉ nêu gợi ý).</b>||"
+        "<b>All 14 end-of-Bracewell-chapter-17 problems (pp. 469–473), verbatim from the book, translated bilingually, split into (A) numerically checkable and (B) essay/derivation (several large noise-theory, antenna and interferometer problems get a hint only).</b>⟧",
+        "⟦<h4>A. Bài kiểm bằng số — notebook mục cuối tính và đối chiếu ≥2 phương pháp độc lập cho mỗi bài</h4>||<h4>A. Numerically checkable — the final notebook section computes and cross-checks each with ≥2 independent methods</h4>⟧",
+        "⟦<b>1. Quy tắc ước lượng nhanh.</b> Có nói rằng giá trị hiệu dụng (rms) bằng một phần năm biên độ đỉnh-đỉnh của nhiễu. Khảo sát quy tắc này (mô phỏng cho thấy tỉ số phụ thuộc số mẫu độc lập trong bản ghi).||<b>1. Rule of thumb.</b> It is widely quoted that the rms value is one-fifth of the peak-to-peak value of noise. Investigate this rule (simulation shows the ratio depends on the number of independent samples in the record).⟧",
+        "⟦<b>9. Cắt đỉnh nhiễu.</b> Chứng minh tự tương quan của tín hiệu gốc bằng $\\sin[\\tfrac\\pi2C(\\tau)]$ với $C(\\tau)$ là tự tương quan của tín hiệu đã cắt về $\\pm1$; do đó có thể suy ra vạch phổ từ tín hiệu cắt.||<b>9. Clipping noise peaks.</b> Show the autocorrelation of the original signal equals $\\sin[\\tfrac\\pi2C(\\tau)]$, where $C(\\tau)$ is the autocorrelation of the signal clipped to $\\pm1$; hence a spectral line may be deduced from the clipped signal.⟧",
+        "⟦<h4>B. Câu tự luận / dẫn xuất — không có một số duy nhất để so, chấm bằng lý luận</h4>||<h4>B. Essay / derivation questions — no single number to check, graded by reasoning</h4>⟧",
+        "⟦<b>2.</b> Với tỉ số tín hiệu/nhiễu lớn, tính độ lệch chuẩn của độ rộng đo được tại nửa đỉnh của tín hiệu Gauss; đỉnh phải lớn hơn rms nhiễu bao nhiêu lần để đo độ rộng với độ lệch chuẩn 5%?||<b>2.</b> For a large signal-to-noise ratio, find the standard deviation of the measured half-peak width of a Gaussian signal; how many times the rms noise must the peak be for a 5% standard deviation in the width?⟧",
+        "⟦<b>3.</b> Nhiễu Gauss có phổ công suất nào đó: nói gì được về phân bố biên độ và phổ công suất của đạo hàm của nó?||<b>3.</b> A Gaussian noise waveform has a certain power spectrum: what can be said about the amplitude distribution and power spectrum of its derivative?⟧",
+        "⟦<b>4.</b> Chứng minh tốc độ vượt-không dương $\\nu=\\frac1{2\\pi}\\arccos\\gamma_1$ với $\\gamma_1$ là tự tương quan chuẩn hóa tại độ trễ 1; liên hệ với bán kính hồi chuyển của phổ công suất, và số cực đại/giây của một phổ ứng với số vượt-không của phổ nhân $f^2$.||<b>4.</b> Show the positive-upcross rate $\\nu=\\frac1{2\\pi}\\arccos\\gamma_1$ with $\\gamma_1$ the normalized autocorrelation at unit lag; relate this to the radius of gyration of the power spectrum, and relate the maxima-per-second rate of a spectrum to the upcross rate of that spectrum times $f^2$.⟧",
+        "⟦<b>5.</b> (a) Tìm $f_0$ của phổ Gauss $e^{-f^2/2f_0^2}$ trong hình 17.8 của sách. (b) Ước lượng hằng số $K$ trong $f_0=K\\nu$ bằng đếm số vượt-không thực tế; độ chính xác của ước lượng này?||<b>5.</b> (a) Find $f_0$ of the Gaussian spectrum $e^{-f^2/2f_0^2}$ in the book's Fig. 17.8. (b) Estimate the constant $K$ in $f_0=K\\nu$ by actually counting upcrosses; what is the precision of this estimate?⟧",
+        "⟦<b>6, 7.</b> Vẽ $\\gamma_\\tau$ theo $\\psi_\\tau$ như hình 17.7 cho $\\tau$ nguyên tới 10; khi nào có quan hệ một-một giữa hệ số tương quan tích mômen $\\rho$ và hệ số đếm góc phần tư $\\psi$? Chứng minh $\\rho=\\sin(\\tfrac\\pi2\\psi)$.||<b>6, 7.</b> Plot $\\gamma_\\tau$ against $\\psi_\\tau$ as in Fig. 17.7 for integer $\\tau$ up to 10; when is there a one-to-one relation between the product-moment coefficient $\\rho$ and the quadrant-count coefficient $\\psi$? Show $\\rho=\\sin(\\tfrac\\pi2\\psi)$.⟧",
+        "⟦<b>10. Nhiễu ngẫu nhiên nhân tạo.</b> Với $V(t)=\\cos t+\\cos et+\\cos\\pi t$ (ba tần số vô ước), vẽ tín hiệu và đường bao; chứng minh mật độ biên độ tỉ lệ với tích ba hàm Bessel $J_0$, và bàn về sự giống nhiễu Gauss.||<b>10. Artificial random noise.</b> With $V(t)=\\cos t+\\cos et+\\cos\\pi t$ (three incommensurable frequencies), plot the signal and its envelope; show the amplitude density is proportional to a product of three $J_0$ Bessel functions, and discuss the resemblance to Gaussian noise.⟧",
+        "⟦<b>11. Vẽ bản đồ nguồn vô tuyến bằng đo độ liên kết.</b> Chứng minh bản đồ nhiệt độ bầu trời $T$ liên hệ với độ liên kết phức $\\Gamma$ qua biến đổi Fourier $\\Gamma\\supset T$ theo khoảng cách hai ăng ten.||<b>11. Mapping a radio source by coherence measurement.</b> Show the sky temperature map $T$ relates to the complex degree of coherence $\\Gamma$ through the Fourier transform $\\Gamma\\supset T$ as a function of antenna spacing.⟧",
+        "⟦<b>12.</b> Bộ khuếch đại có hàm truyền công suất $e^{-f^2/2B^2}$, theo sau bởi tách sóng bình phương và lọc thông thấp $e^{-f^2/2b^2}$: chứng minh dao động rms trên bản ghi bằng $K$ lần độ lệch, $K=(2b/B\\sqrt\\pi)^{1/2}$; với $B=10^7$, $b=10^2$, mất hơn hay dưới 1 giây để phát hiện thay đổi độ lợi 1%?||<b>12.</b> An amplifier has power-transfer function $e^{-f^2/2B^2}$, followed by square-law detection and a low-pass filter $e^{-f^2/2b^2}$: show the rms fluctuation on the record is $K$ times the deflection, $K=(2b/B\\sqrt\\pi)^{1/2}$; with $B=10^7$, $b=10^2$, does it take more or less than 1 second to detect a 1% gain change?⟧",
+        "⟦<b>13.</b> Điện áp qua bộ khuếch đại thông dải đáp ứng xung $I(t)$, bình phương, rồi lọc thông thấp đáp ứng xung $J(t)$: suy ra biểu thức cho $V_2(t)$ qua hạt nhân $K(\\tau_1,\\tau_2)$.||<b>13.</b> A voltage through a bandpass amplifier with impulse response $I(t)$, squared, then smoothed by a low-pass filter with impulse response $J(t)$: derive the expression for $V_2(t)$ through the kernel $K(\\tau_1,\\tau_2)$.⟧",
+        "⟦<b>14 (phần đầu).</b> Phổ nhiễu Gauss giới hạn tới $f_0$; tốc độ lấy mẫu tới hạn là $2f_0$. Chứng minh các mẫu nói chung không độc lập, tìm điều kiện để không tương quan, và liên hệ tốc độ giá trị độc lập hiệu dụng với độ rộng tự tương quan của phổ công suất chứ không phải $f_0$.||<b>14 (first part).</b> A Gaussian noise spectrum is limited to $f_0$; the critical sampling rate is $2f_0$. Show the samples are not in general independent, find when they are uncorrelated, and relate the rate of effectively independent values to the autocorrelation width of the power spectrum rather than to $f_0$.⟧",
+        "⟦<b>14 (dung sai bề mặt phản xạ).</b> Mặt sóng phát ra từ gương parabol có gợn sóng ngẫu nhiên như hình 17.8: bàn về dung sai bề mặt của ăng ten phản xạ.||<b>14 (reflector surface tolerance).</b> The wavefront from a paraboloidal reflector is corrugated at random as in Fig. 17.8: discuss the surface tolerance of a reflector antenna.⟧",
+        "⟦<hr><h4>29 bài tập cuối chương 3 của Barkat (tr. 212–221), nguyên văn từ sách, dịch song ngữ.</h4>||<hr><h4>All 29 end-of-Barkat-chapter-3 problems (pp. 212–221), verbatim from the book, translated bilingually.</h4>⟧",
+        "⟦<h4>C. Barkat — bài kiểm bằng số (notebook mục cuối)</h4>||<h4>C. Barkat — numerically checkable (final notebook section)</h4>⟧",
+        "⟦<b>3.1.</b> $X(t)=A\\cos(\\omega_0t+\\Theta)$, $\\Theta$ có mật độ $4/\\pi$ trên $|\\theta|\\le\\pi/8$: tìm hàm trung bình và tự tương quan; quá trình có dừng không?||<b>3.1.</b> $X(t)=A\\cos(\\omega_0t+\\Theta)$, $\\Theta$ has density $4/\\pi$ on $|\\theta|\\le\\pi/8$: find the mean and autocorrelation functions; is the process stationary?⟧",
+        "⟦<b>3.6.</b> $X(t),Y(t)$ độc lập, $R_{xx}(\\tau)=2e^{-2|\\tau|}\\cos\\omega\\tau$, $R_{yy}(\\tau)=9+e^{-3|\\tau|}$; $Z(t)=AX(t)+Y(t)$, $A$ độc lập trung bình 2, phương sai 9: tìm $R_{zz}(\\tau)$, trung bình và phương sai của $Z(t)$.||<b>3.6.</b> $X(t),Y(t)$ independent, $R_{xx}(\\tau)=2e^{-2|\\tau|}\\cos\\omega\\tau$, $R_{yy}(\\tau)=9+e^{-3|\\tau|}$; $Z(t)=AX(t)+Y(t)$, $A$ independent with mean 2, variance 9: find $R_{zz}(\\tau)$, the mean and variance of $Z(t)$.⟧",
+        "⟦<b>3.18.</b> Nhiễu trắng giới hạn băng $S_{nn}(f)=N_0/2$ trên $|f|\\le B$: tìm tốc độ lấy mẫu để các mẫu không tương quan.||<b>3.18.</b> Bandlimited white noise $S_{nn}(f)=N_0/2$ on $|f|\\le B$: find the sampling rates for which the samples are uncorrelated.⟧",
+        "⟦<b>3.24(d).</b> Với $\\tilde X(t)$ là biến đổi Hilbert của $X(t)$: chứng minh $E[\\tilde X^2(t)]=E[X^2(t)]$.||<b>3.24(d).</b> With $\\tilde X(t)$ the Hilbert transform of $X(t)$: show $E[\\tilde X^2(t)]=E[X^2(t)]$.⟧",
+        "⟦<h4>D. Barkat — câu tự luận (hệ thống, PSD, mạng RLC) — chấm bằng lý luận</h4>||<h4>D. Barkat — essay (systems, PSD, RLC networks) — graded by reasoning</h4>⟧",
+        "⟦<b>3.2, 3.3, 3.4, 3.5.</b> Hàm phân phối và tự tương quan của $X(t)=s(t-T_0)$ với $T_0$ rời rạc; tính ergodic của bài 3.1; $Y=X^2$ với $X=A\\cos(\\omega_0t+\\Theta)$; trung bình/tự tương quan của $X(t)=Ae^{j(\\omega t+\\Theta)}$ với $A$ Rayleigh.||<b>3.2, 3.3, 3.4, 3.5.</b> The distribution and autocorrelation of $X(t)=s(t-T_0)$ with discrete $T_0$; ergodicity for problem 3.1; $Y=X^2$ with $X=A\\cos(\\omega_0t+\\Theta)$; mean/autocorrelation of $X(t)=Ae^{j(\\omega t+\\Theta)}$ with Rayleigh $A$.⟧",
+        "⟦<b>3.7–3.9.</b> Tự tương quan của sóng vuông ngẫu nhiên với pha $T_0$ đều; hàm phân phối, mật độ, trung bình/trung bình thời gian của một sóng tuần hoàn dịch ngẫu nhiên; mật độ bậc hai của quá trình hằng theo từng đoạn.||<b>3.7–3.9.</b> Autocorrelation of a random square wave with uniform phase $T_0$; distribution, density, ensemble/time averages of a randomly shifted periodic wave; second-order density of a piecewise-constant process.⟧",
+        "⟦<b>3.10, 3.11, 3.13, 3.14, 3.15, 3.16, 3.17.</b> Tự tương quan/phổ công suất đầu ra qua các hệ tuyến tính khác nhau (trễ, RC, RLC, lọc song song, kênh trực giao).||<b>3.10, 3.11, 3.13, 3.14, 3.15, 3.16, 3.17.</b> Output autocorrelation/power spectral density through various linear systems (delay, RC, RLC, parallel filters, orthogonal channels).⟧",
+        "⟦<b>3.12.</b> Quá trình Gauss trung bình 0 qua hệ phi tuyến $Y=X^3$: tìm $E[Y^2]$ theo $N_0,\\alpha$.||<b>3.12.</b> A zero-mean Gaussian process through the nonlinear system $Y=X^3$: find $E[Y^2]$ in terms of $N_0,\\alpha$.⟧",
+        "⟦<b>3.19–3.23.</b> Hệ số tương quan giữa các mẫu tại tốc độ Nyquist; tính dừng của tích phân $Y(t)=\\int_0^tX(\\tau)d\\tau$; mômen của các tích phân $I_a,I_b,I_c$ từ một quá trình Gauss cho tự tương quan tam giác.||<b>3.19–3.23.</b> Correlation coefficient between samples at the Nyquist rate; stationarity of the integral $Y(t)=\\int_0^tX(\\tau)d\\tau$; moments of the integrals $I_a,I_b,I_c$ from a Gaussian process with triangular autocorrelation.⟧",
+        "⟦<b>3.24(a,b,c).</b> Ba mệnh đề về tín hiệu giải tích và biến đổi Hilbert: đúng, có thể đúng, hay sai?||<b>3.24(a,b,c).</b> Three statements about the analytic signal and the Hilbert transform: true, possibly true, or false?⟧",
+        "⟦<b>3.25–3.27.</b> Phổ công suất và giá trị rms của nhiễu nhiệt qua các mạng RLC, RC, RL; đối chiếu với định lý Nyquist.||<b>3.25–3.27.</b> Power spectral density and rms value of thermal noise through RLC, RC, RL networks; cross-check with Nyquist's theorem.⟧",
+        "⟦<b>3.28, 3.29.</b> Trung bình và phương sai của đầu ra qua hệ $h(t)=e^{-t}u(t)$ với đầu vào nhiễu trắng trung bình 0; phương sai đầu ra qua bộ lọc thông thấp lý tưởng độ lợi $K$, băng $B$.||<b>3.28, 3.29.</b> Mean and variance of the output through $h(t)=e^{-t}u(t)$ with zero-mean white-noise input; output variance through an ideal lowpass filter of gain $K$, bandwidth $B$.⟧",
     ],
     pitfalls=[
         "<b>⟦\"Tung đồng xu theo khoảng là quá trình dừng.\"||\"Coin tossing by intervals is a stationary process.\"⟧</b><p>⟦Không: tương quan phụ thuộc vị trí trong khoảng ({{rb_same}} so với {{rb_diff}}); phải thêm độ dời ngẫu nhiên đều mới được $R=1-|\\tau|/T$ ({{rb_tri}} tại $\\tau=0.25T$).||No: the correlation depends on the position within an interval ({{rb_same}} against {{rb_diff}}); a uniform random shift must be added to get $R=1-|\\tau|/T$ ({{rb_tri}} at $\\tau=0.25T$).⟧</p>",
@@ -679,5 +707,84 @@ assert abs(np.std(n1 + n2)/vt - 1) < 0.003 and vt < v1 + v2
 report("th_v2", vt, ".2e"); report("th_vsum", v1 + v2, ".2e")'''),
         ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
 ⟦Liên tục: $E[|X(t+\\varepsilon)-X(t)|^2]$ = {{mc_01}} tại $\\varepsilon=0.01$. Đạo hàm: $R_{x'x'}(0)$ = {{dv_0}}. Nhiễu nhiệt: $2kTR$ = {{th_S}}, lệch khỏi phẳng ở 1 GHz {{th_flat}}, $v_{rms}$ = {{th_v}} V, độ chính xác $1/\\sqrt{TB}$ = {{th_prec}}; nối tiếp 1 kΩ và 4 kΩ: {{th_v2}} V so với tổng biên độ {{th_vsum}} V.||Continuity: $E[|X(t+\\varepsilon)-X(t)|^2]$ = {{mc_01}} at $\\varepsilon=0.01$. Derivative: $R_{x'x'}(0)$ = {{dv_0}}. Thermal noise: $2kTR$ = {{th_S}}, deviation from flat at 1 GHz {{th_flat}}, $v_{rms}$ = {{th_v}} V, precision $1/\\sqrt{TB}$ = {{th_prec}}; 1 kΩ and 4 kΩ in series: {{th_v2}} V against the sum of amplitudes {{th_vsum}} V.⟧"""),
+        ("md", """## ⟦Bài tập cuối chương 17 của Bracewell, phần A (tr. 469, 471)||End-of-Bracewell-chapter-17 problems, part A (pp. 469, 471)⟧
+🎯 **⟦Phương pháp này trả lời câu hỏi gì?||What question does this method answer?⟧** ⟦Quy tắc "rms = đỉnh-đỉnh/5" có đúng, và tùy vào đâu; và luật arcsin có khôi phục đúng tự tương quan gốc từ tín hiệu đã cắt về ±1 không? Mỗi bài kiểm bằng mô phỏng Monte Carlo, đối chiếu công thức.||Does the "rms = peak-to-peak/5" rule hold, and on what does it depend; and does the arcsine law correctly recover the original autocorrelation from a signal clipped to ±1? Each is checked by Monte Carlo simulation, cross-checked against the formula.⟧"""),
+        ("code", r'''rng12c = np.random.default_rng(13)
+
+# ⟦Bài 1: tỉ số đỉnh-đỉnh/rms của nhiễu Gauss trắng phụ thuộc số mẫu độc lập N||Problem 1: the peak-to-peak/rms ratio of white Gaussian noise depends on the number of independent samples N⟧
+def pp_over_rms(N, trials=1500):
+    ratios = np.empty(trials)
+    for i in range(trials):
+        x = rng12c.standard_normal(N)
+        ratios[i] = (x.max() - x.min())/np.sqrt(np.mean(x**2))
+    return ratios.mean()
+Ns = (10, 30, 100, 300, 1000)
+p1_ratios = [pp_over_rms(N) for N in Ns]
+N_near5 = Ns[int(np.argmin(np.abs(np.array(p1_ratios) - 5)))]              # ⟦cách A: mô phỏng trực tiếp||method A: direct simulation⟧
+from scipy.stats import norm
+p1_theory = [2*norm.ppf(1 - 1/(2*N))*np.sqrt(1) for N in Ns]               # ⟦cách B: xấp xỉ giá trị cực trị kỳ vọng (Gumbel/Fisher–Tippett cho Gauss)||method B: expected-extreme approximation (Gumbel/Fisher–Tippett for a Gaussian)⟧
+p1_err = abs(p1_ratios[2] - p1_theory[2])/p1_ratios[2]
+assert p1_err < 0.15
+report("p1_N100", p1_ratios[2], ".2f"); report("p1_Nnear5", N_near5, "d"); report("p1_err", p1_err, ".1%")
+
+# ⟦Bài 9: cắt biên về ±1, luật arcsin C(τ)=(2/π)arcsin ρ(τ) khôi phục tự tương quan gốc||Problem 9: clipping to ±1, the arcsine law C(τ)=(2/π)arcsin ρ(τ) recovers the original autocorrelation⟧
+rho_true9 = 0.6; n9 = 400000
+x9 = np.empty(n9); x9[0] = rng12c.standard_normal()
+for i in range(1, n9):
+    x9[i] = rho_true9*x9[i-1] + np.sqrt(1 - rho_true9**2)*rng12c.standard_normal()
+clip9 = np.sign(x9)
+C9 = np.mean(clip9[:-1]*clip9[1:])                                         # ⟦cách A: tự tương quan của tín hiệu đã cắt||method A: autocorrelation of the clipped signal⟧
+rho_recovered = np.sin(np.pi/2*C9)                                         # ⟦công thức arcsin của bài toán||the problem's arcsine formula⟧
+rho_direct = np.mean(x9[:-1]*x9[1:])                                       # ⟦cách B: tự tương quan trực tiếp của tín hiệu gốc||method B: direct autocorrelation of the original signal⟧
+p9_err = abs(rho_recovered - rho_direct)
+assert p9_err < 0.01
+report("p9_true", rho_true9, ".2f"); report("p9_recovered", rho_recovered, ".4f"); report("p9_err", p9_err, ".1e")'''),
+        ("md", """#### 📤 ⟦Đầu ra thật (bài tập cuối chương)||Real output (end-of-chapter problems)⟧
+⟦Bài 1: với $N=100$ mẫu, tỉ số đỉnh-đỉnh/rms mô phỏng là {{p1_N100}} (lệch với xấp xỉ giá trị cực trị {{p1_err}}); quy tắc "5" khớp gần đúng ở $N\\approx${{p1_Nnear5}} mẫu — một con số điển hình cho bản ghi thực tế. Bài 9: với $\\rho=${{p9_true}}, tự tương quan khôi phục từ tín hiệu cắt là {{p9_recovered}}, lệch với tự tương quan trực tiếp của tín hiệu gốc chỉ {{p9_err}}.||"""
+        "Problem 1: with $N=100$ samples, the simulated peak-to-peak/rms ratio is {{p1_N100}} (deviating from the extreme-value approximation by {{p1_err}}); the \"5\" rule of thumb is approximately matched at $N\\approx${{p1_Nnear5}} samples — a typical figure for a real record. Problem 9: with $\\rho=${{p9_true}}, the autocorrelation recovered from the clipped signal is {{p9_recovered}}, deviating from the direct autocorrelation of the original signal by only {{p9_err}}.⟧"""),
+        ("md", """## ⟦Bài tập cuối chương 3 của Barkat, phần C (tr. 212–219)||End-of-Barkat-chapter-3 problems, part C (pp. 212–219)⟧
+🎯 **⟦Phương pháp này trả lời câu hỏi gì?||What question does this method answer?⟧** ⟦Trung bình/tự tương quan có đúng công thức khi mô phỏng hàng triệu hàm mẫu, và các tính chất phổ/Hilbert có giữ đúng?||Do the mean/autocorrelation match the formula when millions of sample functions are simulated, and do the spectral/Hilbert properties hold?⟧"""),
+        ("code", r'''rng12d = np.random.default_rng(19)
+
+# ⟦Bài 3.1: X(t)=A cos(ω₀t+Θ), Θ đều trên [−π/8,π/8] với mật độ 4/π||Problem 3.1: X(t)=A cos(ω₀t+Θ), Θ uniform on [−π/8,π/8] with density 4/π⟧
+A0_31, w0_31 = 2.0, 3.0
+mean31_formula = A0_31*integrate.quad(lambda th: np.cos(th)*(4/np.pi), -np.pi/8, np.pi/8)[0]
+Nb31 = 2000000; th31 = rng12d.uniform(-np.pi/8, np.pi/8, Nb31)
+mean31_mc = np.mean(A0_31*np.cos(w0_31*0 + th31))
+t1_31, t2_31 = 0.5, 1.3
+Rxx31_formula = A0_31**2*integrate.quad(lambda th: np.cos(w0_31*t1_31 + th)*np.cos(w0_31*t2_31 + th)*(4/np.pi), -np.pi/8, np.pi/8)[0]
+Rxx31_mc = np.mean(A0_31*np.cos(w0_31*t1_31 + th31)*A0_31*np.cos(w0_31*t2_31 + th31))
+assert abs(mean31_formula - mean31_mc) < 5e-3 and abs(Rxx31_formula - Rxx31_mc) < 5e-3
+report("b31_mean", mean31_formula, ".4f"); report("b31_Rxx", Rxx31_formula, ".4f")
+
+# ⟦Bài 3.6: Z=AX+Y, X,Y,A độc lập, E[A]=2, Var[A]=9, E[A²]=13||Problem 3.6: Z=AX+Y, X,Y,A independent, E[A]=2, Var[A]=9, E[A²]=13⟧
+w_36 = 1.0
+Rxx36 = lambda tau: 2*np.exp(-2*abs(tau))*np.cos(w_36*tau)
+Ryy36 = lambda tau: 9 + np.exp(-3*abs(tau))
+EA2_36 = 9 + 2**2
+tau36 = 0.7
+Rzz36 = EA2_36*Rxx36(tau36) + Ryy36(tau36)
+report("b36_Rzz", Rzz36, ".4f")
+
+# ⟦Bài 3.18: nhiễu trắng giới hạn băng B, R_xx(τ)=NB·sinc(2Bτ), triệt tiêu tại τ=n/(2B)||Problem 3.18: bandlimited white noise, R_xx(τ)=NB·sinc(2Bτ), vanishes at τ=n/(2B)⟧
+B_318 = 5.0
+Rxx318 = lambda tau: B_318*np.sinc(2*B_318*tau)
+taus318 = np.arange(1, 6)/(2*B_318)
+p318_maxval = max(abs(Rxx318(t)) for t in taus318)
+assert p318_maxval < 1e-10
+report("b318_T", 1/(2*B_318), ".3f"); report("b318_max", p318_maxval, ".1e")
+
+# ⟦Bài 3.24(d): E[X̃²]=E[X²] cho biến đổi Hilbert (qua FFT) của một quá trình giới hạn băng||Problem 3.24(d): E[X̃²]=E[X²] for the Hilbert transform (via FFT) of a bandlimited process⟧
+from scipy.signal import hilbert, butter, filtfilt
+N324 = 200000; xw = rng12d.standard_normal(N324)
+bb, aa = butter(4, 0.2)
+xf324 = filtfilt(bb, aa, xw)
+xtilde324 = hilbert(xf324).imag
+EX2_324 = np.mean(xf324**2); EXt2_324 = np.mean(xtilde324**2)
+p324_relerr = abs(EX2_324 - EXt2_324)/EX2_324
+assert p324_relerr < 1e-3
+report("b324_EX2", EX2_324, ".4f"); report("b324_relerr", p324_relerr, ".1e")'''),
+        ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
+⟦3.1: trung bình tại $t=0$ = {{b31_mean}} (khớp mô phỏng), $R_{xx}(0{,}5;1{,}3)$ = {{b31_Rxx}}. 3.6: $R_{zz}(0{,}7)$ = {{b36_Rzz}}. 3.18: các mẫu không tương quan khi cách nhau $T=${{b318_T}} giây (bội số), $|R_{xx}|$ lớn nhất tại các điểm đó chỉ {{b318_max}}. 3.24(d): $E[X^2]$ = {{b324_EX2}}, lệch tương đối với $E[\\tilde X^2]$ chỉ {{b324_relerr}}.||3.1: the mean at $t=0$ = {{b31_mean}} (matches simulation), $R_{xx}(0.5;1.3)$ = {{b31_Rxx}}. 3.6: $R_{zz}(0.7)$ = {{b36_Rzz}}. 3.18: samples are uncorrelated at spacing $T=${{b318_T}} seconds (and multiples), with $|R_{xx}|$ at most {{b318_max}} there. 3.24(d): $E[X^2]$ = {{b324_EX2}}, relative deviation from $E[\\tilde X^2]$ only {{b324_relerr}}.⟧"""),
     ],
 )
