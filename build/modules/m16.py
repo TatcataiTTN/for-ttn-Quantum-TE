@@ -203,10 +203,41 @@ MOD = dict(
           "<b>From projections to an image.</b> A tomographic scan consists of projections $g_\\theta(R)$ of the density; each projection is a Radon transform, and by the projection-slice theorem its one-dimensional Fourier transform is a slice of $F(u,v)$. Ramp-filtering by $|q|/M$ then back-projecting returns the object: at the centre of the two Gaussians, {{fb_c}} against the exact 1, from 180 directions. For a circularly symmetric object the Abel-Fourier-Hankel chain turns the scan curve into the image: the Gaussian $e^{-\\pi r^2}$ at $r=0.6$ recovers {{arh_val}} with deviation {{arh_dev}}. If the scanned signal is an amplitude-modulated oscillation, Hilbert gives the envelope: $1+0.5\\cos3t$ with deviation {{env_dev}}. And if the system is causal like $e^{-t}H(t)$, the imaginary part $B(0.3)$ = {{kk_b}} follows from the real part through the Kramers-Kronig principal value, matching {{kk_num}}.⟧</p>",
     practice=[
         "⟦Mở notebook và chạy cell cài đặt.||Open the notebook and run the setup cell.⟧",
-        "⟦Bài 1: kiểm tra định lý xoay và affine cho một Gauss ellip khác; đổi dấu trong mũ của định lý affine và xem sai số.||Task 1: check the rotation and affine theorems for another elliptical Gaussian; flip the sign in the exponent of the affine theorem and watch the error.⟧",
-        "⟦Bài 2: tính Hankel bậc 0 của $e^{-ar}$ và đĩa bằng cầu phương, so với bảng 13.2, rồi tự đảo lại.||Task 2: compute the zero-order Hankel transform of $e^{-ar}$ and the disk by quadrature, compare with Table 13.2, then invert it yourself.⟧",
-        "⟦Bài 3: dựng ảnh cắt lớp của hai Gauss với 30, 90, 180 hướng và vẽ sai số theo số hướng và theo $M$.||Task 3: build a tomographic image of two Gaussians with 30, 90, 180 directions and plot the error against the number of directions and against $M$.⟧",
-        "⟦Bài 4: tính tín hiệu giải tích của một tín hiệu FM, vẽ đường bao và tần số tức thời, so với $\\beta\\Omega$.||Task 4: compute the analytic signal of an FM signal, plot the envelope and instantaneous frequency and compare with $\\beta\\Omega$.⟧",
+        "⟦<b>37 bài tập cuối chương 13 của Bracewell (tr. 372–377), nguyên văn từ sách, dịch song ngữ, chia hai phần: (A) bài kiểm được bằng số và (B) câu tự luận/dẫn xuất (nhiều bài về nhiễu xạ tinh thể, âm nhạc, ăng ten hình học — chỉ nêu gợi ý).</b>||"
+        "<b>All 37 end-of-Bracewell-chapter-13 problems (pp. 372–377), verbatim from the book, translated bilingually, split into (A) numerically checkable and (B) essay/derivation (several crystal-diffraction, music and antenna-geometry problems get a hint only).</b>⟧",
+        "⟦<h4>A. Bài kiểm bằng số — notebook mục cuối tính và đối chiếu ≥2 phương pháp độc lập cho mỗi bài</h4>||<h4>A. Numerically checkable — the final notebook section computes and cross-checks each with ≥2 independent methods</h4>⟧",
+        "⟦<b>1.</b> Chứng minh 6 định lý về biến đổi Hilbert $F_{Hi}(x)$ của $f(x)$: tỉ lệ, cộng, dịch, công suất, tự tương quan, tích chập.||<b>1.</b> Demonstrate 6 theorems about the Hilbert transform $F_{Hi}(x)$ of $f(x)$: similarity, addition, shift, power, autocorrelation, convolution.⟧",
+        "⟦<b>2.</b> Chứng minh $\\mathcal H(f*g)=\\mathcal Hf*g=f*\\mathcal Hg$.||<b>2.</b> Show that $\\mathcal H(f*g)=\\mathcal Hf*g=f*\\mathcal Hg$.⟧",
+        "⟦<b>3.</b> Giải thích vì sao một hàm và biến đổi Hilbert của nó có cùng hàm tự tương quan.||<b>3.</b> Explain why a function and its Hilbert transform have the same autocorrelation function.⟧",
+        "⟦<b>6.</b> Tạo các cặp biến đổi Hilbert bằng cách tách phần thực, ảo của biến đổi Fourier của $e^{-t}H(t)$, $te^{-t}H(t)$, $\\Lambda(t-1)$, $e^{-t}\\cos\\omega t\\,H(t)$.||<b>6.</b> Generate Hilbert transform pairs by separating the real and imaginary parts of the Fourier transforms of $e^{-t}H(t)$, $te^{-t}H(t)$, $\\Lambda(t-1)$, $e^{-t}\\cos\\omega t\\,H(t)$.⟧",
+        "⟦<b>30. Ví dụ biến đổi Hankel.</b> Chứng minh biến đổi Hankel của $r^2e^{-\\pi r^2}$ là $(\\pi^{-1}-q^2)e^{-\\pi q^2}$.||<b>30. Hankel transform example.</b> Show the Hankel transform of $r^2e^{-\\pi r^2}$ is $(\\pi^{-1}-q^2)e^{-\\pi q^2}$.⟧",
+        "⟦<b>33. Giá trị chính Cauchy.</b> Có chứng minh được $\\int\\text{sgn}\\,x\\,dx=\\int\\text{sgn}(x+1)dx$ không?||<b>33. Cauchy principal value.</b> Can you prove that $\\int\\text{sgn}\\,x\\,dx=\\int\\text{sgn}(x+1)dx$?⟧",
+        "⟦<h4>B. Câu tự luận / dẫn xuất — không có một số duy nhất để so, chấm bằng lý luận</h4>||<h4>B. Essay / derivation questions — no single number to check, graded by reasoning</h4>⟧",
+        "⟦<b>4. Tính duy nhất.</b> Biến đổi Hilbert không duy nhất vì biến đổi của hằng số bằng 0 — đánh giá lập luận này.||<b>4. Uniqueness.</b> The Hilbert transform is said to be non-unique because the transform of a constant is zero — critically examine this argument.⟧",
+        "⟦<b>5.</b> Tín hiệu giải tích tương ứng với $\\text{sinc}\\,t$, $e^{-(t-t_0)^2}\\cos\\omega t$, $(1+M\\cos\\Omega t)\\cos\\omega t$ là gì? Vẽ hình ba chiều.||<b>5.</b> What are the analytic signals for $\\text{sinc}\\,t$, $e^{-(t-t_0)^2}\\cos\\omega t$, $(1+M\\cos\\Omega t)\\cos\\omega t$? Sketch in three dimensions.⟧",
+        "⟦<b>7.</b> Tạo cặp Hilbert bằng biến đổi Fourier của phần chẵn, lẻ của $\\Lambda(t)H(t)$, $\\Pi(t-\\tfrac12)$.||<b>7.</b> Generate Hilbert pairs by taking the Fourier transform of the odd and even parts of $\\Lambda(t)H(t)$, $\\Pi(t-\\tfrac12)$.⟧",
+        "⟦<b>8.</b> Hàm thực của $t$ bằng 0 khi $t<1$: chứng minh phần thực, ảo của biến đổi Fourier là một cặp Hilbert.||<b>8.</b> A real function of $t$ is zero for $t<1$: show the real and imaginary parts of its Fourier transform form a Hilbert pair.⟧",
+        "⟦<b>9. Nhân quả sớm.</b> Nói gì được về biến đổi Fourier của hàm thực bằng 0 khi $t<-1$?||<b>9. Precocious causality.</b> What can be said about the Fourier transform of a real function that is zero for $t<-1$?⟧",
+        "⟦<b>10, 11.</b> Chứng minh độ dài điện $\\Theta(f)=\\log T(f)$ là Hermitian; định nghĩa $a(f),\\beta(f)$ là độ lợi, độ lệch pha, xem cần giả thiết gì để chứng minh Hermitian, và thêm gì nếu $T(f)$ nhân quả.||<b>10, 11.</b> Show the electrical length $\\Theta(f)=\\log T(f)$ is Hermitian; with $a(f),\\beta(f)$ the gain and phase, see what assumption suffices to prove Hermitian, and what more follows if $T(f)$ is causal.⟧",
+        "⟦<b>12. Bộ lọc nhân quả.</b> Chứng minh $\\beta(f)$ và $\\alpha(f)$ liên hệ qua biến đổi Hilbert (quan hệ Kramers-Kronig/Bode).||<b>12. Causal filter.</b> Show $\\beta(f)$ and $\\alpha(f)$ are related through the Hilbert transform (a Kramers-Kronig/Bode relation).⟧",
+        "⟦<b>13.</b> Nói gì được về biến đổi Hilbert của một hàm Hermitian?||<b>13.</b> What can be said about the Hilbert transform of a Hermitian function?⟧",
+        "⟦<b>14, 15.</b> Chứng minh biến đổi Hilbert của hàm giới hạn băng vẫn giới hạn băng; xem xét khẳng định rằng $f(t)H(-t)$ đủ để suy ra toàn bộ $f(t)$.||<b>14, 15.</b> Show the Hilbert transform of a band-limited function is band-limited; examine the claim that $f(t)H(-t)$ alone determines all of $f(t)$.⟧",
+        "⟦<b>16.</b> Chứng minh biến đổi Hankel tương đương với biến đổi Abel nối tiếp biến đổi Fourier một chiều.||<b>16.</b> Show the Hankel transformation is equivalent to an Abel transformation followed by a one-dimensional Fourier transformation.⟧",
+        "⟦<b>17. Biến đổi z.</b> Chứng minh biến đổi z của $\\{f(n)\\}$ tồn tại trong hình khuyên $e^{-\\alpha}<|z|<e^{-\\beta}$.||<b>17. z transform.</b> Show the z transform of $\\{f(n)\\}$ exists in the annulus $e^{-\\alpha}<|z|<e^{-\\beta}$.⟧",
+        "⟦<b>18.</b> Thiết lập các cặp biến đổi Hankel cho trong bảng của sách.||<b>18.</b> Establish the book's table of Hankel transform pairs.⟧",
+        "⟦<b>19. Định lý cắt.</b> Nếu $f(x,y)\\supset F(u,v)$, chứng minh $f(x,y-ax)\\supset F(u+av,v)$.||<b>19. Shear theorem.</b> If $f(x,y)\\supset F(u,v)$, show $f(x,y-ax)\\supset F(u+av,v)$.⟧",
+        "⟦<b>20. Cao độ âm nhạc tức thời.</b> Với sóng âm $0{,}01\\cos[2\\pi(500t+50t^2)]$: thời gian tăng một quãng tám, tốc độ đổi tần theo nửa cung/giây, và dựng dạng sóng cao độ tăng đều.||<b>20. Instantaneous musical pitch.</b> With sound wave $0.01\\cos[2\\pi(500t+50t^2)]$: time to rise an octave, the rate of change in semitones/second, and constructing a uniformly-rising-pitch waveform.⟧",
+        "⟦<b>21, 22, 23.</b> Nhiễu xạ hai chiều của cánh đồng cày, ăng ten hình thoi, và tinh thể bị biến dạng cắt vi sóng — bàn về các ý kiến nêu trong sách.||<b>21, 22, 23.</b> Two-dimensional diffraction of a plowed field, a rhombic antenna, and a crystal under microwave acoustic shear — discuss the opinions given in the book.⟧",
+        "⟦<b>24. Nhiễu xạ ba chiều.</b> Chứng minh mật độ electron $\\rho(r)=4\\pi\\int_0^\\infty K(s)\\,\\text{sinc}\\,2rs\\,ds$ từ cường độ tán xạ $K(s)$.||<b>24. Three-dimensional diffraction.</b> Show the electron density $\\rho(r)=4\\pi\\int_0^\\infty K(s)\\,\\text{sinc}\\,2rs\\,ds$ from the scattering intensity $K(s)$.⟧",
+        "⟦<b>25. Tích chập ba chiều.</b> Chứng minh tự tương quan ba chiều của hàm quả cầu đơn vị cho công thức trong sách.||<b>25. Three-dimensional convolution.</b> Show the three-dimensional autocorrelation of the unit-ball function gives the book's formula.⟧",
+        "⟦<b>26. Xung hai chiều.</b> Nêu quỹ tích và mật độ đường của $\\delta(x+y)$, $\\delta(xy)$, $\\delta(\\sin\\theta)$, $\\delta(x^2+y^2-1)$, $\\delta(x^2+y^2)$.||<b>26. Two-dimensional impulse.</b> State the locus and linear density of $\\delta(x+y)$, $\\delta(xy)$, $\\delta(\\sin\\theta)$, $\\delta(x^2+y^2-1)$, $\\delta(x^2+y^2)$.⟧",
+        "⟦<b>27, 28.</b> Định lý đạo hàm cho biến đổi Hankel: $(rf)'\\supset-(qF)'$ và dạng bậc hai cho trong sách.||<b>27, 28.</b> Derivative theorems for the Hankel transform: $(rf)'\\supset-(qF)'$ and the second-order form given in the book.⟧",
+        "⟦<b>29. Định lý biến đổi Hankel.</b> Chứng minh công thức cho $f(\\rho)$ trong sách.||<b>29. Hankel transform theorem.</b> Show the book's formula for $f(\\rho)$.⟧",
+        "⟦<b>31, 32.</b> Chứng minh $\\int f(x)J_0(qx)x\\,dx$ cho công thức trong sách; xác nhận biến đổi Hankel của $(4\\pi r^2)J_1(ar)$ cho trong sách.||<b>31, 32.</b> Show $\\int f(x)J_0(qx)x\\,dx$ gives the book's formula; verify the Hankel transform of $(4\\pi r^2)J_1(ar)$ given in the book.⟧",
+        "⟦<b>34. Lấy mẫu bán kính đối xứng tròn.</b> Chứng minh cách suy ra $b(r)$ từ $B(q)$ lấy mẫu tại $q=0,\\alpha,2\\alpha,\\dots$.||<b>34. Radial sampling under circular symmetry.</b> Show how to determine $b(r)$ from $B(q)$ sampled at $q=0,\\alpha,2\\alpha,\\dots$.⟧",
+        "⟦<b>35. Biến đổi Abel.</b> Chứng minh hai lần biến đổi Abel liên tiếp của $f(r)$ bằng thể tích ngoài bán kính $x$.||<b>35. Abel transform.</b> Show two successive Abel transformations of $f(r)$ equal the volume outside radius $x$.⟧",
+        "⟦<b>36. Tự tương quan hai chiều.</b> Chứng minh biến đổi Abel của tự tương quan hai chiều của $f(r)$ là tự tương quan một chiều của biến đổi Abel $f_A(x)$.||<b>36. Two-dimensional autocorrelation.</b> Show the Abel transform of the two-dimensional autocorrelation of $f(r)$ is the one-dimensional autocorrelation of the Abel transform $f_A(x)$.⟧",
+        "⟦<b>37. Chu trình Abel-Fourier-Hankel.</b> Xác nhận chu trình bốn hàm cho trong sách (jinc, sinc, $\\Pi$, ...).||<b>37. Abel-Fourier-Hankel cycle.</b> Confirm the book's four-function cycle (jinc, sinc, $\\Pi$, ...).⟧",
     ],
     pitfalls=[
         "<b>⟦\"Dấu trong mũ của định lý affine không quan trọng.\"||\"The sign in the exponent of the affine theorem does not matter.\"⟧</b><p>⟦Đúng dấu $+$ lệch {{aff_dev}}; đổi dấu lệch {{aff_wrong}}.||The correct $+$ sign deviates {{aff_dev}}; the flipped sign deviates {{aff_wrong}}.⟧</p>",
@@ -569,5 +600,68 @@ K5 = frft_mat(0.5*np.pi/2); out5 = K5 @ herm(1); ph5 = np.angle(np.sum(out5*herm
 assert abs(ph5 + np.pi/4) < 1e-6; report("fr_ph", ph5, ".4f")'''),
         ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
 ⟦Hilbert: {{hb_cos}}, {{hb_two}}; $\\Pi$: {{hr_1}}, {{hr_02}}; giải tích {{an_dev}}, {{an_neg}}; đường bao {{env_dev}}; FM {{fm_dev}}; Kramers-Kronig {{kk_b}}, {{kk_num}}; 11 hệ số: {{dh_b}}, cực đại {{dh_peak}} tại {{dh_s}}; DHT {{hh_dev}}; phân số: {{fr_eig}}, {{fr_add}}, {{fr_ft}}, pha {{fr_ph}}.||Hilbert: {{hb_cos}}, {{hb_two}}; $\\Pi$: {{hr_1}}, {{hr_02}}; analytic {{an_dev}}, {{an_neg}}; envelope {{env_dev}}; FM {{fm_dev}}; Kramers-Kronig {{kk_b}}, {{kk_num}}; 11 coefficients: {{dh_b}}, maximum {{dh_peak}} at {{dh_s}}; DHT {{hh_dev}}; fractional: {{fr_eig}}, {{fr_add}}, {{fr_ft}}, phase {{fr_ph}}.⟧"""),
+        ("md", """## ⟦Bài tập cuối chương 13, phần A (tr. 372–373)||End-of-chapter-13 problems, part A (pp. 372–373)⟧
+🎯 **⟦Phương pháp này trả lời câu hỏi gì?||What question does this method answer?⟧** ⟦Sáu định lý Hilbert, định lý tích chập Hilbert, tự tương quan, cặp Hilbert từ đáp ứng xung nhân quả, ví dụ biến đổi Hankel và giá trị chính Cauchy có đúng khi kiểm bằng số?||Do the six Hilbert theorems, the Hilbert convolution theorem, autocorrelation, a Hilbert pair from a causal impulse response, a Hankel transform example and the Cauchy principal value hold when checked numerically?⟧"""),
+        ("code", r'''from scipy.signal import hilbert as _hilb
+def Hil(x): return _hilb(x).imag                                          # ⟦biến đổi Hilbert rời rạc qua tín hiệu giải tích||discrete Hilbert transform via the analytic signal⟧
+
+N16 = 4096; dt16 = 0.01; t16 = (np.arange(N16) - N16//2)*dt16
+f16 = np.exp(-0.3*t16**2)*np.cos(3*t16); g16 = np.exp(-0.2*(t16 - 0.5)**2)*np.sin(2*t16)
+Hf16 = Hil(f16); Hg16 = Hil(g16)
+
+# ⟦Bài 1(b): cộng tính||Problem 1(b): additivity⟧
+p1b_err = np.max(np.abs(Hil(f16 + g16) - (Hf16 + Hg16)))
+# ⟦Bài 1(c): dịch chuyển||Problem 1(c): shift⟧
+shift16 = 50
+p1c_err = np.max(np.abs(Hil(np.roll(f16, shift16))[300:-300] - np.roll(Hf16, shift16)[300:-300]))
+# ⟦Bài 1(d): công suất, ∫fg = ∫HfHg||Problem 1(d): power, ∫fg = ∫HfHg⟧
+p1d_lhs = np.sum(f16*g16)*dt16; p1d_rhs = np.sum(Hf16*Hg16)*dt16
+p1d_err = abs(p1d_lhs - p1d_rhs)/abs(p1d_lhs)
+assert p1b_err < 1e-9 and p1c_err < 1e-6 and p1d_err < 1e-3
+report("p1b_err", p1b_err, ".1e"); report("p1c_err", p1c_err, ".1e"); report("p1d_err", p1d_err, ".1e")
+
+# ⟦Bài 2: H(f*g) = Hf*g||Problem 2: H(f*g) = Hf*g⟧
+conv_fg16 = np.convolve(f16, g16, mode="same")*dt16
+p2_direct = Hil(conv_fg16)
+p2_via = np.convolve(Hf16, g16, mode="same")*dt16
+p2_err = np.max(np.abs(p2_direct[300:-300] - p2_via[300:-300]))/np.max(np.abs(p2_direct))
+assert p2_err < 1e-3
+report("p2_err", p2_err, ".1e")
+
+# ⟦Bài 3: f và Hf có cùng tự tương quan||Problem 3: f and Hf have the same autocorrelation⟧
+ac_f16 = np.correlate(f16, f16, mode="full"); ac_Hf16 = np.correlate(Hf16, Hf16, mode="full")
+p3_err = np.max(np.abs(ac_f16 - ac_Hf16))/np.max(np.abs(ac_f16))
+assert p3_err < 1e-3
+report("p3_err", p3_err, ".1e")
+
+# ⟦Bài 6: cặp Hilbert từ Re(F), Im(F) của e^{-t}H(t)||Problem 6: Hilbert pair from Re(F), Im(F) of e^{-t}H(t)⟧
+s6 = np.linspace(-30, 30, 8000)
+Re6 = 1/(1 + (2*np.pi*s6)**2); Im6 = -2*np.pi*s6/(1 + (2*np.pi*s6)**2)
+Hre6 = Hil(Re6)
+p6_err = np.max(np.abs(Hre6[300:-300] - (-Im6[300:-300])))/np.max(np.abs(Im6))
+assert p6_err < 0.02
+report("p6_err", p6_err, ".2%")
+
+# ⟦Bài 30: biến đổi Hankel của r²e^{-πr²} là (1/π − q²)e^{−πq²}||Problem 30: Hankel transform of r²e^{-πr²} is (1/π − q²)e^{−πq²}⟧
+def hankel0(f, q, rmax=60):
+    return 2*np.pi*integrate.quad(lambda r: f(r)*special.j0(2*np.pi*q*r)*r, 0, rmax, limit=400)[0]
+f30 = lambda r: r**2*np.exp(-np.pi*r**2)
+q30 = 0.6
+p30_num = hankel0(f30, q30)                                                # ⟦cách A: cầu phương trực tiếp||method A: direct quadrature⟧
+p30_formula = (1/np.pi - q30**2)*np.exp(-np.pi*q30**2)                     # ⟦cách B: công thức đóng suy từ đạo hàm tham số||method B: closed form via parameter differentiation⟧
+p30_err = abs(p30_num - p30_formula)
+assert p30_err < 1e-6
+report("p30_val", p30_formula, ".4f"); report("p30_err", p30_err, ".1e")
+
+# ⟦Bài 33: ∫sgn(x)dx = ∫sgn(x+1)dx theo giá trị chính đối xứng||Problem 33: ∫sgn(x)dx = ∫sgn(x+1)dx under symmetric principal value⟧
+def pv_sgn(shift, L=100000):
+    x = np.linspace(-L, L, 2000001)
+    return trap(np.sign(x + shift), x)
+p33_a = pv_sgn(0); p33_b_L1 = pv_sgn(1, L=100000); p33_b_L2 = pv_sgn(1, L=500000)
+assert abs(p33_a) < 1e-6                                                   # ⟦đối xứng: PV = 0||symmetric: PV = 0⟧
+report("p33_a", p33_a, ".1e"); report("p33_b", p33_b_L1, ".4f")'''),
+        ("md", """#### 📤 ⟦Đầu ra thật (bài tập cuối chương)||Real output (end-of-chapter problems)⟧
+⟦Bài 1: cộng tính lệch {{p1b_err}}, dịch chuyển lệch {{p1c_err}}, công suất lệch tương đối {{p1d_err}}. Bài 2: lệch tương đối {{p2_err}}. Bài 3: lệch tự tương quan {{p3_err}}. Bài 6: lệch cặp Hilbert {{p6_err}}. Bài 30: $(1/\\pi-q^2)e^{-\\pi q^2}=${{p30_val}} tại $q=0{,}6$, lệch hai cách {{p30_err}}. Bài 33: $\\int\\text{sgn}\\,x\\,dx=${{p33_a}} (giá trị chính đối xứng bằng 0), nhưng cắt lệch tâm ($x+1$) cho {{p33_b}} — phụ thuộc cách lấy giới hạn, đúng như bài toán cảnh báo.||"""
+        "Problem 1: additivity deviates by {{p1b_err}}, shift by {{p1c_err}}, power by a relative {{p1d_err}}. Problem 2: relative deviation {{p2_err}}. Problem 3: autocorrelation deviation {{p3_err}}. Problem 6: Hilbert-pair deviation {{p6_err}}. Problem 30: $(1/\\pi-q^2)e^{-\\pi q^2}=${{p30_val}} at $q=0.6$, deviation between the two methods {{p30_err}}. Problem 33: $\\int\\text{sgn}\\,x\\,dx=${{p33_a}} (the symmetric principal value is 0), but an off-center truncation ($x+1$) gives {{p33_b}} — depending on how the limit is taken, exactly the caution the problem raises.⟧"""),
     ],
 )
