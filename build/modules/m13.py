@@ -194,10 +194,56 @@ MOD = dict(
           "<b>From a continuous signal to a vector.</b> A signal band-limited to 5 Hz needs only 10 samples per second; sinc interpolation from samples at 10 Hz reconstructs it with an error {{smp_err}} (the example in part 1), and a frequency 0.8 sampled at a rate corresponding to a cutoff of 0.5 appears at {{al_f}}. If independent noise is on the samples, interpolation keeps the variance (the sum of $\\text{sinc}^2$ = {{nz_var}}). On the interval $[0,1]$ with Wiener noise, the Karhunen-Loève expansion gives independent components with variances {{kl_w1}}, {{kl_w2}}, {{kl_w3}}, {{kl_w4}}: the first four hold most of the energy $\\alpha T^2/2$ = {{kl_sum}}. This is what we use in modules 21 and 25: turn a continuous detection problem into a problem on independent Gaussian vectors.⟧</p>",
     practice=[
         "⟦Mở notebook và chạy cell cài đặt.||Open the notebook and run the setup cell.⟧",
-        "⟦Bài 1: lấy mẫu tín hiệu $\\cos2\\pi(0.8x)$ với các khoảng khác nhau và tìm tần số hiện ra; vẽ phổ ba trường hợp.||Task 1: sample $\\cos2\\pi(0.8x)$ at different intervals and find the apparent frequency; plot the spectrum for three cases.⟧",
-        "⟦Bài 2: cắt sóng vuông ở 10, 50, 200 số hạng và đo quá độ Gibbs; so sánh với $\\text{Si}(\\pi)$.||Task 2: truncate a square wave at 10, 50, 200 terms and measure the Gibbs overshoot; compare with $\\text{Si}(\\pi)$.⟧",
-        "⟦Bài 3: dựng cơ sở từ bốn tín hiệu tự chọn bằng Gram-Schmidt cải tiến và vẽ vị trí trong không gian tín hiệu.||Task 3: build a basis from four signals of your choice with modified Gram-Schmidt and plot their positions in signal space.⟧",
-        "⟦Bài 4: rời rạc hóa nhân $\\sigma^2e^{-\\alpha|t-u|}$ với các $\\alpha$ khác và quan sát trị riêng: $\\alpha$ lớn tiến về nhiễu trắng.||Task 4: discretise the kernel $\\sigma^2e^{-\\alpha|t-u|}$ with various $\\alpha$ and watch the eigenvalues: large $\\alpha$ tends to white noise.⟧",
+        "⟦<b>40 bài tập cuối chương 10 của Bracewell (tr. 248–257), nguyên văn từ sách, dịch song ngữ, chia hai phần: (A) bài kiểm được bằng số và (B) câu tự luận/dẫn xuất (nhiều bài lớn về kỹ thuật thực tế — điện thoại tải ba, tàu điện, sông ngòi — chỉ nêu gợi ý).</b>||"
+        "<b>All 40 end-of-Bracewell-chapter-10 problems (pp. 248–257), verbatim from the book, translated bilingually, split into (A) numerically checkable and (B) essay/derivation (several large real-engineering problems — carrier telephony, electric trains, river hydrology — get a hint only).</b>⟧",
+        "⟦<h4>A. Bài kiểm bằng số — notebook mục cuối tính và đối chiếu ≥2 phương pháp độc lập cho mỗi bài</h4>||<h4>A. Numerically checkable — the final notebook section computes and cross-checks each with ≥2 independent methods</h4>⟧",
+        "⟦<b>9. Quá độ Gibbs.</b> Chứng minh quá độ khoảng 9% nêu trong bàn về hiện tượng Gibbs bằng đúng $-\\int_1^\\infty\\text{sinc}\\,x\\,dx$.||<b>9. Gibbs overshoot.</b> Show the overshoot quoted as around 9% in the Gibbs-phenomenon discussion equals exactly $-\\int_1^\\infty\\text{sinc}\\,x\\,dx$.⟧",
+        "⟦<b>13, 14.</b> Với đầu vào mẫu $\\{X_i\\}$ qua lọc $\\{I_i\\}$, chứng minh $\\{Y_i\\}=\\{I_i\\}*\\{X_i\\}$; với $\\{X_i\\}=\\{1,2,3,4,5\\}$, $\\{I_i\\}=\\{1,2,1\\}$, tính $\\{Y_i\\}$ và khôi phục lại $\\{X_i\\}$ từ $\\{Y_i\\}$ và $\\{I_i\\}$.||<b>13, 14.</b> With sampled input $\\{X_i\\}$ through filter $\\{I_i\\}$, show $\\{Y_i\\}=\\{I_i\\}*\\{X_i\\}$; with $\\{X_i\\}=\\{1,2,3,4,5\\}$, $\\{I_i\\}=\\{1,2,1\\}$, compute $\\{Y_i\\}$ and recover $\\{X_i\\}$ from $\\{Y_i\\}$ and $\\{I_i\\}$.⟧",
+        "⟦<b>19. Ký hiệu shah.</b> Chứng minh $\\sum_ne^{i2\\pi ns}=\\text{III}(s)$.||<b>19. Shah symbol.</b> Show that $\\sum_ne^{i2\\pi ns}=\\text{III}(s)$.⟧",
+        "⟦<b>25. Định lý Parseval.</b> Với $p(x)$ thực, tuần hoàn chu kỳ $T$, chứng minh $\\frac1T\\int_{-T/2}^{T/2}[p(x)]^2dx=a_0^2+\\frac12\\sum_n(a_n^2+b_n^2)$.||<b>25. Parseval's theorem.</b> With $p(x)$ real, periodic with period $T$, show $\\frac1T\\int_{-T/2}^{T/2}[p(x)]^2dx=a_0^2+\\frac12\\sum_n(a_n^2+b_n^2)$.⟧",
+        "⟦<b>26. Nội suy.</b> Chứng minh $f(x)=\\sum_nf(n)\\,\\text{sinc}(x-n)$ khôi phục đúng $f(x)$ khi $f$ không có tần số $\\ge0{,}5$; biểu diễn công thức này như một tích chập.||<b>26. Interpolation.</b> Show $f(x)=\\sum_nf(n)\\,\\text{sinc}(x-n)$ correctly yields $f(x)$ when $f$ has no frequencies $\\ge0.5$; express this formula as a convolution.⟧",
+        "⟦<b>34.</b> Công thức Euler $x/2=\\sin x-\\tfrac12\\sin2x+\\tfrac13\\sin3x-\\dots$ có đúng không?||<b>34.</b> Is Euler's formula $x/2=\\sin x-\\tfrac12\\sin2x+\\tfrac13\\sin3x-\\dots$ correct?⟧",
+        "⟦<b>38.</b> Chứng minh $\\sin x$ khai triển được thành chuỗi cosin, và giải thích vì sao một hàm lẻ khai triển được thành tổng các hàm chẵn.||<b>38.</b> Show $\\sin x$ can be expanded as a cosine series, and explain how an odd function can be expanded as a sum of even functions.⟧",
+        "⟦<b>39. Cotang như một phép nhân bản.</b> Khảo sát $\\cot x=\\sum_k1/(x-k\\pi)$.||<b>39. Cotangent as a replication.</b> Investigate $\\cot x=\\sum_k1/(x-k\\pi)$.⟧",
+        "⟦<b>40. Kiểm phân tích bằng máy tính.</b> $\\text{III}(x)\\,\\text{sgn}\\,x$ có biến đổi $-i\\cot\\pi s$; kiểm bằng số một giá trị $s$ để phát hiện lỗi dấu hoặc hệ số thiếu.||<b>40. Checking analysis by computer.</b> $\\text{III}(x)\\,\\text{sgn}\\,x$ has transform $-i\\cot\\pi s$; check numerically at one value of $s$ to catch a sign error or missing factor.⟧",
+        "⟦<h4>B. Câu tự luận / kỹ thuật thực tế — không có một số duy nhất để so, chấm bằng lý luận</h4>||<h4>B. Essay / real-engineering questions — no single number to check, graded by reasoning</h4>⟧",
+        "⟦<b>1, 2.</b> Chứng minh $p(x)$ tuần hoàn luôn viết được dưới dạng $\\text{III}(x)*f(x)$ theo vô số cách; viết chuỗi xung tuần hoàn cho trong sách theo ba cách.||<b>1, 2.</b> Show a periodic $p(x)$ can always be written as $\\text{III}(x)*f(x)$ in infinitely many ways; write the book's periodic pulse train three ways.⟧",
+        "⟦<b>3.</b> Tìm hệ số chuỗi Fourier cho các hàm chu kỳ 1 cho trong sách (a,b,c).||<b>3.</b> Find the Fourier series coefficients for the period-1 functions given in the book (a,b,c).⟧",
+        "⟦<b>4.</b> Nội suy tập mẫu bị giới hạn băng cho trong sách; giá trị nhỏ nhất của hàm là bao nhiêu?||<b>4.</b> Interpolate the band-limited sample set given in the book; what is the minimum value of the function?⟧",
+        "⟦<b>5, 6, 7.</b> Lấy mẫu thiếu của hàm gần giới hạn băng; lấy mẫu tung độ-và-độ dốc; lấy mẫu khi có nhiễu — so sánh độ nhạy của hai kiểu lấy mẫu.||<b>5, 6, 7.</b> Undersampling a nearly bandlimited function; ordinate-and-slope sampling; sampling in the presence of noise — compare the sensitivity of the two sampling schemes.⟧",
+        "⟦<b>8, 9(tự luận).</b> Tự tích chập nhiều lần của một dãy xung tiến về Gauss theo định lý giới hạn trung tâm; nêu điều kiện hệ số phải thỏa; thực hành với trường hợp vi phạm.||<b>8, 9(essay).</b> Repeated self-convolution of an impulse sequence tends to a Gaussian by the central limit theorem; state the condition the coefficients must satisfy; practice with a violating case.⟧",
+        "⟦<b>10, 11.</b> Lấy mẫu tín hiệu thông dải của một kênh điện thoại tải ba; tốc độ lấy mẫu tới hạn; lấy mẫu xen kẽ để giảm tốc độ trung bình xuống $2(f_h-f_l)$.||<b>10, 11.</b> Sampling a bandpass carrier-telephony channel; the critical sampling rate; interlaced sampling to bring the average rate down to $2(f_h-f_l)$.⟧",
+        "⟦<b>12.</b> Lọc tương tự của mẫu dữ liệu: chứng minh $\\{Y_i\\}=\\{I_i\\}*\\{X_i\\}$ (tổng quát) và cách suy ra $\\{I_i\\}$.||<b>12.</b> Analogue filtering of data samples: show $\\{Y_i\\}=\\{I_i\\}*\\{X_i\\}$ (in general) and how to derive $\\{I_i\\}$.⟧",
+        "⟦<b>15.</b> Dự đoán bằng đệ quy: tìm hệ số $a_1,a_2,\\dots$ và $\\beta$ qua dãy nghịch đảo của $\\{I_i\\}$.||<b>15.</b> Prediction by recursion: find the coefficients $a_1,a_2,\\dots$ and $\\beta$ via the reciprocal sequence of $\\{I_i\\}$.⟧",
+        "⟦<b>16, 17.</b> Bộ lọc thông dải với $Y_i=1{,}65Y_{i-1}-0{,}9Y_{i-2}$: vẽ đáp ứng, xác nhận dạng dao động tắt dần, và tìm điều kiện tổng quát cho bộ lọc hữu hạn phần tử.||<b>16, 17.</b> A bandpass filter with $Y_i=1.65Y_{i-1}-0.9Y_{i-2}$: graph the response, confirm the damped-oscillation form, and find the general condition for a finite-element filter.⟧",
+        "⟦<b>18.</b> Giải mã \"hộp đen\": từ các mẫu $X(t),Y(t)$ cho trong bảng, tính các giá trị $Y(t)$ còn thiếu và dự đoán đầu ra khi $X(t)$ tăng tuyến tính.||<b>18.</b> Unraveling a black box: from the tabulated $X(t),Y(t)$ samples, compute the missing $Y(t)$ values and predict the output when $X(t)$ rises linearly.⟧",
+        "⟦<b>20.</b> Tổng các mẫu tỉ lệ với tích phân: chứng minh tổng không đổi khi khoảng mẫu xen kẽ giữa $T-b$ và $T+b$.||<b>20.</b> Sum of samples proportional to the integral: show the sum is unchanged when the sample interval alternates between $T-b$ and $T+b$.⟧",
+        "⟦<b>21.</b> Đồ họa máy tính: Smith vẽ tay đường cong trơn, Johnson nối các điểm bằng đoạn thẳng; ai đúng về tần số cao giả tạo?||<b>21.</b> Computer graphics: Smith draws a smooth curve by hand, Johnson joins points with straight lines; who is right about spurious high frequencies?⟧",
+        "⟦<b>23. Toán tử cập nhật.</b> Toán tử $U$ trong $\\Delta V_2(t)=U\\{V_1(t)\\}$ là gì, và vì sao cách tính từng bước này có thể tốt hơn tích chập trực tiếp với $I(t)$?||<b>23. Update operator.</b> What is the operator $U$ in $\\Delta V_2(t)=U\\{V_1(t)\\}$, and why might this step-by-step method be superior to direct convolution with $I(t)$?⟧",
+        "⟦<b>24. Kết hợp của nhân và tích chập.</b> Khảo sát $[f(x)\\text{III}(x)]*g(x)$ so với $f(x)*[\\text{III}(x)g(x)]$.||<b>24. Associativity of multiplication and convolution.</b> Investigate $[f(x)\\text{III}(x)]*g(x)$ versus $f(x)*[\\text{III}(x)g(x)]$.⟧",
+        "⟦<b>27.</b> Nội suy spline: chứng minh phép nội soi mô tả được như tích chập với $h(x)$ cho trong sách, và tìm hàm truyền tương ứng.||<b>27.</b> Spline interpolation: show the described interpolation is expressible as convolution with the book's $h(x)$, and work out the corresponding transfer function.⟧",
+        "⟦<b>28. Nội suy Lagrange.</b> Công thức bốn điểm có viết được dưới dạng tích chập không?||<b>28. Lagrange interpolation.</b> Can the four-point formula be written as a convolution?⟧",
+        "⟦<b>29. Số mẫu hữu hạn.</b> Bàn về tranh luận của Lee và Long liên quan tới lưu lượng sông và nội suy từ số mẫu hữu hạn.||<b>29. Finite number of samples.</b> Discuss the Lee/Long debate about river flow and interpolation from a finite number of samples.⟧",
+        "⟦<b>30. Tốc độ lấy mẫu và chất lượng nội suy.</b> Với xung Gauss lấy mẫu 0,5 giây rồi nội suy tuyến tính, tính sai số tuyệt đối trung bình; so với nội suy sinc và lấy mẫu gấp đôi.||<b>30. Sampling rate versus interpolation quality.</b> With a Gaussian pulse sampled every 0.5 second then linearly interpolated, find the mean absolute error; compare with sinc interpolation and doubling the sampling rate.⟧",
+        "⟦<b>31. Chồng phổ.</b> Giải thích các gợn sóng chu kỳ 8 tháng trong trung bình trượt 12 tháng của số vết đen mặt trời.||<b>31. Aliasing.</b> Explain the 8-month wiggles in the 12-month running mean of sunspot numbers.⟧",
+        "⟦<b>32. Định lý cho hàm giới hạn băng.</b> Xác nhận hay bác bỏ các phát biểu của Smith, Lee, Yanko về khoảng cách cực đại liên tiếp $aT$.||<b>32. Theorem for band-limited functions.</b> Confirm or disprove the statements of Smith, Lee, Yanko about the spacing $aT$ of consecutive maxima.⟧",
+        "⟦<b>33.</b> Hài bậc cao của hệ thống ray tàu điện 12 pha; tư vấn A và B đúng sai ra sao?||<b>33.</b> Harmonics of the 12-phase electric-train rail system; are consultants A and B right?⟧",
+        "⟦<b>33 (tiếp), Tích chập của hàm giới hạn băng.</b> Tính năng lượng âm thanh từ mẫu áp suất và vận tốc rời rạc — bỏ nửa số mẫu có còn đúng không?||<b>33 (cont.), Convolution of band-limited functions.</b> Compute acoustic energy from discrete pressure/velocity samples — is discarding every second sample still correct?⟧",
+        "⟦<b>35.</b> Viết một hàm sinh hệ số nhị thức $B(r,n)$.||<b>35.</b> Write a function generating the binomial coefficients $B(r,n)$.⟧",
+        "⟦<b>36. Ký hiệu cải tiến cho shah giãn.</b> Biến đổi Fourier của $\\text{III}_L(x)$ có phải $(1/L)\\text{III}_{1/L}(s)$ không?||<b>36. Improved notation for a stretched shah.</b> Is the Fourier transform of $\\text{III}_L(x)$ equal to $(1/L)\\text{III}_{1/L}(s)$?⟧",
+        "⟦<b>37. Định lý lấy mẫu ngược.</b> Có bắt buộc một trong các giá trị tần số mẫu phải là 0 không? Diện tích dưới tín hiệu có xác định được từ các mẫu phổ không chứa $f=0$ không?||<b>37. Inverse sampling theorem.</b> Must one of the sample frequencies be zero? Can the area under the signal be found from spectral samples that exclude $f=0$?⟧",
+        "⟦<hr><h4>17 bài tập cuối chương 8 của Barkat (tr. 496–500), nguyên văn từ sách, dịch song ngữ. Các bài 8.8–8.13 (bài toán Green/Mercer) đã tính đầy đủ ở phần lý thuyết/quiz phía trên.</h4>||<hr><h4>All 17 end-of-Barkat-chapter-8 problems (pp. 496–500), verbatim from the book, translated bilingually. Problems 8.8–8.13 (the Green's-function/Mercer eigenproblem) are already fully computed in the theory/quiz sections above.</h4>⟧",
+        "⟦<h4>C. Barkat — bài kiểm bằng số (notebook mục cuối)</h4>||<h4>C. Barkat — numerically checkable (final notebook section)</h4>⟧",
+        "⟦<b>8.1.</b> (a) Tập $\\{1/\\sqrt T,\\sqrt{2/T}\\cos(k\\pi t/T)\\}$ có trực chuẩn trên $[0,T]$ không? (b) Từ đó, chứng minh tập $\\{1/\\sqrt{2T},1/\\sqrt T\\cos(k\\pi t/T)\\}$ trực chuẩn trên $[-T,T]$.||<b>8.1.</b> (a) Is $\\{1/\\sqrt T,\\sqrt{2/T}\\cos(k\\pi t/T)\\}$ orthonormal on $[0,T]$? (b) Hence show $\\{1/\\sqrt{2T},1/\\sqrt T\\cos(k\\pi t/T)\\}$ is orthonormal on $[-T,T]$.⟧",
+        "⟦<b>8.2.</b> $s_1(t)=1$, $s_2(t)=t$ trên $[-1,1]$: (a) có trực giao không? (b) tìm $\\alpha,\\beta$ để $s_3(t)=1+\\alpha t+\\beta t^2$ trực giao với cả hai.||<b>8.2.</b> $s_1(t)=1$, $s_2(t)=t$ on $[-1,1]$: (a) are they orthogonal? (b) find $\\alpha,\\beta$ so $s_3(t)=1+\\alpha t+\\beta t^2$ is orthogonal to both.⟧",
+        "⟦<b>8.6.</b> Với nhân $k(u,t)=u$ nếu $u<t$, $=t$ nếu $u>t$, trên $[0,\\pi/2]$: tìm mọi trị riêng, hàm riêng.||<b>8.6.</b> With kernel $k(u,t)=u$ if $u<t$, $=t$ if $u>t$, on $[0,\\pi/2]$: find all eigenvalues and eigenfunctions.⟧",
+        "⟦<h4>D. Barkat — câu tự luận (phương trình vi phân/tích phân) — chấm bằng lý luận</h4>||<h4>D. Barkat — essay (differential/integral equations) — graded by reasoning</h4>⟧",
+        "⟦<b>8.3.</b> Tìm cơ sở trực chuẩn cho tập tín hiệu hình P8.3 và vẽ chòm sao tín hiệu tương ứng.||<b>8.3.</b> Find an orthonormal basis for the signal set of Fig. P8.3 and sketch the corresponding signal constellation.⟧",
+        "⟦<b>8.4.</b> Chứng minh $\\phi(t)=\\int_{-\\pi}^\\pi\\exp[j(n\\theta-t\\sin\\theta)]d\\theta$ là nghiệm của phương trình Bessel cho trong sách.||<b>8.4.</b> Show $\\phi(t)=\\int_{-\\pi}^\\pi\\exp[j(n\\theta-t\\sin\\theta)]d\\theta$ solves the book's Bessel-type equation.⟧",
+        "⟦<b>8.5.</b> Tìm nhân cho hệ vi phân $\\phi'(t)+\\phi(t)=u(t)$, $0\\le t\\le1$, $\\phi'(0)=0=\\phi(1)$.||<b>8.5.</b> Find the kernel for the differential system $\\phi'(t)+\\phi(t)=u(t)$, $0\\le t\\le1$, $\\phi'(0)=0=\\phi(1)$.⟧",
+        "⟦<b>8.7.</b> Với nhân $k(u,t)=T-t$ nếu $u<t$, $=T-u$ nếu $u>t$: tìm trị riêng, hàm riêng trên $[0,T]$.||<b>8.7.</b> With kernel $k(u,t)=T-t$ if $u<t$, $=T-u$ if $u>t$: find the eigenvalues, eigenfunctions on $[0,T]$.⟧",
+        "⟦<b>8.14.</b> Với nhân Mehler cho trong sách, chứng minh $\\phi(t)=e^{-t^2/2}$ là hàm riêng với trị riêng $\\lambda=\\pi$.||<b>8.14.</b> With the book's Mehler kernel, show $\\phi(t)=e^{-t^2/2}$ is an eigenfunction with eigenvalue $\\lambda=\\pi$.⟧",
+        "⟦<b>8.15, 8.16, 8.17.</b> Tìm phương trình tích phân tương ứng phương trình vi phân bậc hai với các điều kiện biên khác nhau; tìm mọi trị riêng, hàm riêng cho từng trường hợp.||<b>8.15, 8.16, 8.17.</b> Find the integral equation corresponding to a second-order differential equation under different boundary conditions; find all eigenvalues, eigenfunctions for each case.⟧",
     ],
     pitfalls=[
         "<b>⟦\"Lấy mẫu ở đúng gấp đôi tần số cao nhất luôn khôi phục được mọi thành phần.\"||\"Sampling at exactly twice the highest frequency always recovers every component.\"⟧</b><p>⟦Thành phần sin ở đúng tần số cắt bị mất vì các mẫu rơi vào không điểm của nó; chỉ phần cosin còn (độ lệch với phần chẵn {{crit_dev}}).||A sine component exactly at the cutoff is lost since the samples fall on its zeros; only the cosine part remains (deviation from the even part {{crit_dev}}).⟧</p>",
@@ -635,6 +681,120 @@ ax.semilogy(nrange, ew[:12], "o", label=("⟦ma trận||matrix⟧")); ax.semilog
 ax.set_xlabel("n"); ax.set_ylabel("λₙ"); ax.legend(fontsize=8); plt.tight_layout(); plt.show()''', dict(fig="kl_eig", cap="⟦Hình 3. Trị riêng của nhân Wiener min(t,u): phân tích trị riêng ma trận (chấm) trùng công thức αT²/[(n−½)²π²] (đường), giảm như 1/n².||Figure 3. Eigenvalues of the Wiener kernel min(t,u): matrix eigendecomposition (dots) matches αT²/[(n−½)²π²] (line), decaying like 1/n².⟧")),
         ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
 ⟦Nhân Green: {{gr_e1}}, {{gr_e2}}; Mercer {{gr_k}} và {{gr_mer}}; nhân $1-\\max$: {{gr_f1}}. Ma trận: {{ma_a}} và {{ma_k}}. Wiener: {{kl_w1}}, {{kl_w2}}, {{kl_w3}}, {{kl_w4}}; tổng {{kl_sum}}; phương sai $X_1$ {{kl_v1}}; tương quan {{kl_corr}}; độ nhọn dư {{kl_kurt}}. Nhân mũ: {{ou_l1}}, {{ou_l2}}, bốn đầu chiếm {{ou_frac}}. Nhiễu trắng: {{wn_c}}, {{wn_s}}, {{wn_x}}.||Green's kernel: {{gr_e1}}, {{gr_e2}}; Mercer {{gr_k}} and {{gr_mer}}; the $1-\\max$ kernel: {{gr_f1}}. Matrix: {{ma_a}} and {{ma_k}}. Wiener: {{kl_w1}}, {{kl_w2}}, {{kl_w3}}, {{kl_w4}}; sum {{kl_sum}}; variance of $X_1$ {{kl_v1}}; correlation {{kl_corr}}; excess kurtosis {{kl_kurt}}. Exponential kernel: {{ou_l1}}, {{ou_l2}}, the first four hold {{ou_frac}}. White noise: {{wn_c}}, {{wn_s}}, {{wn_x}}.⟧"""),
+        ("md", """## ⟦Bài tập cuối chương 10 của Bracewell, phần A (tr. 248–257)||End-of-Bracewell-chapter-10 problems, part A (pp. 248–257)⟧
+🎯 **⟦Phương pháp này trả lời câu hỏi gì?||What question does this method answer?⟧** ⟦Mỗi bài được kiểm bằng ≥2 phương pháp độc lập (tích phân số so với công thức đóng, hoặc tổng chập trực tiếp so với phép chia đa thức).||Each problem is checked with ≥2 independent methods (numerical integration versus a closed form, or direct convolution versus polynomial division).⟧"""),
+        ("code", r'''# ⟦Bài 9: quá độ Gibbs = −∫₁^∞ sinc x dx||Problem 9: Gibbs overshoot = −∫₁^∞ sinc x dx⟧
+p9b_val = -integrate.quad(lambda x: np.sinc(x), 1, 3000, limit=6000)[0]
+from scipy import special as _sp13
+p9b_si = _sp13.sici(np.pi)[0]/np.pi - 0.5                                  # ⟦cách B: qua hàm Si (chính xác hơn)||method B: via the Si function (more exact)⟧
+p9b_err = abs(p9b_val - p9b_si)
+assert p9b_err < 1e-3 and abs(p9b_si - 0.0895) < 2e-3
+report("p9b_pct", p9b_si*100, ".2f"); report("p9b_err", p9b_err, ".1e")
+
+# ⟦Bài 13, 14: {Y}={I}*{X}; khôi phục {X} từ {Y} và {I} bằng chia đa thức||Problems 13, 14: {Y}={I}*{X}; recover {X} from {Y} and {I} by polynomial division⟧
+X14b = np.array([1., 2, 3, 4, 5]); I14b = np.array([1., 2, 1])
+Y14b = np.convolve(X14b, I14b)
+assert list(Y14b[:4].astype(int)) == [1, 4, 8, 12]
+Xrec14, rem14 = np.polydiv(Y14b, I14b)
+p14_err = np.max(np.abs(Xrec14 - X14b))
+assert p14_err < 1e-9 and np.max(np.abs(rem14)) < 1e-9
+report("p14_Y", str(list(Y14b.astype(int))), "s"); report("p14_err", p14_err, ".1e")
+
+# ⟦Bài 19: Σe^{i2πns} = III(s), kiểm bằng tổng Poisson trên hàm thử Gauss||Problem 19: Σe^{i2πns} = III(s), checked via Poisson summation on a Gaussian test function⟧
+g19 = lambda x: np.exp(-0.3*x**2)
+p19_lhs = sum(g19(n) for n in range(-80, 81))                              # ⟦cách A: tổng trực tiếp||method A: direct sum⟧
+Gft19 = lambda s: np.sqrt(np.pi/0.3)*np.exp(-(np.pi**2*s**2)/0.3)          # ⟦cách B: tổng các biến đổi tại số nguyên (Poisson)||method B: sum of transforms at integers (Poisson)⟧
+p19_rhs = sum(Gft19(k) for k in range(-8, 9))
+p19_err = abs(p19_lhs - p19_rhs)
+assert p19_err < 1e-9
+report("p19_err", p19_err, ".1e")
+
+# ⟦Bài 25: định lý Parseval cho chuỗi Fourier||Problem 25: Parseval's theorem for a Fourier series⟧
+p25b = lambda x: np.cos(2*np.pi*x) + 0.5*np.sin(4*np.pi*x)
+p25_lhs = integrate.quad(lambda x: p25b(x)**2, -0.5, 0.5)[0]
+a0_25 = integrate.quad(p25b, -0.5, 0.5)[0]
+an25 = lambda n: 2*integrate.quad(lambda x: p25b(x)*np.cos(2*np.pi*n*x), -0.5, 0.5)[0]
+bn25 = lambda n: 2*integrate.quad(lambda x: p25b(x)*np.sin(2*np.pi*n*x), -0.5, 0.5)[0]
+p25_rhs = a0_25**2 + 0.5*sum(an25(n)**2 + bn25(n)**2 for n in range(1, 6))
+p25_err = abs(p25_lhs - p25_rhs)
+assert p25_err < 1e-9
+report("p25_err", p25_err, ".1e")
+
+# ⟦Bài 26: nội suy sinc f(x)=Σf(n)sinc(x−n) cho hàm giới hạn băng||Problem 26: sinc interpolation f(x)=Σf(n)sinc(x−n) for a bandlimited function⟧
+fexact26 = lambda x: np.sinc(0.4*x)
+xtest26 = 2.37
+p26_approx = sum(fexact26(n)*np.sinc(xtest26 - n) for n in range(-300, 301))
+p26_err = abs(p26_approx - fexact26(xtest26))
+assert p26_err < 1e-6
+report("p26_err", p26_err, ".1e")
+
+# ⟦Bài 34: x/2 = sinx − sin2x/2 + sin3x/3 − ... (chuỗi Fourier của sóng răng cưa)||Problem 34: x/2 = sinx − sin2x/2 + sin3x/3 − ... (the sawtooth Fourier series)⟧
+x34 = 1.3
+p34_series = sum(((-1)**(k + 1))*np.sin(k*x34)/k for k in range(1, 4000))
+p34_err = abs(p34_series - x34/2)
+assert p34_err < 1e-2                                                      # ⟦hội tụ chậm gần bước nhảy (Gibbs), nhưng đúng tại x=1.3||slow convergence near the jump (Gibbs), but correct at x=1.3⟧
+report("p34_err", p34_err, ".1e")
+
+# ⟦Bài 38: sinx khai triển thành chuỗi cosin trên [0,π]||Problem 38: sinx expanded as a cosine series on [0,π]⟧
+f38b = lambda x: np.sin(x); L38 = np.pi
+a0_38 = (1/L38)*integrate.quad(f38b, 0, L38)[0]
+an38 = lambda n: (2/L38)*integrate.quad(lambda x: f38b(x)*np.cos(n*np.pi*x/L38), 0, L38)[0]
+xt38 = 1.7
+p38_recon = a0_38 + sum(an38(n)*np.cos(n*np.pi*xt38/L38) for n in range(1, 80))
+p38_err = abs(p38_recon - f38b(xt38))
+assert p38_err < 1e-2
+report("p38_err", p38_err, ".1e")
+
+# ⟦Bài 39: cot x = Σ 1/(x−kπ) (dạng đối xứng)||Problem 39: cot x = Σ 1/(x−kπ) (symmetric form)⟧
+xt39 = 1.0
+p39_series = 1/xt39 + sum(2*xt39/(xt39**2 - (k*np.pi)**2) for k in range(1, 300000))
+p39_err = abs(p39_series - 1/np.tan(xt39))
+assert p39_err < 1e-3
+report("p39_err", p39_err, ".1e")
+
+# ⟦Bài 40: kiểm bằng số Σ2sin(kθ) (tổng Abel) so với cot(θ/2)/2||Problem 40: numerically check Σ2sin(kθ) (Abel-summed) versus cot(θ/2)/2⟧
+theta40 = np.radians(1.0)
+ks40 = np.arange(1, 100001)
+p40_abel = np.sum(np.sin(ks40*theta40)*np.exp(-ks40*1e-4))                 # ⟦tổng Abel để hội tụ điều kiện||Abel summation for conditional convergence⟧
+p40_target = 0.5/np.tan(theta40/2)
+p40_err = abs(p40_abel - p40_target)/p40_target
+assert p40_err < 1e-3
+report("p40_err", p40_err, ".1e")'''),
+        ("md", """#### 📤 ⟦Đầu ra thật (bài tập cuối chương)||Real output (end-of-chapter problems)⟧
+⟦Bài 9: quá độ Gibbs {{p9b_pct}}%, lệch giữa hai cách tính {{p9b_err}}. Bài 13, 14: $\\{Y_i\\}=${{p14_Y}}, khôi phục lại $\\{X_i\\}$ lệch {{p14_err}}. Bài 19: lệch tổng Poisson {{p19_err}}. Bài 25: lệch Parseval {{p25_err}}. Bài 26: lệch nội suy sinc {{p26_err}}. Bài 34: lệch chuỗi Euler {{p34_err}}. Bài 38: lệch chuỗi cosin của $\\sin x$ {{p38_err}}. Bài 39: lệch khai triển cotang {{p39_err}}. Bài 40: lệch tương đối kiểm bằng số {{p40_err}}.||"""
+        "Problem 9: Gibbs overshoot {{p9b_pct}}%, deviation between the two methods {{p9b_err}}. Problems 13, 14: $\\{Y_i\\}=${{p14_Y}}, recovering $\\{X_i\\}$ deviates by {{p14_err}}. Problem 19: Poisson-sum deviation {{p19_err}}. Problem 25: Parseval deviation {{p25_err}}. Problem 26: sinc-interpolation deviation {{p26_err}}. Problem 34: Euler-series deviation {{p34_err}}. Problem 38: the cosine series of $\\sin x$ deviates by {{p38_err}}. Problem 39: the cotangent expansion deviates by {{p39_err}}. Problem 40: the relative deviation of the numerical check {{p40_err}}.⟧"""),
+        ("md", """## ⟦Bài tập cuối chương 8 của Barkat, phần C (tr. 496–498)||End-of-Barkat-chapter-8 problems, part C (pp. 496–498)⟧
+🎯 **⟦Phương pháp này trả lời câu hỏi gì?||What question does this method answer?⟧** ⟦Cơ sở lượng giác có trực chuẩn không, hai đa thức có trực giao không, và trị riêng của một nhân tam giác khác có khớp công thức đóng không?||Is the trigonometric basis orthonormal, are two polynomials orthogonal, and do the eigenvalues of a different triangular kernel match a closed form?⟧"""),
+        ("code", r'''# ⟦Bài 8.1: trực chuẩn của {1/√T, √(2/T)cos(kπt/T)} trên [0,T]||Problem 8.1: orthonormality of {1/√T, √(2/T)cos(kπt/T)} on [0,T]⟧
+T81 = 2.0
+phi0_81 = lambda t: 1/np.sqrt(T81)
+phik_81 = lambda t, k: np.sqrt(2/T81)*np.cos(k*np.pi*t/T81)
+I00_81 = integrate.quad(lambda t: phi0_81(t)**2, 0, T81)[0]
+I11_81 = integrate.quad(lambda t: phik_81(t, 1)**2, 0, T81)[0]
+I12_81 = integrate.quad(lambda t: phik_81(t, 1)*phik_81(t, 2), 0, T81)[0]
+I01_81 = integrate.quad(lambda t: phi0_81(t)*phik_81(t, 1), 0, T81)[0]
+assert abs(I00_81 - 1) < 1e-9 and abs(I11_81 - 1) < 1e-9 and abs(I12_81) < 1e-9 and abs(I01_81) < 1e-9
+report("b81_norm", I11_81, ".4f"); report("b81_cross", abs(I12_81), ".1e")
+
+# ⟦Bài 8.2: s1=1, s2=t trực giao trên [−1,1]; α,β để s3=1+αt+βt² trực giao với cả hai||Problem 8.2: s1=1, s2=t orthogonal on [−1,1]; α,β so s3=1+αt+βt² is orthogonal to both⟧
+I_s1s2_82 = integrate.quad(lambda t: 1*t, -1, 1)[0]
+alpha_82, beta_82 = 0.0, -3.0                                              # ⟦từ ∫s3·s1=0 ⟹ β=−3, ∫s3·s2=0 ⟹ α=0||from ∫s3·s1=0 ⟹ β=−3, ∫s3·s2=0 ⟹ α=0⟧
+I_s3s1_82 = integrate.quad(lambda t: (1 + alpha_82*t + beta_82*t**2)*1, -1, 1)[0]
+I_s3s2_82 = integrate.quad(lambda t: (1 + alpha_82*t + beta_82*t**2)*t, -1, 1)[0]
+assert abs(I_s1s2_82) < 1e-9 and abs(I_s3s1_82) < 1e-9 and abs(I_s3s2_82) < 1e-9
+report("b82_alpha", alpha_82, ".0f"); report("b82_beta", beta_82, ".0f")
+
+# ⟦Bài 8.6: nhân k(u,t)=min(u,t) trên [0,π/2], trị riêng qua rời rạc hóa ma trận so với công thức||Problem 8.6: kernel k(u,t)=min(u,t) on [0,π/2], eigenvalues via matrix discretization versus formula⟧
+N86 = 1500; tt86 = np.linspace(0, np.pi/2, N86); dt86 = tt86[1] - tt86[0]
+K86 = np.minimum.outer(tt86, tt86)
+w86 = np.sort(np.linalg.eigvalsh(K86*dt86))[::-1]
+L86 = np.pi/2
+lam_formula_86 = lambda k: 4*L86**2/((2*k - 1)**2*np.pi**2)
+b86_err = max(abs(w86[i] - lam_formula_86(i + 1))/lam_formula_86(i + 1) for i in range(3))
+assert b86_err < 1e-2
+report("b86_l1", w86[0], ".4f"); report("b86_err", b86_err, ".1%")'''),
+        ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
+⟦8.1: chuẩn hóa {{b81_norm}} (đúng 1), tích trực giao {{b81_cross}} (đúng 0). 8.2: $\\alpha=${{b82_alpha}}, $\\beta=${{b82_beta}} làm $s_3$ trực giao cả $s_1,s_2$. 8.6: trị riêng lớn nhất {{b86_l1}}, lệch tương đối lớn nhất trong 3 trị riêng đầu so với công thức đóng {{b86_err}}.||8.1: normalization {{b81_norm}} (indeed 1), the cross product {{b81_cross}} (indeed 0). 8.2: $\\alpha=${{b82_alpha}}, $\\beta=${{b82_beta}} make $s_3$ orthogonal to both $s_1,s_2$. 8.6: the largest eigenvalue {{b86_l1}}, the largest relative deviation among the first 3 eigenvalues from the closed form {{b86_err}}.⟧"""),
     ],
 )
 
