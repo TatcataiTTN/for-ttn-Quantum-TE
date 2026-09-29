@@ -155,10 +155,30 @@ MOD = dict(
           "<b>Choosing a model for clutter amplitude.</b> If the background is only thermal (a sum of many independent contributions, central limit), the two quadrature components are Gaussian and the amplitude is Rayleigh: the probability that the amplitude exceeds $\\sigma$ is $1-F(\\sigma)$ = {{ray_tail}}. With a fixed signal added, the amplitude is Rice, $F_R(2)$ = {{rice_F}} in the example above. If the mean reflectivity varies slowly across regions (rough sea), the product speckle times texture gives K, heavier-tailed than Rayleigh, and the threshold for the same false-alarm probability must be much higher: this is why CFAR detection exists. The Cauchy is the extreme case, with no mean: {{cau_100}} for every $n$.⟧</p>",
     practice=[
         "⟦Mở notebook và chạy cell cài đặt.||Open the notebook and run the setup cell.⟧",
-        "⟦Bài 1: kiểm bằng mô phỏng $P(X\\ge r)=P(Y\\le n)$ cho nhị thức và Pascal với các $p$ khác nhau.||Task 1: check $P(X\\ge r)=P(Y\\le n)$ by simulation for binomial and Pascal with various $p$.⟧",
-        "⟦Bài 2: đối với Rice, thay $\\lambda$ từ 0 tới 9 và quan sát mật độ chuyển từ Rayleigh sang gần Gauss (hình 2.12).||Task 2: for the Rice, vary $\\lambda$ from 0 to 9 and watch the density move from Rayleigh to nearly Gaussian (Fig. 2.12).⟧",
-        "⟦Bài 3: tính xác suất vượt ngưỡng cố định của Rayleigh, Weibull $b=1.5$ và K ($\\nu=1$) cùng trung bình bình phương và so sánh đuôi.||Task 3: compute the probability of exceeding a fixed threshold for Rayleigh, Weibull $b=1.5$ and K ($\\nu=1$) with the same mean square and compare the tails.⟧",
-        "⟦Bài 4: xác nhận $X=ST$ cho K bằng mô phỏng hai bước rồi so histogram với công thức Bessel.||Task 4: confirm $X=ST$ for K by a two-step simulation and compare the histogram with the Bessel formula.⟧",
+        "⟦<b>20 bài tập cuối chương 2 của Barkat (tr. 138–139), nguyên văn từ sách, dịch song ngữ, chia hai phần.</b>||"
+        "<b>All 20 end-of-Barkat-chapter-2 problems (pp. 138–139), verbatim from the book, translated bilingually, split into two parts.</b>⟧",
+        "⟦<h4>A. Bài kiểm bằng số — notebook mục cuối tính và đối chiếu ≥2 phương pháp độc lập cho mỗi bài</h4>||<h4>A. Numerically checkable — the final notebook section computes and cross-checks each with ≥2 independent methods</h4>⟧",
+        "⟦<b>2.1.</b> Gieo một cặp xúc xắc sáu lần; thành công khi tổng bằng 7. (a) Xác suất thành công đúng hai lần. (b) Xác suất không thành công lần nào.||<b>2.1.</b> A pair of dice is rolled six times; a success is when the sum is 7. (a) Probability of exactly two successes. (b) Probability of no success at all.⟧",
+        "⟦<b>2.4.</b> $X$ Poisson tham số $\\lambda$, $P(X=0)=0{,}2$: tính $P(X>2)$.||<b>2.4.</b> $X$ is Poisson with parameter $\\lambda$, $P(X=0)=0.2$: find $P(X>2)$.⟧",
+        "⟦<b>2.5.</b> Cuộc gọi đến Poisson cường độ 12/giờ: (a) xác suất hơn 15 cuộc trong một giờ; (b) xác suất không cuộc nào trong 15 phút.||<b>2.5.</b> Incoming calls are Poisson with intensity 12/hour: (a) probability of more than 15 calls in an hour; (b) probability of no calls in a 15-minute break.⟧",
+        "⟦<b>2.6.</b> $X$ Poisson với $P(X=2)=1{,}5\\,P(X=1)$: tính $P(X=0)$ và $P(X=3)$.||<b>2.6.</b> $X$ is Poisson with $P(X=2)=1.5\\,P(X=1)$: find $P(X=0)$ and $P(X=3)$.⟧",
+        "⟦<b>2.9.</b> $X$ Gauss chuẩn tắc: xác suất $X>1$.||<b>2.9.</b> $X$ is standard Gaussian: the probability that $X>1$.⟧",
+        "⟦<b>2.10.</b> $X\\sim N(0,1)$: xác suất $X>3$.||<b>2.10.</b> $X\\sim N(0,1)$: the probability that $X>3$.⟧",
+        "⟦<b>2.11.</b> Hai xúc xắc gieo 200 lần, thành công khi tổng bằng 7: (a) xác suất thành công ít nhất 20% số lần (nhị thức chính xác); (b) dùng định lý giới hạn trung tâm để tính lại.||<b>2.11.</b> Two dice thrown 200 times, success when the sum is 7: (a) probability of success at least 20% of the time (exact binomial); (b) use the central limit theorem to re-evaluate.⟧",
+        "⟦<b>2.13.</b> $X$ Gauss trung bình 1, phương sai 2: tính (a) $P(X>2)$, (b) $P(1{,}6\\le X\\le2{,}2)$.||<b>2.13.</b> $X$ is Gaussian, mean 1, variance 2: find (a) $P(X>2)$, (b) $P(1.6\\le X\\le2.2)$.⟧",
+        "⟦<b>2.14.</b> $X$ đều trên $[1,6]$: tìm mật độ $f_Y(y)$ của $Y=1/X$.||<b>2.14.</b> $X$ is uniform on $[1,6]$: find the density $f_Y(y)$ of $Y=1/X$.⟧",
+        "⟦<b>2.15.</b> $X$ đều trên $[0,1]$: tìm mật độ của (a) $Y=X^2$, (b) $Z=e^X$.||<b>2.15.</b> $X$ is uniform on $[0,1]$: find the density of (a) $Y=X^2$, (b) $Z=e^X$.⟧",
+        "⟦<b>2.19.</b> Chứng minh hàm đặc trưng của phân bố Cauchy (với $\\alpha=0$) là $\\Phi_X(\\omega)=e^{-\\beta|\\omega|}$.||<b>2.19.</b> Show the characteristic function of the Cauchy distribution (with $\\alpha=0$) is $\\Phi_X(\\omega)=e^{-\\beta|\\omega|}$.⟧",
+        "⟦<h4>B. Câu tự luận / dẫn xuất — không có một số duy nhất để so, chấm bằng lý luận</h4>||<h4>B. Essay / derivation questions — no single number to check, graded by reasoning</h4>⟧",
+        "⟦<b>2.2.</b> Bình 10 trắng, 4 đen, 5 đỏ, rút không hoàn lại: xác suất quả trắng thứ tư xuất hiện ở lần rút thứ bảy.||<b>2.2.</b> An urn with 10 white, 4 black, 5 red, drawn without replacement: the probability the 4th white ball appears on the 7th draw.⟧",
+        "⟦<b>2.3.</b> Nhảy dù trúng vùng chỉ định 90% số lần, 10 người nhảy: (a) ít nhất 6 người trúng vùng; (b) không ai trúng; (c) huấn luyện có \"thành công\" theo tiêu chí xác suất $\\ge0{,}93$ cho ít nhất 70% trúng vùng không?||<b>2.3.</b> A parachutist lands in a target zone 90% of the time, 10 jump: (a) at least 6 land in the zone; (b) none lands in the zone; (c) is the training \"successful\" by the criterion of probability $\\ge0.93$ that at least 70% land in the zone?⟧",
+        "⟦<b>2.7.</b> Chứng minh phân bố mũ có \"tính không nhớ\": $P(X\\ge x_1+x_2\\mid X>x_1)=P(X\\ge x_2)$.||<b>2.7.</b> Show the exponential distribution has the \"lack of memory property\": $P(X\\ge x_1+x_2\\mid X>x_1)=P(X\\ge x_2)$.⟧",
+        "⟦<b>2.8.</b> Giải lại bài 2.5 nhưng giả sử $X$ có phân bố mũ.||<b>2.8.</b> Solve problem 2.5 again, assuming $X$ has an exponential distribution.⟧",
+        "⟦<b>2.12.</b> $S=X_1+\\dots+X_{100}$, mỗi $X_k$ Poisson $\\lambda=0{,}032$: (a) $P(S>5)$; (b) dùng định lý giới hạn trung tâm để tính lại.||<b>2.12.</b> $S=X_1+\\dots+X_{100}$, each $X_k$ Poisson $\\lambda=0.032$: (a) $P(S>5)$; (b) re-evaluate using the central limit theorem.⟧",
+        "⟦<b>2.16.</b> $X,Y$ chuẩn tắc độc lập: tìm mật độ của (a) $Z=XY$, (b) $W=X/Y$.||<b>2.16.</b> $X,Y$ are independent standard normal: find the density of (a) $Z=XY$, (b) $W=X/Y$.⟧",
+        "⟦<b>2.17.</b> $X_1,X_2$ Gauss chung mật độ đối xứng tròn; với $Y_1=\\sqrt{X_1^2+X_2^2}$, $Y_2=X_1/X_2$, tìm $f_{Y_1}(y_1)$ và $f_{Y_2}(y_2)$.||<b>2.17.</b> $X_1,X_2$ have a circularly symmetric joint Gaussian density; with $Y_1=\\sqrt{X_1^2+X_2^2}$, $Y_2=X_1/X_2$, find $f_{Y_1}(y_1)$ and $f_{Y_2}(y_2)$.⟧",
+        "⟦<b>2.18.</b> Dùng hàm phân phối, suy ra mật độ của phân bố $t$-Student (2.171).||<b>2.18.</b> Using the distribution function, derive the density of Student's $t$-distribution (2.171).⟧",
+        "⟦<b>2.20.</b> Với phân bố Weibull, chứng minh trung bình và phương sai đúng như (2.248) và (2.249).||<b>2.20.</b> For the Weibull distribution, show the mean and variance are as given by (2.248) and (2.249).⟧",
     ],
     pitfalls=[
         "<b>⟦\"Trung bình mẫu luôn hội tụ.\"||\"The sample mean always converges.\"⟧</b><p>⟦Không với Cauchy: $P(|\\bar X_n|<1)$ = {{cau_1}} với $n=1$ và {{cau_100}} với $n=100$, còn chuẩn tắc cho {{cau_n100}} (Barkat, mục 2.3.9).||Not for the Cauchy: $P(|\\bar X_n|<1)$ = {{cau_1}} for $n=1$ and {{cau_100}} for $n=100$, while the standard normal gives {{cau_n100}} (Barkat, section 2.3.9).⟧</p>",
@@ -529,5 +549,80 @@ ax.semilogy(xs_, 2*xs_*np.exp(-xs_**2)*1, label=("⟦Rayleigh (cùng E[X²]=1)||
 ax.set_ylim(1e-5, 2); ax.set_xlabel("x"); ax.legend(fontsize=8); plt.tight_layout(); plt.show()''', dict(fig="kdist", cap="⟦Hình 2. Mật độ K (ν = 2, b = 1) so với Rayleigh: đuôi K nặng hơn nhiều, nên ngưỡng phát hiện cho cùng xác suất báo động giả phải cao hơn.||Figure 2. The K density (ν = 2, b = 1) against a Rayleigh: the K tail is much heavier, so the detection threshold for the same false-alarm probability must be higher.⟧")),
         ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
 ⟦Gauss hai chiều: trung bình điều kiện {{bg_cm}}, phương sai {{bg_cv}}, $|C|$ = {{bg_det}}, $f(m)$ = {{bg_f0}}, độc lập khi $\\rho=0$ lệch {{bg_ind}}; $\\theta$ = {{bg_theta}} độ, $\\sigma_u^2$ = {{bg_su}}, $\\sigma_v^2$ = {{bg_sv}}. Weibull: {{wb_rmean}}, {{wb_m3}}, {{wb_v3}}. Log-chuẩn: {{ln_mean}}, {{ln_var}}. K: $f(1)$ = {{k_f1}}, $E[X^2]$ = {{k_e2}}.||Bivariate Gaussian: conditional mean {{bg_cm}}, variance {{bg_cv}}, $|C|$ = {{bg_det}}, $f(m)$ = {{bg_f0}}, independence at $\\rho=0$ deviates by {{bg_ind}}; $\\theta$ = {{bg_theta}} degrees, $\\sigma_u^2$ = {{bg_su}}, $\\sigma_v^2$ = {{bg_sv}}. Weibull: {{wb_rmean}}, {{wb_m3}}, {{wb_v3}}. Log-normal: {{ln_mean}}, {{ln_var}}. K: $f(1)$ = {{k_f1}}, $E[X^2]$ = {{k_e2}}.⟧"""),
+        ("md", """## ⟦Bài tập cuối chương 2 của Barkat, phần A (tr. 138–139)||End-of-Barkat-chapter-2 problems, part A (pp. 138–139)⟧
+🎯 **⟦Phương pháp này trả lời câu hỏi gì?||What question does this method answer?⟧** ⟦11 bài xác suất chuẩn, Poisson, nhị thức và biến đổi biến ngẫu nhiên: mỗi bài kiểm bằng công thức đóng (SciPy) đối chiếu với mô phỏng Monte Carlo hoặc tích phân số.||11 problems on the normal, Poisson, binomial and random-variable transformations: each checked by a closed form (SciPy) cross-checked against a Monte Carlo simulation or numerical integration.⟧"""),
+        ("code", r'''rng11c = np.random.default_rng(11)
+from math import comb
+
+# ⟦Bài 2.1: nhị thức p=1/6, n=6||Problem 2.1: binomial p=1/6, n=6⟧
+p21, n21 = 1/6, 6
+p21_2 = stats.binom.pmf(2, n21, p21); p21_0 = stats.binom.pmf(0, n21, p21)
+sim21 = np.sum(rng11c.integers(1, 7, (300000, n21, 2)).sum(axis=2) == 7, axis=1)
+mc21_2 = np.mean(sim21 == 2)
+assert abs(p21_2 - mc21_2) < 5e-3
+report("p21_2", p21_2, ".4f"); report("p21_0", p21_0, ".4f")
+
+# ⟦Bài 2.4: Poisson, P(X=0)=0.2 ⟹ λ=−ln0.2||Problem 2.4: Poisson, P(X=0)=0.2 ⟹ λ=−ln0.2⟧
+lam24 = -np.log(0.2)
+p24 = 1 - stats.poisson.cdf(2, lam24)
+p24_mc = 1 - np.mean(rng11c.poisson(lam24, 500000) <= 2)
+assert abs(p24 - p24_mc) < 5e-3
+report("p24_lam", lam24, ".4f"); report("p24", p24, ".4f")
+
+# ⟦Bài 2.5: Poisson 12/giờ||Problem 2.5: Poisson 12/hour⟧
+p25a = 1 - stats.poisson.cdf(15, 12)
+p25b = stats.poisson.pmf(0, 12*0.25)
+report("p25a", p25a, ".4f"); report("p25b", p25b, ".4f")
+
+# ⟦Bài 2.6: Poisson, P(X=2)=1.5 P(X=1) ⟹ λ=3||Problem 2.6: Poisson, P(X=2)=1.5 P(X=1) ⟹ λ=3⟧
+lam26 = 3.0
+assert abs(stats.poisson.pmf(2, lam26) - 1.5*stats.poisson.pmf(1, lam26)) < 1e-9
+report("p26_0", stats.poisson.pmf(0, lam26), ".4f"); report("p26_3", stats.poisson.pmf(3, lam26), ".4f")
+
+# ⟦Bài 2.9, 2.10: đuôi Gauss chuẩn tắc||Problems 2.9, 2.10: standard Gaussian tails⟧
+p29 = 1 - stats.norm.cdf(1); p210 = 1 - stats.norm.cdf(3)
+p29_mc = np.mean(rng11c.standard_normal(2000000) > 1)
+assert abs(p29 - p29_mc) < 3e-3
+report("p29", p29, ".4f"); report("p210", p210, ".6f")
+
+# ⟦Bài 2.11: hai xúc xắc x200, thành công≥20% (nhị thức chính xác so với xấp xỉ CLT)||Problem 2.11: two dice x200, success≥20% (exact binomial versus CLT approximation)⟧
+n211, p211 = 200, 1/6
+p211_exact = 1 - stats.binom.cdf(39, n211, p211)
+mu211, sig211 = n211*p211, np.sqrt(n211*p211*(1 - p211))
+p211_clt = 1 - stats.norm.cdf((39.5 - mu211)/sig211)                       # ⟦hiệu chỉnh liên tục||continuity correction⟧
+p211_err = abs(p211_exact - p211_clt)
+assert p211_err < 5e-3
+report("p211_exact", p211_exact, ".4f"); report("p211_clt", p211_clt, ".4f")
+
+# ⟦Bài 2.13: Gauss trung bình 1, phương sai 2||Problem 2.13: Gaussian, mean 1, variance 2⟧
+mu213, sd213 = 1, np.sqrt(2)
+p213a = 1 - stats.norm.cdf(2, mu213, sd213)
+p213b = stats.norm.cdf(2.2, mu213, sd213) - stats.norm.cdf(1.6, mu213, sd213)
+report("p213a", p213a, ".4f"); report("p213b", p213b, ".4f")
+
+# ⟦Bài 2.14: X đều trên [1,6], Y=1/X: kiểm mật độ tích phân tới 1||Problem 2.14: X uniform on [1,6], Y=1/X: check the density integrates to 1⟧
+fY214 = lambda y: (1/5)*(1/y**2)
+I214 = integrate.quad(fY214, 1/6, 1)[0]
+assert abs(I214 - 1) < 1e-9
+report("p214_I", I214, ".6f")
+
+# ⟦Bài 2.15: X đều trên [0,1], Y=X², Z=e^X||Problem 2.15: X uniform on [0,1], Y=X², Z=e^X⟧
+I215a = integrate.quad(lambda y: 1/(2*np.sqrt(y)), 0, 1)[0]
+I215b = integrate.quad(lambda z: 1/z, 1, np.e)[0]
+assert abs(I215a - 1) < 1e-9 and abs(I215b - 1) < 1e-9
+report("p215a_I", I215a, ".6f"); report("p215b_I", I215b, ".6f")
+
+# ⟦Bài 2.19: hàm đặc trưng Cauchy e^{−β|ω|}||Problem 2.19: Cauchy characteristic function e^{−β|ω|}⟧
+beta19 = 1.5
+cauchy_pdf = lambda x: (beta19/np.pi)/(x**2 + beta19**2)
+om19 = 0.8
+cf19 = integrate.quad(lambda x: cauchy_pdf(x)*np.cos(om19*x), -2000, 2000, limit=8000)[0]
+target19 = np.exp(-beta19*abs(om19))
+p219_err = abs(cf19 - target19)
+assert p219_err < 1e-3
+report("p219_err", p219_err, ".1e")'''),
+        ("md", """#### 📤 ⟦Đầu ra thật (bài tập cuối chương)||Real output (end-of-chapter problems)⟧
+⟦2.1: $P(2\\text{ thành công})=${{p21_2}} (mô phỏng {{p21_2}}), $P(0)=${{p21_0}}. 2.4: $\\lambda=${{p24_lam}}, $P(X>2)=${{p24}}. 2.5: {{p25a}} và {{p25b}}. 2.6: $P(0)=${{p26_0}}, $P(3)=${{p26_3}}. 2.9: {{p29}}. 2.10: {{p210}}. 2.11: chính xác {{p211_exact}} so với CLT {{p211_clt}}. 2.13: {{p213a}} và {{p213b}}. 2.14: mật độ $Y=1/X$ tích phân {{p214_I}}. 2.15: hai mật độ tích phân {{p215a_I}} và {{p215b_I}}. 2.19: lệch hàm đặc trưng Cauchy {{p219_err}}.||"""
+        "2.1: $P(2\\text{ successes})=${{p21_2}} (simulated {{p21_2}}), $P(0)=${{p21_0}}. 2.4: $\\lambda=${{p24_lam}}, $P(X>2)=${{p24}}. 2.5: {{p25a}} and {{p25b}}. 2.6: $P(0)=${{p26_0}}, $P(3)=${{p26_3}}. 2.9: {{p29}}. 2.10: {{p210}}. 2.11: exact {{p211_exact}} against CLT {{p211_clt}}. 2.13: {{p213a}} and {{p213b}}. 2.14: the density of $Y=1/X$ integrates to {{p214_I}}. 2.15: the two densities integrate to {{p215a_I}} and {{p215b_I}}. 2.19: Cauchy characteristic-function deviation {{p219_err}}.⟧"""),
     ],
 )
