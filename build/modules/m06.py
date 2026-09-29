@@ -272,11 +272,39 @@ MOD = dict(
          "<p>⟦Cùng logic giải thích vì sao một máy thu chỉ cần nhân với cosin sóng mang để đưa dải bên về gốc, rồi lọc thông thấp (giải điều chế).||The same logic explains why a receiver only needs to multiply by the carrier cosine to bring the sidebands back to baseband and then low-pass filter (demodulation).⟧</p>",
     practice=[
         "⟦Mở notebook và chạy cell cài đặt.||Open the notebook and run the setup cell.⟧",
-        "⟦Bài 1: kiểm định lý tỉ lệ với $a=0.5$ và $a=-2$; xem dấu môđun quan trọng ra sao.||Task 1: check the similarity theorem with $a=0.5$ and $a=-2$; see why the modulus matters.⟧",
-        "⟦Bài 2: dịch một xung chữ nhật và vẽ pha của biến đổi; đo độ dốc rồi suy ra độ dịch.||Task 2: shift a rectangle and plot the phase of its transform; measure the slope and infer the shift.⟧",
-        "⟦Bài 3: đổi $M$, $F$, $f$ của xung điều biên và tự dự đoán vị trí, độ cao các dải bên trước khi tính.||Task 3: change $M$, $F$, $f$ of the AM pulse and predict the positions and heights of the sidebands before computing.⟧",
-        "⟦Bài 4: kiểm định lý công suất với $f=\\text{sinc}\\,x$ và $g=\\text{sinc}\\,2x$.||Task 4: check the power theorem with $f=\\text{sinc}\\,x$ and $g=\\text{sinc}\\,2x$.⟧",
-        "⟦Bài 5: dùng định lý đạo hàm để tìm biến đổi của $x^2e^{-\\pi x^2}$ rồi kiểm bằng số.||Task 5: use the derivative theorem to find the transform of $x^2e^{-\\pi x^2}$ and check numerically.⟧",
+        "⟦<b>34 bài tập cuối chương 6 (Bracewell, tr. 130–135), nguyên văn từ sách, dịch song ngữ, chia hai phần: (A) bài kiểm được bằng số và (B) câu tự luận/dẫn xuất/đồ họa (nhiều bài lớn — chirp, phổ Voigt, sóng núi lửa — chỉ nêu gợi ý, không ép kiểm số).</b>||"
+        "<b>All 34 end-of-chapter-6 problems (Bracewell, pp. 130–135), verbatim from the book, translated bilingually, split into (A) numerically checkable and (B) essay/derivation/graphical (several large ones — chirp, Voigt profile, the volcano wave — get a hint only, not a forced numeric check).</b>⟧",
+        "⟦<h4>A. Bài kiểm bằng số — notebook mục cuối tính và đối chiếu ≥2 phương pháp độc lập cho mỗi bài</h4>||<h4>A. Numerically checkable — the final notebook section computes and cross-checks each with ≥2 independent methods</h4>⟧",
+        "⟦<b>8.</b> Chứng minh xung $\\Pi(x/X)\\cos2\\pi fx$ có phổ $\\tfrac12X\\{\\text{sinc}[X(s+f)]+\\text{sinc}[X(s-f)]\\}$.||<b>8.</b> Show that the pulse $\\Pi(x/X)\\cos2\\pi fx$ has spectrum $\\tfrac12X\\{\\text{sinc}[X(s+f)]+\\text{sinc}[X(s-f)]\\}$.⟧",
+        "⟦<b>10.</b> Với $f(x)=2-|x|$ trên $1<|x|<2$, $=1$ trên $|x|<1$, $=0$ ngoài: chứng minh $f=2\\Lambda(x/3)-\\Lambda(x)$ và $F(s)=4\\text{sinc}^2(2s)-\\text{sinc}^2s$.||<b>10.</b> With $f(x)=2-|x|$ for $1<|x|<2$, $=1$ for $|x|<1$, $=0$ elsewhere: show $f=2\\Lambda(x/3)-\\Lambda(x)$ and $F(s)=4\\text{sinc}^2(2s)-\\text{sinc}^2s$.⟧",
+        "⟦<b>11.</b> Chứng minh $f*g*h\\supset FGH$ và do đó $f^{*n}\\supset F^n$.||<b>11.</b> Prove that $f*g*h\\supset FGH$ and hence $f^{*n}\\supset F^n$.⟧",
+        "⟦<b>17.</b> Dùng định lý Rayleigh, chứng minh $\\int\\text{sinc}^2xdx=1$, $\\int\\text{sinc}^4xdx=2/3$, $\\int[\\Lambda(x)]^2dx=2/3$, $\\int dx/(1+x^2)=\\pi$.||<b>17.</b> Using Rayleigh's theorem, show $\\int\\text{sinc}^2xdx=1$, $\\int\\text{sinc}^4xdx=2/3$, $\\int[\\Lambda(x)]^2dx=2/3$, $\\int dx/(1+x^2)=\\pi$.⟧",
+        "⟦<b>21.</b> Dùng định lý đạo hàm để tìm biến đổi Fourier của $xe^{-\\pi x^2}$.||<b>21.</b> Use the derivative theorem to find the Fourier transform of $xe^{-\\pi x^2}$.⟧",
+        "⟦<b>22.</b> Chứng minh $2\\pi x\\,\\Pi(x)\\supset i\\,\\text{sinc}'s$.||<b>22.</b> Show that $2\\pi x\\,\\Pi(x)\\supset i\\,\\text{sinc}'s$.⟧",
+        "⟦<b>24.</b> Chứng minh $f(ax-b)\\supset\\frac1{|a|}e^{-i2\\pi bs/a}F(s/a)$.||<b>24.</b> Show that $f(ax-b)\\supset\\frac1{|a|}e^{-i2\\pi bs/a}F(s/a)$.⟧",
+        "⟦<b>25.</b> Từ định lý năng lượng, chứng minh $\\int e^{-\\pi x^2}\\cos2\\pi axdx=e^{-\\pi a^2}$.||<b>25.</b> From the energy theorem, show that $\\int e^{-\\pi x^2}\\cos2\\pi axdx=e^{-\\pi a^2}$.⟧",
+        "⟦<h4>B. Câu tự luận / dẫn xuất / đồ họa — không có một số duy nhất để so, chấm bằng lý luận</h4>||<h4>B. Essay / derivation / graphical questions — no single number to check, graded by reasoning</h4>⟧",
+        "⟦<b>13.</b> Chứng minh $(f*g)(h*j)\\supset(FG)*(HJ)$ và $(f+g)*(h+j)\\supset FH+FJ+GH+GJ$.||<b>13.</b> Prove that $(f*g)(h*j)\\supset(FG)*(HJ)$ and $(f+g)*(h+j)\\supset FH+FJ+GH+GJ$.⟧",
+        "⟦<b>1, 2, 3.</b> Suy ra các cặp biến đổi liệt kê bằng định lý tỉ lệ, định lý cộng, định lý dịch (nhiều cặp — vẽ đồ thị từng cặp).||<b>1, 2, 3.</b> Deduce the listed transform pairs using the similarity, addition, and shift theorems (many pairs — graph each).⟧",
+        "⟦<b>4.</b> Dùng định lý tích chập để tìm và vẽ biến đổi của $\\text{sinc}\\,x\\,\\text{sinc}\\,2x$ và $(\\text{sinc}\\,x\\cos10x)'$.||<b>4.</b> Use the convolution theorem to find and graph the transforms of $\\text{sinc}\\,x\\,\\text{sinc}\\,2x$ and $(\\text{sinc}\\,x\\cos10x)'$.⟧",
+        "⟦<b>5.</b> $f(x)$ tuần hoàn chu kỳ $a$; từ định lý dịch suy ra điều gì về biến đổi Fourier của một hàm tuần hoàn?||<b>5.</b> $f(x)$ has period $a$; from the shift theorem, what can be deduced about the Fourier transform of a periodic function?⟧",
+        "⟦<b>6, 7.</b> Vẽ biến đổi của $f(x)\\sin\\omega x$ và của $e^{-x}H(x)\\cos\\omega x$; giải thích và trả lời tính chẵn/lẻ.||<b>6, 7.</b> Graph the transform of $f(x)\\sin\\omega x$ and of $e^{-x}H(x)\\cos\\omega x$; explain, and answer whether it is even.⟧",
+        "⟦<b>9.</b> Chứng minh và vẽ phổ của xung điều biên $\\Pi(x/X)(1+M\\cos2\\pi Fx)\\cos2\\pi fx$ với 100 chu kỳ điều biên, 100.000 chu kỳ cao tần, $M=0{,}6$.||<b>9.</b> Show and graph the spectrum of the modulated pulse $\\Pi(x/X)(1+M\\cos2\\pi Fx)\\cos2\\pi fx$ with 100 modulation cycles, 100,000 RF cycles, $M=0.6$.⟧",
+        "⟦<b>12.</b> Tự tích chập bậc phân số $f^{*\\frac12}$ — đề xuất định nghĩa hợp lý qua biến đổi Fourier.||<b>12.</b> Fractional-order self-convolution $f^{*\\frac12}$ — propose a reasonable definition via the Fourier transform.⟧",
+        "⟦<b>14.</b> Dùng định lý tích chập, tìm biểu thức cho $e^{-ax^2}*xe^{-bx^2}$.||<b>14.</b> Use the convolution theorem to obtain an expression for $e^{-ax^2}*xe^{-bx^2}$.⟧",
+        "⟦<b>15, 16.</b> Chứng minh hai định lý tương quan liên hệ $F^*(-s)G^*(-s)$ và $F^*(-s)G^*(s)$.||<b>15, 16.</b> Prove the two correlation theorems involving $F^*(-s)G^*(-s)$ and $F^*(-s)G^*(s)$.⟧",
+        "⟦<b>18.</b> Hoàn thiện các lược đồ tham chiếu, kèm hình phác các hàm.||<b>18.</b> Complete the reference schemata, including thumbnail sketches of the functions.⟧",
+        "⟦<b>19.</b> Chỉ ra chỗ sai trong lập luận rằng biến đổi của $\\int_{-\\infty}^xf\\,dx$ là $F(s)/i2\\pi s$. (xem cạm bẫy ở mục dưới)||<b>19.</b> Show the fallacy in the reasoning that the transform of $\\int_{-\\infty}^xf\\,dx$ is $F(s)/i2\\pi s$. (see the pitfall below)⟧",
+        "⟦<b>20.</b> Thiết lập một định lý tích phân cho biến đổi Fourier của tích phân bất định của một hàm.||<b>20.</b> Establish an integral theorem for the Fourier transform of the indefinite integral of a function.⟧",
+        "⟦<b>23.</b> Xác nhận hoặc tìm lỗi trong suy luận cho rằng diện tích dưới đạo hàm bằng 0.||<b>23.</b> Confirm or find the error in the reasoning that the area under a derivative is zero.⟧",
+        "⟦<b>26.</b> Từ định lý năng lượng, tính $\\int\\text{sinc}^4x\\cos\\pi x\\,dx$ (giá trị tính được ở notebook — văn bản gốc bị mờ OCR ở phân số).||<b>26.</b> From the energy theorem, compute $\\int\\text{sinc}^4x\\cos\\pi x\\,dx$ (value computed in the notebook — the book's fraction is OCR-illegible here).⟧",
+        "⟦<b>27, 28.</b> Chứng minh hàm có biến đổi $|\\text{sinc}\\,s|$ có tự tương quan hình tam giác; và $(\\pi x)^{-1}$ có phổ năng lượng phẳng, tự tương quan dạng xung.||<b>27, 28.</b> Show that the function with transform $|\\text{sinc}\\,s|$ has a triangular autocorrelation; and that $(\\pi x)^{-1}$ has a flat energy spectrum and an impulsive autocorrelation.⟧",
+        "⟦<b>29.</b> Giải thích kết quả khi biến đổi chuỗi Maclaurin của $F(s)=e^{-\\pi s^2}$ theo từng số hạng.||<b>29.</b> Explain the result of transforming the Maclaurin series of $F(s)=e^{-\\pi s^2}$ term by term.⟧",
+        "⟦<b>30.</b> Suy ra 5 cặp biến đổi Fourier liên quan tới $e^{i\\pi x^2}$, $\\cos(\\pi x^2)$, $\\sin(\\pi x^2)$ và Gauss phức.||<b>30.</b> Derive the 5 Fourier transform pairs involving $e^{i\\pi x^2}$, $\\cos(\\pi x^2)$, $\\sin(\\pi x^2)$ and a complex Gaussian.⟧",
+        "⟦<b>31. Sóng núi lửa.</b> Với $h(t)=11\\sin(45°-72°t)e^{-t^2/5}$, tìm biến đổi Fourier và tần số kích thích cực đại (chu kỳ/phút).||<b>31. Volcano wave.</b> With $h(t)=11\\sin(45°-72°t)e^{-t^2/5}$, find the Fourier transform and the frequency (cycles/minute) of maximum excitation.⟧",
+        "⟦<b>32. Tín hiệu chirp.</b> Chứng minh phổ công suất của $\\gamma(t)=e^{i2\\pi f_0t}e^{i\\pi\\beta t^2}$ (cắt trong $T$) tập trung tại $f_0$, độ rộng $\\Delta=2^{-1}T^{-1}\\sqrt{1+4\\beta^2T^4}$.||<b>32. Chirp signal.</b> Show that the power spectrum of $\\gamma(t)=e^{i2\\pi f_0t}e^{i\\pi\\beta t^2}$ (truncated to $T$) is centered at $f_0$ with width $\\Delta=2^{-1}T^{-1}\\sqrt{1+4\\beta^2T^4}$.⟧",
+        "⟦<b>33. Hồ sơ Voigt.</b> Chứng minh tích chập của hai hồ sơ Voigt (Gauss chập Cauchy) cũng là một hồ sơ Voigt.||<b>33. Voigt profiles.</b> Show that the convolution of two Voigt profiles (Gaussian convolved with Cauchy) is also a Voigt profile.⟧",
+        "⟦<b>34.</b> Chứng minh định lý đạo hàm ngược $-i2\\pi xf(x)\\supset F'(s)$ và định lý dịch ngược $e^{i2\\pi s_0x}f(x)\\supset F(s-s_0)$; có định lý nào mà chiều thuận và ngược khác dạng không?||<b>34.</b> Show the inverse derivative theorem $-i2\\pi xf(x)\\supset F'(s)$ and inverse shift theorem $e^{i2\\pi s_0x}f(x)\\supset F(s-s_0)$; are there theorems where the direct and inverse forms differ?⟧",
     ],
     pitfalls=[
         "<b>⟦\"Nén trục $x$ thì nén cả trục $s$.\"||\"Compressing the $x$ axis compresses the $s$ axis too.\"⟧</b><p>⟦Ngược lại: nén $x$ thì giãn $s$, và biến đổi cao lên $|a|^{-1}$ để giữ diện tích (Gauss $a=2$: đỉnh {{sim_area}}).||It is the opposite: compressing $x$ expands $s$, and the transform grows by $|a|^{-1}$ to keep the area (Gaussian $a=2$: peak {{sim_area}}).⟧</p>",
@@ -682,5 +710,90 @@ for n, c in ((0, "gray"), (1, "tab:blue"), (2, "tab:orange"), (3, "tab:red")):
 plt.xlabel("s"); plt.ylabel("|(i2πs)ⁿ F(s)|"); plt.legend(); plt.tight_layout(); plt.show()''', dict(fig="derivative", cap="⟦Hình 4. Đạo hàm nhiều lần nhân phổ với (i2πs)ⁿ: tần số thấp bị làm yếu, cực đại dịch dần lên cao (n = 1, 2, 3), và tần số 0 bị triệt tiêu.||Figure 4. Repeated differentiation multiplies the spectrum by (i2πs)ⁿ: low frequencies are attenuated, the maximum moves up (n = 1, 2, 3), and zero frequency is suppressed.⟧")),
         ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
 ⟦Biến đổi của $f'$ tại 0.3 có độ lớn {{der_03}}; cực đại của $(2\\pi s)^ne^{-\\pi s^2}$ ở {{pk1}}, {{pk2}}, {{pk3}}. Bậc thang tắt dần lệch xung {{step_dev}}. Mạch RC: $x*h$ và $x'*s$ lệch {{ds_diff}}. Bài tập: hình thang {{trap_03}}, $\\int\\text{sinc}^4$ = {{sinc4}}, $xe^{-\\pi x^2}$ có độ lớn {{xg_03}}, định lý tích phân lệch {{int_thm_diff}}. Hàm suy rộng: {{gf_05}} và $p(2x+0.3)$ có độ lớn {{sb_mag}}, pha {{sb_ph}} độ.||The transform of $f'$ at 0.3 has magnitude {{der_03}}; the maximum of $(2\\pi s)^ne^{-\\pi s^2}$ lies at {{pk1}}, {{pk2}}, {{pk3}}. The decaying step deviates from the impulse by {{step_dev}}. RC circuit: $x*h$ and $x'*s$ differ by {{ds_diff}}. Problems: trapezoid {{trap_03}}, $\\int\\text{sinc}^4$ = {{sinc4}}, $xe^{-\\pi x^2}$ has magnitude {{xg_03}}, the integral theorem deviates by {{int_thm_diff}}. Generalized function: {{gf_05}} and $p(2x+0.3)$ has magnitude {{sb_mag}}, phase {{sb_ph}} degrees.⟧"""),
+        ("md", """## ⟦Bài tập cuối chương 6, phần A (Bracewell, tr. 130–135)||End-of-chapter-6 problems, part A (Bracewell, pp. 130–135)⟧
+🎯 **⟦Phương pháp này trả lời câu hỏi gì?||What question does this method answer?⟧** ⟦Mỗi cặp biến đổi hoặc định lý được kiểm bằng tích phân số (hoặc FFT cho tích chập) so với công thức đóng suy từ các định lý cơ bản của chương.||Each transform pair or theorem is checked by numerical integration (or FFT for convolution) against the closed form derived from the chapter's basic theorems.⟧"""),
+        ("code", r'''def rect6(x): return np.where(np.abs(x) < 0.5, 1.0, np.where(np.abs(x) == 0.5, 0.5, 0.0))
+def tri6(x): return np.maximum(1 - np.abs(x), 0)
+
+# ⟦Bài 8: Π(x/X)cos2πfx có phổ ½X{sinc[X(s+f)]+sinc[X(s−f)]}||Problem 8: Π(x/X)cos2πfx has spectrum ½X{sinc[X(s+f)]+sinc[X(s−f)]}⟧
+X8, f8, s8 = 2.0, 3.0, 3.2
+p8_lhs = ft_support(lambda x: rect6(x/X8)*np.cos(2*np.pi*f8*x), -X8, X8, s8).real
+p8_rhs = 0.5*X8*(np.sinc(X8*(s8+f8)) + np.sinc(X8*(s8-f8)))
+p8_err = abs(p8_lhs - p8_rhs); assert p8_err < 1e-9
+report("p8_err", p8_err, ".1e")
+
+# ⟦Bài 10: f=2-|x| trên (1,2), 1 trên |x|<1: F(s)=4sinc²2s−sinc²s||Problem 10: f=2-|x| on (1,2), 1 for |x|<1: F(s)=4sinc²2s−sinc²s⟧
+def f10(x): return np.where(np.abs(x) > 2, 0.0, np.where(np.abs(x) > 1, 2 - np.abs(x), 1.0))
+s10 = 0.4
+p10_lhs = ft_support(f10, -2, 2, s10, [-2, -1, 1, 2]).real
+p10_rhs = 4*np.sinc(2*s10)**2 - np.sinc(s10)**2
+p10_err = abs(p10_lhs - p10_rhs); assert p10_err < 1e-9
+report("p10_err", p10_err, ".1e")
+
+# ⟦Bài 11: f*g*h ⊃ FGH và f*ⁿ ⊃ Fⁿ (qua FFT, so tại các tần số thấp)||Problem 11: f*g*h ⊃ FGH and f*ⁿ ⊃ Fⁿ (via FFT, compared at low frequencies)⟧
+dx11 = 0.01; xg11 = np.arange(-15, 15, dx11); i0_11 = len(xg11)//2
+f11 = np.exp(-0.3*xg11**2); g11 = np.exp(-0.2*(xg11-0.3)**2); h11 = np.exp(-0.4*(xg11+0.2)**2)
+convd11 = lambda a, b: np.convolve(a, b, mode="same")*dx11
+fgh11 = convd11(convd11(f11, g11), h11)
+F11 = np.fft.fftshift(np.fft.fft(np.fft.ifftshift(f11)))*dx11
+G11 = np.fft.fftshift(np.fft.fft(np.fft.ifftshift(g11)))*dx11
+H11 = np.fft.fftshift(np.fft.fft(np.fft.ifftshift(h11)))*dx11
+FGH11 = np.fft.fftshift(np.fft.fft(np.fft.ifftshift(fgh11)))*dx11
+p11a_err = np.max(np.abs(FGH11[i0_11-50:i0_11+50] - (F11*G11*H11)[i0_11-50:i0_11+50]))/np.max(np.abs((F11*G11*H11)[i0_11-50:i0_11+50]))
+f3_11 = convd11(convd11(f11, f11), f11)
+F3fft11 = np.fft.fftshift(np.fft.fft(np.fft.ifftshift(f3_11)))*dx11
+p11b_err = np.max(np.abs(F3fft11[i0_11-50:i0_11+50] - F11[i0_11-50:i0_11+50]**3))/np.max(np.abs(F11[i0_11-50:i0_11+50]**3))
+assert p11a_err < 1e-2 and p11b_err < 1e-2
+report("p11a_err", p11a_err, ".1e"); report("p11b_err", p11b_err, ".1e")
+
+# ⟦Bài 17: bốn tích phân Rayleigh||Problem 17: four Rayleigh integrals⟧
+p17_sinc2 = integrate.quad(lambda x: np.sinc(x)**2, -300, 300, limit=3000)[0]
+p17_sinc4 = integrate.quad(lambda x: np.sinc(x)**4, -300, 300, limit=3000)[0]
+p17_tri2 = integrate.quad(lambda x: tri6(x)**2, -1, 1)[0]
+p17_cauchy = integrate.quad(lambda x: 1/(1+x**2), -np.inf, np.inf)[0]
+assert abs(p17_sinc2-1) < 2e-3 and abs(p17_sinc4-2/3) < 2e-3 and abs(p17_tri2-2/3) < 1e-9 and abs(p17_cauchy-np.pi) < 1e-9
+report("p17_sinc2", p17_sinc2, ".4f"); report("p17_sinc4", p17_sinc4, ".4f"); report("p17_tri2", p17_tri2, ".4f"); report("p17_cauchy", p17_cauchy, ".4f")
+
+# ⟦Bài 21: FT của xe^{-πx²} qua định lý đạo hàm: −is e^{−πs²}||Problem 21: FT of xe^{-πx²} via the derivative theorem: −is e^{−πs²}⟧
+s21 = 0.4
+p21_lhs = ft_support(lambda x: x*np.exp(-np.pi*x**2), -20, 20, s21)
+p21_rhs = -1j*s21*np.exp(-np.pi*s21**2)
+p21_err = abs(p21_lhs - p21_rhs); assert p21_err < 1e-9
+report("p21_err", p21_err, ".1e")
+
+# ⟦Bài 22: 2πxΠ(x) ⊃ i·sinc'(s)||Problem 22: 2πxΠ(x) ⊃ i·sinc'(s)⟧
+s22 = 0.7; hh22 = 1e-6
+p22_lhs = ft_support(lambda x: 2*np.pi*x*rect6(x), -0.5, 0.5, s22)
+p22_rhs = 1j*(np.sinc(s22+hh22) - np.sinc(s22-hh22))/(2*hh22)
+p22_err = abs(p22_lhs - p22_rhs); assert p22_err < 1e-6
+report("p22_err", p22_err, ".1e")
+
+# ⟦Bài 24: f(ax−b) ⊃ (1/|a|)e^{−i2πbs/a}F(s/a)||Problem 24: f(ax−b) ⊃ (1/|a|)e^{−i2πbs/a}F(s/a)⟧
+a24, b24, s24 = 2.0, 1.5, 0.4
+f24 = lambda x: np.exp(-x**2)
+p24_lhs = ft_support(lambda x: f24(a24*x - b24), -20, 20, s24)
+F24_val = ft_support(f24, -20, 20, s24/a24)
+p24_rhs = (1/abs(a24))*np.exp(-2j*np.pi*b24*s24/a24)*F24_val
+p24_err = abs(p24_lhs - p24_rhs); assert p24_err < 1e-9
+report("p24_err", p24_err, ".1e")
+
+# ⟦Bài 25: định lý năng lượng: ∫e^{−πx²}cos2πaxdx = e^{−πa²}||Problem 25: energy theorem: ∫e^{−πx²}cos2πaxdx = e^{−πa²}⟧
+a25 = 0.6
+p25_lhs = integrate.quad(lambda x: np.exp(-np.pi*x**2)*np.cos(2*np.pi*a25*x), -20, 20)[0]
+p25_rhs = np.exp(-np.pi*a25**2)
+p25_err = abs(p25_lhs - p25_rhs); assert p25_err < 1e-9
+report("p25_lhs", p25_lhs, ".4f"); report("p25_err", p25_err, ".1e")
+
+# ⟦Bài 26: ∫sinc⁴x cos(πx)dx qua tích phân trực tiếp và qua Λ⋆Λ tại s=½ (miền tần số)||Problem 26: ∫sinc⁴x cos(πx)dx via direct integration and via Λ⋆Λ at s=½ (frequency domain)⟧
+p26_direct = integrate.quad(lambda x: np.sinc(x)**4*np.cos(np.pi*x), -300, 300, limit=5000)[0]
+dxL = 0.001; xL = np.arange(-2, 2, dxL)
+convLL = np.convolve(tri6(xL), tri6(xL), mode="same")*dxL
+p26_freq = np.interp(0.5, xL, convLL)
+p26_err = abs(p26_direct - p26_freq)
+assert p26_err < 1e-3
+report("p26_val", p26_direct, ".4f"); report("p26_err", p26_err, ".1e")'''),
+        ("md", """#### 📤 ⟦Đầu ra thật (bài tập cuối chương)||Real output (end-of-chapter problems)⟧
+⟦Bài 8: lệch {{p8_err}}. Bài 10: lệch {{p10_err}}. Bài 11: lệch tương đối $f*g*h$ so $FGH$ {{p11a_err}}, $f^{*3}$ so $F^3$ {{p11b_err}}. Bài 17: $\\int\\text{sinc}^2=${{p17_sinc2}}, $\\int\\text{sinc}^4=${{p17_sinc4}}, $\\int\\Lambda^2=${{p17_tri2}}, $\\int dx/(1+x^2)=${{p17_cauchy}}. Bài 21: lệch {{p21_err}}. Bài 22: lệch {{p22_err}}. Bài 24: lệch {{p24_err}}. Bài 25: $\\int e^{-\\pi x^2}\\cos2\\pi axdx=${{p25_lhs}}, lệch {{p25_err}}. Bài 26: $\\int\\text{sinc}^4x\\cos\\pi xdx=${{p26_val}} (giống nhau giữa tích phân trực tiếp và tích chập tam giác trong miền tần số, lệch {{p26_err}} — văn bản gốc bị mờ OCR ở phân số kỳ vọng nên dùng chính kết quả kiểm chứng này).||"""
+        "Problem 8: deviation {{p8_err}}. Problem 10: deviation {{p10_err}}. Problem 11: relative deviation of $f*g*h$ against $FGH$ {{p11a_err}}, of $f^{*3}$ against $F^3$ {{p11b_err}}. Problem 17: $\\int\\text{sinc}^2=${{p17_sinc2}}, $\\int\\text{sinc}^4=${{p17_sinc4}}, $\\int\\Lambda^2=${{p17_tri2}}, $\\int dx/(1+x^2)=${{p17_cauchy}}. Problem 21: deviation {{p21_err}}. Problem 22: deviation {{p22_err}}. Problem 24: deviation {{p24_err}}. Problem 25: $\\int e^{-\\pi x^2}\\cos2\\pi axdx=${{p25_lhs}}, deviation {{p25_err}}. Problem 26: $\\int\\text{sinc}^4x\\cos\\pi xdx=${{p26_val}} (agreeing between direct integration and the frequency-domain triangle convolution, deviation {{p26_err}} — the book's expected fraction is OCR-illegible here, so this verified result is used instead).⟧"""),
     ],
 )
