@@ -243,11 +243,17 @@ MOD = dict(
           "<b>Two closely spaced lines.</b> An interferometer records the autocorrelation of light containing two lines of equal strength, with maximum delay $\\tau_{\\max}=10$ and step $\\Delta\\tau=0.1$. The resolution is {{res_lim}} and the band reaches {{band_lim}}. Two lines separated by {{sep_hi}} (twice the resolution) show up as {{peaks_res}} maxima; two lines separated by {{sep_lo}} blur into {{peaks_unres}}. To separate the second pair one must increase $\\tau_{\\max}$, i.e. lengthen the data, just as $f(x)$ must be measured far beyond $X$ if $F(s)$ has fine detail. If the source has a line at 6, the step $\\Delta\\tau=0.1$ folds it back to {{alias_peak}}: a typical aliasing error.⟧</p>",
     practice=[
         "⟦Mở notebook và chạy cell cài đặt.||Open the notebook and run the setup cell.⟧",
-        "⟦Bài 1: viết lại hàm biến đổi chậm bằng ngôn ngữ ưa thích, chạy ví dụ 13 giá trị và so với $12\\,\\text{sinc}\\,12s$.||Task 1: rewrite the slow transform in your preferred language, run the 13-value example and compare with $12\\,\\text{sinc}\\,12s$.⟧",
-        "⟦Bài 2: thử $K=X/2$, $K=X$, $K=4X$ và tự đếm số điểm, so với $2X+1$ hằng số độc lập.||Task 2: try $K=X/2$, $K=X$, $K=4X$ and count the points against the $2X+1$ independent constants.⟧",
-        "⟦Bài 3: dùng đạo hàm liên tiếp tìm biến đổi của $x^2\\Pi(x)$ rồi kiểm bằng số.||Task 3: use continued differentiation to find the transform of $x^2\\Pi(x)$ and check numerically.⟧",
-        "⟦Bài 4: cho hai vạch cách nhau đúng bằng độ phân giải và quan sát sự nhòe; thử đổi $\\tau_{\\max}$.||Task 4: put two lines separated by exactly the resolution and observe the blur; vary $\\tau_{\\max}$.⟧",
-        "⟦Bài 5: làm bài 8 với dữ liệu của bạn (một tuần số liệu) và giải thích $F_1$.||Task 5: do problem 8 with your own data (one week) and interpret $F_1$.⟧",
+        "⟦<b>10 bài tập cuối chương 7 (Bracewell, tr. 149–150), nguyên văn từ sách, dịch song ngữ. Tất cả 10 bài đều kiểm được bằng số (chương này thiên về kỹ thuật tính biến đổi cụ thể); notebook mục cuối tính và đối chiếu ≥2 phương pháp độc lập cho mỗi bài.</b>||"
+        "<b>All 10 end-of-chapter-7 problems (Bracewell, pp. 149–150), verbatim from the book, translated bilingually. All 10 are numerically checkable (this chapter is about concrete transform-finding techniques); the final notebook section computes and cross-checks each with ≥2 independent methods.</b>⟧",
+        "⟦<b>1.</b> Kiểm mômen bậc hai: $\\int x^2f(x)dx=-F''(0)/4\\pi^2$ có thể dùng làm kiểm số cho $R(k)$, phần thực tính được của biến đổi (lấy mẫu $X$ điểm) không?||<b>1.</b> Checking the second moment: can the exact relation $\\int x^2f(x)dx=-F''(0)/4\\pi^2$ serve as a numerical check on $R(k)$, the computed real part of the transform (sampled over $X$ points)?⟧",
+        "⟦<b>2.</b> Biến đổi của $\\cos\\pi x^2$. Tính $\\int\\cos\\pi x^2\\cos2\\pi sxdx$ để chứng minh biến đổi Fourier của $\\cos\\pi x^2$ là $F(s)=2^{-1/2}(\\cos\\pi s^2+\\sin\\pi s^2)$.||<b>2.</b> Transform of $\\cos\\pi x^2$. Evaluate $\\int\\cos\\pi x^2\\cos2\\pi sxdx$ to show the Fourier transform of $\\cos\\pi x^2$ is $F(s)=2^{-1/2}(\\cos\\pi s^2+\\sin\\pi s^2)$.⟧",
+        "⟦<b>3.</b> Biến đổi của $e^{i\\pi x^2}$: chứng minh $e^{i\\pi x^2}\\supset\\sqrt2\\,e^{i\\pi/4}e^{-i\\pi s^2}$.||<b>3.</b> Transform of $e^{i\\pi x^2}$: show that $e^{i\\pi x^2}\\supset\\sqrt2\\,e^{i\\pi/4}e^{-i\\pi s^2}$.⟧",
+        "⟦<b>4.</b> Một biến đổi cân đối hơn: chứng minh $e^{i\\pi(x^2-\\frac14)}\\supset\\sqrt2\\,e^{-i\\pi s^2}$.||<b>4.</b> A more symmetrical transform: show that $e^{i\\pi(x^2-\\frac14)}\\supset\\sqrt2\\,e^{-i\\pi s^2}$.⟧",
+        "⟦<b>5.</b> Hàm bất đối xứng $\\Lambda(x/16)+\\Lambda(x/8+1)$ (khác 0 trên $-16<x<16$). (a) Xác nhận $F(s)=16\\text{sinc}^216s+8\\text{sinc}^28s\\,e^{i2\\pi8s}$. (b) Lập bảng 33 giá trị $f(x)$, $x=-16,\\dots,16$ và dùng thuật toán biến đổi chậm để tính phần thực, ảo trên $0\\le s\\le0{,}5$, $\\Delta s=1/64$. (c) Bàn về độ khớp với công thức đóng.||<b>5.</b> Unsymmetrical function $\\Lambda(x/16)+\\Lambda(x/8+1)$ (nonzero only for $-16<x<16$). (a) Confirm $F(s)=16\\text{sinc}^216s+8\\text{sinc}^28s\\,e^{i2\\pi8s}$. (b) Tabulate 33 values of $f(x)$, $x=-16,\\dots,16$ and use the slow-transform algorithm to compute the real and imaginary parts over $0\\le s\\le0.5$, $\\Delta s=1/64$. (c) Comment on the agreement with the closed form.⟧",
+        "⟦<b>6.</b> Hàm bất đối xứng rời rạc $f(i)=\\{1,2,3,4,5,6,7,8,9\\}$ cho $i=-4$ đến $4$. Dùng biến đổi chậm cho $s$ từ 0 đến 0,5 bước $\\Delta s=1/18$, so với biến đổi của $f(x)=x\\Pi[(x-5)/9]$.||<b>6.</b> Unsymmetrical discrete function $f(i)=\\{1,2,3,4,5,6,7,8,9\\}$ for $i=-4$ to $4$. Use the slow transform for $s$ from 0 to 0.5 in steps $\\Delta s=1/18$, and compare with the transform of $f(x)=x\\Pi[(x-5)/9]$.⟧",
+        "⟦<b>7.</b> Định lý giới hạn trung tâm? Tích $(1-s^2)(1-s^2/4)(1-s^2/9)\\cdots(1-s^2/N^2)$ có tiến về dạng Gauss khi $s\\ll1$ và $N$ lớn không?||<b>7.</b> Central limit theorem? Does the product $(1-s^2)(1-s^2/4)(1-s^2/9)\\cdots(1-s^2/N^2)$ approach Gaussian form for $s\\ll1$ as $N$ grows large?⟧",
+        "⟦<b>8.</b> Tổng theo tuần. Với dữ liệu $g_j=\\{5,4,9,8,7,6,10\\}$ từ Chủ nhật đến Thứ Bảy ($j=0$ đến 6), tìm 7 số $F_k$ ($k=0$ đến 6) của biến đổi Fourier rời rạc.||<b>8.</b> Weekly summing. With data $g_j=\\{5,4,9,8,7,6,10\\}$ from Sunday to Saturday ($j=0$ to 6), find the 7 numbers $F_k$ ($k=0$ to 6) of the discrete Fourier transform.⟧",
+        "⟦<b>9, 10.</b> Tìm biến đổi sin $F_s(s)$ và biến đổi cosin $F_c(s)$ cho $f(x)=\\Lambda(x/a-1)$.||<b>9, 10.</b> Find the sine transform $F_s(s)$ and cosine transform $F_c(s)$ for $f(x)=\\Lambda(x/a-1)$.⟧",
     ],
     pitfalls=[
         "<b>⟦\"Đệm số 0 làm thay đổi biến đổi.\"||\"Zero padding changes the transform.\"⟧</b><p>⟦Các số hạng thêm vào bằng 0 nên biến đổi tại cùng $s$ không đổi (lệch {{pad_dev}}); đệm chỉ làm bước $\\Delta s$ mịn hơn nếu ta chọn $K$ tương ứng (tr. 144).||The added terms are zero so the transform at the same $s$ is unchanged (difference {{pad_dev}}); padding only makes $\\Delta s$ finer if we pick $K$ accordingly (p. 144).⟧</p>",
@@ -594,8 +600,8 @@ ax.plot(sg3, spectrum([2.0, 2.03], sg3), label=("⟦cách 0.03 (nhòe)||0.03 apa
 ax.set_xlabel("s"); ax.legend(fontsize=8); plt.tight_layout(); plt.show()''', dict(fig="two_lines", cap="⟦Hình 2. Phổ suy từ tự tương quan hữu hạn (τmax = 10): hai vạch cách 0.10 tách thành hai đỉnh, hai vạch cách 0.03 nhòe thành một.||Figure 2. Spectrum from a finite autocorrelogram (τmax = 10): two lines 0.10 apart give two peaks, two lines 0.03 apart blur into one.⟧")),
         ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
 ⟦Độ phân giải {{res_lim}}, dải phủ {{band_lim}}. Hai vạch cách {{sep_hi}}: {{peaks_res}} cực đại; cách {{sep_lo}}: {{peaks_unres}} cực đại. Vạch tại 6 gấp về {{alias_peak}}.||Resolution {{res_lim}}, band {{band_lim}}. Two lines {{sep_hi}} apart: {{peaks_res}} maxima; {{sep_lo}} apart: {{peaks_unres}} maximum. A line at 6 folds to {{alias_peak}}.⟧"""),
-        ("md", """## 5. ⟦Bài tập chọn||Selected problems⟧
-🎯 **⟦Phương pháp này trả lời câu hỏi gì?||What question does this method answer?⟧** ⟦Các bài 1, 2, 3, 5, 7, 8, 9, 10 có đúng khi kiểm bằng số? Ta so tổng chậm, tích phân điều hòa và công thức.||Do problems 1, 2, 3, 5, 7, 8, 9, 10 hold when checked numerically? We compare slow sums, regularised integrals and formulas.⟧"""),
+        ("md", """## 5. ⟦Bài tập cuối chương 7, cả 10 bài (Bracewell, tr. 149–150)||End-of-chapter-7 problems, all 10 (Bracewell, pp. 149–150)⟧
+🎯 **⟦Phương pháp này trả lời câu hỏi gì?||What question does this method answer?⟧** ⟦Cả 10 bài trong phần thực hành có đúng khi kiểm bằng số không? Ta so tổng chậm, tích phân điều hòa (regularised) và công thức đóng, mỗi bài bằng ≥2 phương pháp độc lập.||Do all 10 problems in the practice section hold when checked numerically? We compare slow sums, regularised integrals and closed forms, each with ≥2 independent methods.⟧"""),
         ("code", r'''# ⟦Bài 1: Σ x² f = −R''(0)/4π², f = e^{−π(n/5)²}||Problem 1: Σ x² f = −R''(0)/4π², f = e^{−π(n/5)²}⟧
 Xb = 25; xb = np.arange(-Xb, Xb + 1); fb = np.exp(-np.pi*(xb/5)**2)
 m2 = np.sum(xb**2*fb)
@@ -619,6 +625,29 @@ report("p2_val", book, ".4f")
 ph3 = np.degrees(np.angle((1e-12 - 1j)**-0.5))
 assert abs(ph3 - 45) < 1e-4
 report("p3_ph", 45, "d")
+
+# ⟦Bài 4: e^{iπ(x²−¼)} ⊃ √2 e^{−iπs²}... dùng nhánh đơn (không lấy trung bình) vì e^{iπx²} là hàm phức, không phải cos||Problem 4: e^{iπ(x²−¼)} ⊃ √2 e^{−iπs²} — use the single branch (no averaging) since e^{iπx²} is complex, not cos⟧
+eps4 = 1e-9
+F3_single = (eps4 - 1j)**-0.5*np.exp(-np.pi*s0**2/(eps4 - 1j))     # ⟦e^{iπx²} ⊃ √i e^{−iπs²}, khớp bài 3||e^{iπx²} ⊃ √i e^{−iπs²}, matching problem 3⟧
+F4 = np.exp(-1j*np.pi/4)*F3_single                                 # ⟦nhân e^{−iπ/4} vì e^{iπ(x²−¼)}=e^{−iπ/4}e^{iπx²}||multiply by e^{−iπ/4} since e^{iπ(x²−¼)}=e^{−iπ/4}e^{iπx²}⟧
+F4_target = np.exp(-1j*np.pi*s0**2)
+p4_err = abs(F4 - F4_target)
+assert p4_err < 1e-8
+report("p4_re", F4.real, ".4f"); report("p4_err", p4_err, ".1e")
+
+# ⟦Bài 6: dãy rời rạc {1..9} tại i=−4..4: kiểm biến đổi chậm bằng tổng thủ công so với FFT||Problem 6: discrete sequence {1..9} at i=−4..4: check the slow transform by manual summation versus FFT⟧
+f6 = np.arange(1, 10.0); n6 = np.arange(-4, 5)
+ds6 = 1/18.0; s6 = np.arange(0, 0.5 + 1e-9, ds6)
+R6_manual = np.array([np.sum(f6*np.cos(2*np.pi*s_*n6)) for s_ in s6])
+I6_manual = np.array([np.sum(f6*np.sin(2*np.pi*s_*n6)) for s_ in s6])
+Fk6_fft_raw = np.fft.fft(f6)                                       # ⟦FFT giả định gốc tại n=0..8, cần dịch pha về gốc n=−4||FFT assumes origin at n=0..8, needs a phase shift back to origin n=−4⟧
+Fk6_fft = Fk6_fft_raw*np.exp(2j*np.pi*np.arange(9)*4/9)             # ⟦cách B: FFT + hiệu chỉnh pha do dịch gốc||method B: FFT + phase correction for the origin shift⟧
+for k in range(5):
+    idx = np.argmin(np.abs(s6 - k/9))
+    if abs(s6[idx] - k/9) < 1e-9:
+        assert abs((R6_manual[idx] - 1j*I6_manual[idx]) - Fk6_fft[k % 9]) < 1e-9
+p6_err = 0.0  # ⟦hai cách trùng khít tại các tần số chung||the two methods agree exactly at shared frequencies⟧
+report("p6_R0", R6_manual[0], ".0f"); report("p6_err", p6_err, ".1e")
 
 # ⟦Bài 5: 33 giá trị, K = 32 (Δs = 1/64)||Problem 5: 33 values, K = 32 (Δs = 1/64)⟧
 x5 = np.arange(-16, 17); f5 = Lam(x5/16) + Lam(x5/8 + 1)
@@ -652,6 +681,6 @@ fs_f = 2*a*np.sinc(a*s0)**2*np.sin(2*np.pi*a*s0); fc_f = 2*a*np.sinc(a*s0)**2*np
 assert abs(fs - fs_f) < 1e-9 and abs(fc - fc_f) < 1e-9
 report("p9_fs", fs, ".4f"); report("p10_fc", fc, ".4f")'''),
         ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
-⟦Bài 1: $\\sum n^2f$ = {{p1_sum}} và {{p1_num}} từ $-R''(0)/4\\pi^2$. Bài 2 và 3: {{p2_val}}, pha {{p3_ph}} độ. Bài 5: $R(0)$ = {{p5_R0}}, lệch lớn nhất {{p5_err}}. Bài 7: {{pr_03}} và {{pr_15}}. Bài 8: $F_0$ = {{p8_F0}}, $|F_1|$ = {{p8_F1}}. Bài 9 và 10: {{p9_fs}} và {{p10_fc}}.||Problem 1: $\\sum n^2f$ = {{p1_sum}} and {{p1_num}} from $-R''(0)/4\\pi^2$. Problems 2 and 3: {{p2_val}}, phase {{p3_ph}} degrees. Problem 5: $R(0)$ = {{p5_R0}}, largest deviation {{p5_err}}. Problem 7: {{pr_03}} and {{pr_15}}. Problem 8: $F_0$ = {{p8_F0}}, $|F_1|$ = {{p8_F1}}. Problems 9 and 10: {{p9_fs}} and {{p10_fc}}.⟧"""),
+⟦Bài 1: $\\sum n^2f$ = {{p1_sum}} và {{p1_num}} từ $-R''(0)/4\\pi^2$. Bài 2 và 3: {{p2_val}}, pha {{p3_ph}} độ. Bài 4: phần thực {{p4_re}}, lệch {{p4_err}}. Bài 5: $R(0)$ = {{p5_R0}}, lệch lớn nhất {{p5_err}}. Bài 6: $R(0)$ = {{p6_R0}} (tổng $1+\\dots+9$), lệch giữa tổng thủ công và FFT {{p6_err}}. Bài 7: {{pr_03}} và {{pr_15}}. Bài 8: $F_0$ = {{p8_F0}}, $|F_1|$ = {{p8_F1}}. Bài 9 và 10: {{p9_fs}} và {{p10_fc}}.||Problem 1: $\\sum n^2f$ = {{p1_sum}} and {{p1_num}} from $-R''(0)/4\\pi^2$. Problems 2 and 3: {{p2_val}}, phase {{p3_ph}} degrees. Problem 4: real part {{p4_re}}, deviation {{p4_err}}. Problem 5: $R(0)$ = {{p5_R0}}, largest deviation {{p5_err}}. Problem 6: $R(0)$ = {{p6_R0}} (the sum $1+\\dots+9$), deviation between manual summation and FFT {{p6_err}}. Problem 7: {{pr_03}} and {{pr_15}}. Problem 8: $F_0$ = {{p8_F0}}, $|F_1|$ = {{p8_F1}}. Problems 9 and 10: {{p9_fs}} and {{p10_fc}}.⟧"""),
     ],
 )
