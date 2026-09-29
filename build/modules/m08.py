@@ -247,11 +247,44 @@ MOD = dict(
           "<b>Choosing a width measure for an exponential pulse.</b> The pulse $e^{-|x|}$ has equivalent width {{ew_exp}}, and its transform $2/(1+4\\pi^2s^2)$ has {{ew_F_exp}}, product {{ew_prod_exp}}. The autocorrelation width is {{aw_exp}}. Yet by the uncertainty relation $\\Delta x\\,\\Delta s$ = {{un_exp}}, larger than the Gaussian minimum {{un_min}} by a factor of about {{un_ratio}}: the two-sided exponential is not an \"optimal\" packet. An engineer choosing a filter bandwidth needs to know which measure is in use; the typical mistake is mixing measures (the radar lesson, p. 180).⟧</p>",
     practice=[
         "⟦Mở notebook và chạy cell cài đặt.||Open the notebook and run the setup cell.⟧",
-        "⟦Bài 1: kiểm định lý mômen với $f=x^2e^{-x}H(x)$ (tâm khối, phương sai) bằng hai cách.||Task 1: check the moment theorems with $f=x^2e^{-x}H(x)$ (centroid, variance) both ways.⟧",
-        "⟦Bài 2: vẽ log-log biến đổi của $\\Pi$, $\\Lambda$ và $\\Pi*\\Pi*\\Pi$ và đọc độ dốc.||Task 2: plot the log-log transforms of $\\Pi$, $\\Lambda$ and $\\Pi*\\Pi*\\Pi$ and read the slopes.⟧",
-        "⟦Bài 3: tính $\\Delta x\\,\\Delta s$ cho $\\text{sech}\\,\\pi x$ và so với Gauss.||Task 3: compute $\\Delta x\\,\\Delta s$ for $\\text{sech}\\,\\pi x$ and compare with the Gaussian.⟧",
-        "⟦Bài 4: chạy $\\{1\\ 1\\}^{*n}$, $\\{1\\ 1\\ 1\\ 1\\}^{*n}$, $\\{3\\ 2\\ 1\\}^{*n}$ và vẽ log các số hạng theo bình phương khoảng cách từ tâm (gợi ý của sách, tr. 188).||Task 4: run $\\{1\\ 1\\}^{*n}$, $\\{1\\ 1\\ 1\\ 1\\}^{*n}$, $\\{3\\ 2\\ 1\\}^{*n}$ and plot the logarithms of the terms against the square of the distance from the centre (the book's suggestion, p. 188).⟧",
-        "⟦Bài 5: thử sai phân bậc hai với $a$ khác nhau và ước lượng đạo hàm bậc hai.||Task 5: try second differences with various $a$ and estimate the second derivative.⟧",
+        "⟦<b>40 bài tập cuối chương 8 (Bracewell, tr. 191–197), nguyên văn từ sách, dịch song ngữ, chia hai phần: (A) bài kiểm được bằng số và (B) câu tự luận/dẫn xuất/đồ họa — chương này có nhiều bài lớn mang tính vật lý/kỹ thuật (radar, âm nhạc, lượng tử) chỉ nêu gợi ý.</b>||"
+        "<b>All 40 end-of-chapter-8 problems (Bracewell, pp. 191–197), verbatim from the book, translated bilingually, split into (A) numerically checkable and (B) essay/derivation/graphical — this chapter has several large physics/engineering problems (radar, music, quantum mechanics) that get a hint only.</b>⟧",
+        "⟦<h4>A. Bài kiểm bằng số — notebook mục cuối tính và đối chiếu ≥2 phương pháp độc lập cho mỗi bài</h4>||<h4>A. Numerically checkable — the final notebook section computes and cross-checks each with ≥2 independent methods</h4>⟧",
+        "⟦<b>1.</b> Tìm biểu thức đơn giản cho $e^{-x^2}*e^{-x^2}$.||<b>1.</b> Deduce a simple expression for $e^{-x^2}*e^{-x^2}$.⟧",
+        "⟦<b>4.</b> Chứng minh bằng tích phân trực tiếp $\\Lambda(x)H(x)\\supset\\dfrac{e^{i2\\pi s}}{i2\\pi s}-\\dfrac{\\text{sinc}\\,s}{i2\\pi s}$.||<b>4.</b> Show by direct integration that $\\Lambda(x)H(x)\\supset\\dfrac{e^{i2\\pi s}}{i2\\pi s}-\\dfrac{\\text{sinc}\\,s}{i2\\pi s}$.⟧",
+        "⟦<b>5.</b> Tách biến đổi ở bài 4 thành phần thực, ảo; kiểm tung độ tâm và độ dốc liên hệ với diện tích và mômen bậc nhất của $\\Lambda(x)H(x)$, và xem biến đổi có Hermitian không.||<b>5.</b> Split the transform in problem 4 into real and imaginary parts; check the central ordinate and slope relate to the area and first moment of $\\Lambda(x)H(x)$, and note whether the transform is hermitian.⟧",
+        "⟦<b>8.</b> Chứng minh bình phương độ rộng tương đương cộng được dưới tích chập của các hàm Gauss.||<b>8.</b> Show that squares of equivalent widths are additive under convolution of Gaussian functions.⟧",
+        "⟦<b>9.</b> Chứng minh độ rộng tương đương của $4\\text{sinc}^22s-\\text{sinc}^2s$ là $\\tfrac13$; tính độ rộng tương đương của $\\text{sinc}\\,s+\\text{sinc}^22s$.||<b>9.</b> Show that the equivalent width of $4\\text{sinc}^22s-\\text{sinc}^2s$ is $\\tfrac13$; calculate the equivalent width of $\\text{sinc}\\,s+\\text{sinc}^22s$.⟧",
+        "⟦<b>16.</b> Chứng minh tích chập của hai hàm lẻ là hàm chẵn.||<b>16.</b> Show that the convolution of two odd functions is even.⟧",
+        "⟦<b>25.</b> Cặp Hermite: suy ra $xe^{-\\pi x^2}\\supset-ise^{-\\pi s^2}$, $(4\\pi x^2-1)e^{-\\pi x^2}\\supset-(4\\pi s^2-1)e^{-\\pi s^2}$, và tổng quát $H_n(\\sqrt{2\\pi}x)e^{-\\pi x^2}\\supset(-i)^nH_n(\\sqrt{2\\pi}s)e^{-\\pi s^2}$.||<b>25.</b> Hermite polynomial pairs: derive $xe^{-\\pi x^2}\\supset-ise^{-\\pi s^2}$, $(4\\pi x^2-1)e^{-\\pi x^2}\\supset-(4\\pi s^2-1)e^{-\\pi s^2}$, and in general $H_n(\\sqrt{2\\pi}x)e^{-\\pi x^2}\\supset(-i)^nH_n(\\sqrt{2\\pi}s)e^{-\\pi s^2}$.⟧",
+        "⟦<b>28.</b> Với $\\theta(s)$ là pha của $F(s)$, chứng minh độ dốc tại gốc $\\theta'(0)=-2\\pi\\int xf(x)dx/\\int f(x)dx$; kiểm với $f(x)=xe^{-x}H(x)$.||<b>28.</b> With $\\theta(s)$ the phase of $F(s)$, show the slope at the origin is $\\theta'(0)=-2\\pi\\int xf(x)dx/\\int f(x)dx$; verify for $f(x)=xe^{-x}H(x)$.⟧",
+        "⟦<h4>B. Câu tự luận / dẫn xuất / đồ họa — không có một số duy nhất để so, chấm bằng lý luận</h4>||<h4>B. Essay / derivation / graphical questions — no single number to check, graded by reasoning</h4>⟧",
+        "⟦<b>2, 3.</b> Khảo sát tự tích chập của $(1+x^2)^{-1}$ (cùng dạng, gấp đôi độ rộng — đối chiếu với phương sai cộng được) và dạng hàm/độ rộng của $(1+x^2/a^2)^{-1}*(1+x^2/b^2)^{-1}$.||<b>2, 3.</b> Investigate the self-convolution of $(1+x^2)^{-1}$ (same shape, double width — reconcile with additive variance) and the form/width of $(1+x^2/a^2)^{-1}*(1+x^2/b^2)^{-1}$.⟧",
+        "⟦<b>6.</b> Từ dãy tổng chạy 5 ngày của số vết đen mặt trời cho trong sách, suy ra điều gì về các giá trị hằng ngày thật?||<b>6.</b> From the book's 5-day running-total sunspot sequence, what can be deduced about the actual daily values?⟧",
+        "⟦<b>7.</b> Chứng minh $W_{x'}=W_x^2/W_{xx}$ với $W_x$ là độ rộng tương đương.||<b>7.</b> Show that $W_{x'}=W_x^2/W_{xx}$, where $W_x$ is the equivalent width.⟧",
+        "⟦<b>10.</b> Khảo sát tính chất của băng thông Jones, $\\left(\\int F F^*ds\\right)^2/\\int F^2F^{*2}ds$ (chuẩn hóa theo $F_{\\max}$).||<b>10.</b> Investigate the properties of the Jones bandwidth of $f(x)$.⟧",
+        "⟦<b>11.</b> Khảo sát độ rộng tự tương quan của $f(x)H(x)$ so với của $f(x)$ (thử với Gauss — kết quả tính được có thể không như trực giác, xem notebook).||<b>11.</b> Investigate the autocorrelation width of $f(x)H(x)$ versus that of $f(x)$ (test with a Gaussian — the computed result may be counterintuitive, see the notebook).⟧",
+        "⟦<b>12.</b> Kiểm các độ rộng tự tương quan cho trong bảng của sách (hàm dạng $x\\Pi(x-3)-\\Pi(2x+3)+\\Lambda(2x-\\dots)$).||<b>12.</b> Verify the autocorrelation widths in the book's table (functions of the form $x\\Pi(x-3)-\\Pi(2x+3)+\\Lambda(2x-\\dots)$).⟧",
+        "⟦<b>13.</b> \"Xáo trộn\" (shuffling) đoạn hàm: chứng minh độ rộng tương đương không đổi nếu đoạn chứa $x=0$ không bị xê dịch, và độ rộng tự tương quan không đổi trong mọi trường hợp; bàn về năng lượng và các tham số phổ công suất bất biến.||<b>13.</b> Shuffling function segments: show the equivalent width is unaffected if the segment containing $x=0$ is not dislodged, and the autocorrelation width is unaffected regardless; discuss energy and which power-spectrum parameters stay invariant.⟧",
+        "⟦<b>14, 15.</b> Đối xứng hóa Steiner: chứng minh $f(x)$ và dạng đối xứng hóa $g(x)$ có cùng độ rộng tự tương quan; áp dụng cho $e^{-x}H(x)$ và $e^{-|x|}$.||<b>14, 15.</b> Steiner symmetrization: show $f(x)$ and its symmetrized form $g(x)$ have the same autocorrelation width; apply to $e^{-x}H(x)$ and $e^{-|x|}$.⟧",
+        "⟦<b>17.</b> Thiết lập bảng hàm và tự tương quan tương ứng cho $\\Pi$, $e^{-\\pi x^2}$, $\\delta(x)$, $e^{-x}H(x)$, $e^{-|x|}$.||<b>17.</b> Establish the table of functions and their autocorrelations for $\\Pi$, $e^{-\\pi x^2}$, $\\delta(x)$, $e^{-x}H(x)$, $e^{-|x|}$.⟧",
+        "⟦<b>18, 19.</b> Chứng minh tự tương quan của $e^{-\\pi x^2}\\cos\\omega x$ ($\\omega$ lớn) xấp xỉ $2^{-1/2}e^{-\\frac12\\pi x^2}\\cos\\omega x$; bàn về tự tương quan của $\\cos x$.||<b>18, 19.</b> Show the autocorrelation of $e^{-\\pi x^2}\\cos\\omega x$ ($\\omega$ large) is approximately $2^{-1/2}e^{-\\frac12\\pi x^2}\\cos\\omega x$; discuss the autocorrelation of $\\cos x$.⟧",
+        "⟦<b>20.</b> Chứng minh tích của độ rộng tự tương quan hàm và biến đổi của nó liên hệ với $(\\int f^2dx)(\\int F^2ds)$, và tích này không có cận dưới khác 0.||<b>20.</b> Show the product of the autocorrelation widths of a function and its transform relates to $(\\int f^2dx)(\\int F^2ds)$, and that the product has no nonzero lower limit.⟧",
+        "⟦<b>21.</b> Chứng minh $|f(x)|\\le\\int|F(s)|ds$.||<b>21.</b> Show that $|f(x)|\\le\\int|F(s)|ds$.⟧",
+        "⟦<b>22. Biến đổi tự nghịch đảo.</b> $e^{-\\pi x^2}$ tự biến đổi. Có tin được rằng $e^{-\\pi x^2}+\\tfrac12e^{-\\pi x^2/4}$ cũng tự biến đổi không? Chứng minh hoặc bác bỏ.||<b>22. Self-reciprocal transform.</b> $e^{-\\pi x^2}$ is self-transforming. Can $e^{-\\pi x^2}+\\tfrac12e^{-\\pi x^2/4}$ also be self-transforming? Prove or disprove.⟧",
+        "⟦<b>23. Phổ gói sóng.</b> Chứng minh $e^{-\\beta x^2}\\cos\\alpha x\\supset\\left(\\frac\\pi\\beta\\right)^{1/2}e^{-\\pi^2s^2/\\beta}\\cosh(\\pi\\alpha s/\\beta)$.||<b>23. Wavepacket spectrum.</b> Show that $e^{-\\beta x^2}\\cos\\alpha x\\supset\\left(\\frac\\pi\\beta\\right)^{1/2}e^{-\\pi^2s^2/\\beta}\\cosh(\\pi\\alpha s/\\beta)$.⟧",
+        "⟦<b>24. Lướt sóng.</b> Truyền thống lướt sóng nói mỗi con sóng thứ bảy lớn hơn. Đặc trưng tương ứng trong miền phổ sóng là gì?||<b>24. Surfing.</b> Every seventh wave is said to be bigger. What is the corresponding feature in the wave-spectrum domain?⟧",
+        "⟦<b>26, 27.</b> Âm nhạc tính toán: mô tả cách tạo âm cao độ tăng mãi nhưng không bao giờ vượt ngưỡng nghe được; giải thích tri giác âm thanh violin qua độ vang.||<b>26, 27.</b> Computed music: describe generating a perpetually rising pitch that never exceeds audibility; explain the violin/reverberation perception puzzle.⟧",
+        "⟦<b>29.</b> Phục hồi cho trung bình trượt: tìm toán tử nghịch đảo $\\Pi^{-1}(x)$ sao cho $\\Pi^{-1}(x)*\\Pi(x)=\\delta(x)$, hoặc tìm biến đổi Fourier của $(\\text{sinc}\\,s)^{-1}$.||<b>29.</b> Restoration for running means: find an inverse operator $\\Pi^{-1}(x)$ such that $\\Pi^{-1}(x)*\\Pi(x)=\\delta(x)$, or find the Fourier transform of $(\\text{sinc}\\,s)^{-1}$.⟧",
+        "⟦<b>30.</b> Phục hồi cho trung bình trượt có trọng số tam giác: tìm $\\Lambda^{-1}(x)$ và kiểm công thức chuỗi đề xuất $g''(x-1)+2g''(x-2)+3g''(x-3)+\\dots$.||<b>30.</b> Restoration for weighted running means: find $\\Lambda^{-1}(x)$ and examine the proposed series $g''(x-1)+2g''(x-2)+3g''(x-3)+\\dots$.⟧",
+        "⟦<b>31. Mômen.</b> Tìm $a,b,c$ sao cho $a+b\\cos2\\pi cx$ khớp tốt $\\text{sinc}\\,x$ trên $-1<x<1$; $F(s)$ giống $\\Pi(s)$ ở khía cạnh nào?||<b>31. Moments.</b> Find $a,b,c$ so that $a+b\\cos2\\pi cx$ fits $\\text{sinc}\\,x$ well on $-1<x<1$; in what way does $F(s)$ resemble $\\Pi(s)$?⟧",
+        "⟦<b>32. Tính chất hàm sinc.</b> Chứng minh hệ số khai triển $(1-x^2)(1-x^2/4)(1-x^2/9)\\cdots$ không khớp chuỗi Taylor của $\\text{sinc}\\,x$; vì sao định lý giới hạn trung tâm dường như không áp dụng?||<b>32. Sinc function properties.</b> Show the coefficients of $(1-x^2)(1-x^2/4)(1-x^2/9)\\cdots$ do not match the Taylor series of $\\text{sinc}\\,x$; why does the central limit theorem seem not to apply?⟧",
+        "⟦<b>33. Hai lối suy luận.</b> Chứng minh phổ của hai xung liên tiếp có các tần số triệt tiêu, bằng cả lập luận trong miền tần số (đã cho) lẫn miền thời gian (tự tìm).||<b>33. Dual lines of reasoning.</b> Show the spectrum of two successive pulses has zero-content frequencies, both by the frequency-domain argument (given) and the time-domain one (find it yourself).⟧",
+        "⟦<b>34.</b> Tìm phương sai của gói sóng $f(x)=e^{-\\alpha(x/W)^2}\\cos2\\pi\\nu x$.||<b>34.</b> Derive the variance of the wavepacket $f(x)=e^{-\\alpha(x/W)^2}\\cos2\\pi\\nu x$.⟧",
+        "⟦<b>35.</b> Với đỉnh tam giác bất đối xứng $f(x)$ cho theo $k,a$, tìm $F(s)$.||<b>35.</b> With the asymmetrical triangular peak $f(x)$ given in terms of $k,a$, find $F(s)$.⟧",
+        "⟦<b>36. Máy phát xung radar.</b> Với xung $0{,}1\\,\\mu s$, điện áp $15\\,000\\Pi(t-3{,}4)$ V: tìm chiều dài đường truyền, trở kháng vào, hàm truyền điện áp và đáp ứng xung.||<b>36. Radar pulse generator.</b> With a $0.1\\,\\mu s$ pulse, voltage $15{,}000\\Pi(t-3.4)$ V: find the transmission-line length, input impedance, voltage transfer function and impulse response.⟧",
+        "⟦<b>37, 38, 39.</b> Bài tập hình 8.17 (biểu diễn hàm bằng sai phân hữu hạn); theo dõi tạp chí chuyên ngành; tự soạn một bài tập kèm lời giải.||<b>37, 38, 39.</b> The Fig. 8.17 exercise (expressing functions as finite differences); scanning recent journals; composing your own homework problem with a solution.⟧",
+        "⟦<b>40. Phương trình Schrödinger.</b> Các hàm Hermite-Gauss $H_n(x)e^{-x^2/2}$ tự biến đổi Fourier. Biến đổi phương trình Schrödinger từng số hạng có còn cho một phương trình Schrödinger cho $\\Psi$ không?||<b>40. Schrödinger's equation.</b> The Hermite-Gauss functions $H_n(x)e^{-x^2/2}$ are self-transforming. Does transforming the Schrödinger equation term by term still give a Schrödinger equation for $\\Psi$?⟧",
     ],
     pitfalls=[
         "<b>⟦\"Hai hàm cùng độ rộng tự tương quan thì cùng hình dạng.\"||\"Two functions with the same autocorrelation width have the same shape.\"⟧</b><p>⟦Chỉ cần cùng phổ công suất: $\\Pi$ dời 3 đơn vị có $W_{f\\star f}$ = {{aw_shift}} như $\\Pi$ gốc (tr. 170 đến 171).||It suffices to have the same power spectrum: $\\Pi$ shifted by 3 has $W_{f\\star f}$ = {{aw_shift}}, same as the original $\\Pi$ (pp. 170 to 171).⟧</p>",
@@ -652,5 +685,97 @@ ax.plot(sg_, np.exp(-10*np.pi**2*sg_**2/6), "k--", lw=0.8, label="exp(−10π²s
 ax.set_ylim(-0.3, 1.05); ax.set_xlabel("s"); ax.legend(fontsize=8); plt.tight_layout(); plt.show()''', dict(fig="clt", cap="⟦Hình 3. Biến đổi của n lần tích chập chữ nhật, sincⁿ s: khi n tăng, phần giữa tiến về Gauss (nét đứt cho n = 10) và các cánh tắt nhanh.||Figure 3. The transform of n-fold rectangle convolution, sincⁿ s: as n grows the central part approaches a Gaussian (dashed for n = 10) and the wings die away.⟧")),
         ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
 ⟦Sai phân: {{fd_mag}}, sai phân bậc hai: {{fd2_mag}}, giới hạn $a\\to0$ lệch {{fd_lim}}. Trung bình trượt: {{rm_03}} và bậc hai {{rm2_03}}. Giới hạn trung tâm: $\\text{sinc}^{10}(0.2)$ = {{clt_10}} so với Gauss {{clt_g}}; $n=4$ phương sai {{clt_var}} và độ nhọn dư {{clt_kurt}}; $\\{1\\ 1\\}^{*20}$: {{clt_bin}} so với {{clt_bin_g}}. Lấy mẫu và nhân bản giao hoán, lệch {{sr_dev}}.||Difference: {{fd_mag}}, second difference: {{fd2_mag}}, the $a\\to0$ limit deviates by {{fd_lim}}. Running mean: {{rm_03}} and second order {{rm2_03}}. Central limit: $\\text{sinc}^{10}(0.2)$ = {{clt_10}} against the Gaussian {{clt_g}}; $n=4$ variance {{clt_var}} and excess kurtosis {{clt_kurt}}; $\\{1\\ 1\\}^{*20}$: {{clt_bin}} against {{clt_bin_g}}. Sampling and replication commute, deviation {{sr_dev}}.⟧"""),
+        ("md", """## ⟦Bài tập cuối chương 8, phần A (Bracewell, tr. 191–197)||End-of-chapter-8 problems, part A (Bracewell, pp. 191–197)⟧
+🎯 **⟦Phương pháp này trả lời câu hỏi gì?||What question does this method answer?⟧** ⟦Mỗi bài được kiểm bằng ≥2 phương pháp độc lập (tích chập trực tiếp so với công thức đóng, hoặc quadrature so với hình thang mịn).||Each problem is checked with ≥2 independent methods (direct convolution versus a closed form, or adaptive quadrature versus a fine trapezoid rule).⟧"""),
+        ("code", r'''def tri8(x): return np.maximum(1 - np.abs(x), 0)
+def Hstep8(x): return np.where(x > 0, 1.0, np.where(x < 0, 0.0, 0.5))
+
+# ⟦Bài 1: e^{-x²}*e^{-x²} = √(π/2)e^{-x²/2}||Problem 1: e^{-x²}*e^{-x²} = √(π/2)e^{-x²/2}⟧
+dx1 = 0.002; xg1 = np.arange(-20, 20, dx1); i0_1 = len(xg1)//2
+g1v = np.exp(-xg1**2)
+conv1 = np.convolve(g1v, g1v, mode="same")*dx1
+target1 = np.sqrt(np.pi/2)*np.exp(-xg1**2/2)
+p1_err = np.max(np.abs(conv1[i0_1-2000:i0_1+2000] - target1[i0_1-2000:i0_1+2000]))
+assert p1_err < 3e-3
+report("p1_err", p1_err, ".1e")
+
+# ⟦Bài 4: Λ(x)H(x) ⊃ e^{i2πs}/(i2πs) − sinc s/(i2πs), kiểm bằng quad và bằng hình thang mịn||Problem 4: Λ(x)H(x) ⊃ e^{i2πs}/(i2πs) − sinc s/(i2πs), checked by quad and by a fine trapezoid rule⟧
+lam_H = lambda x: tri8(x)*Hstep8(x)
+s4 = 0.4
+p4_quad = ftq(lam_H, 0, 1, s4, [0, 1])
+xg4 = np.linspace(0, 1, 200001)
+p4_trap = trap(lam_H(xg4)*np.exp(-2j*np.pi*s4*xg4), xg4)
+p4_err = abs(p4_quad - p4_trap)
+assert p4_err < 1e-5
+report("p4_re", p4_quad.real, ".4f"); report("p4_im", p4_quad.imag, ".4f"); report("p4_err", p4_err, ".1e")
+
+# ⟦Bài 5: tung độ tâm F(0)=diện tích, độ dốc pha ∝ mômen bậc nhất, kiểm tính Hermitian||Problem 5: central ordinate F(0)=area, phase slope ∝ first moment, check the hermitian property⟧
+area5 = integrate.quad(lam_H, 0, 1)[0]
+F0_5 = ftq(lam_H, 0, 1, 0).real
+mom5 = integrate.quad(lambda x: x*lam_H(x), 0, 1)[0]
+hh5 = 1e-6
+slope5 = (ftq(lam_H, 0, 1, hh5).imag - ftq(lam_H, 0, 1, -hh5).imag)/(2*hh5)
+p5_err_area = abs(F0_5 - area5); p5_err_slope = abs(slope5 - (-2*np.pi*mom5))
+p5_herm_err = abs(ftq(lam_H, 0, 1, 0.3) - np.conj(ftq(lam_H, 0, 1, -0.3)))
+assert p5_err_area < 1e-9 and p5_err_slope < 1e-6 and p5_herm_err < 1e-9
+report("p5_area", area5, ".4f"); report("p5_err_slope", p5_err_slope, ".1e")
+
+# ⟦Bài 8: bình phương độ rộng tương đương cộng được dưới tích chập Gauss||Problem 8: squares of equivalent widths add under Gaussian convolution⟧
+eqwidth8 = lambda f, a, b: integrate.quad(f, a, b)[0]/f(0)
+sigA, sigB = 1.0, 2.0
+fA8 = lambda x: np.exp(-x**2/(2*sigA**2)); fB8 = lambda x: np.exp(-x**2/(2*sigB**2))
+WA8 = eqwidth8(fA8, -30, 30); WB8 = eqwidth8(fB8, -30, 30)
+dx8 = 0.005; xg8 = np.arange(-40, 40, dx8); i0_8 = len(xg8)//2
+convAB8 = np.convolve(fA8(xg8), fB8(xg8), mode="same")*dx8
+WC8 = trap(convAB8, xg8)/convAB8[i0_8]
+p8_err = abs((WA8**2 + WB8**2) - WC8**2)
+assert p8_err < 5e-3
+report("p8_lhs", WA8**2 + WB8**2, ".4f"); report("p8_err", p8_err, ".1e")
+
+# ⟦Bài 9: độ rộng tương đương của 4sinc²2s−sinc²s||Problem 9: equivalent width of 4sinc²2s−sinc²s⟧
+f9 = lambda s: 4*np.sinc(2*s)**2 - np.sinc(s)**2
+A9 = integrate.quad(f9, -80, 80, limit=3000)[0]
+W9 = A9/f9(0)
+p9_err = abs(W9 - 1/3)
+assert p9_err < 1e-3
+report("p9_W", W9, ".4f"); report("p9_err", p9_err, ".1e")
+f9b = lambda s: np.sinc(s) + np.sinc(2*s)**2
+A9b = integrate.quad(f9b, -80, 80, limit=3000)[0]
+report("p9b_W", A9b/f9b(0), ".4f")
+
+# ⟦Bài 16: tích chập của hai hàm lẻ là hàm chẵn||Problem 16: the convolution of two odd functions is even⟧
+o1_16 = lambda x: x*np.exp(-0.3*x**2); o2_16 = lambda x: np.sin(x)*np.exp(-0.2*x**2)
+dx16 = 0.002; xg16 = np.arange(-30, 30, dx16)
+conv16 = np.convolve(o1_16(xg16), o2_16(xg16), mode="same")*dx16
+p16_err = np.max(np.abs(conv16 - conv16[::-1]))/np.max(np.abs(conv16))
+assert p16_err < 1e-2
+report("p16_err", p16_err, ".1e")
+
+# ⟦Bài 25: 4 cặp Hermite đầu tiên||Problem 25: the first 4 Hermite pairs⟧
+s25 = 0.35
+H0 = lambda x: 1 + 0*x; H1 = lambda x: 2*x; H2 = lambda x: 4*x**2 - 2; H3 = lambda x: 8*x**3 - 12*x
+def hermite_pair_err(Hn, sign_i_pow, n_):
+    fx = lambda x: Hn(np.sqrt(2*np.pi)*x)*np.exp(-np.pi*x**2)
+    lhs = ftq(fx, -20, 20, s25)
+    rhs = sign_i_pow*Hn(np.sqrt(2*np.pi)*s25)*np.exp(-np.pi*s25**2)
+    return abs(lhs - rhs)
+p25_errs = [hermite_pair_err(H1, -1j, 1), hermite_pair_err(H2, (-1j)**2, 2), hermite_pair_err(H3, (-1j)**3, 3)]
+assert max(p25_errs) < 1e-8
+report("p25_err", max(p25_errs), ".1e")
+
+# ⟦Bài 28: độ dốc pha ở gốc, kiểm với f=xe^{-x}H(x)||Problem 28: phase slope at the origin, checked with f=xe^{-x}H(x)⟧
+f28 = lambda x: x*np.exp(-x)*(x > 0)
+num28 = integrate.quad(lambda x: x*f28(x), 0, 60)[0]
+den28 = integrate.quad(f28, 0, 60)[0]
+slope28_formula = -2*np.pi*num28/den28
+s28 = 1e-5
+ph_p28 = np.angle(ftq(f28, 0, 60, s28)); ph_m28 = np.angle(ftq(f28, 0, 60, -s28))
+slope28_num = (ph_p28 - ph_m28)/(2*s28)
+p28_err = abs(slope28_formula - slope28_num)
+assert p28_err < 1e-4
+report("p28_slope", slope28_formula, ".4f"); report("p28_err", p28_err, ".1e")'''),
+        ("md", """#### 📤 ⟦Đầu ra thật (bài tập cuối chương)||Real output (end-of-chapter problems)⟧
+⟦Bài 1: lệch {{p1_err}}. Bài 4: $F(0{,}4)={{p4_re}}+i({{p4_im}})$, lệch hai cách {{p4_err}}. Bài 5: diện tích {{p5_area}} = $F(0)$ đúng, lệch độ dốc {{p5_err_slope}}. Bài 8: $W_A^2+W_B^2={{p8_lhs}}$, lệch với $W_C^2$ {{p8_err}}. Bài 9: độ rộng {{p9_W}} (đúng $1/3$, lệch {{p9_err}}); $\\text{sinc}\\,s+\\text{sinc}^22s$ có độ rộng {{p9b_W}}. Bài 16: lệch tính chẵn {{p16_err}}. Bài 25: lệch lớn nhất trong 3 cặp Hermite {{p25_err}}. Bài 28: độ dốc pha {{p28_slope}}, lệch {{p28_err}}.||"""
+        "Problem 1: deviation {{p1_err}}. Problem 4: $F(0.4)={{p4_re}}+i({{p4_im}})$, deviation between the two methods {{p4_err}}. Problem 5: area {{p5_area}} = $F(0)$ correctly, slope deviation {{p5_err_slope}}. Problem 8: $W_A^2+W_B^2={{p8_lhs}}$, deviation from $W_C^2$ {{p8_err}}. Problem 9: width {{p9_W}} (indeed $1/3$, deviation {{p9_err}}); $\\text{sinc}\\,s+\\text{sinc}^22s$ has width {{p9b_W}}. Problem 16: evenness deviation {{p16_err}}. Problem 25: largest deviation among the 3 Hermite pairs {{p25_err}}. Problem 28: phase slope {{p28_slope}}, deviation {{p28_err}}.⟧"""),
     ],
 )
