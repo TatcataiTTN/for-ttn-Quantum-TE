@@ -290,6 +290,26 @@ MOD = dict(
         "⟦<b>11. Liên lạc qua vệt sao băng.</b> Với biên độ tín hiệu $A_0e^{-\\alpha(t-t_1)}H(t-t_1)$ và số đợt vượt ngưỡng $N=cA_0^{-a}$, chứng minh kênh mở trong thời gian $T=\\pi cA_0^{-a}/\\alpha$ và tỉ lệ đợt dùng được có thời lượng vượt $t_1$ là $e^{-\\alpha t_1}$.||<b>11. Meteor-trail communication.</b> With signal amplitude $A_0e^{-\\alpha(t-t_1)}H(t-t_1)$ and burst count $N=cA_0^{-a}$ above threshold, show the channel is open for $T=\\pi cA_0^{-a}/\\alpha$ and the fraction of usable bursts with duration exceeding $t_1$ is $e^{-\\alpha t_1}$.⟧",
         "⟦<b>16.</b> Phân bố $1/R$ khi $R$ có phân bố phẳng $0{,}05\\Pi(0{,}05R-5)$ nhưng đo bằng máy đo độ dẫn thì không phẳng — giải thích.||<b>16.</b> Distribution of a reciprocal: $R$ has flat distribution $0.05\\Pi(0.05R-5)$ but measuring conductance shows a non-flat distribution — explain.⟧",
         "⟦<b>18.</b> Nếu $p,q$ trong định lý Bernoulli trái dấu, có thể nói gì về tự tích chập $n$ lần của $p\\delta(x)+q\\delta(x-X)$?||<b>18.</b> If $p,q$ in Bernoulli's theorem had opposite signs, what could be said about the $n$-fold self-convolution of $p\\delta(x)+q\\delta(x-X)$?⟧",
+        "⟦<hr><h4>34 bài tập cuối chương 1 của Barkat (tr. 65–73), nguyên văn từ sách, dịch song ngữ.</h4>||<hr><h4>All 34 end-of-Barkat-chapter-1 problems (pp. 65–73), verbatim from the book, translated bilingually.</h4>⟧",
+        "⟦<h4>C. Barkat — bài kiểm bằng số (notebook mục cuối)</h4>||<h4>C. Barkat — numerically checkable (final notebook section)</h4>⟧",
+        "⟦<b>1.7.</b> Rút ngẫu nhiên một quả bóng từ hộp có 10 đỏ, 3 trắng, 7 xanh: tính xác suất (a) đỏ, (b) trắng, (c) xanh, (d) không đỏ, (e) đỏ hoặc trắng.||<b>1.7.</b> A ball is drawn at random from a box with 10 red, 3 white, 7 blue: find the probability it is (a) red, (b) white, (c) blue, (d) not red, (e) red or white.⟧",
+        "⟦<b>1.10.</b> Hộp $B_1$: 4 trắng, 2 đen; hộp $B_2$: 3 trắng, 5 đen; xác suất chọn hộp lớn gấp đôi hộp nhỏ. Tính xác suất bóng đen theo từng hộp, và xác suất bóng đen/trắng chung.||<b>1.10.</b> Box $B_1$: 4 white, 2 black; box $B_2$: 3 white, 5 black; the larger box is twice as likely to be chosen. Find the probability of black given each box, and the overall probability of black/white.⟧",
+        "⟦<b>1.11.</b> Xác suất được đúng ba mặt 1 trong bốn lần tung xúc xắc đều.||<b>1.11.</b> The probability of obtaining exactly three 1s in four tosses of a fair die.⟧",
+        "⟦<b>1.13.</b> Bình 10 quả đánh số 0–9, rút $k$ lần có hoàn lại. $A$: không có quả 0 hay 1; $B$: không có quả 1 nhưng có quả 2. Tính $P(A), P(B), P(AB), P(A\\cup B)$.||<b>1.13.</b> An urn of 10 balls numbered 0–9, drawn $k$ times with replacement. $A$: neither 0 nor 1 appears; $B$: 1 does not appear but 2 does. Find $P(A), P(B), P(AB), P(A\\cup B)$.⟧",
+        "⟦<b>1.16.</b> $f_X(x)=1/4$ trên $[-2,2]$: tính $P(X\\le x)$, $P(|X|\\le1)$, trung bình, phương sai, hàm đặc trưng.||<b>1.16.</b> $f_X(x)=1/4$ on $[-2,2]$: find $P(X\\le x)$, $P(|X|\\le1)$, the mean, variance, characteristic function.⟧",
+        "⟦<b>1.17.</b> $f_X(x)=x$ trên $(0,1]$, $=2-x$ trên $[1,2)$: tính $P(1/3<X<3/2)$, trung bình, phương sai, hàm sinh mômen, và so trung bình từ hàm sinh mômen với định nghĩa trực tiếp.||<b>1.17.</b> $f_X(x)=x$ on $(0,1]$, $=2-x$ on $[1,2)$: find $P(1/3<X<3/2)$, mean, variance, the moment generating function, and compare the mean from the MGF with the direct definition.⟧",
+        "⟦<b>1.20.</b> $f_{XY}=k(x+y)$ trên $[0,2]\\times[0,2]$: tìm $k$, mật độ biên, $P(X<1|Y<1)$, $E[X],E[Y],E[XY],\\rho_{XY}$, và xét tính độc lập.||<b>1.20.</b> $f_{XY}=k(x+y)$ on $[0,2]\\times[0,2]$: find $k$, the marginal densities, $P(X<1|Y<1)$, $E[X],E[Y],E[XY],\\rho_{XY}$, and check independence.⟧",
+        "⟦<b>1.25.</b> Tìm mật độ của $Y=2X$ với $f_X(x)=2e^{-2x}$, $x>0$; tính $E[Y]$ hai cách (trực tiếp qua $f_X$, và qua $f_Y$).||<b>1.25.</b> Find the density of $Y=2X$ with $f_X(x)=2e^{-2x}$, $x>0$; compute $E[Y]$ two ways (directly via $f_X$, and via $f_Y$).⟧",
+        "⟦<b>1.28.</b> $X,Y$ rời rạc độc lập với $f_X=0{,}4\\delta(x-1)+0{,}2\\delta(x-2)+0{,}4\\delta(x-3)$, $f_Y=0{,}3\\delta(y-1)+0{,}5\\delta(y-2)+0{,}2\\delta(y-3)$: tìm mật độ của $Z=X+Y$.||<b>1.28.</b> Independent discrete $X,Y$ with $f_X=0.4\\delta(x-1)+0.2\\delta(x-2)+0.4\\delta(x-3)$, $f_Y=0.3\\delta(y-1)+0.5\\delta(y-2)+0.2\\delta(y-3)$: find the density of $Z=X+Y$.⟧",
+        "⟦<b>1.31.</b> $f_{XY}(x,y)=(\\alpha/\\beta)e^{-\\alpha x}$, $0\\le x<\\infty$, $0\\le y\\le\\beta$: tìm mật độ biên $f_X$, $f_Y$, xét độc lập, và tìm mật độ của $Z=X+Y$.||<b>1.31.</b> $f_{XY}(x,y)=(\\alpha/\\beta)e^{-\\alpha x}$, $0\\le x<\\infty$, $0\\le y\\le\\beta$: find the marginals $f_X$, $f_Y$, check independence, and find the density of $Z=X+Y$.⟧",
+        "⟦<h4>D. Barkat — câu tự luận (tập hợp, sơ đồ Venn, mật độ chưa kiểm) — chấm bằng lý luận</h4>||<h4>D. Barkat — essay (sets, Venn diagrams, unverified densities) — graded by reasoning</h4>⟧",
+        "⟦<b>1.1–1.6.</b> Lý thuyết tập hợp: hữu hạn/đếm được, các phép toán $\\cup,\\cap,-$, sơ đồ Venn, $A\\subset B\\subset C\\Rightarrow A\\subset C$, các tập rời nhau.||<b>1.1–1.6.</b> Set theory: finite/countable, the operations $\\cup,\\cap,-$, Venn diagrams, $A\\subset B\\subset C\\Rightarrow A\\subset C$, mutually exclusive sets.⟧",
+        "⟦<b>1.8, 1.9.</b> Rút bóng có/không hoàn lại từ một hoặc hai hộp; xác suất thứ tự xanh-trắng-đỏ.||<b>1.8, 1.9.</b> Drawing balls with/without replacement from one or two boxes; probability of the order blue-white-red.⟧",
+        "⟦<b>1.12.</b> Ba bình không đều cỡ, xác suất chọn khác nhau: xác suất kết hợp, xác suất có điều kiện.||<b>1.12.</b> Three urns of unequal size with different selection probabilities: joint and conditional probabilities.⟧",
+        "⟦<b>1.14, 1.15, 1.18, 1.19.</b> Hàm mật độ có thành phần xung; hàm phân phối; tìm $\\alpha,\\beta$ từ trung bình cho trước; bảng xác suất kết hợp rời rạc, kiểm độc lập.||<b>1.14, 1.15, 1.18, 1.19.</b> A density with an impulse term; the distribution function; find $\\alpha,\\beta$ from a given mean; a discrete joint-probability table, check independence.⟧",
+        "⟦<b>1.21–1.24, 1.26, 1.27.</b> Các mật độ kết hợp khác nhau: hằng số chuẩn hóa, xác suất có điều kiện, kỳ vọng có điều kiện, độc lập, mật độ của tổng.||<b>1.21–1.24, 1.26, 1.27.</b> Various joint densities: normalizing constants, conditional probabilities, conditional expectation, independence, the density of a sum.⟧",
+        "⟦<b>1.29, 1.30.</b> Mật độ của $Z=XY$ và $Z=X+Y$ từ các mật độ kết hợp cho trước.||<b>1.29, 1.30.</b> The density of $Z=XY$ and $Z=X+Y$ from given joint densities.⟧",
+        "⟦<b>1.32–1.34.</b> Mật độ của $Z=X/Y$; biến đổi hai biến $(Y_1,Y_2)$ từ $(X_1,X_2)$ với minh họa miền xác định; chứng minh độc lập trong mật độ mũ hai chiều.||<b>1.32–1.34.</b> The density of $Z=X/Y$; a two-variable transformation $(Y_1,Y_2)$ from $(X_1,X_2)$ with the domain sketched; prove independence in a two-dimensional exponential density.⟧",
     ],
     pitfalls=[
         "<b>⟦\"Hai biến cố loại trừ nhau thì độc lập.\"||\"Two mutually exclusive events are independent.\"⟧</b><p>⟦Ngược lại: nếu cả hai có xác suất dương thì loại trừ ngăn độc lập; $P(C\\cap D)$ = {{ind_cd}} còn $P(C)P(D)$ = {{ind_cd_prod}} với tổng 2 và tổng 12.||It is the opposite: if both have positive probability, exclusion prevents independence; $P(C\\cap D)$ = {{ind_cd}} while $P(C)P(D)$ = {{ind_cd_prod}} for sum 2 and sum 12.⟧</p>",
@@ -839,5 +859,101 @@ assert p17_relerr < 1e-2
 report("p17_mean", mean17, ".1f"); report("p17_relerr", p17_relerr, ".2%")'''),
         ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
 ⟦Bài 6: $P(\\text{tổng}=7)$ với hai xúc xắc = {{dice2_p7}} (Monte Carlo {{dice2_mc}}), $P(\\text{tổng}=10)$ với ba xúc xắc = {{dice3_p10}}. Bài 17: đỉnh phân bố nhị thức ở gần $x=${{p17_mean}}, lệch tương đối với Gauss cùng trung bình/phương sai chỉ {{p17_relerr}}.||Problem 6: $P(\\text{total}=7)$ with two dice = {{dice2_p7}} (Monte Carlo {{dice2_mc}}), $P(\\text{total}=10)$ with three dice = {{dice3_p10}}. Problem 17: the binomial distribution peaks near $x=${{p17_mean}}, with a relative deviation from the matched Gaussian of only {{p17_relerr}}.⟧"""),
+        ("md", """## ⟦Bài tập cuối chương 1 của Barkat, phần C (tr. 65–73)||End-of-Barkat-chapter-1 problems, part C (pp. 65–73)⟧
+🎯 **⟦Phương pháp này trả lời câu hỏi gì?||What question does this method answer?⟧** ⟦10 bài xác suất/thống kê cơ bản: mỗi bài kiểm bằng công thức đóng đối chiếu với tích phân số hoặc mô phỏng Monte Carlo.||10 basic probability/statistics problems: each checked by a closed form cross-checked against numerical integration or a Monte Carlo simulation.⟧"""),
+        ("code", r'''rngB = np.random.default_rng(7)
+
+# ⟦Bài 1.7: hộp 10 đỏ, 3 trắng, 7 xanh||Problem 1.7: box with 10 red, 3 white, 7 blue⟧
+red_, white_, blue_ = 10, 3, 7; totB = red_ + white_ + blue_
+pB_red, pB_white, pB_blue = red_/totB, white_/totB, blue_/totB
+assert abs((pB_red+pB_white+pB_blue) - 1) < 1e-12
+report("b17_red", pB_red, ".2f"); report("b17_notred", 1 - pB_red, ".2f")
+
+# ⟦Bài 1.10: hộp B1 (4 trắng,2 đen), B2 (3 trắng,5 đen), P(B2)=2P(B1)||Problem 1.10: box B1 (4 white,2 black), B2 (3 white,5 black), P(B2)=2P(B1)⟧
+pB1_, pB2_ = 1/3, 2/3
+pBlack_B1, pBlack_B2 = 2/6, 5/8
+pBlack_ = pB1_*pBlack_B1 + pB2_*pBlack_B2                                  # ⟦cách A: định lý xác suất toàn phần||method A: total probability theorem⟧
+NmB = 2000000
+box_ = rngB.random(NmB) < pB2_; draw_ = rngB.random(NmB)
+black_ = np.where(box_, draw_ < pBlack_B2, draw_ < pBlack_B1)
+pBlack_mc = black_.mean()                                                  # ⟦cách B: mô phỏng Monte Carlo||method B: Monte Carlo simulation⟧
+assert abs(pBlack_ - pBlack_mc) < 2e-3
+report("b110_black", pBlack_, ".4f"); report("b110_mc", pBlack_mc, ".4f")
+
+# ⟦Bài 1.11: đúng ba mặt 1 trong bốn lần tung xúc xắc||Problem 1.11: exactly three 1s in four tosses of a die⟧
+from math import comb
+p111 = comb(4, 3)*(1/6)**3*(5/6)
+sim111 = rngB.integers(1, 7, (500000, 4))
+p111_mc = np.mean(np.sum(sim111 == 1, axis=1) == 3)
+assert abs(p111 - p111_mc) < 2e-3
+report("b111", p111, ".4f")
+
+# ⟦Bài 1.13: bình 10 quả, rút k=5 lần có hoàn lại||Problem 1.13: urn of 10 balls, k=5 draws with replacement⟧
+k113 = 5
+pA113 = (8/10)**k113; pB113 = (9/10)**k113 - (8/10)**k113; pAB113 = (8/10)**k113 - (7/10)**k113
+pOr113 = pA113 + pB113 - pAB113
+draws113 = rngB.integers(0, 10, (500000, k113))
+A_mc = np.mean(~np.any((draws113 == 0) | (draws113 == 1), axis=1))
+assert abs(pA113 - A_mc) < 3e-3
+report("b113_A", pA113, ".4f"); report("b113_or", pOr113, ".4f")
+
+# ⟦Bài 1.16: đều trên [−2,2]||Problem 1.16: uniform on [−2,2]⟧
+f116 = lambda x: 0.25
+p116 = integrate.quad(f116, -1, 1)[0]
+mean116 = integrate.quad(lambda x: x*f116(x), -2, 2)[0]
+var116 = integrate.quad(lambda x: x**2*f116(x), -2, 2)[0] - mean116**2
+v116 = 1.3
+cf116 = integrate.quad(lambda x: f116(x)*np.cos(v116*x), -2, 2)[0] + 1j*integrate.quad(lambda x: f116(x)*np.sin(v116*x), -2, 2)[0]
+cf116_formula = np.sin(2*v116)/(2*v116)
+assert abs(p116 - 0.5) < 1e-9 and abs(var116 - 4/3) < 1e-9 and abs(cf116 - cf116_formula) < 1e-9
+report("b116_p", p116, ".2f"); report("b116_var", var116, ".4f")
+
+# ⟦Bài 1.17: mật độ tam giác||Problem 1.17: triangular density⟧
+f117 = lambda x: np.where((x > 0) & (x <= 1), x, np.where((x > 1) & (x < 2), 2 - x, 0.0))
+p117 = integrate.quad(f117, 1/3, 3/2)[0]
+mean117 = integrate.quad(lambda x: x*f117(x), 0, 2)[0]
+var117 = integrate.quad(lambda x: x**2*f117(x), 0, 2)[0] - mean117**2
+hh117 = 1e-5
+mgf_deriv0 = (integrate.quad(lambda x: np.exp(hh117*x)*f117(x), 0, 2)[0] - integrate.quad(lambda x: np.exp(-hh117*x)*f117(x), 0, 2)[0])/(2*hh117)
+assert abs(mean117 - 1) < 1e-9 and abs(mgf_deriv0 - mean117) < 1e-6
+report("b117_p", p117, ".4f"); report("b117_mean", mean117, ".2f"); report("b117_var", var117, ".4f")
+
+# ⟦Bài 1.20: mật độ kết hợp k(x+y) trên [0,2]²||Problem 1.20: joint density k(x+y) on [0,2]²⟧
+k120 = 1/integrate.dblquad(lambda y, x: x + y, 0, 2, 0, 2)[0]
+fX120 = lambda x: integrate.quad(lambda y: k120*(x + y), 0, 2)[0]
+EX120 = integrate.quad(lambda x: x*fX120(x), 0, 2)[0]
+EXY120 = integrate.dblquad(lambda y, x: x*y*k120*(x + y), 0, 2, 0, 2)[0]
+N120 = 2000000
+u120 = rngB.random((N120, 2))*2
+accept120 = rngB.random(N120) < (u120[:, 0] + u120[:, 1])/4
+EXY_mc = (u120[accept120, 0]*u120[accept120, 1]).mean()
+assert abs(k120 - 0.125) < 1e-9 and abs(EXY120 - EXY_mc) < 5e-3
+report("b120_k", k120, ".3f"); report("b120_EX", EX120, ".4f"); report("b120_EXY", EXY120, ".4f")
+
+# ⟦Bài 1.25: Y = 2X, X ~ Exp(2)||Problem 1.25: Y = 2X, X ~ Exp(2)⟧
+EY_direct = 2*integrate.quad(lambda x: x*2*np.exp(-2*x), 0, 60)[0]
+EY_fromY = integrate.quad(lambda y: y*np.exp(-y), 0, 90)[0]
+assert abs(EY_direct - EY_fromY) < 1e-9 and abs(EY_direct - 1) < 1e-9
+report("b125_EY", EY_direct, ".2f")
+
+# ⟦Bài 1.28: Z = X+Y, X,Y rời rạc độc lập||Problem 1.28: Z = X+Y, X,Y independent discrete⟧
+X128 = {1: 0.4, 2: 0.2, 3: 0.4}; Y128 = {1: 0.3, 2: 0.5, 3: 0.2}
+Z128 = {}
+for xk, xv in X128.items():
+    for yk, yv in Y128.items():
+        Z128[xk + yk] = Z128.get(xk + yk, 0) + xv*yv
+assert abs(sum(Z128.values()) - 1) < 1e-12
+report("b128_z4", Z128[4], ".2f"); report("b128_z2", Z128[2], ".2f")
+
+# ⟦Bài 1.31: fXY=(α/β)e^{−αx}, 0≤y≤β — kiểm fY đều (độc lập)||Problem 1.31: fXY=(α/β)e^{−αx}, 0≤y≤β — check fY is uniform (independence)⟧
+alpha131, beta131 = 2.0, 3.0
+fX131_at = alpha131*np.exp(-alpha131*0.5)
+fX131_check = integrate.quad(lambda y: (alpha131/beta131)*np.exp(-alpha131*0.5), 0, beta131)[0]
+fY131_check = integrate.quad(lambda x: (alpha131/beta131)*np.exp(-alpha131*x), 0, 200)[0]
+assert abs(fX131_at - fX131_check) < 1e-9 and abs(fY131_check - 1/beta131) < 1e-9
+report("b131_fX", fX131_at, ".4f"); report("b131_fY", fY131_check, ".4f")'''),
+        ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
+⟦1.7: $P(\\text{đỏ})=${{b17_red}}, $P(\\text{không đỏ})=${{b17_notred}}. 1.10: $P(\\text{đen})=${{b110_black}} (mô phỏng {{b110_mc}}). 1.11: {{b111}}. 1.13: $P(A)=${{b113_A}}, $P(A\\cup B)=${{b113_or}}. 1.16: $P(|X|\\le1)=${{b116_p}}, phương sai {{b116_var}}. 1.17: $P(1/3<X<3/2)=${{b117_p}}, trung bình {{b117_mean}}, phương sai {{b117_var}}. 1.20: $k=${{b120_k}}, $E[X]=${{b120_EX}}, $E[XY]=${{b120_EXY}}. 1.25: $E[Y]=${{b125_EY}} (hai cách trùng nhau). 1.28: $P(Z=4)=${{b128_z4}}, $P(Z=2)=${{b128_z2}}. 1.31: $f_X(0{,}5)=${{b131_fX}}, $f_Y=${{b131_fY}} (hằng số, đúng như $X,Y$ độc lập).||"""
+        "1.7: $P(\\text{red})=${{b17_red}}, $P(\\text{not red})=${{b17_notred}}. 1.10: $P(\\text{black})=${{b110_black}} (simulated {{b110_mc}}). 1.11: {{b111}}. 1.13: $P(A)=${{b113_A}}, $P(A\\cup B)=${{b113_or}}. 1.16: $P(|X|\\le1)=${{b116_p}}, variance {{b116_var}}. 1.17: $P(1/3<X<3/2)=${{b117_p}}, mean {{b117_mean}}, variance {{b117_var}}. 1.20: $k=${{b120_k}}, $E[X]=${{b120_EX}}, $E[XY]=${{b120_EXY}}. 1.25: $E[Y]=${{b125_EY}} (both methods agree). 1.28: $P(Z=4)=${{b128_z4}}, $P(Z=2)=${{b128_z2}}. 1.31: $f_X(0.5)=${{b131_fX}}, $f_Y=${{b131_fY}} (constant, exactly as expected for independent $X,Y$).⟧"""),
     ],
 )
