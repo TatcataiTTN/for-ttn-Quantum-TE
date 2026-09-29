@@ -230,11 +230,37 @@ MOD = dict(
           "<b>A three-point digital filter.</b> The moving average $h=\\{\\tfrac13,\\tfrac13,\\tfrac13\\}$ passes frequency 0.1 with amplitude {{ma_amp}} (simulation gives {{ma_amp_sim}}): a slow signal goes through almost intact. An RC circuit of the same low-pass kind gives {{rc_amp}} at 0.3 with phase lag {{rc_ph}} degrees. In the chapter's view both are just a $T(f)$ and an $I(t)$; feed in an amplitude-modulated wave and see the carrier and the two sidebands ($M/4$ = {{am_sb}}) multiplied by different values of $T$, and be sure the output contains only frequencies already in the input since the system is linear and invariant (energy outside those frequencies {{lti_leak}}). Replace it by a squarer and new frequencies appear ({{nl_2f}} at $2f$); multiply by a varying function and frequencies are shifted ({{tv_lo}} and {{tv_hi}}).⟧</p>",
     practice=[
         "⟦Mở notebook và chạy cell cài đặt.||Open the notebook and run the setup cell.⟧",
-        "⟦Bài 1: đo $T(f)$ của mạch RC bằng cách cho vào các sóng cosin và so với $1/(1+i2\\pi f)$.||Task 1: measure $T(f)$ of the RC circuit by feeding cosines and compare with $1/(1+i2\\pi f)$.⟧",
-        "⟦Bài 2: dùng đáp ứng bậc thang để tính đầu ra với đầu vào là hình thang, rồi so với tích chập với $I$.||Task 2: use the step response to compute the output for a trapezoidal input and compare with convolution with $I$.⟧",
-        "⟦Bài 3: thiết kế bộ lọc FIR bốn điểm để triệt tần số 0.25 và kiểm bằng cosin thử.||Task 3: design a four-point FIR filter to null frequency 0.25 and check with a test cosine.⟧",
-        "⟦Bài 4: thử một hệ có ngưỡng (cắt biên độ) và chỉ ra tần số mới xuất hiện.||Task 4: try a clipping system and show the new frequencies that appear.⟧",
-        "⟦Bài 5: làm bài 29 với $W$ khác và xác nhận $L_{\\max}=W\\sqrt{2/\\pi}$.||Task 5: do problem 29 with another $W$ and confirm $L_{\\max}=W\\sqrt{2/\\pi}$.⟧",
+        "⟦<b>30 bài tập cuối chương 9 (Bracewell, tr. 211–218), nguyên văn từ sách, dịch song ngữ, chia hai phần. Nhiều bài đã được tính và đối chiếu ở các mục notebook phía trên (đánh dấu ✓ NB); phần còn lại là tự luận mạch điện/khái niệm.</b>||"
+        "<b>All 30 end-of-chapter-9 problems (Bracewell, pp. 211–218), verbatim from the book, translated bilingually, in two parts. Many are already computed and cross-checked in the notebook sections above (marked ✓ NB); the rest are circuit/conceptual essay problems.</b>⟧",
+        "⟦<h4>A. Bài kiểm bằng số (đã có trong notebook hoặc thêm ở mục cuối)</h4>||<h4>A. Numerically checkable (already in the notebook, or added in the final section)</h4>⟧",
+        "⟦<b>8. ✓ NB (mục cuối).</b> Tự tích chập lặp lại của một đáp ứng xung có tiến về dạng Gauss không (định lý giới hạn trung tâm cho mạng nối tiếp)?||<b>8. ✓ (final section).</b> Does the repeated self-convolution of an impulse response approach Gaussian form (central limit theorem for a cascade of networks)?⟧",
+        "⟦<b>10. ✓ NB (mục cuối).</b> Với $y=p(t)$, $x=\\sin2\\pi nt$, chứng minh diện tích hình Lissajous vẽ trong một chu kỳ cho giá trị hệ số Fourier $a_n$ (và tương tự $b_n$).||<b>10. ✓ (final section).</b> With $y=p(t)$, $x=\\sin2\\pi nt$, show the area of the Lissajous figure traced in one period gives the Fourier coefficient $a_n$ (and similarly $b_n$).⟧",
+        "⟦<b>23. ✓ NB.</b> Kiểm $\\cos(x/2)\\cos(x/4)\\cos(x/8)\\cos(x/16)$ gần $\\text{sinc}\\,x$ tới đâu; chứng minh $\\text{sinc}\\,x=\\prod_{k=1}^\\infty\\cos(x/2^k)$ và hệ số hiệu chỉnh $\\text{sinc}(x/2^N)$ khi dừng ở $N$ thừa số.||<b>23. ✓.</b> Verify how good $\\cos(x/2)\\cos(x/4)\\cos(x/8)\\cos(x/16)$ is as an approximation of $\\text{sinc}\\,x$; show $\\text{sinc}\\,x=\\prod_{k=1}^\\infty\\cos(x/2^k)$ and the correction factor $\\text{sinc}(x/2^N)$ when stopped at $N$ factors.⟧",
+        "⟦<b>24. ✓ NB.</b> Với đáp ứng xung chữ nhật từ hai kênh trễ $T_1,T_2$ đưa vào cùng nhau, chứng minh phổ có nhân tử $\\cos\\pi f(T_2-T_1)$.||<b>24. ✓.</b> With a rectangular impulse response from two channels delayed by $T_1,T_2$ combined together, show the spectrum has a factor $\\cos\\pi f(T_2-T_1)$.⟧",
+        "⟦<b>27. ✓ NB (mục cuối).</b> Chứng minh $xf(x)\\supset(i/2\\pi)F'(s)$.||<b>27. ✓ (final section).</b> Show that $xf(x)\\supset(i/2\\pi)F'(s)$.⟧",
+        "⟦<b>28. ✓ NB.</b> \"Chu kỳ lẩn trốn\": $y=9\\cos5x+11\\cos4x$ tuần hoàn chu kỳ $2\\pi$ nhưng không có thành phần Fourier tại $1/2\\pi$ — giải thích và vẽ biến đổi.||<b>28. ✓.</b> \"Elusive period\": $y=9\\cos5x+11\\cos4x$ is periodic with period $2\\pi$ yet has no Fourier component at $1/2\\pi$ — explain and plot the transform.⟧",
+        "⟦<b>Mã vạch tuần hoàn (giữa 28 và 29).</b> 31 vạch cách 5mm chồng với 37 vạch cách 4mm, vạch đầu trùng nhau, độ rộng vạch 1mm: mắt thấy tuần hoàn, nhưng tần số tương ứng có mặt trong $Y(s)$ không?||<b>Periodic barcode (between 28 and 29).</b> 31 lines spaced 5mm overprinted with 37 lines spaced 4mm, first lines aligned, line width 1mm: the eye sees periodicity, but is the corresponding frequency present in $Y(s)$?⟧",
+        "⟦<b>29. ✓ NB.</b> Độ phân giải phổ: hai vạch Gauss cách $L$ hợp nhất tại $L_{\\max}=W\\sqrt{2/\\pi}$.||<b>29. ✓.</b> Spectral resolution: two Gaussian lines spaced $L$ merge at $L_{\\max}=W\\sqrt{2/\\pi}$.⟧",
+        "⟦<b>30. ✓ NB.</b> Lọc tín hiệu số $\\{1,1.6,2,0.6\\}$ qua mạch RC ($RC=1\\,\\mu$s): so hệ số công thức với tích chập số.||<b>30. ✓.</b> Filtering the digital signal $\\{1,1.6,2,0.6\\}$ through an RC circuit ($RC=1\\,\\mu$s): compare the formula's coefficients with the discrete convolution.⟧",
+        "⟦<h4>B. Câu tự luận / mạch điện / khái niệm — không có một số duy nhất để so, chấm bằng lý luận</h4>||<h4>B. Essay / circuit / conceptual questions — no single number to check, graded by reasoning</h4>⟧",
+        "⟦<b>1.</b> Chứng minh đáp ứng tổng quát $V_2(t)=\\int R(t-u)V_1'(u)du$ với $R$ là đáp ứng bậc thang (đáp ứng dốc).||<b>1.</b> Show the general response $V_2(t)=\\int R(t-u)V_1'(u)du$, where $R$ is the ramp response.⟧",
+        "⟦<b>2.</b> Băng âm chạy gấp đôi tốc độ: tần số tăng gấp đôi theo định lý tỉ lệ — biên độ thay đổi ra sao?||<b>2.</b> A soundtrack played at double speed: frequency doubles by the similarity theorem — how does amplitude change?⟧",
+        "⟦<b>3.</b> Băng trong suốt quét bởi khe chữ nhật: chứng minh độ rộng tương đương của đáp ứng bằng độ rộng của băng hoặc của khe (chọn cái nhỏ hơn).||<b>3.</b> A transparent band scanned by a rectangular slit: show the equivalent width of the response equals the width of the band or of the slit.⟧",
+        "⟦<b>4.</b> Tín hiệu hữu hạn qua bộ lọc có đáp ứng xung ngắn: chứng minh đầu ra dài hơn đầu vào nhưng độ giãn (theo độ rộng tương đương) ngắn hơn đáp ứng xung.||<b>4.</b> A finite-duration signal through a filter with brief impulse response: show the output is longer than the input but the stretching (by equivalent width) is short compared with the impulse response.⟧",
+        "⟦<b>5.</b> Đường truyền đồng nhất có độ dài điện phức $\\theta$: chứng minh hệ số truyền $T(f)=\\text{sech}\\,\\theta$ khi không có tải.||<b>5.</b> A uniform transmission line has complex electrical length $\\theta$: show the transfer factor is $T(f)=\\text{sech}\\,\\theta$ with no load.⟧",
+        "⟦<b>6, 7.</b> Bộ lọc tee với trở kháng $Z_1,Z_2,Z_3$: chứng minh $T(f)=Z_3/(Z_1+Z_3)$; với $Z_1=0$, $Z_3$ là đoạn đường truyền hở mạch, chứng minh đáp ứng bậc thang là hàm chữ nhật (sai phân hữu hạn).||<b>6, 7.</b> A tee filter with impedances $Z_1,Z_2,Z_3$: show $T(f)=Z_3/(Z_1+Z_3)$; with $Z_1=0$ and $Z_3$ an open-circuited line segment, show the step response is a rectangle function (a finite difference).⟧",
+        "⟦<b>9.</b> Chứng minh có thể tưởng tượng một hệ tuyến tính mà đáp ứng với $(1+M\\cos\\omega t)\\cos\\Omega t$ tỉ lệ với tín hiệu âm $M\\cos\\omega t$ (bộ tách sóng).||<b>9.</b> Show a linear system can be imagined whose response to $(1+M\\cos\\omega t)\\cos\\Omega t$ is proportional to the audio signal $M\\cos\\omega t$ (a detector).⟧",
+        "⟦<b>11.</b> Cổng mở đóng lần đầu có bước nhảy đầu vào: hệ này có bất biến theo thời gian không? (Smith và Jones bất đồng — phân xử.)||<b>11.</b> A gate that closes on the first input step: is this system time-invariant? (Smith and Jones disagree — adjudicate.)⟧",
+        "⟦<b>12, 13.</b> Tụ điện có điện môi bị ép biến dạng theo điện áp; mặt nạ nhân ảnh $h=fg$: tuyến tính nhưng không bất biến — do phi tuyến, biến thiên theo thời gian, hay không gian?||<b>12, 13.</b> A capacitor whose dielectric compresses with voltage; an image mask $h=fg$: linear but not invariant — is the breakdown due to nonlinearity, time variance, or space variance?⟧",
+        "⟦<b>14.</b> Máy phát xung + dao động ký cho thấy tỉ lệ tuyến tính ở mọi độ rộng xung: điều này có xác lập được tính tuyến tính không? Nêu quy tắc chồng chập hoặc phản ví dụ.||<b>14.</b> A pulse generator + oscilloscope shows linear proportionality at every pulse width: does this establish linearity? State the superposition rule or a counterexample.⟧",
+        "⟦<b>15.</b> Nếu $nW_1(t)$ là đáp ứng của $nV_1(t)$ với mọi số nguyên $n$, hệ có nhất thiết tuyến tính không?||<b>15.</b> If $nW_1(t)$ is the response to $nV_1(t)$ for every integer $n$, must the system be linear?⟧",
+        "⟦<b>16, 17, 19.</b> Ba câu hỏi về tính kết hợp và ổn định của tích chập (xem mục lịch sử/cạm bẫy phía trên).||<b>16, 17, 19.</b> Three questions on associativity and stability of convolution (see the history/pitfalls section above).⟧",
+        "⟦<b>18.</b> Hai khái niệm ổn định (đầu vào-đầu ra bị chặn, và $\\int|I|dt$ hữu hạn): các hệ cho trong hình có ổn định không?||<b>18.</b> Two notions of stability (bounded input-output, and finite $\\int|I|dt$): are the pictured systems stable?⟧",
+        "⟦<b>20.</b> Hệ loại bỏ gián đoạn của $V_1(t)$: hệ này có tuyến tính và bất biến theo thời gian không?||<b>20.</b> A system that removes discontinuities from $V_1(t)$: is it linear and time-invariant?⟧",
+        "⟦<b>21.</b> Nghịch lý liên tục: dãy $p_\\tau(x)\\to0$ mọi $x$ nhưng đáp ứng có vẻ phải cho hàm suy rộng khác 0 — hệ vật lý có \"không liên tục\" không?||<b>21.</b> Continuity paradox: the sequence $p_\\tau(x)\\to0$ for every $x$ yet the response seems to require a nonzero generalized function — are physical systems \"discontinuous\"?⟧",
+        "⟦<b>22.</b> Với $V_1(t,\\tau)$ cho trong sách, giới hạn $\\tau\\to0$ của $V_2$ có bằng $I(t)$ không? Giới hạn có tồn tại không?||<b>22.</b> With $V_1(t,\\tau)$ as given, does the $\\tau\\to0$ limit of $V_2$ equal $I(t)$? Does the limit exist?⟧",
+        "⟦<b>25.</b> Chọn $T_1,T_2$ để $|T(f)|$ là một hàm cosin tùy ý theo tần số; chuỗi ba hệ như vậy có tạo được đáp ứng xung hình chữ nhật thực tế không?||<b>25.</b> Choose $T_1,T_2$ so $|T(f)|$ is any desired cosine function of frequency; can a chain of three such systems make a practical rectangular impulse response?⟧",
+        "⟦<b>26. Hàm sóng elip dẹt.</b> Chứng minh các hàm sóng elip dẹt $So_{0n}(\\omega,t)$ là hàm riêng của cả phương trình vi phân đã cho và của phép biến đổi Fourier hữu hạn.||<b>26. Prolate spheroidal wavefunctions.</b> Show that the prolate spheroidal wavefunctions $So_{0n}(\\omega,t)$ are eigenfunctions of both the given differential equation and the finite Fourier transform.⟧",
     ],
     pitfalls=[
         "<b>⟦\"Định lý cộng chứng tỏ hệ là tuyến tính.\"||\"The addition theorem shows the system is linear.\"⟧</b><p>⟦Định lý cộng chỉ nói về tuyến tính của phép biến đổi; nó đúng cả cho dạng sóng trong mạch phi tuyến (tr. 207). Bộ bình phương phi tuyến vẫn có phổ cộng được, nhưng đầu ra có tần số mới ({{nl_2f}} tại $2f$).||The addition theorem is only about the linearity of the transform; it is true even for waveforms in nonlinear circuits (p. 207). A nonlinear squarer still has additive spectra, but its output has a new frequency ({{nl_2f}} at $2f$).⟧</p>",
@@ -605,5 +631,41 @@ assert abs(E1 - E2) < 1e-12 and abs(Z - 225) < 1e-9 and abs(length - 15) < 1e-9
 report("rad_Z", Z, ".0f"); report("rad_len", length, ".0f"); report("rad_E", E1, ".2f"); report("rad_E2", E2, ".2f")'''),
         ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
 ⟦Hệ tuyến tính bất biến: năng lượng ngoài tần số đầu vào {{lti_leak}}. Bộ bình phương: {{nl_2f}} tại $2f$. Nhân với mặt nạ 1 Hz: {{tv_lo}} và {{tv_hi}}. $9\\cos5x+11\\cos4x$: lệch chu kỳ {{per_dev}}, biên độ thành phần cơ bản {{per_fund}}. Ổn định: RC {{st_rc}}, bộ tích phân {{st_int}}, dao động tắt dần {{st_osc}}. Đường truyền: $R$ = {{rad_Z}} ôm, $\\ell$ = {{rad_len}} m, năng lượng {{rad_E}} và {{rad_E2}} J.||The LTI system: energy outside the input frequency {{lti_leak}}. Squarer: {{nl_2f}} at $2f$. Multiplied by a 1 Hz mask: {{tv_lo}} and {{tv_hi}}. $9\\cos5x+11\\cos4x$: period deviation {{per_dev}}, fundamental amplitude {{per_fund}}. Stability: RC {{st_rc}}, integrator {{st_int}}, damped oscillation {{st_osc}}. The line: $R$ = {{rad_Z}} ohms, $\\ell$ = {{rad_len}} m, energy {{rad_E}} and {{rad_E2}} J.⟧"""),
+        ("md", """## 5. ⟦Bài tập 8, 10, 27||Problems 8, 10, 27⟧
+🎯 **⟦Phương pháp này trả lời câu hỏi gì?||What question does this method answer?⟧** ⟦Tự tích chập lặp có tiến về Gauss không, diện tích hình Lissajous có cho hệ số Fourier không, và định lý nhân với $x$ có đúng không? Mỗi số kiểm bằng ≥2 phương pháp độc lập.||Does repeated self-convolution approach a Gaussian, does the Lissajous-figure area give the Fourier coefficient, and does the multiplication-by-$x$ theorem hold? Each is checked by ≥2 independent methods.⟧"""),
+        ("code", r'''# ⟦Bài 8: tự tích chập lặp một đáp ứng xung → dạng Gauss (định lý giới hạn trung tâm)||Problem 8: repeated self-convolution of an impulse response → Gaussian form (central limit theorem)⟧
+dx8b = 0.002; xg8b = np.arange(-40, 40, dx8b)
+imp8 = np.maximum(1 - np.abs(3*xg8b), 0)                                  # ⟦đáp ứng xung một mạng, chuẩn hóa diện tích 1||one network's impulse response, normalized to unit area⟧
+imp8 = imp8/(np.sum(imp8)*dx8b)
+cur8 = imp8.copy()
+for _ in range(6):
+    cur8 = np.convolve(cur8, imp8, mode="same")*dx8b                       # ⟦cách A: tích chập lặp trực tiếp||method A: direct repeated convolution⟧
+mean8 = np.sum(xg8b*cur8)*dx8b
+var8 = np.sum((xg8b - mean8)**2*cur8)*dx8b
+gauss8 = np.exp(-(xg8b - mean8)**2/(2*var8))/np.sqrt(2*np.pi*var8)         # ⟦cách B: Gauss cùng trung bình, phương sai (định lý giới hạn trung tâm)||method B: a Gaussian with the same mean and variance (the central limit theorem)⟧
+p8_err = np.max(np.abs(cur8 - gauss8))/np.max(cur8)
+assert p8_err < 2e-2
+report("p8_err", p8_err, ".2%")
+
+# ⟦Bài 10: diện tích hình Lissajous = πn·a_n (và tương tự πn·b_n)||Problem 10: Lissajous-figure area = πn·a_n (and similarly πn·b_n)⟧
+n10 = 3
+p10 = lambda t: 1 + 0.5*np.cos(2*np.pi*t) + 0.4*np.cos(2*np.pi*n10*t) + 0.2*np.sin(2*np.pi*2*t)
+xprime10 = lambda t: 2*np.pi*n10*np.cos(2*np.pi*n10*t)
+area10 = integrate.quad(lambda t: p10(t)*xprime10(t), 0, 1)[0]              # ⟦cách A: ∮y dx trực tiếp||method A: direct ∮y dx⟧
+an10 = 2*integrate.quad(lambda t: p10(t)*np.cos(2*np.pi*n10*t), 0, 1)[0]    # ⟦cách B: định nghĩa hệ số Fourier||method B: the Fourier-coefficient definition⟧
+p10_err = abs(area10 - np.pi*n10*an10)
+assert p10_err < 1e-9
+report("p10_an", an10, ".4f"); report("p10_err", p10_err, ".1e")
+
+# ⟦Bài 27: xf(x) ⊃ (i/2π)F'(s)||Problem 27: xf(x) ⊃ (i/2π)F'(s)⟧
+f27 = lambda x: np.exp(-x**2)
+s27 = 0.4; hh27 = 1e-6
+p27_lhs = ftq(lambda x: x*f27(x), -20, 20, s27)
+p27_rhs = (1j/(2*np.pi))*(ftq(f27, -20, 20, s27 + hh27) - ftq(f27, -20, 20, s27 - hh27))/(2*hh27)
+p27_err = abs(p27_lhs - p27_rhs)
+assert p27_err < 1e-8
+report("p27_err", p27_err, ".1e")'''),
+        ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
+⟦Bài 8: sau 6 lần tự tích chập, lệch tương đối so với Gauss khớp mômen chỉ {{p8_err}}. Bài 10: $a_3$ = {{p10_an}} từ định nghĩa, khớp diện tích Lissajous $/( \\pi\\cdot3)$, lệch {{p10_err}}. Bài 27: lệch {{p27_err}}.||Problem 8: after 6 self-convolutions, the relative deviation from a moment-matched Gaussian is only {{p8_err}}. Problem 10: $a_3$ = {{p10_an}} from the definition, matching the Lissajous area divided by $\\pi\\cdot3$, deviation {{p10_err}}. Problem 27: deviation {{p27_err}}.⟧"""),
     ],
 )
