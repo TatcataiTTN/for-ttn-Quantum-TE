@@ -232,10 +232,42 @@ MOD = dict(
           "<b>From raw data to a model.</b> A record of 1024 samples 1 s apart contains frequencies up to 0.5 Hz; the frequency index $\\nu=724$ is actually the negative {{fneg}} Hz. If the record is noise, the raw $|F|^2$ has relative deviation {{pg_4096}} whatever $N$, so we average 16 values ({{pg_avg16}}) or build an AR model: with autocorrelation $0.8^{|k|}$ we get an AR(1) with $\\sigma_x^2$ = {{ar1_var}} and spectrum $S(0)$ = {{ar1_S0}}. Yule-Walker gives the parameters from the data, and the FFT with $\\tfrac N2\\log_2N$ = {{f_fft}} multiplications for $N=1024$ makes all of this cheap. If the data are instead a sequence of discrete states, a Markov chain gives the stationary distribution {{mk_pi1}}, {{mk_pi2}}, {{mk_pi3}}.⟧</p>",
     practice=[
         "⟦Mở notebook và chạy cell cài đặt.||Open the notebook and run the setup cell.⟧",
-        "⟦Bài 1: tự cài DFT và nghịch đảo (không dùng thư viện), kiểm tra với $\\{1,2,3,4\\}$ và định lý chập với $\\{1200\\}*\\{2300\\}$.||Task 1: implement the DFT and inverse yourself (no library) and check with $\\{1,2,3,4\\}$ and the convolution theorem with $\\{1200\\}*\\{2300\\}$.⟧",
-        "⟦Bài 2: cài FFT chia đôi đệ quy, đếm phép nhân với $N=8,64,1024$ và vẽ so với $N^2$.||Task 2: implement the recursive halving FFT, count multiplications for $N=8,64,1024$ and plot against $N^2$.⟧",
-        "⟦Bài 3: đo rò phổ của 10.5 chu kỳ với cửa sổ chữ nhật, Hann và Hamming; so ba thùy bên.||Task 3: measure the leakage of 10.5 cycles with rectangular, Hann and Hamming windows; compare the three side lobes.⟧",
-        "⟦Bài 4: mô phỏng AR(2) của bài, ước lượng $a_1,a_2,\\sigma_n^2$ bằng Yule-Walker với $N=10^3,10^4,10^5$ và xem sai số giảm.||Task 4: simulate the AR(2) of this module, estimate $a_1,a_2,\\sigma_n^2$ by Yule-Walker for $N=10^3,10^4,10^5$ and watch the error decrease.⟧",
+        "⟦<b>18 bài tập cuối chương 11 của Bracewell (tr. 289–292), nguyên văn từ sách, dịch song ngữ, chia hai phần. Chương này thiên về tính toán DFT cụ thể nên phần lớn kiểm được bằng số.</b>||"
+        "<b>All 18 end-of-Bracewell-chapter-11 problems (pp. 289–292), verbatim from the book, translated bilingually, split into two parts. This chapter is about concrete DFT computation so most problems are numerically checkable.</b>⟧",
+        "⟦<h4>A. Bài kiểm bằng số — notebook mục cuối tính và đối chiếu ≥2 phương pháp độc lập cho mỗi bài</h4>||<h4>A. Numerically checkable — the final notebook section computes and cross-checks each with ≥2 independent methods</h4>⟧",
+        "⟦<b>2. Tích chập vòng.</b> Tính $\\{1,2,0,0\\}*\\{2,3,0,0\\}$, $\\{1,1,1,1\\}*\\{0,1,1,0\\}$, $\\{1,0,0,1\\}*\\{0,1,0,0\\}$.||<b>2. Cyclic convolution.</b> Compute $\\{1,2,0,0\\}*\\{2,3,0,0\\}$, $\\{1,1,1,1\\}*\\{0,1,1,0\\}$, $\\{1,0,0,1\\}*\\{0,1,0,0\\}$.⟧",
+        "⟦<b>3. Biến đổi rời rạc.</b> Tính DFT của $\\{1,2,3,4\\}$ và $\\{1,2,3,4,0,0,0,0\\}$, kiểm bằng quy tắc \"tổng dãy\" và \"giá trị đầu\".||<b>3. Discrete transforms.</b> Find the DFT of $\\{1,2,3,4\\}$ and $\\{1,2,3,4,0,0,0,0\\}$, checked by the \"sum of sequence\" and \"first-value\" rules.⟧",
+        "⟦<b>4. Định lý tích chập.</b> Tính $\\{0,1,0,0\\}*\\{0,0,1,0\\}$ và $\\{1,1,0,0\\}*\\{0,0,1,1\\}$; kiểm bằng định lý tích chập (nhân hai DFT).||<b>4. Convolution theorem.</b> Compute $\\{0,1,0,0\\}*\\{0,0,1,0\\}$ and $\\{1,1,0,0\\}*\\{0,0,1,1\\}$; verify by the convolution theorem (multiplying the two DFTs).⟧",
+        "⟦<b>14. DFT so với kỳ vọng.</b> (a) Xác nhận $\\{1,2,3,4,5,4,3,2,1\\}$ là mẫu của $5\\Lambda(x/5)$, biến đổi $25\\text{sinc}^25s$. (b) Tính DFT của ba dãy cho trong sách (một dãy giữa, hai dãy đệm 0 lệch khác nhau); dãy nào khớp kỳ vọng $25\\text{sinc}^25s$?||<b>14. Discrete FT versus expectation.</b> (a) Confirm $\\{1,2,3,4,5,4,3,2,1\\}$ samples $5\\Lambda(x/5)$, transform $25\\text{sinc}^25s$. (b) Compute the DFT of the book's three sequences (one centered, two zero-padded differently); which matches the expectation $25\\text{sinc}^25s$?⟧",
+        "⟦<b>16. Tổng tích chập vòng.</b> Với $\\{1,7,21,35,35,21,7,1\\}$ và $\\{1,5,9,5,-5,-9,-5,-1\\}$, tính tích chập vòng trên giá đỡ tròn 12 phần tử.||<b>16. Cyclic convolution sum.</b> With $\\{1,7,21,35,35,21,7,1\\}$ and $\\{1,5,9,5,-5,-9,-5,-1\\}$, find their cyclic convolution on a 12-element circular support.⟧",
+        "⟦<h4>B. Câu tự luận / lập trình — không có một số duy nhất để so, chấm bằng lý luận</h4>||<h4>B. Essay / programming questions — no single number to check, graded by reasoning</h4>⟧",
+        "⟦<b>1.</b> Lập bảng 16 giá trị mẫu rời rạc cho $(1+f^2)^{-1}\\Pi(t/10)$ để thực nghiệm DFT.||<b>1.</b> Draw up a table of 16 discrete sample values for $(1+f^2)^{-1}\\Pi(t/10)$ for DFT experiments.⟧",
+        "⟦<b>5, 6.</b> Tích chập vòng hai chiều của các mảng cho trong sách; kiểm 4 cặp DFT hai chiều và cho biết cặp thứ năm là tổng của bốn cặp kia.||<b>5, 6.</b> Two-dimensional cyclic convolution of the book's arrays; verify 4 two-dimensional DFT pairs and show the fifth results from summing the other four.⟧",
+        "⟦<b>7, 8.</b> Nội suy điểm giữa qua định lý đóng gói: chứng minh công thức tích chập vòng cho $G(v)$; sửa hệ số nội suy để tổng chỉ còn hữu hạn số hạng.||<b>7, 8.</b> Midpoint interpolation via the packing theorem: show the cyclic-convolution formula for $G(v)$; modify the interpolating coefficients so the sum has only finitely many terms.⟧",
+        "⟦<b>9. Tự tương quan hai chiều.</b> Tính tự tương quan không tuần hoàn của mảng cho trong sách, mô tả tính đối xứng, và tính tự tương quan của ba dãy một chiều liên quan.||<b>9. Two-dimensional autocorrelation.</b> Compute the non-cyclic autocorrelation of the book's array, describe its symmetry, and compute the autocorrelation of three related one-dimensional sequences.⟧",
+        "⟦<b>10.</b> So sánh DFT của $f(\\tau)=e^{-\\tau/4}$ ($1\\le\\tau\\le31$, $f(0)=0{,}5$) với biến đổi Fourier liên tục của $e^{-t/4}H(t)$.||<b>10.</b> Compare the DFT of $f(\\tau)=e^{-\\tau/4}$ ($1\\le\\tau\\le31$, $f(0)=0.5$) with the continuous Fourier transform of $e^{-t/4}H(t)$.⟧",
+        "⟦<b>11.</b> Cửa sổ cosin-bell làm mịn phổ ra sao; với dãy $N$ phần tử, tích chập rời rạc với $\\{\\tfrac14,-\\tfrac12,0,\\dots,0,-\\tfrac14\\}$ có làm sắc nét thay vì làm mịn không?||<b>11.</b> How does a cosine-bell taper smooth the spectrum; does the sequence $\\{\\tfrac14,-\\tfrac12,0,\\dots,0,-\\tfrac14\\}$ sharpen rather than smooth?⟧",
+        "⟦<b>12.</b> Đảo chỉ số trong MATLAB: đảo $\\{1,2,\\dots,7\\}$ thành $\\{1,7,6,5,4,3,2\\}$.||<b>12.</b> Index reversal in MATLAB: reverse $\\{1,2,\\dots,7\\}$ to $\\{1,7,6,5,4,3,2\\}$.⟧",
+        "⟦<b>13. Biến đổi Hartley rời rạc.</b> Viết hàm MATLAB <code>dht</code> và <code>idht</code>; so kết quả với DFT của cùng dãy.||<b>13. Discrete Hartley transform.</b> Write MATLAB functions <code>dht</code> and <code>idht</code>; compare with the DFT of the same sequence.⟧",
+        "⟦<b>15. DFT của hệ số nhị thức.</b> Với $\\{1,4,6,4,1\\}$, khớp phân bố chuẩn $Ae^{-x^2/2\\sigma^2}$ và so DFT của dãy đệm 0 với biến đổi Fourier của Gauss.||<b>15. DFT of binomial coefficients.</b> With $\\{1,4,6,4,1\\}$, fit a normal $Ae^{-x^2/2\\sigma^2}$ and compare the DFT of the zero-padded sequence with the Fourier transform of the Gaussian.⟧",
+        "⟦<b>17. Thí nghiệm đo thời gian.</b> Thời gian nhân bốn số $T_4$ có đổi khi lấy trung bình trên nhiều hơn hoặc ít hơn $N=1000$ lần thử không?||<b>17. A timing experiment.</b> Does the nominal 4-multiply time $T_4$ change when averaged over more or fewer than $N=1000$ trials?⟧",
+        "⟦<b>18. Nội suy sinc.</b> Viết chương trình nội suy điểm giữa bằng đệm 0 và IDFT; điều chỉnh gì cho sự thay đổi $N$; làm sao nội suy ba điểm giữa.||<b>18. Sinc interpolation.</b> Write a program for midpoint interpolation via zero-padding and the IDFT; what adjustment compensates for the change in $N$; how to interpolate three intermediate values.⟧",
+        "⟦<hr><h4>13 bài tập cuối chương 4 của Barkat (tr. 284–287), nguyên văn từ sách, dịch song ngữ.</h4>||<hr><h4>All 13 end-of-Barkat-chapter-4 problems (pp. 284–287), verbatim from the book, translated bilingually.</h4>⟧",
+        "⟦<h4>C. Barkat — bài kiểm bằng số (notebook mục cuối)</h4>||<h4>C. Barkat — numerically checkable (final notebook section)</h4>⟧",
+        "⟦<b>4.1.</b> Tìm trị riêng, vector riêng và dạng Jordan qua biến đổi đồng dạng của ba ma trận (a), (b), (c) cho trong sách.||<b>4.1.</b> Find the eigenvalues, eigenvectors, and Jordan form by similarity transformation of the book's three matrices (a), (b), (c).⟧",
+        "⟦<b>4.2.</b> Với ma trận $A$ cho trong sách: (a) hạng của $A$; (b) tính xác định của ma trận; (c) trị riêng.||<b>4.2.</b> With the book's matrix $A$: (a) the rank of $A$; (b) the definiteness of the matrix; (c) the eigenvalues.⟧",
+        "⟦<b>4.4.</b> Chứng minh $1/\\lambda_i$ là trị riêng của $R^{-1}$, với $R$ là ma trận tương quan có trị riêng phân biệt $\\lambda_i$.||<b>4.4.</b> Show $1/\\lambda_i$ are the eigenvalues of $R^{-1}$, where $R$ is the correlation matrix with distinct eigenvalues $\\lambda_i$.⟧",
+        "⟦<b>4.7(b).</b> Tìm dữ liệu riêng và vẽ elip $x^TAx=1$ cho $A=\\begin{bmatrix}5&3\\\\3&5\\end{bmatrix}$.||<b>4.7(b).</b> Find the eigendata and sketch the ellipse $x^TAx=1$ for $A=\\begin{bmatrix}5&3\\\\3&5\\end{bmatrix}$.⟧",
+        "⟦<b>4.11(b,c).</b> Với ma trận chuyển tiếp Markov 3 trạng thái cho trong sách và phân bố ban đầu $[0{,}3\\ 0{,}3\\ 0{,}4]$: tìm ma trận chuyển tiếp $n$ bước ($n$ lớn) và xác suất trạng thái sau $n$ bước.||<b>4.11(b,c).</b> With the book's 3-state Markov transition matrix and initial distribution $[0.3\\ 0.3\\ 0.4]$: find the $n$-step transition matrix ($n$ large) and the state probabilities after $n$ steps.⟧",
+        "⟦<b>4.13(b).</b> Xác nhận bằng quy nạp công thức xác suất trạng thái giới hạn $P(n)$ cho xích Markov hai trạng thái với tham số $a,b$.||<b>4.13(b).</b> Verify by induction the limiting-state-probability formula $P(n)$ for the two-state Markov chain with parameters $a,b$.⟧",
+        "⟦<h4>D. Barkat — câu tự luận (ma trận, xích Markov) — chấm bằng lý luận</h4>||<h4>D. Barkat — essay (matrices, Markov chains) — graded by reasoning</h4>⟧",
+        "⟦<b>4.3.</b> Tìm ma trận thức $M$ để $M^{-1}AM$ ở dạng Jordan cho ma trận $4\\times4$ cho trong sách.||<b>4.3.</b> Find the modal matrix $M$ such that $M^{-1}AM$ is in Jordan form for the book's $4\\times4$ matrix.⟧",
+        "⟦<b>4.5, 4.6.</b> Chứng minh vector riêng ứng với các trị riêng phân biệt của ma trận tương quan $R$ trực giao (tính chất 3) và độc lập tuyến tính (tính chất 2).||<b>4.5, 4.6.</b> Prove the eigenvectors for distinct eigenvalues of the correlation matrix $R$ are orthogonal (property 3) and linearly independent (property 2).⟧",
+        "⟦<b>4.7(a).</b> Chứng minh $x^TAx=1$ là một elip khi $A$ đối xứng, trị riêng dương; liên hệ elip với dữ liệu riêng của $A$.||<b>4.7(a).</b> Show $x^TAx=1$ is an ellipse when $A$ is symmetric with positive eigenvalues; relate the ellipse to the eigendata of $A$.⟧",
+        "⟦<b>4.8, 4.9.</b> Phương trình đặc trưng của quá trình AR bậc hai, miền ổn định của cực; suy ra $\\omega_1,\\omega_2$ và $r_{xx}(1),r_{xx}(2)$ qua phương trình Yule-Walker.||<b>4.8, 4.9.</b> The characteristic equation of a second-order AR process, its pole stability region; derive $\\omega_1,\\omega_2$ and $r_{xx}(1),r_{xx}(2)$ via the Yule-Walker equations.⟧",
+        "⟦<b>4.10.</b> Vẽ sơ đồ trạng thái và phân loại các trạng thái của xích Markov với ma trận chuyển tiếp $4\\times4$ cho trong sách.||<b>4.10.</b> Draw the state diagram and classify the states of the Markov chain with the book's $4\\times4$ transition matrix.⟧",
+        "⟦<b>4.12.</b> Thời tiết xứ Oz: vẽ sơ đồ trạng thái, tính $P(2)$ đến $P(6)$, và tìm phân bố dừng với $p^T(0)=[0{,}7\\ 0{,}2\\ 0{,}1]$.||<b>4.12.</b> The weather in the Land of Oz: draw the state diagram, compute $P(2)$ through $P(6)$, and find the steady-state distribution with $p^T(0)=[0.7\\ 0.2\\ 0.1]$.⟧",
+        "⟦<b>4.13(a,c).</b> Vẽ sơ đồ trạng thái cho xích hai trạng thái; tìm xác suất giới hạn cho trường hợp đặc biệt $a=b=0$ và $a=b=1$.||<b>4.13(a,c).</b> Draw the state diagram for the two-state chain; find the limiting probabilities for the special cases $a=b=0$ and $a=b=1$.⟧",
     ],
     pitfalls=[
         "<b>⟦\"Chỉ số $\\nu$ trên 512 ứng với tần số cao hơn Nyquist.\"||\"Indices $\\nu$ above 512 correspond to frequencies above Nyquist.\"⟧</b><p>⟦Chúng là tần số âm: $\\nu=724$ ứng với {{fneg}} Hz, không phải {{v724}} Hz.||They are negative frequencies: $\\nu=724$ corresponds to {{fneg}} Hz, not {{v724}} Hz.⟧</p>",
@@ -644,5 +676,107 @@ fm = fgrid[100000:]; ax.semilogy(fm, np.abs(1 + 0.6*np.exp(-2j*np.pi*fm) + 0.3*n
 ax.set_xlabel("f"); ax.set_ylabel("S(f)"); ax.legend(fontsize=8); plt.tight_layout(); plt.show()''', dict(fig="arpsd", cap="⟦Hình 3. Phổ công suất của AR(1), AR(2) và MA(2): mô hình toàn cực có đỉnh, toàn không có hõm.||Figure 3. Power spectra of AR(1), AR(2) and MA(2): the all-pole models have peaks, the all-zero one has a trough.⟧")),
         ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
 ⟦AR(1): {{ar1_var}}, {{ar1_r3}}, $S(0)$ = {{ar1_S0}}. AR(2): {{ar2_rho1}}, {{ar2_rho2}}, {{ar2_var}}, cực {{ar2_pole}}. Yule-Walker: {{yw_a1}}, {{yw_a2}}, {{yw_s2}}; từ dữ liệu {{yw_h1}}, {{yw_h2}}, {{yw_hs}}. MA(2): {{ma_var}}, {{ma_r1}}, {{ma_r2}}. ARMA: {{arma_r0}}, {{arma_r1}}, {{arma_r2}}. Markov: {{mk_pi1}}, {{mk_pi2}}, {{mk_pi3}}, $|\\lambda_2|$ = {{mk_l2}}; hai trạng thái {{m2_pi1}}; hấp thụ {{ab_13}}; liên tục {{ct_p0}}; sinh-tử {{bd_p0}}.||AR(1): {{ar1_var}}, {{ar1_r3}}, $S(0)$ = {{ar1_S0}}. AR(2): {{ar2_rho1}}, {{ar2_rho2}}, {{ar2_var}}, pole {{ar2_pole}}. Yule-Walker: {{yw_a1}}, {{yw_a2}}, {{yw_s2}}; from data {{yw_h1}}, {{yw_h2}}, {{yw_hs}}. MA(2): {{ma_var}}, {{ma_r1}}, {{ma_r2}}. ARMA: {{arma_r0}}, {{arma_r1}}, {{arma_r2}}. Markov: {{mk_pi1}}, {{mk_pi2}}, {{mk_pi3}}, $|\\lambda_2|$ = {{mk_l2}}; two states {{m2_pi1}}; absorbing {{ab_13}}; continuous {{ct_p0}}; birth-death {{bd_p0}}.⟧"""),
+        ("md", """## ⟦Bài tập cuối chương 11 của Bracewell, phần A (tr. 289–291)||End-of-Bracewell-chapter-11 problems, part A (pp. 289–291)⟧
+🎯 **⟦Phương pháp này trả lời câu hỏi gì?||What question does this method answer?⟧** ⟦Các tích chập vòng và DFT tính tay có khớp FFT không, và dãy nào trong ba dãy của bài 14 thực sự khớp kỳ vọng $25\\text{sinc}^25s$?||Do hand-computed cyclic convolutions and DFTs match the FFT, and which of the three sequences in problem 14 actually matches the expectation $25\\text{sinc}^25s$?⟧"""),
+        ("code", r'''def cyclic_conv(a, b):                                                     # ⟦cách A: tổng vòng trực tiếp||method A: direct cyclic sum⟧
+    N = len(a); a = np.asarray(a, float); b = np.asarray(b, float)
+    return np.array([sum(a[k]*b[(n - k) % N] for k in range(N)) for n in range(N)])
+def cyclic_conv_fft(a, b):                                                 # ⟦cách B: qua FFT||method B: via the FFT⟧
+    return np.fft.ifft(np.fft.fft(a)*np.fft.fft(b)).real
+
+# ⟦Bài 2: ba tích chập vòng||Problem 2: three cyclic convolutions⟧
+p2a = cyclic_conv([1, 2, 0, 0], [2, 3, 0, 0]); p2b = cyclic_conv([1, 1, 1, 1], [0, 1, 1, 0]); p2c = cyclic_conv([1, 0, 0, 1], [0, 1, 0, 0])
+assert np.allclose(p2a, cyclic_conv_fft([1, 2, 0, 0], [2, 3, 0, 0]))
+assert np.allclose(p2b, cyclic_conv_fft([1, 1, 1, 1], [0, 1, 1, 0]))
+assert np.allclose(p2c, cyclic_conv_fft([1, 0, 0, 1], [0, 1, 0, 0]))
+report("p2a", str(list(p2a.astype(int))), "s"); report("p2b", str(list(p2b.astype(int))), "s"); report("p2c", str(list(p2c.astype(int))), "s")
+
+# ⟦Bài 3: DFT của {1,2,3,4} và {1,2,3,4,0,0,0,0}; quy tắc tổng dãy và giá trị đầu||Problem 3: DFT of {1,2,3,4} and {1,2,3,4,0,0,0,0}; sum-of-sequence and first-value rules⟧
+f3a = np.array([1, 2, 3, 4.]); F3a = np.fft.fft(f3a)
+f3b = np.array([1, 2, 3, 4, 0, 0, 0, 0.]); F3b = np.fft.fft(f3b)
+assert abs(F3a[0] - np.sum(f3a)) < 1e-9 and abs(f3a[0] - np.mean(F3a)) < 1e-9
+assert abs(F3b[0] - np.sum(f3b)) < 1e-9 and abs(f3b[0] - np.mean(F3b)) < 1e-9
+report("p3a_F0", F3a[0].real, ".0f"); report("p3b_F0", F3b[0].real, ".0f")
+
+# ⟦Bài 4: định lý tích chập||Problem 4: the convolution theorem⟧
+p4a = cyclic_conv([0, 1, 0, 0], [0, 0, 1, 0]); p4a_fft = cyclic_conv_fft([0, 1, 0, 0], [0, 0, 1, 0])
+p4b = cyclic_conv([1, 1, 0, 0], [0, 0, 1, 1]); p4b_fft = cyclic_conv_fft([1, 1, 0, 0], [0, 0, 1, 1])
+assert np.allclose(p4a, p4a_fft) and np.allclose(p4b, p4b_fft)
+report("p4a", str(list(p4a.astype(int))), "s"); report("p4b", str(list(p4b.astype(int))), "s")
+
+# ⟦Bài 14: dãy nào trong ba dãy khớp DFT với 25sinc²5s? Chỉ dãy căn giữa vòng mới khớp||Problem 14: which of the three sequences has a DFT matching 25sinc²5s? Only the circularly-centered one matches⟧
+seqs14 = {
+    "a": [1, 2, 3, 4, 5, 4, 3, 2, 1],
+    "b": [0, 0, 0, 0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0, 0, 0, 0, 0],
+    "c": [5, 4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4],
+}
+p14_errs = {}
+for name, s in seqs14.items():
+    N_ = len(s); F_ = np.fft.fft(s); freqs_ = np.fft.fftfreq(N_)
+    target_ = 25*np.sinc(5*freqs_)**2
+    p14_errs[name] = np.max(np.abs(F_.real - target_))
+assert p14_errs["c"] < 1 and p14_errs["a"] > 10 and p14_errs["b"] > 10       # ⟦chỉ (c) khớp vì đỉnh nằm quanh gốc theo kiểu vòng||only (c) matches since its peak wraps around the origin⟧
+report("p14_erra", p14_errs["a"], ".2f"); report("p14_errc", p14_errs["c"], ".2f")
+
+# ⟦Bài 16: tích chập vòng trên giá đỡ tròn 12 phần tử||Problem 16: cyclic convolution on a 12-element circular support⟧
+a16 = [1, 7, 21, 35, 35, 21, 7, 1, 0, 0, 0, 0]; b16 = [1, 5, 9, 5, -5, -9, -5, -1, 0, 0, 0, 0]
+p16 = cyclic_conv(a16, b16); p16_fft = cyclic_conv_fft(a16, b16)
+assert np.allclose(p16, p16_fft)
+report("p16", str(list(p16.astype(int))), "s")'''),
+        ("md", """#### 📤 ⟦Đầu ra thật (bài tập cuối chương)||Real output (end-of-chapter problems)⟧
+⟦Bài 2: {{p2a}}, {{p2b}}, {{p2c}} (mỗi cái khớp cách tính qua FFT). Bài 3: $F(0)$ = {{p3a_F0}} và {{p3b_F0}}, cả hai bằng tổng dãy đúng như quy tắc. Bài 4: {{p4a}} và {{p4b}}, khớp định lý tích chập. Bài 14: dãy (a) không đệm có lệch lớn {{p14_erra}}, còn dãy (c) đệm 0 rồi căn giữa vòng có lệch chỉ {{p14_errc}} — khớp đúng kỳ vọng $25\\text{sinc}^25s$. Bài 16: tích chập 12 phần tử {{p16}}.||"""
+        "Problem 2: {{p2a}}, {{p2b}}, {{p2c}} (each matches the FFT computation). Problem 3: $F(0)$ = {{p3a_F0}} and {{p3b_F0}}, both equal the sequence sum as the rule requires. Problem 4: {{p4a}} and {{p4b}}, matching the convolution theorem. Problem 14: sequence (a), unpadded, deviates by a large {{p14_erra}}, while sequence (c), zero-padded and circularly centered, deviates by only {{p14_errc}} — correctly matching the expectation $25\\text{sinc}^25s$. Problem 16: the 12-element convolution {{p16}}.⟧"""),
+        ("md", """## ⟦Bài tập cuối chương 4 của Barkat, phần C (tr. 284–287)||End-of-Barkat-chapter-4 problems, part C (pp. 284–287)⟧
+🎯 **⟦Phương pháp này trả lời câu hỏi gì?||What question does this method answer?⟧** ⟦Trị riêng, hạng, elip từ dạng toàn phương, và xác suất trạng thái xích Markov có đúng công thức không, tính bằng đại số tuyến tính (NumPy) đối chiếu công thức giải tích?||Do eigenvalues, rank, the ellipse from a quadratic form, and Markov-chain state probabilities match the formulas, computed by linear algebra (NumPy) cross-checked against the analytic formula?⟧"""),
+        ("code", r'''# ⟦Bài 4.1(a): trị riêng của ma trận 3×3||Problem 4.1(a): eigenvalues of a 3×3 matrix⟧
+A41a = np.array([[2, -2, 3], [1, 1, 1], [1, 3, -1.]])
+w41a = np.sort(np.linalg.eigvals(A41a).real)
+charpoly_check = np.prod(w41a) - np.linalg.det(A41a)                        # ⟦cách B: tích trị riêng = định thức||method B: product of eigenvalues = determinant⟧
+assert abs(charpoly_check) < 1e-9
+report("b41a_eigs", str([round(x, 2) for x in w41a]), "s")
+
+# ⟦Bài 4.2: hạng và trị riêng của ma trận A||Problem 4.2: rank and eigenvalues of matrix A⟧
+A42 = np.array([[-1, 0, -2], [1, -1, 3], [0, -1, -5.]])
+rank42 = np.linalg.matrix_rank(A42)
+w42 = np.linalg.eigvals(A42)
+assert rank42 == 3
+report("b42_rank", rank42, "d")
+
+# ⟦Bài 4.4: 1/λᵢ là trị riêng của R⁻¹||Problem 4.4: 1/λᵢ are the eigenvalues of R⁻¹⟧
+R44 = np.array([[4, 1, 0.5], [1, 3, 0.3], [0.5, 0.3, 2.]])                  # ⟦ma trận tương quan mẫu, đối xứng xác định dương||sample correlation matrix, symmetric positive-definite⟧
+wR44 = np.sort(np.linalg.eigvals(R44).real)
+wRinv44 = np.sort(np.linalg.eigvals(np.linalg.inv(R44)).real)
+b44_err = np.max(np.abs(np.sort(1/wR44) - wRinv44))
+assert b44_err < 1e-9
+report("b44_err", b44_err, ".1e")
+
+# ⟦Bài 4.7(b): dữ liệu riêng và bán trục elip x^TAx=1 cho A=[[5,3],[3,5]]||Problem 4.7(b): eigendata and ellipse semi-axes of x^TAx=1 for A=[[5,3],[3,5]]⟧
+A47 = np.array([[5., 3], [3, 5]])
+w47, v47 = np.linalg.eigh(A47)
+semi_axes_47 = 1/np.sqrt(w47)
+assert abs(w47[0] - 2) < 1e-9 and abs(w47[1] - 8) < 1e-9
+report("b47_eig1", w47[0], ".0f"); report("b47_eig2", w47[1], ".0f"); report("b47_axis", semi_axes_47[1], ".4f")
+
+# ⟦Bài 4.11(b,c): ma trận chuyển tiếp n bước, xác suất trạng thái||Problem 4.11(b,c): n-step transition matrix, state probabilities⟧
+P411 = np.array([[0.5, 0.3, 0.2], [0.4, 0.2, 0.4], [0.3, 0.3, 0.4]])
+Pn411 = np.linalg.matrix_power(P411, 60)
+p0_411 = np.array([0.3, 0.3, 0.4])
+pn_411 = p0_411 @ Pn411
+rows_equal_411 = np.max(np.abs(Pn411[0] - Pn411[1])) + np.max(np.abs(Pn411[1] - Pn411[2]))  # ⟦hội tụ ⟹ mọi hàng bằng nhau||convergence ⟹ every row equal⟧
+assert rows_equal_411 < 1e-6 and np.max(np.abs(pn_411 - Pn411[0])) < 1e-6
+report("b411_pi1", Pn411[0, 0], ".4f"); report("b411_pi2", Pn411[0, 1], ".4f"); report("b411_pi3", Pn411[0, 2], ".4f")
+
+# ⟦Bài 4.13(b): công thức P(n) cho xích 2 trạng thái, xác nhận bằng lũy thừa ma trận trực tiếp||Problem 4.13(b): the P(n) formula for a 2-state chain, confirmed against direct matrix power⟧
+a413, b413, n413 = 0.2, 0.3, 10
+P413 = np.array([[1 - a413, a413], [b413, 1 - b413]])
+Pn413_direct = np.linalg.matrix_power(P413, n413)
+r413 = 1 - a413 - b413
+Pn413_formula = np.array([[(b413 + a413*r413**n413)/(a413 + b413), (a413 - a413*r413**n413)/(a413 + b413)],
+                           [(b413 - b413*r413**n413)/(a413 + b413), (a413 + b413*r413**n413)/(a413 + b413)]])
+b413_err = np.max(np.abs(Pn413_direct - Pn413_formula))
+assert b413_err < 1e-9
+report("b413_err", b413_err, ".1e")'''),
+        ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
+⟦4.1(a): trị riêng {{b41a_eigs}}. 4.2: hạng {{b42_rank}}. 4.4: lệch giữa $1/\\lambda_i$ và trị riêng của $R^{-1}$ chỉ {{b44_err}}. 4.7(b): trị riêng {{b47_eig1}}, {{b47_eig2}}, bán trục dài {{b47_axis}}. 4.11: phân bố dừng $\\approx(${{b411_pi1}}, {{b411_pi2}}, {{b411_pi3}}$)$. 4.13(b): công thức khớp lũy thừa ma trận trực tiếp, lệch {{b413_err}}.||4.1(a): eigenvalues {{b41a_eigs}}. 4.2: rank {{b42_rank}}. 4.4: the deviation between $1/\\lambda_i$ and the eigenvalues of $R^{-1}$ is only {{b44_err}}. 4.7(b): eigenvalues {{b47_eig1}}, {{b47_eig2}}, major semi-axis {{b47_axis}}. 4.11: steady-state distribution $\\approx(${{b411_pi1}}, {{b411_pi2}}, {{b411_pi3}}$)$. 4.13(b): the formula matches direct matrix exponentiation, deviation {{b413_err}}.⟧"""),
     ],
 )
