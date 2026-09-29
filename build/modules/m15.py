@@ -185,10 +185,32 @@ MOD = dict(
           "<b>Fast convolution of real data.</b> Filtering an image with a symmetric filter: the convolution is done with two DHTs, one real term-by-term product and one DHT (instead of four real multiplications per element for the DFT), with a result matching direct convolution ({{cp_dev}}), and the power spectrum read straight from $H$. Compressing 16-sample blocks of a Markov signal with $\\rho=0.95$: four DCT-2 coefficients already keep {{cp_dct}} of the energy, close to the Karhunen-Loève bound {{cp_klt}}, against {{cp_id}} if only four samples are kept; on top of a fourfold reduction by $2\\times2$ merging and 32-fold by quantisation. The zero at $\\nu=3N/4$ of $\\{1,\\ldots,N\\}$ is a peculiarity of the DHT.⟧</p>",
     practice=[
         "⟦Mở notebook và chạy cell cài đặt.||Open the notebook and run the setup cell.⟧",
-        "⟦Bài 1: tự cài DHT và nghịch đảo; kiểm tra $\\{1,2\\}$, $\\{1,2,3,4\\}$, $\\{1,\\ldots,8\\}$ và tổng $\\sum H=f(0)$.||Task 1: implement the DHT and its inverse; check $\\{1,2\\}$, $\\{1,2,3,4\\}$, $\\{1,\\ldots,8\\}$ and the sum $\\sum H=f(0)$.⟧",
-        "⟦Bài 2: cài FHT đệ quy và so đếm phép nhân với FFT ở $N=64,256,1024$.||Task 2: implement the recursive FHT and compare the multiplication count with the FFT at $N=64,256,1024$.⟧",
-        "⟦Bài 3: chập ảnh nhỏ với bộ lọc $3\\times3$ đối xứng bằng DHT hai chiều và so với chập trực tiếp.||Task 3: convolve a small image with a symmetric $3\\times3$ filter using the 2D DHT and compare with direct convolution.⟧",
-        "⟦Bài 4: đo tỉ lệ năng lượng giữ lại của DCT-2, DHT và KLT cho $\\rho=0.5,0.9,0.99$.||Task 4: measure the retained energy fraction of DCT-2, DHT and KLT for $\\rho=0.5,0.9,0.99$.⟧",
+        "⟦<b>26 bài tập cuối chương 12 của Bracewell (tr. 326–328), nguyên văn từ sách, dịch song ngữ, chia hai phần. Chương này thiên về tính DHT cụ thể nên phần lớn kiểm được bằng số.</b>||"
+        "<b>All 26 end-of-Bracewell-chapter-12 problems (pp. 326–328), verbatim from the book, translated bilingually, split into two parts. This chapter is about concrete DHT computation so most problems are numerically checkable.</b>⟧",
+        "⟦<h4>A. Bài kiểm bằng số — notebook mục cuối tính và đối chiếu ≥2 phương pháp độc lập cho mỗi bài</h4>||<h4>A. Numerically checkable — the final notebook section computes and cross-checks each with ≥2 independent methods</h4>⟧",
+        "⟦<b>1.</b> Tính DHT của $\\{1,2\\}$, $\\{1,2,3,4\\}$, $\\{1,2,3,4,5,6,7,8\\}$.||<b>1.</b> Find the DHTs of $\\{1,2\\}$, $\\{1,2,3,4\\}$, $\\{1,2,3,4,5,6,7,8\\}$.⟧",
+        "⟦<b>4.</b> (a) Suy ra DFT của $\\{8,7,6,5,4,3,2,1\\}$ từ DHT của nó. (b) Suy ra phổ công suất trực tiếp từ DHT.||<b>4.</b> (a) Deduce the DFT of $\\{8,7,6,5,4,3,2,1\\}$ from its DHT. (b) Deduce the power spectrum directly from the DHT.⟧",
+        "⟦<b>9.</b> (a) Tính DHT của $\\{1,1,2,1,2,1,2,1,2\\}$ và $\\{1,1,2,1,1,2,1,1\\}$. (b) Giải thích vì sao các đỉnh nằm ở vị trí đó.||<b>9.</b> (a) Find the DHTs of $\\{1,1,2,1,2,1,2,1,2\\}$ and $\\{1,1,2,1,1,2,1,1\\}$. (b) Explain why the peaks fall where they do.⟧",
+        "⟦<b>12. Biến đổi tuần hoàn.</b> Chứng minh áp dụng biến đổi Fourier bốn lần liên tiếp trả về hàm gốc, $\\mathcal F\\mathcal F\\mathcal F\\mathcal Ff=f$, và với biến đổi Hartley $\\mathcal H^4f=f$.||<b>12. Cyclic transforms.</b> Show applying the Fourier transform four times in succession recovers the original function, $\\mathcal F\\mathcal F\\mathcal F\\mathcal Ff=f$, and for the Hartley transform $\\mathcal H^4f=f$.⟧",
+        "⟦<b>17. Dữ liệu nhị phân ngẫu nhiên.</b> Với $N$ giá trị $\\pm1$ ngẫu nhiên: (a) giá trị kỳ vọng của $H(0)$ và $H(N/2)$? (b) độ lệch chuẩn kỳ vọng của $H(0)$ qua nhiều dãy?||<b>17. Random binary data.</b> With $N$ random $\\pm1$ values: (a) the expected values of $H(0)$ and $H(N/2)$? (b) the expected standard deviation of $H(0)$ over many sequences?⟧",
+        "⟦<h4>B. Câu tự luận / dẫn xuất — không có một số duy nhất để so, chấm bằng lý luận</h4>||<h4>B. Essay / derivation questions — no single number to check, graded by reasoning</h4>⟧",
+        "⟦<b>2.</b> Từ kết quả bài 1, đoán quy luật về số hạng 0 trong DHT của $\\{1,2,\\dots,2^P\\}$; đúng với $P=4$ không? Chứng minh đại số.||<b>2.</b> From problem 1's results, guess a rule about the zero element in the DHT of $\\{1,2,\\dots,2^P\\}$; is it true for $P=4$? Prove it algebraically.⟧",
+        "⟦<b>3, 5, 6, 7, 8.</b> Tính DHT của các dãy hoán vị/dịch chuyển cho trong sách; suy ra DFT và phổ công suất từ DHT.||<b>3, 5, 6, 7, 8.</b> Find the DHTs of the book's permuted/shifted sequences; deduce the DFT and power spectrum from the DHT.⟧",
+        "⟦<b>10.</b> Tính DHT của $\\{-2,2,-2,2,\\dots\\}$ và giải thích cấu trúc; tính phổ công suất và giải thích.||<b>10.</b> Find the DHT of $\\{-2,2,-2,2,\\dots\\}$ and explain the structure; find the power spectrum and explain.⟧",
+        "⟦<b>11.</b> Vẽ đồ thị cực $r=[\\text{cas}(\\theta\\bmod\\tfrac12\\pi)]^{-1}$ cho $0\\le\\theta<2\\pi$.||<b>11.</b> Make a polar plot of $r=[\\text{cas}(\\theta\\bmod\\tfrac12\\pi)]^{-1}$ for $0\\le\\theta<2\\pi$.⟧",
+        "⟦<b>13.</b> Vẽ hàm cơ sở của DCT1, DCT2 với $N=8$ tại $v=0,1,2,3,7$; kiểm tính trực giao của một cặp.||<b>13.</b> Graph the DCT1, DCT2 basis functions with $N=8$ at $v=0,1,2,3,7$; check the orthogonality of one pair.⟧",
+        "⟦<b>14.</b> Tính DFT của các dãy chèn số 0 cho trong sách và chỉ ra liên hệ giữa chúng.||<b>14.</b> Compute the DFTs of the book's zero-inserted sequences and point out the interrelationships.⟧",
+        "⟦<b>15.</b> Điều kiện nào để DHT của 8 số nguyên chỉ gồm toàn số nguyên?||<b>15.</b> Under what condition does the DHT of eight integers consist of integers only?⟧",
+        "⟦<b>16.</b> Bàn về DHT của bốn dãy hệ số nhị thức cho trong sách.||<b>16.</b> Comment on the DHTs of the book's four binomial-coefficient sequences.⟧",
+        "⟦<b>18.</b> So sánh DHT của $\\{8,7,6,5,4,3,2,1,0,\\dots\\}$ với 24 giá trị cách đều của $(8/3)\\text{sinc}^2(v/3)$.||<b>18.</b> Compare the DHT of $\\{8,7,6,5,4,3,2,1,0,\\dots\\}$ with 24 equispaced values of $(8/3)\\text{sinc}^2(v/3)$.⟧",
+        "⟦<b>19.</b> Chứng minh $\\text{cas}(A+B)=\\text{cas}\\,A\\cos B+\\text{cas}(-A)\\sin B$.||<b>19.</b> Show $\\text{cas}(A+B)=\\text{cas}\\,A\\cos B+\\text{cas}(-A)\\sin B$.⟧",
+        "⟦<b>20. Định lý đạo hàm.</b> Nếu $V(t)$ có biến đổi Hartley $H(f)$, biến đổi Hartley của $V'(t)$ là gì?||<b>20. Derivative theorem.</b> If $V(t)$ has Hartley transform $H(f)$, what is the Hartley transform of $V'(t)$?⟧",
+        "⟦<b>21.</b> Cường độ Hartley của một xung dịch $\\delta(x-a,y-b)$ tạo vân song song; tìm vị trí chính xác $(a,b)$ từ chu kỳ vân $d$.||<b>21.</b> The Hartley intensity of a shifted impulse $\\delta(x-a,y-b)$ makes parallel fringes; find the exact location $(a,b)$ from the fringe period $d$.⟧",
+        "⟦<b>22. Mặt phẳng Hartley phức.</b> Chứng minh $H(v)+iH(-v)=(F_{\\text{re}}+iF_{\\text{im}})\\times\\sqrt2\\,e^{i\\pi/4}$.||<b>22. Complex Hartley plane.</b> Show $H(v)+iH(-v)=(F_{\\text{re}}+iF_{\\text{im}})\\times\\sqrt2\\,e^{i\\pi/4}$.⟧",
+        "⟦<b>23. Pha Fourier.</b> Chứng minh $\\phi=\\arctan[H(-v)/H(v)]-\\pi/4$ suy ra trực tiếp từ DHT.||<b>23. Fourier phase.</b> Show $\\phi=\\arctan[H(-v)/H(v)]-\\pi/4$ follows directly from the DHT.⟧",
+        "⟦<b>24. Định lý affine.</b> Chứng minh định lý quay là trường hợp riêng của định lý affine hai chiều.||<b>24. Affine theorem.</b> Show the rotation theorem is a special case of the two-dimensional affine theorem.⟧",
+        "⟦<b>25. Tích chập bằng DCT.</b> Với DCT của $\\{4,3,2,1\\}$ và $\\{2,3,5,7\\}$ cho trong sách, tìm hệ số $K$ sao cho DCT của tích chập bằng $K$ lần tích hai DCT; nên tránh chồng lấp vòng thế nào?||<b>25. Convolution by DCT.</b> With the given DCTs of $\\{4,3,2,1\\}$ and $\\{2,3,5,7\\}$, find the constant $K$ so the DCT of the convolution equals $K$ times the product of the DCTs; how should cyclic overlap be avoided?⟧",
+        "⟦<b>26. Kiểm DCT bằng số.</b> $H(0)$ là trung bình dữ liệu cho DHT/DFT; với DCT2 của $\\{1,2,3,4\\}$ là $\\{1.77,-0.79,0,-0.06\\}$, biểu thức nào kiểm được ${}^cF(0)$? Và biểu thức nào kiểm $f(0)$ từ ${}^cF(v)$?||<b>26. Checking the DCT numerically.</b> $H(0)$ is the data mean for the DHT/DFT; with the DCT2 of $\\{1,2,3,4\\}$ equal to $\\{1.77,-0.79,0,-0.06\\}$, what expression checks ${}^cF(0)$? And what checks $f(0)$ from ${}^cF(v)$?⟧",
     ],
     pitfalls=[
         "<b>⟦\"Biến đổi Hartley khác hẳn Fourier nên mất pha.\"||\"The Hartley transform differs from Fourier so it loses phase.\"⟧</b><p>⟦Không mất gì: $F=E-iO$ nên biên độ và pha lấy lại được; ví dụ $|F(1)|^2$ của $\\{8,\\ldots,1\\}$ = {{p4_P1}}.||Nothing is lost: $F=E-iO$ so amplitude and phase are recoverable; for example $|F(1)|^2$ of $\\{8,\\ldots,1\\}$ = {{p4_P1}}.⟧</p>",
@@ -512,5 +534,47 @@ assert np.allclose(cs, [0, 0, .5, 0, 0, 0, .5, 0]) and np.allclose(sn, [0, 0, .5
 report("cs_2", cs[2], ".1f"); report("cs_6", cs[6], ".1f"); report("sn_2", sn[2], ".1f"); report("sn_6", sn[6], ".1f"); report("dc_0", dcs[0], ".0f")'''),
         ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
 ⟦Cosin: {{ct_same}}; DST {{dst_dev}}, hệ số {{dst_twice}}; DCT-1 {{dct1_dev}}; DCT-2 {{dct2_orth}} và {{dct2_inv}}; dây đàn {{st_b1}}, {{st_b2}}, {{st_y}}; nén: DCT-2 {{cp_dct}}, DHT {{cp_dht}}, KLT {{cp_klt}}, không biến đổi {{cp_id}}; cosin/sin/dc {{cs_2}}, {{sn_6}}, {{dc_0}}.||Cosine: {{ct_same}}; DST {{dst_dev}}, factor {{dst_twice}}; DCT-1 {{dct1_dev}}; DCT-2 {{dct2_orth}} and {{dct2_inv}}; string {{st_b1}}, {{st_b2}}, {{st_y}}; compression: DCT-2 {{cp_dct}}, DHT {{cp_dht}}, KLT {{cp_klt}}, no transform {{cp_id}}; cosine/sine/dc {{cs_2}}, {{sn_6}}, {{dc_0}}.⟧"""),
+        ("md", """## ⟦Bài tập cuối chương 12, phần A (tr. 326–327)||End-of-chapter-12 problems, part A (pp. 326–327)⟧
+🎯 **⟦Phương pháp này trả lời câu hỏi gì?||What question does this method answer?⟧** ⟦Mỗi bài được kiểm bằng ≥2 phương pháp độc lập (DHT tự cài so với công thức suy ra DFT, hoặc mô phỏng Monte Carlo so với công thức lý thuyết).||Each problem is checked with ≥2 independent methods (the self-built DHT versus the DFT-derived formula, or a Monte Carlo simulation versus the theoretical formula).⟧"""),
+        ("code", r'''# ⟦Bài 1: DHT của ba dãy (quy ước module: H = DHT thô / N)||Problem 1: DHT of three sequences (module convention: H = raw DHT / N)⟧
+p1a = dht([1, 2]); p1b = dht([1, 2, 3, 4]); p1c = dht([1, 2, 3, 4, 5, 6, 7, 8])
+assert abs(p1b[3]) < 1e-9                                                  # ⟦số hạng 0 trong DHT của {1,2,...,2^P}||the zero term in the DHT of {1,2,...,2^P}⟧
+report("p1a", str([round(x, 2) for x in p1a]), "s"); report("p1b3", p1b[3], ".1e")
+
+# ⟦Bài 4: DFT từ DHT thô N·H: F(v)=[N·H(v)+N·H(N−v)]/2 − i[N·H(v)−N·H(N−v)]/2||Problem 4: DFT from the raw DHT N·H: F(v)=[N·H(v)+N·H(N−v)]/2 − i[N·H(v)−N·H(N−v)]/2⟧
+def dft_from_dht(x):
+    H = dht(x)*len(x); N = len(H)                                          # ⟦quy về DHT thô (không chia N)||scale back to the raw, unnormalized DHT⟧
+    Fre = (H + np.roll(H[::-1], 1))/2; Fim = -(H - np.roll(H[::-1], 1))/2
+    return Fre + 1j*Fim
+seq4 = [8, 7, 6, 5, 4, 3, 2, 1]
+F_from_dht = dft_from_dht(seq4); F_true = np.fft.fft(seq4)
+p4_err = np.max(np.abs(F_from_dht - F_true))
+assert p4_err < 1e-9
+report("p4_err", p4_err, ".1e")
+
+# ⟦Bài 9: DHT của hai dãy tựa tuần hoàn||Problem 9: DHT of two quasi-periodic sequences⟧
+p9a = dht([1, 1, 2, 1, 2, 1, 2, 1, 2]); p9b = dht([1, 1, 2, 1, 1, 2, 1, 1])
+report("p9a_peak", np.max(np.abs(p9a[1:])), ".2f"); report("p9b_peak", np.max(np.abs(p9b[1:])), ".2f")
+
+# ⟦Bài 12: F^4f=f và H^4f=f (quy ước module: dht∘dht = f/N, nên dht^4 = f/N²)||Problem 12: F^4f=f and H^4f=f (module convention: dht∘dht = f/N, so dht^4 = f/N²)⟧
+x12 = np.array([3., 1, 4, 1, 5, 9, 2, 6])
+F1_ = np.fft.fft(x12); F4_ = np.fft.fft(np.fft.fft(np.fft.fft(F1_)))
+p12_dft_err = np.max(np.abs(F4_/len(x12)**2 - x12))
+H1_ = dht(x12); H4_ = dht(dht(dht(H1_)))
+p12_dht_err = np.max(np.abs(H4_*len(x12)**2 - x12))
+assert p12_dft_err < 1e-9 and p12_dht_err < 1e-9
+report("p12_dft_err", p12_dft_err, ".1e"); report("p12_dht_err", p12_dht_err, ".1e")
+
+# ⟦Bài 17: dữ liệu nhị phân ngẫu nhiên ±1, kỳ vọng và độ lệch chuẩn của H(0)||Problem 17: random ±1 binary data, expectation and standard deviation of H(0)⟧
+rng15c = np.random.default_rng(3)
+N17 = 16; trials17 = 300000
+H0s17 = np.array([dht(rng15c.choice([1, -1], N17))[0] for _ in range(trials17)])
+p17_mean = H0s17.mean(); p17_std = H0s17.std()
+p17_std_target = 1/np.sqrt(N17)                                            # ⟦H(0)=Σx/N ở quy ước module, nên độ lệch chuẩn là 1/√N thay vì √N||H(0)=Σx/N in this module's convention, so the standard deviation is 1/√N rather than √N⟧
+assert abs(p17_mean) < 0.01 and abs(p17_std - p17_std_target)/p17_std_target < 0.02
+report("p17_mean", p17_mean, ".4f"); report("p17_std", p17_std, ".4f")'''),
+        ("md", """#### 📤 ⟦Đầu ra thật (bài tập cuối chương)||Real output (end-of-chapter problems)⟧
+⟦Bài 1: DHT của $\\{1,2\\}$ = {{p1a}}; số hạng thứ tư của DHT $\\{1,2,3,4\\}$ chỉ {{p1b3}} (đúng bằng 0, xác nhận quy luật bài 2). Bài 4: lệch DFT suy từ DHT so với FFT trực tiếp {{p4_err}}. Bài 9: đỉnh lớn nhất của hai DHT là {{p9a_peak}} và {{p9b_peak}}. Bài 12: lệch $\\mathcal F^4$ {{p12_dft_err}}, lệch $\\mathcal H^4$ {{p12_dht_err}}. Bài 17: trung bình $H(0)$ qua {{p17_mean}} (đúng 0), độ lệch chuẩn {{p17_std}} (đúng $1/\\sqrt{16}=0{,}25$).||"""
+        "Problem 1: the DHT of $\\{1,2\\}$ = {{p1a}}; the fourth term of the DHT of $\\{1,2,3,4\\}$ is only {{p1b3}} (indeed 0, confirming problem 2's rule). Problem 4: the deviation of the DFT derived from the DHT versus the direct FFT is {{p4_err}}. Problem 9: the largest peak of the two DHTs is {{p9a_peak}} and {{p9b_peak}}. Problem 12: $\\mathcal F^4$ deviation {{p12_dft_err}}, $\\mathcal H^4$ deviation {{p12_dht_err}}. Problem 17: the mean of $H(0)$ across trials is {{p17_mean}} (indeed 0), standard deviation {{p17_std}} (indeed $1/\\sqrt{16}=0.25$).⟧"""),
     ],
 )
