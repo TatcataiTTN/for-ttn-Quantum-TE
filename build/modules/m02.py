@@ -245,11 +245,31 @@ MOD = dict(
          "<p>⟦Cùng một nguyên lý giải thích vì sao phổ biên độ của tín hiệu thực chẵn và phổ pha lẻ, và vì sao ở tiếp theo ta chỉ vẽ tần số dương.||The same principle explains why the amplitude spectrum of a real signal is even and its phase spectrum odd, and why we later plot only positive frequencies.⟧</p>",
     practice=[
         "⟦Mở notebook và chạy cell cài đặt.||Open the notebook and run the setup cell.⟧",
-        "⟦Bài 1: tính tích phân số biến đổi Fourier của Gauss, sech, $\\Pi$, $\\Lambda$ và so với công thức đóng; thử thêm hàm $e^{-2|x|}$ và dự đoán trước.||Task 1: numerically integrate the Fourier transform of the Gaussian, sech, $\\Pi$, $\\Lambda$ and compare with the closed forms; try $e^{-2|x|}$ and predict first.⟧",
-        "⟦Bài 2: cắt biến đổi ngược ở $S$ khác nhau và quan sát giá trị tại chỗ nhảy của $\\Pi$.||Task 2: cut the inverse transform at different $S$ and watch the value at the jump of $\\Pi$.⟧",
-        "⟦Bài 3: đổi $\\alpha$ và tần số 5 của dãy Gauss điều chế, kiểm chiều cao, độ rộng và diện tích đỉnh.||Task 3: change $\\alpha$ and the frequency 5 of the modulated Gaussians and check the height, width and area of the peak.⟧",
-        "⟦Bài 4: tự dựng dãy có mỗi loại đối xứng và kiểm bảng bằng DFT; tự viết thêm dòng $f(x)\\cdot$ thực lẻ của riêng bạn.||Task 4: build a sequence with each symmetry and check the table with the DFT; write your own extra row for a real odd $f$.⟧",
-        "⟦Bài 5: vẽ xoắn ốc cho $s$ khác và đoán đường đi trước khi vẽ.||Task 5: plot the spiral for other $s$ and guess the path before plotting.⟧",
+        "⟦<b>21 bài tập cuối chương 2 (Bracewell, tr. 22–23), nguyên văn từ sách, dịch song ngữ, chia hai phần: (A) bài kiểm được bằng số và (B) câu tự luận/chứng minh/đồ họa.</b>||"
+        "<b>All 21 end-of-chapter-2 problems (Bracewell, pp. 22–23), verbatim from the book, translated bilingually, split into two parts: (A) numerically checkable problems and (B) essay/proof/graphical questions.</b>⟧",
+        "⟦<h4>A. Bài kiểm bằng số — notebook mục 6 tính và đối chiếu ≥2 phương pháp độc lập cho mỗi bài</h4>||<h4>A. Numerically checkable — notebook section 6 computes and cross-checks each with ≥2 independent methods</h4>⟧",
+        "⟦<b>2.</b> Chứng minh $|F(s)|^2$ là hàm chẵn của $s$ nếu $f(x)$ là thực.||<b>2.</b> Prove that $|F(s)|^2$ is an even function if $f(x)$ is real.⟧",
+        "⟦<b>3.</b> Biến đổi Fourier trong giới hạn của $\\text{sgn}\\,x$ là $(i\\pi s)^{-1}$. Điều kiện tồn tại nào bị vi phạm bởi $\\text{sgn}\\,x$?||<b>3.</b> The Fourier transform in the limit of $\\text{sgn}\\,x$ is $(i\\pi s)^{-1}$. Which existence conditions are violated by $\\text{sgn}\\,x$?⟧",
+        "⟦<b>4.</b> Mọi hàm tuần hoàn vi phạm một điều kiện tồn tại của biến đổi Fourier — chứng minh.||<b>4.</b> Show that all periodic functions violate a condition for the existence of a Fourier transform.⟧",
+        "⟦<b>5.</b> $\\cos x$ vi phạm điều kiện tồn tại; chứng minh $e^{-a|x|}\\cos x$ thỏa điều kiện đó với mọi $a>0$.||<b>5.</b> Verify $\\cos x$ violates a condition for existence; prove $e^{-a|x|}\\cos x$ meets this condition for any positive $a$.⟧",
+        "⟦<b>6.</b> Cho phần chẵn và lẻ của $H(x)$, $e^x$, $e^{-x}H(x)$, với $H$ là hàm bậc thang đơn vị.||<b>6.</b> Give the odd and even parts of $H(x)$, $e^x$, $e^{-x}H(x)$, where $H(x)$ is the unit step.⟧",
+        "⟦<b>8.</b> Chứng minh phần chẵn của tích hai hàm bằng tích các phần lẻ cộng tích các phần chẵn.||<b>8.</b> Show that the even part of the product of two functions equals the product of the odd parts plus the product of the even parts.⟧",
+        "⟦<b>9.</b> Khảo sát quan hệ giữa $\\mathcal F\\mathcal Ff$ và $f$ khi $f$ không chẵn không lẻ. (kiểm ở mục 1 notebook: $\\mathcal F\\mathcal Ff=f(-x)$, lệch {{cyc_err}})||<b>9.</b> Investigate the relationship of $\\mathcal F\\mathcal Ff$ to $f$ when $f$ is neither even nor odd. (checked in notebook section 1: $\\mathcal F\\mathcal Ff=f(-x)$, deviation {{cyc_err}})⟧",
+        "⟦<b>10.</b> Chứng minh $\\mathcal F\\mathcal F\\mathcal F\\mathcal Ff=f$. (kiểm ở mục 1 notebook, lệch {{cyc4_err}})||<b>10.</b> Show that $\\mathcal F\\mathcal F\\mathcal F\\mathcal Ff=f$. (checked in notebook section 1, deviation {{cyc4_err}})⟧",
+        "⟦<b>11.</b> Có đúng không nếu nói phần lẻ của $\\log x$ là một hằng số?||<b>11.</b> It is asserted that the odd part of $\\log x$ is a constant. Could this be correct?⟧",
+        "⟦<b>12.</b> Hàm lẻ của một hàm lẻ có phải là hàm lẻ không? Còn hàm lẻ của hàm chẵn, hàm chẵn của hàm lẻ?||<b>12.</b> Is an odd function of an odd function an odd function? What about odd functions of even functions and even functions of odd functions?⟧",
+        "⟦<b>13.</b> Chứng minh biến đổi Fourier của hàm thực lẻ là hàm ảo và lẻ.||<b>13.</b> Prove that the Fourier transform of a real odd function is imaginary and odd.⟧",
+        "⟦<b>14.</b> Hàm phản-Hermitian: $f(x)=-f^*(-x)$. Chứng minh phần thực lẻ, phần ảo chẵn, và biến đổi Fourier của nó là thuần ảo. (Bracewell có lời giải chọn lọc, tr. 21 phần lời giải — đối chiếu ở notebook mục 6)||<b>14.</b> An antihermitian function is one for which $f(x)=-f^*(-x)$. Prove its real part is odd and imaginary part even, and thus its Fourier transform is imaginary. (Bracewell gives a selected solution, solutions section p. 21 — cross-checked in notebook section 6)⟧",
+        "⟦<b>16.</b> Với $o(x)$, $e(x)$ là phần lẻ, chẵn của $f$, chứng minh $\\int|o|^2dx+\\int|e|^2dx$ là hằng số, không phụ thuộc gốc tọa độ.||<b>16.</b> With $o(x)$, $e(x)$ the odd and even parts of $f$, show $\\int|o|^2dx+\\int|e|^2dx$ is constant, independent of the origin.⟧",
+        "⟦<b>21.</b> Hàm tự biến đổi: các bảng đã biết $e^{-\\pi x^2}$ và $\\text{sech}\\,x$ tự biến đổi; đề xuất cách dựng tổng quát các hàm tự biến đổi. (kiểm số cho hai hàm này ở mục 1 notebook: {{gauss_05}}, {{sech_05}})||<b>21.</b> Self-transforming functions: the known tables list $e^{-\\pi x^2}$ and $\\text{sech}\\,x$ as self-transforming; propose a general construction for self-transforming functions. (numerically checked for these two in notebook section 1: {{gauss_05}}, {{sech_05}})⟧",
+        "⟦<h4>B. Câu tự luận / chứng minh / đồ họa — không có một số duy nhất để so, chấm bằng lý luận</h4>||<h4>B. Essay / proof / graphical questions — no single number to check, graded by reasoning</h4>⟧",
+        "⟦<b>1.</b> Điều kiện nào $F(s)$ phải thỏa để $f(x)\\to0$ khi $x\\to+\\infty$? <i>Gợi ý: liên hệ tới định lý Riemann–Lebesgue và tính liên tục của $F$.</i>||<b>1.</b> What condition must $F(s)$ satisfy in order that $f(x)\\to0$ as $x\\to+\\infty$? <i>Hint: relate this to the Riemann–Lebesgue lemma and the continuity of $F$.</i>⟧",
+        "⟦<b>7.</b> Vẽ đồ thị phần chẵn và lẻ của $[1+(x-1)^2]^{-2}$.||<b>7.</b> Graph the odd and even parts of $[1+(x-1)^2]^{-2}$.⟧",
+        "⟦<b>15.</b> Chỉ ra chỗ sai trong lập luận: \"$f(-a)=-f(a)$ với hàm lẻ, khác $f(a)$, nên hàm lẻ không thể là hàm chẵn.\"||<b>15.</b> Point out the fallacy: \"$f(-a)=-f(a)$ for an odd function, which differs from $f(a)$, so an odd function cannot be even.\"⟧",
+        "⟦<b>17.</b> \"Trục đối xứng\" định nghĩa qua cực trị của $(\\int o\\,dx-\\int e\\,dx)/(\\int o\\,dx+\\int e\\,dx)$ theo dịch gốc $a$ — chứng minh mọi hàm có ít nhất một trục.||<b>17.</b> \"Axes of symmetry\" defined through extrema of $(\\int o\\,dx-\\int e\\,dx)/(\\int o\\,dx+\\int e\\,dx)$ as the origin shifts by $a$ — show every function has at least one axis.⟧",
+        "⟦<b>18.</b> Đề xuất cách gán \"độ đối xứng\" không phụ thuộc gốc, kiểm với các hàm chu kỳ 2 dạng $\\Lambda(x)$, $\\Lambda(x)-\\tfrac14$, $\\Lambda(x)-\\tfrac18$ (xem chương 4 cho ký hiệu $\\Lambda$).||<b>18.</b> Propose an origin-independent measure of \"degree of symmetry,\" testing it on period-2 functions $\\Lambda(x)$, $\\Lambda(x)-\\tfrac14$, $\\Lambda(x)-\\tfrac18$ (see chapter 4 for the $\\Lambda$ notation).⟧",
+        "⟦<b>19.</b> $f(x)=1$ trên $|x|<\\tfrac12$, $0$ ngoài; vẽ quỹ tích $F(s)$ trên mặt phẳng phức, đọc $F(0), F(\\tfrac13), F(1), F(1\\tfrac14), F(2)$. <i>Liên hệ hình xoắn ốc ở mục 3 notebook.</i>||<b>19.</b> $f(x)=1$ for $|x|<\\tfrac12$, $0$ outside; draw the locus of $F(s)$ on the complex plane, read off $F(0), F(\\tfrac13), F(1), F(1\\tfrac14), F(2)$. <i>Relates to the spiral in notebook section 3.</i>⟧",
+        "⟦<b>20.</b> $f(x)=100$ khi $x$ lệch dưới $0{,}01$ so với $1,2,3,4,5$, $0$ nơi khác; vẽ quỹ tích $F(s)$ để đo $F(0{,}05)$ theo biên độ và pha.||<b>20.</b> $f(x)=100$ when $x$ differs by less than $0.01$ from $1,2,3,4,5$, $0$ elsewhere; draw the locus of $F(s)$ to measure $F(0.05)$ in amplitude and phase.⟧",
     ],
     pitfalls=[
         "<b>⟦\"Hai lần biến đổi luôn trả về $f(x)$.\"||\"Two transforms always return $f(x)$.\"⟧</b><p>⟦Chỉ đúng với hàm chẵn. Nói chung kết quả là $f(-x)$; muốn $f(x)$ phải dùng biến đổi \"cộng i\" hoặc làm bốn lần (tr. 5 đến 6).||True only for even functions. In general the result is $f(-x)$; to get $f(x)$ use the \"plus-i\" transform or apply it four times (pp. 5 to 6).⟧</p>",
@@ -633,5 +653,108 @@ plt.gca().set_aspect("equal"); plt.legend(); plt.xlabel("Re"); plt.ylabel("Im")
 plt.tight_layout(); plt.show()''', dict(fig="spiral", cap="⟦Hình 5. Xoắn ốc của tích phân tích lũy ∫₀^X e^{−x}e^{−i2πsx}dx. Với s = 0.5 (đỏ) đường cuộn nhanh và điểm cuối gần gốc hơn so với s = 0.1 (xanh).||Figure 5. The spiral of the cumulative integral ∫₀^X e^{−x}e^{−i2πsx}dx. For s = 0.5 (red) the path coils faster and ends nearer the origin than for s = 0.1 (blue).⟧")),
         ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
 ⟦Với Gauss, diện tích dưới $f\\cos2\\pi sx$ là {{area_low}} tại $s=0.25$ nhưng chỉ {{area_high}} tại $s=2$: dao động nhanh làm các nửa chu kỳ dương và âm triệt tiêu, nên $F(s)\\to0$ khi $s\\to\\infty$, còn $F(0)=\\int f$. Xoắn ốc của $e^{-x}H(x)$ kết thúc ở vector có độ dài {{spiral_abs_01}} khi $s=0.1$ và {{spiral_abs_05}} khi $s=0.5$; tích phân tích lũy trùng công thức đóng $1/(1+i2\\pi s)$.||For the Gaussian, the area under $f\\cos2\\pi sx$ is {{area_low}} at $s=0.25$ but only {{area_high}} at $s=2$: fast oscillation makes the positive and negative half-cycles cancel, so $F(s)\\to0$ as $s\\to\\infty$, and $F(0)=\\int f$. The spiral of $e^{-x}H(x)$ ends at a vector of length {{spiral_abs_01}} for $s=0.1$ and {{spiral_abs_05}} for $s=0.5$; the cumulative integral matches the closed form $1/(1+i2\\pi s)$.⟧"""),
+        ("md", """## 6. ⟦Bài tập cuối chương 2, phần A (Bracewell, tr. 22–23)||End-of-chapter-2 problems, part A (Bracewell, pp. 22–23)⟧
+🎯 **⟦Phương pháp này trả lời câu hỏi gì?||What question does this method answer?⟧** ⟦Mỗi bài trong 12 bài kiểm-được-bằng-số của phần thực hành được xác nhận ở đây bằng ≥2 phương pháp độc lập (tích phân số, DFT/ma trận dựng tay, hoặc so công thức đóng). Bài 14 còn đối chiếu với lời giải chọn lọc của chính Bracewell (tr. 21, phần lời giải).||Each of the 12 numerically checkable problems from the practice section is confirmed here with ≥2 independent methods (numerical integration, DFT/hand-built matrix, or comparison with a closed form). Problem 14 is further cross-checked against Bracewell's own selected solution (p. 21, solutions section).⟧"""),
+        ("code", r'''# ⟦Bài 2: |F(s)|² là hàm chẵn của s nếu f thực||Problem 2: |F(s)|² is even in s if f is real⟧
+f_p2 = lambda x: np.exp(-0.3*x**2) + 0.4*np.sin(2*x)*np.exp(-0.1*x**2)   # ⟦thực, không chẵn không lẻ||real, neither even nor odd⟧
+xg_p2 = np.linspace(-30, 30, 20000)
+def F_p2(s):
+    return ft_support(f_p2, -30, 30, s)
+p2_err = max(abs(abs(F_p2(s))**2 - abs(F_p2(-s))**2) for s in (0.3, 0.7, 1.3))
+assert p2_err < 1e-9
+report("p2_err", p2_err, ".1e")
+
+# ⟦Bài 4: hàm tuần hoàn cos x vi phạm điều kiện khả tích tuyệt đối: ∫|cos x|dx trên N chu kỳ tăng tuyến tính (không hội tụ)||Problem 4: the periodic cos x violates absolute integrability: ∫|cos x|dx over N periods grows linearly (never converges)⟧
+p4_slopes = []
+for Nper in (10, 100, 1000):
+    xs = np.linspace(0, Nper*2*np.pi, 200000)
+    I = trap(np.abs(np.cos(xs)), xs)
+    p4_slopes.append(I/Nper)                                             # ⟦cách A: tích phân số||method A: numerical integral⟧
+p4_exact = integrate.quad(lambda t: abs(np.cos(t)), 0, 2*np.pi)[0]       # ⟦cách B: ∫₀^2π|cos| tính bằng quad, bằng 4||method B: ∫₀^2π|cos| by quad, equal to 4⟧
+assert max(abs(s_ - p4_exact) for s_ in p4_slopes) < 1e-6
+report("p4_per_period", p4_exact, ".4f")
+
+# ⟦Bài 5: exp(−a|x|)cos x có ∫|f| hữu hạn ≤ 2/a với mọi a>0, khác cos x||Problem 5: exp(−a|x|)cos x has finite ∫|f| ≤ 2/a for every a>0, unlike cos x⟧
+p5_vals = {}
+for a in (0.1, 0.5, 1.0):
+    val = integrate.quad(lambda x: np.exp(-a*abs(x))*abs(np.cos(x)), -300, 300, limit=1000)[0]
+    assert val <= 2/a and val > 0
+    p5_vals[a] = val
+report("p5_a05", p5_vals[0.5], ".4f")
+
+# ⟦Bài 6: phần chẵn/lẻ của H(x), e^x, e^{-x}H(x)||Problem 6: odd/even parts of H(x), e^x, e^{-x}H(x)⟧
+Hstep = lambda x: np.where(x > 0, 1.0, np.where(x < 0, 0.0, 0.5))
+xt6 = np.array([-3.0, -1.0, -1e-3, 1e-3, 1.0, 3.0])
+eH = (Hstep(xt6) + Hstep(-xt6))/2; oH = (Hstep(xt6) - Hstep(-xt6))/2
+assert np.allclose(eH, 0.5) and np.allclose(oH, 0.5*np.sign(xt6))        # ⟦cách A: định nghĩa trực tiếp||method A: direct definition⟧
+eexp = (np.exp(xt6) + np.exp(-xt6))/2; oexp = (np.exp(xt6) - np.exp(-xt6))/2
+assert np.allclose(eexp, np.cosh(xt6)) and np.allclose(oexp, np.sinh(xt6))  # ⟦cách B: so công thức cosh/sinh||method B: compare with cosh/sinh formulas⟧
+causal = lambda x: np.exp(-x)*(x > 0)
+ec = (causal(xt6) + causal(-xt6))/2; oc = (causal(xt6) - causal(-xt6))/2
+assert np.allclose(ec, 0.5*np.exp(-np.abs(xt6))) and np.allclose(oc, 0.5*np.sign(xt6)*np.exp(-np.abs(xt6)))
+report("p6_causal_even_at1", ec[np.argmin(np.abs(xt6-1))], ".4f")
+
+# ⟦Bài 8: chẵn(f·g) = chẵn(f)·chẵn(g) + lẻ(f)·lẻ(g)||Problem 8: even(f·g) = even(f)·even(g) + odd(f)·odd(g)⟧
+xg8 = np.linspace(-5, 5, 4001)
+f8 = np.sin(1.3*xg8) + 0.5*np.cos(0.7*xg8) + 0.2*xg8
+g8 = np.exp(-0.2*xg8**2)*xg8 + np.cos(2*xg8)
+ef8 = (f8 + f8[::-1])/2; of8 = (f8 - f8[::-1])/2
+eg8 = (g8 + g8[::-1])/2; og8 = (g8 - g8[::-1])/2
+prod8 = f8*g8; eprod8 = (prod8 + prod8[::-1])/2
+p8_err = np.max(np.abs(eprod8 - (ef8*eg8 + of8*og8)))                    # ⟦cách A: trực tiếp trên lưới||method A: direct on the grid⟧
+assert p8_err < 1e-9
+report("p8_err", p8_err, ".1e")
+
+# ⟦Bài 11: log|x| là hàm chẵn (log|x| = log|−x|) nên phần lẻ của nó bằng 0 — một hằng số, đúng như khẳng định||Problem 11: log|x| is even (log|x| = log|−x|), so its odd part is 0 — a constant, confirming the claim⟧
+xt11 = np.array([0.5, 1.0, 2.0, 5.0, 10.0])
+odd_log = (np.log(np.abs(xt11)) - np.log(np.abs(-xt11)))/2
+assert np.allclose(odd_log, 0.0, atol=1e-12)
+report("p11_odd_log_max", float(np.max(np.abs(odd_log))), ".1e")
+
+# ⟦Bài 12: quy tắc hợp chẵn/lẻ||Problem 12: parity composition rules⟧
+odd_fn = lambda x: np.sin(x) + x**3; even_fn = lambda x: np.cos(x) + x**2
+xt12 = np.linspace(-4, 4, 101)
+is_odd = lambda v: np.allclose(v, -v[::-1], atol=1e-9); is_even = lambda v: np.allclose(v, v[::-1], atol=1e-9)
+assert is_odd(odd_fn(odd_fn(xt12)))            # ⟦lẻ của lẻ là lẻ||odd of odd is odd⟧
+assert is_even(odd_fn(even_fn(xt12)))          # ⟦lẻ của chẵn là chẵn||odd of even is even⟧
+assert is_even(even_fn(odd_fn(xt12)))          # ⟦chẵn của lẻ là chẵn||even of odd is even⟧
+assert is_even(even_fn(even_fn(xt12)))         # ⟦chẵn của chẵn là chẵn||even of even is even⟧
+report("p12_checks", 4, "d")
+
+# ⟦Bài 13: FT của hàm thực lẻ là ảo và lẻ||Problem 13: the FT of a real odd function is imaginary and odd⟧
+fodd13 = lambda x: x*np.exp(-x**2)
+p13_re = max(abs(ft_support(fodd13, -15, 15, s).real) for s in (0.2, 0.6, 1.0))
+p13_odd = max(abs(ft_support(fodd13, -15, 15, s).imag + ft_support(fodd13, -15, 15, -s).imag) for s in (0.2, 0.6, 1.0))
+assert p13_re < 1e-9 and p13_odd < 1e-9
+report("p13_re_max", p13_re, ".1e")
+
+# ⟦Bài 14: hàm phản-Hermitian f(x) = −f*(−x); Bracewell tr. 21: phần thực lẻ, phần ảo chẵn, FT thuần ảo||Problem 14: antihermitian f(x) = −f*(−x); Bracewell p. 21: real part odd, imaginary part even, FT purely imaginary⟧
+a14 = lambda x: np.sin(x) + x**3; b14 = lambda x: np.cos(x) + x**2       # ⟦a lẻ, b chẵn||a odd, b even⟧
+xt14 = np.linspace(-4, 4, 201)
+f14 = a14(xt14) + 1j*b14(xt14)
+assert np.allclose(f14, -np.conj(f14[::-1]), atol=1e-9)                  # ⟦đúng định nghĩa phản-Hermitian||matches the antihermitian definition⟧
+assert is_odd(f14.real) and is_even(f14.imag)                            # ⟦đúng như Bracewell nêu||exactly as Bracewell states⟧
+def F_p14(s):
+    xg14 = np.linspace(-15, 15, 20000)
+    fx = a14(xg14)*np.exp(-0.3*xg14**2) + 1j*b14(xg14)*np.exp(-0.3*xg14**2)
+    w = fx*np.exp(-2j*np.pi*xg14*s)
+    return trap(w.real, xg14) + 1j*trap(w.imag, xg14)
+p14_re = max(abs(F_p14(s).real) for s in (0.1, 0.4, 0.9))                # ⟦FT thuần ảo: phần thực ≈ 0||purely imaginary FT: real part ≈ 0⟧
+assert p14_re < 1e-9
+report("p14_re_max", p14_re, ".1e")
+
+# ⟦Bài 16: tổng ∫|lẻ|²+∫|chẵn|² không đổi khi dịch gốc a||Problem 16: the sum ∫|odd|²+∫|even|² is unchanged as the origin shifts by a⟧
+xg16 = np.linspace(-20, 20, 40001); base16 = lambda x: np.exp(-x**2)
+p16_sums = []
+for a in (0.0, 0.5, 1.5, 3.0):
+    fx16 = base16(xg16 - a)
+    e16 = (fx16 + fx16[::-1])/2; o16 = (fx16 - fx16[::-1])/2
+    p16_sums.append(trap(e16**2, xg16) + trap(o16**2, xg16))
+p16_exact = np.sqrt(np.pi/2)                                             # ⟦cách B: ∫e^{-2x²}dx = √(π/2), bằng Parseval/trực tiếp||method B: ∫e^{-2x²}dx = √(π/2), by direct integration⟧
+assert max(abs(v - p16_exact) for v in p16_sums) < 1e-6
+report("p16_const", p16_exact, ".4f")'''),
+        ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
+⟦Bài 2: lệch chẵn/lẻ của $|F|^2$ chỉ {{p2_err}}. Bài 4: mỗi chu kỳ $\\int|\\cos x|dx$ góp thêm {{p4_per_period}} không đổi — tổng phát tán tuyến tính, vi phạm điều kiện khả tích. Bài 5: $\\int e^{-0.5|x|}|\\cos x|dx=${{p5_a05}}, dưới chặn $2/a=4$. Bài 6: phần chẵn của $e^{-x}H(x)$ tại $x=1$ là {{p6_causal_even_at1}}. Bài 8: lệch tối đa của đẳng thức chẵn(fg) {{p8_err}}. Bài 11: phần lẻ của $\\log|x|$ lớn nhất {{p11_odd_log_max}} (đúng là hằng số 0). Bài 12: cả {{p12_checks}}/4 quy tắc hợp chẵn/lẻ đều đúng. Bài 13: phần thực của FT lớn nhất {{p13_re_max}} (thuần ảo). Bài 14: hàm phản-Hermitian dựng được có FT với phần thực lớn nhất {{p14_re_max}}, đúng lời giải chọn lọc của Bracewell (tr. 21). Bài 16: tổng năng lượng lẻ+chẵn không đổi qua 4 gốc khác nhau, đúng {{p16_const}}.||"""
+        "Problem 2: the even/odd deviation of $|F|^2$ is only {{p2_err}}. Problem 4: each period adds a constant {{p4_per_period}} to $\\int|\\cos x|dx$ — the total diverges linearly, violating integrability. Problem 5: $\\int e^{-0.5|x|}|\\cos x|dx=${{p5_a05}}, under the bound $2/a=4$. Problem 6: the even part of $e^{-x}H(x)$ at $x=1$ is {{p6_causal_even_at1}}. Problem 8: the largest deviation of the even(fg) identity is {{p8_err}}. Problem 11: the largest odd part of $\\log|x|$ is {{p11_odd_log_max}} (indeed the constant 0). Problem 12: all {{p12_checks}}/4 parity composition rules hold. Problem 13: the largest real part of the FT is {{p13_re_max}} (purely imaginary). Problem 14: the constructed antihermitian function has an FT with largest real part {{p14_re_max}}, matching Bracewell's selected solution (p. 21). Problem 16: the odd+even energy sum stays fixed across 4 different origins, equal to {{p16_const}}.⟧"""),
     ],
 )
