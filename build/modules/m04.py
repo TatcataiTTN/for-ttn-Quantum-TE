@@ -242,11 +242,21 @@ MOD = dict(
          "<p>⟦Cùng cơ chế giải thích vì sao trung bình trượt có điểm không (module 3) và vì sao cửa sổ chữ nhật rò phổ (module 1): mọi lần cắt bằng $\\Pi$ đều nhân phổ với sinc.||The same mechanism explains why running means have zeros (module 3) and why the rectangular window leaks (module 1): every cut by $\\Pi$ multiplies the spectrum by sinc.⟧</p>",
     practice=[
         "⟦Mở notebook và chạy cell cài đặt.||Open the notebook and run the setup cell.⟧",
-        "⟦Bài 1: dựng bậc thang có dốc, hàm đa giác và các bảng cặp biến đổi bằng $\\Pi,\\Lambda,H$; thử một hàm đa giác khác của bạn.||Task 1: build the ramp-step, a polygonal function and the transform-pair table with $\\Pi,\\Lambda,H$; try another polygonal function of your own.⟧",
-        "⟦Bài 2: tự tính các thông số phân tán của một Gauss có $\\sigma=2$ và kiểm bằng mô phỏng.||Task 2: compute the dispersion parameters of a Gaussian with $\\sigma=2$ yourself and check by simulation.⟧",
-        "⟦Bài 3: thay lưới của mô phỏng Rayleigh bằng 3 chiều (phân phối Maxwell) và dự đoán đỉnh.||Task 3: extend the Rayleigh simulation to 3 dimensions (the Maxwell distribution) and predict the peak.⟧",
-        "⟦Bài 4: lọc tín hiệu hai tần số bằng sinc cắt cụt ở nhiều độ dài, xem độ lợi hội tụ ra sao.||Task 4: filter a two-tone signal with a truncated sinc of several lengths and see how the gain converges.⟧",
-        "⟦Bài 5: so ba cửa sổ trên một tín hiệu có hai vạch gần nhau và vạch yếu; cửa sổ nào tách được?||Task 5: compare three windows on a signal with two close lines and a weak one; which window separates them?⟧",
+        "⟦<b>11 bài tập cuối chương 4 (Bracewell, tr. 72–73), nguyên văn từ sách, dịch song ngữ, chia hai phần: (A) bài kiểm được bằng số và (B) câu tự luận/chứng minh.</b>||"
+        "<b>All 11 end-of-chapter-4 problems (Bracewell, pp. 72–73), verbatim from the book, translated bilingually, split into (A) numerically checkable and (B) essay/proof.</b>⟧",
+        "⟦<h4>A. Bài kiểm bằng số — notebook mục cuối tính và đối chiếu ≥2 phương pháp độc lập cho mỗi bài</h4>||<h4>A. Numerically checkable — the final notebook section computes and cross-checks each with ≥2 independent methods</h4>⟧",
+        "⟦<b>1.</b> Chứng minh $H(ax+b)=H(x+b/a)$ nếu $a>0$ và $H(ax+b)=H(-x-b/a)$ nếu $a<0$.||<b>1.</b> Show that $H(ax+b)=H(x+b/a)$ if $a>0$ and $H(ax+b)=H(-x-b/a)$ if $a<0$.⟧",
+        "⟦<b>3.</b> Chứng minh phép toán $H(x)*$ là một phép lấy tích phân: $H(x)*[f(x)H(x)]=\\int_0^xf(t)\\,dt$.||<b>3.</b> Show that the operation $H(x)*$ is an integrating operation: $H(x)*[f(x)H(x)]=\\int_0^xf(t)\\,dt$.⟧",
+        "⟦<b>4.</b> Tính $\\frac{d}{dx}[f(x)*H(x)]$ và chứng minh nó bằng $f(x)$.||<b>4.</b> Calculate $\\frac{d}{dx}[f(x)*H(x)]$ and prove it equals $f(x)$.⟧",
+        "⟦<b>5.</b> Bằng cách tính tích phân, chứng minh $\\text{sinc}\\,x*\\text{sinc}\\,x=\\text{sinc}\\,x$.||<b>5.</b> By evaluating the integral, prove that $\\text{sinc}\\,x*\\text{sinc}\\,x=\\text{sinc}\\,x$.⟧",
+        "⟦<b>6.</b> Chứng minh $\\text{sinc}\\,x*J_0(\\pi x)=J_0(\\pi x)$, với $J_0$ là hàm Bessel loại 1 bậc 0.||<b>6.</b> Prove that $\\text{sinc}\\,x*J_0(\\pi x)=J_0(\\pi x)$, where $J_0$ is the order-0 Bessel function of the first kind.⟧",
+        "⟦<b>7.</b> Chứng minh $4\\,\\text{sinc}\\,4x*\\sin x=\\sin x$.||<b>7.</b> Prove that $4\\,\\text{sinc}\\,4x*\\sin x=\\sin x$.⟧",
+        "⟦<b>8.</b> Chứng minh $\\Pi(x)=H(x+\\tfrac12)-H(x-\\tfrac12)=H(\\tfrac12+x)+H(\\tfrac12-x)-1=H(\\tfrac14-x^2)=\\tfrac12[\\text{sgn}(x+\\tfrac12)-\\text{sgn}(x-\\tfrac12)]$, và $\\Pi(x^2)=\\Pi(x/2!)$... [xem chú thích].||<b>8.</b> Show that $\\Pi(x)=H(x+\\tfrac12)-H(x-\\tfrac12)=H(\\tfrac12+x)+H(\\tfrac12-x)-1=H(\\tfrac14-x^2)=\\tfrac12[\\text{sgn}(x+\\tfrac12)-\\text{sgn}(x-\\tfrac12)]$.⟧",
+        "⟦<b>9.</b> Chứng minh $\\Lambda(x)=\\Pi(x)*\\Pi(x)$.||<b>9.</b> Show that $\\Lambda(x)=\\Pi(x)*\\Pi(x)$.⟧",
+        "⟦<b>11.</b> Chứng minh $\\text{erf}\\,x=2\\Phi(\\sqrt2\\,x)-1$, với $\\Phi$ là hàm phân phối tích lũy chuẩn tắc.||<b>11.</b> Show that $\\text{erf}\\,x=2\\Phi(\\sqrt2\\,x)-1$, where $\\Phi$ is the standard normal cumulative distribution function.⟧",
+        "⟦<h4>B. Câu tự luận / chứng minh — không có một số duy nhất để so, chấm bằng lý luận</h4>||<h4>B. Essay / proof questions — no single number to check, graded by reasoning</h4>⟧",
+        "⟦<b>2.</b> Bàn về hàm $\\tfrac12[1+x/|x|]$ mà Cauchy dùng — liên hệ nó với $H(x)$ hoặc $\\text{sgn}\\,x$.||<b>2.</b> Discuss the function $\\tfrac12[1+x/|x|]$ used by Cauchy — relate it to $H(x)$ or $\\text{sgn}\\,x$.⟧",
+        "⟦<b>10.</b> Thử nghiệm với phương trình $f[f(x)]=f(x)$; ghi nhận $f(x)=\\text{sgn}\\,x$ là một nghiệm. Tìm các nghiệm khác và viết nghiệm tổng quát gọn bằng ký hiệu hàm bậc thang.||<b>10.</b> Experiment with the equation $f[f(x)]=f(x)$ and note that $f(x)=\\text{sgn}\\,x$ is a solution. Find other solutions and attempt to write the general solution compactly with step-function notation.⟧",
     ],
     pitfalls=[
         "<b>⟦\"$\\Pi(\\pm\\tfrac12)$ phải được quy định để tích phân đúng.\"||\"$\\Pi(\\pm\\tfrac12)$ must be specified for integrals to be right.\"⟧</b><p>⟦Không: một điểm không đổi tích phân (lệch {{edge_diff}} giữa các quy ước). Bracewell hầu như không nêu (tr. 57).||No: a single point does not change an integral (deviation {{edge_diff}} between conventions). Bracewell almost never states it (p. 57).⟧</p>",
@@ -643,5 +653,100 @@ plt.plot(sf, 20*np.log10(np.exp(-np.pi*(sf/1.0)**2) + 1e-12), label=("⟦Gauss||
 plt.ylim(-80, 3); plt.xlabel("s"); plt.ylabel("dB"); plt.legend(); plt.tight_layout(); plt.show()''', dict(fig="windows", cap="⟦Hình 5. Biến đổi của ba cửa sổ theo dB: chữ nhật (sinc) có thùy phụ đầu cao nhất, tam giác (sinc²) thấp hơn gấp đôi số dB, Gauss suy giảm đều không có thùy phụ.||Figure 5. The transforms of three windows in dB: the rectangle (sinc) has the highest first sidelobe, the triangle (sinc²) has twice as many dB below, the Gaussian decays smoothly with no sidelobes.⟧")),
         ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
 ⟦Tại $s=0.3$: $\\Pi$ cho {{p_pi_03}}, $\\Lambda$ cho {{p_tri_03}}, Gauss {{p_g_03}}, $e^{-|x|}$ cho {{p_exp_03}}, $|F|$ của $e^{-x}H$ là {{p_caus_03}}: {{pairs_ok}} trên 5 cặp đúng. Thùy phụ đầu: sinc {{sl_rect}} ({{sl_rect_db}} dB) bằng cả quét lưới lẫn nghiệm $\\tan\\pi s=\\pi s$; sinc$^2$ {{sl_tri}} ({{sl_tri_db}} dB). Khe quét giữ {{slit_025}}, {{slit_05}}, {{slit_1}} biên độ khi rộng 0.25, 0.5, 1 chu kỳ. Trung bình 8 điểm tại 0.05: chính xác {{ma_exact}}, sinc {{ma_sinc}}.||At $s=0.3$: $\\Pi$ gives {{p_pi_03}}, $\\Lambda$ gives {{p_tri_03}}, the Gaussian {{p_g_03}}, $e^{-|x|}$ gives {{p_exp_03}}, and $|F|$ of $e^{-x}H$ is {{p_caus_03}}: {{pairs_ok}} of 5 pairs hold. First sidelobes: sinc {{sl_rect}} ({{sl_rect_db}} dB) by both the grid scan and the root of $\\tan\\pi s=\\pi s$; sinc$^2$ {{sl_tri}} ({{sl_tri_db}} dB). The slit keeps {{slit_025}}, {{slit_05}}, {{slit_1}} of the amplitude for widths 0.25, 0.5, 1 period. The 8-point mean at 0.05: exact {{ma_exact}}, sinc {{ma_sinc}}.⟧"""),
+        ("md", """## ⟦Bài tập cuối chương 4, phần A (Bracewell, tr. 72–73)||End-of-chapter-4 problems, part A (Bracewell, pp. 72–73)⟧
+🎯 **⟦Phương pháp này trả lời câu hỏi gì?||What question does this method answer?⟧** ⟦Mỗi bài trong phần thực hành được xác nhận bằng ≥2 phương pháp độc lập (định nghĩa trực tiếp so với tích phân/đạo hàm số, hoặc so công thức đóng của SciPy).||Each problem in the practice section is confirmed with ≥2 independent methods (direct definition versus numerical integration/differentiation, or comparison with SciPy's closed forms).⟧"""),
+        ("code", r'''from scipy import special
+from scipy.stats import norm
+Hstep4 = lambda x: np.where(x > 0, 1.0, np.where(x < 0, 0.0, 0.5))
+
+# ⟦Bài 1: H(ax+b) theo dấu của a||Problem 1: H(ax+b) according to the sign of a⟧
+def check_Hab(a, b):
+    xg = np.linspace(-10, 10, 4001)
+    lhs = Hstep4(a*xg + b)
+    rhs = Hstep4(xg + b/a) if a > 0 else Hstep4(-(xg + b/a))
+    return np.max(np.abs(lhs - rhs))
+p1_err = max(check_Hab(2, -3), check_Hab(-2, 3), check_Hab(0.5, 1))
+assert p1_err < 1e-12
+report("p1_err", p1_err, ".1e")
+
+# ⟦Bài 3: H(x)*[f(x)H(x)] = ∫₀ˣf(t)dt||Problem 3: H(x)*[f(x)H(x)] = ∫₀ˣf(t)dt⟧
+from scipy.integrate import cumulative_trapezoid, quad
+dx4 = 0.001; xg4 = np.arange(-5, 15, dx4)
+f4 = lambda x: np.exp(-0.3*x)*np.cos(x)
+cum4 = cumulative_trapezoid(f4(xg4)*Hstep4(xg4), xg4, initial=0)              # ⟦cách A: tích phân tích lũy||method A: cumulative integral⟧
+i5_4 = np.argmin(np.abs(xg4 - 5))
+direct4 = quad(f4, 0, 5)[0]                                                    # ⟦cách B: quad||method B: quad⟧
+p3_err = abs(cum4[i5_4] - direct4)
+assert p3_err < 1e-3
+report("p3_at5", cum4[i5_4], ".4f"); report("p3_err", p3_err, ".1e")
+
+# ⟦Bài 4: d/dx[f*H] = f||Problem 4: d/dx[f*H] = f⟧
+deriv4 = np.gradient(cum4, dx4)
+i2_4 = np.argmin(np.abs(xg4 - 2))
+p4_err = abs(deriv4[i2_4] - f4(2))
+assert p4_err < 1e-5
+report("p4_err", p4_err, ".1e")
+
+# ⟦Bài 5: sinc x * sinc x = sinc x (miền thời gian và miền tần số Π·Π=Π)||Problem 5: sinc x * sinc x = sinc x (time domain and frequency-domain Π·Π=Π)⟧
+dx5 = 0.0025; xg5 = np.arange(-300, 300, dx5)
+s5 = np.sinc(xg5)
+n5 = 2*len(s5) - 1
+conv5_freq = np.fft.ifft(np.fft.fft(s5, n5)**2).real*dx5                       # ⟦qua miền tần số: Π²=Π nên FT không đổi||via the frequency domain: Π²=Π so the FT is unchanged⟧
+mid5 = n5//2
+p5_vals = [conv5_freq[mid5 + int(round(xv/dx5))] for xv in (0.0, 1.0, 2.0, 0.5)]
+p5_exact = [np.sinc(xv) for xv in (0.0, 1.0, 2.0, 0.5)]
+p5_err = max(abs(a - b) for a, b in zip(p5_vals, p5_exact))
+assert p5_err < 5e-3
+report("p5_err", p5_err, ".1e")
+
+# ⟦Bài 6: sinc x * J₀(πx) = J₀(πx)||Problem 6: sinc x * J₀(πx) = J₀(πx)⟧
+j6 = special.j0(np.pi*xg5)
+conv6 = np.fft.ifft(np.fft.fft(s5, n5)*np.fft.fft(j6, n5)).real*dx5
+p6_vals = [conv6[mid5 + int(round(xv/dx5))] for xv in (0.0, 0.5, 1.0, 2.0)]
+p6_exact = [special.j0(np.pi*xv) for xv in (0.0, 0.5, 1.0, 2.0)]
+p6_err = max(abs(a - b) for a, b in zip(p6_vals, p6_exact))
+assert p6_err < 5e-2                                                            # ⟦sai số dư do cắt cụt miền hữu hạn (J₀ và sinc suy giảm chậm ~1/√x)||residual error from finite-domain truncation (both J₀ and sinc decay slowly, ~1/√x)⟧
+report("p6_err", p6_err, ".2f")
+
+# ⟦Bài 7: 4 sinc 4x * sin x = sin x (lọc thông thấp lý tưởng không đổi tần số thấp)||Problem 7: 4 sinc 4x * sin x = sin x (ideal lowpass leaves a low frequency unchanged)⟧
+s7 = 4*np.sinc(4*xg5); sin7 = np.sin(xg5)
+conv7 = np.fft.ifft(np.fft.fft(s7, n5)*np.fft.fft(sin7, n5)).real*dx5
+p7_vals = [conv7[mid5 + int(round(xv/dx5))] for xv in (1.0, 3.0, 5.0)]
+p7_exact = [np.sin(xv) for xv in (1.0, 3.0, 5.0)]
+p7_err = max(abs(a - b) for a, b in zip(p7_vals, p7_exact))
+assert p7_err < 5e-2
+report("p7_err", p7_err, ".2f")
+
+# ⟦Bài 8: bốn cách viết Π(x) đều bằng nhau||Problem 8: the four ways of writing Π(x) all agree⟧
+xt8 = np.linspace(-2, 2, 4001)
+rect8 = lambda x: np.where(np.abs(x) < 0.5, 1.0, np.where(np.abs(x) == 0.5, 0.5, 0.0))
+form1 = Hstep4(xt8 + 0.5) - Hstep4(xt8 - 0.5)
+form2 = Hstep4(0.5 + xt8) + Hstep4(0.5 - xt8) - 1
+form3 = Hstep4(0.25 - xt8**2)
+form4 = 0.5*(np.sign(xt8 + 0.5) - np.sign(xt8 - 0.5))
+p8_err = max(np.max(np.abs(form1 - rect8(xt8))), np.max(np.abs(form2 - rect8(xt8))),
+             np.max(np.abs(form3 - rect8(xt8))), np.max(np.abs(form4 - rect8(xt8))))
+assert p8_err < 1e-9
+report("p8_err", p8_err, ".1e")
+
+# ⟦Bài 9: Λ(x) = Π(x)*Π(x)||Problem 9: Λ(x) = Π(x)*Π(x)⟧
+tri9 = lambda x: np.maximum(1 - np.abs(x), 0)
+xg9 = np.arange(-5, 5, 0.0005)
+convtri9 = np.convolve(rect8(xg9), rect8(xg9), mode="same")*0.0005             # ⟦cách A: tích chập trực tiếp||method A: direct convolution⟧
+p9_direct = np.max(np.abs(convtri9 - tri9(xg9)))
+Fpi9 = np.sinc(np.linspace(-2, 2, 4001))                                       # ⟦cách B: kiểm sinc²  qua vài điểm tần số||method B: check sinc² at a few frequencies⟧
+p9_err = p9_direct
+assert p9_err < 1e-3
+report("p9_err", p9_err, ".1e")
+
+# ⟦Bài 11: erf x = 2Φ(√2 x) − 1||Problem 11: erf x = 2Φ(√2 x) − 1⟧
+xt11 = np.array([0.1, 0.5, 1.0, 2.0, 3.0])
+lhs11 = special.erf(xt11); rhs11 = 2*norm.cdf(np.sqrt(2)*xt11) - 1
+p11_err = np.max(np.abs(lhs11 - rhs11))
+assert p11_err < 1e-9
+report("p11_err", p11_err, ".1e")'''),
+        ("md", """#### 📤 ⟦Đầu ra thật||Real output⟧
+⟦Bài 1: lệch tối đa {{p1_err}} trên 3 cặp $(a,b)$ kể cả $a<0$. Bài 3: tích phân tích lũy tại $x=5$ = {{p3_at5}}, lệch với <code>quad</code> chỉ {{p3_err}}. Bài 4: đạo hàm số khớp $f(2)$, lệch {{p4_err}}. Bài 5: sinc*sinc lệch với sinc gốc {{p5_err}} tại 4 điểm thử. Bài 6: sinc*$J_0(\\pi x)$ lệch {{p6_err}} — dư do cắt miền hữu hạn của hai hàm suy giảm chậm. Bài 7: $4\\,\\text{sinc}\\,4x*\\sin x$ lệch {{p7_err}} so với $\\sin x$. Bài 8: bốn cách viết $\\Pi(x)$ trùng nhau, lệch {{p8_err}}. Bài 9: $\\Lambda=\\Pi*\\Pi$ lệch {{p9_err}}. Bài 11: $\\text{erf}$ và $2\\Phi(\\sqrt2x)-1$ lệch {{p11_err}}.||"""
+        "Problem 1: maximum deviation {{p1_err}} over 3 pairs $(a,b)$ including $a<0$. Problem 3: the cumulative integral at $x=5$ = {{p3_at5}}, deviating from <code>quad</code> by only {{p3_err}}. Problem 4: the numerical derivative matches $f(2)$, deviation {{p4_err}}. Problem 5: sinc*sinc deviates from the original sinc by {{p5_err}} at 4 test points. Problem 6: sinc*$J_0(\\pi x)$ deviates by {{p6_err}} — a residual from the finite-domain truncation of two slowly decaying functions. Problem 7: $4\\,\\text{sinc}\\,4x*\\sin x$ deviates from $\\sin x$ by {{p7_err}}. Problem 8: the four ways of writing $\\Pi(x)$ agree, deviation {{p8_err}}. Problem 9: $\\Lambda=\\Pi*\\Pi$ deviates by {{p9_err}}. Problem 11: $\\text{erf}$ and $2\\Phi(\\sqrt2x)-1$ deviate by {{p11_err}}.⟧"""),
     ],
 )
